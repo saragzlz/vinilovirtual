@@ -172,7 +172,6 @@
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_SMTYwHPhEe60zawTpJFFsw" name="album_comentario" alias="album_comentario" rolOrigin="_SMdJwHPhEe60zawTpJFFsw" rolTarget="_SMdJwXPhEe60zawTpJFFsw" classTarget="_upyBQHN5Ee6uMt-deiWvsQ" classOrigin="_a292sHN8Ee6uMt-deiWvsQ" rolOriginName="album" rolTargetName="comentario" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_bP_m0HPhEe60zawTpJFFsw" name="comunidad_comentario" alias="comunidad_comentario" rolOrigin="_bP_m0XPhEe60zawTpJFFsw" rolTarget="_bP_m0nPhEe60zawTpJFFsw" classTarget="_Trs0wHN6Ee6uMt-deiWvsQ" classOrigin="_a292sHN8Ee6uMt-deiWvsQ" rolOriginName="comunidad" rolTargetName="comentario" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
-    <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_WhqSoHPlEe6mabMks5nCRA" name="Intento prueba" alias="Intento prueba"/>
   </es.ua.dlsi.ooh:ConceptualModel>
   <notation:Diagram xmi:id="_ayuMsXN4Ee6uMt-deiWvsQ" type="ConceptualView" element="_ayuMsHN4Ee6uMt-deiWvsQ" name="default.domainModel" measurementUnit="Pixel">
     <children xmi:type="notation:Node" xmi:id="_xkTHEHN4Ee6uMt-deiWvsQ" type="2003" element="_xkQq0HN4Ee6uMt-deiWvsQ">
@@ -366,21 +365,6 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_m7Ehw3N8Ee6uMt-deiWvsQ" fontName="Segoe UI"/>
       <styles xmi:type="notation:FillStyle" xmi:id="_m7EhxHN8Ee6uMt-deiWvsQ" fillColor="12516090"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m7EhxXN8Ee6uMt-deiWvsQ" x="570" y="444"/>
-    </children>
-    <children xmi:type="notation:Node" xmi:id="_Wh6KQHPlEe6mabMks5nCRA" type="2003" element="_WhqSoHPlEe6mabMks5nCRA">
-      <children xmi:type="notation:DecorationNode" xmi:id="_Wh6KRXPlEe6mabMks5nCRA" type="5005"/>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_Wh6KRnPlEe6mabMks5nCRA" type="7003">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_Wh6KR3PlEe6mabMks5nCRA"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_Wh6KSHPlEe6mabMks5nCRA"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_Wh6KSXPlEe6mabMks5nCRA" type="7004">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_Wh6KSnPlEe6mabMks5nCRA"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_Wh6KS3PlEe6mabMks5nCRA"/>
-      </children>
-      <styles xmi:type="notation:DescriptionStyle" xmi:id="_Wh6KQXPlEe6mabMks5nCRA"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_Wh6KQnPlEe6mabMks5nCRA" fontName="Segoe UI"/>
-      <styles xmi:type="notation:FillStyle" xmi:id="_Wh6KQ3PlEe6mabMks5nCRA" fillColor="12516090"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wh6KRHPlEe6mabMks5nCRA" x="1325" y="348" width="173" height="168"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_ayuMsnN4Ee6uMt-deiWvsQ"/>
     <edges xmi:type="notation:Edge" xmi:id="_QmXQ8HN5Ee6uMt-deiWvsQ" type="4003" element="_QmWC0HN5Ee6uMt-deiWvsQ" source="_2xgy0XN4Ee6uMt-deiWvsQ" target="_xkTHEHN4Ee6uMt-deiWvsQ">
