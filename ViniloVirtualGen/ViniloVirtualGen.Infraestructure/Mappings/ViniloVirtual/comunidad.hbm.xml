@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ViniloVirtualGen.Infraestructure"
+		                   namespace="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual">
+		    
+		    
+			
+				<class name="ComunidadNH" table="Comunidad"> 
+				  	
+						<id name="Id" column="idComunidad" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+			
+			
+			
+		  			
+						<bag name="Usuario" table="[comunidad_usuario]"  >
+							<key>
+								
+									<column name="FK_idComunidad_idComunidad"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH">
+									<column name="FK_idUsuario_idUsuario"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Comentario" >
+							<key>
+							
+								
+								<column name="FK_idComunidad_idComunidad"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
+					    </bag>
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ComunidadNHReadAllHQL">from ComunidadNH</query>
+		</hibernate-mapping>
+	

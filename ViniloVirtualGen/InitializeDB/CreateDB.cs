@@ -94,8 +94,8 @@ public static void InitializeData ()
                 ComunidadCEN comunidadcen = new ComunidadCEN (comunidadrepository);
                 ComentarioRepository comentariorepository = new ComentarioRepository ();
                 ComentarioCEN comentariocen = new ComentarioCEN (comentariorepository);
-                Favoritos ?? ?? ? Repository favoritos ?? ??? repository = new Favoritos ?? ?? ? Repository ();
-                Favoritos ?? ?? ? CEN favoritos ?? ??? cen = new Favoritos ?? ?? ? CEN (favoritos ?? ?? ? repository);
+                FavoritosRepository favoritosrepository = new FavoritosRepository ();
+                FavoritosCEN favoritoscen = new FavoritosCEN (favoritosrepository);
 
 
 

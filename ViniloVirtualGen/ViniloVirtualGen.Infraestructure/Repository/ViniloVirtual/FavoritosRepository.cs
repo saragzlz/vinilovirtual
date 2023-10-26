@@ -14,20 +14,20 @@ using ViniloVirtualGen.Infraestructure.EN.ViniloVirtual;
 
 
 /*
- * Clase Comunidad:
+ * Clase Favoritos:
  *
  */
 
 namespace ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual
 {
-public partial class ComunidadRepository : BasicRepository, IComunidadRepository
+public partial class FavoritosRepository : BasicRepository, IFavoritosRepository
 {
-public ComunidadRepository() : base ()
+public FavoritosRepository() : base ()
 {
 }
 
 
-public ComunidadRepository(GenericSessionCP sessionAux) : base (sessionAux)
+public FavoritosRepository(GenericSessionCP sessionAux) : base (sessionAux)
 {
 }
 
@@ -39,15 +39,15 @@ public void setSessionCP (GenericSessionCP session)
 }
 
 
-public ComunidadEN ReadOIDDefault (int id
+public FavoritosEN ReadOIDDefault (int id
                                    )
 {
-        ComunidadEN comunidadEN = null;
+        FavoritosEN favoritosEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                comunidadEN = (ComunidadEN)session.Get (typeof(ComunidadNH), id);
+                favoritosEN = (FavoritosEN)session.Get (typeof(FavoritosNH), id);
                 SessionCommit ();
         }
 
@@ -60,21 +60,21 @@ public ComunidadEN ReadOIDDefault (int id
                 SessionClose ();
         }
 
-        return comunidadEN;
+        return favoritosEN;
 }
 
-public System.Collections.Generic.IList<ComunidadEN> ReadAllDefault (int first, int size)
+public System.Collections.Generic.IList<FavoritosEN> ReadAllDefault (int first, int size)
 {
-        System.Collections.Generic.IList<ComunidadEN> result = null;
+        System.Collections.Generic.IList<FavoritosEN> result = null;
         try
         {
                 using (ITransaction tx = session.BeginTransaction ())
                 {
                         if (size > 0)
-                                result = session.CreateCriteria (typeof(ComunidadNH)).
-                                         SetFirstResult (first).SetMaxResults (size).List<ComunidadEN>();
+                                result = session.CreateCriteria (typeof(FavoritosNH)).
+                                         SetFirstResult (first).SetMaxResults (size).List<FavoritosEN>();
                         else
-                                result = session.CreateCriteria (typeof(ComunidadNH)).List<ComunidadEN>();
+                                result = session.CreateCriteria (typeof(FavoritosNH)).List<FavoritosEN>();
                 }
         }
 
@@ -82,7 +82,7 @@ public System.Collections.Generic.IList<ComunidadEN> ReadAllDefault (int first, 
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
         return result;
@@ -90,15 +90,13 @@ public System.Collections.Generic.IList<ComunidadEN> ReadAllDefault (int first, 
 
 // Modify default (Update all attributes of the class)
 
-public void ModifyDefault (ComunidadEN comunidad)
+public void ModifyDefault (FavoritosEN favoritos)
 {
         try
         {
                 SessionInitializeTransaction ();
-                ComunidadNH comunidadNH = (ComunidadNH)session.Load (typeof(ComunidadNH), comunidad.Id);
-
-
-                session.Update (comunidadNH);
+                FavoritosNH favoritosNH = (FavoritosNH)session.Load (typeof(FavoritosNH), favoritos.Id);
+                session.Update (favoritosNH);
                 SessionCommit ();
         }
 
@@ -106,7 +104,7 @@ public void ModifyDefault (ComunidadEN comunidad)
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
 
@@ -117,15 +115,15 @@ public void ModifyDefault (ComunidadEN comunidad)
 }
 
 
-public int New_ (ComunidadEN comunidad)
+public int New_ (FavoritosEN favoritos)
 {
-        ComunidadNH comunidadNH = new ComunidadNH (comunidad);
+        FavoritosNH favoritosNH = new FavoritosNH (favoritos);
 
         try
         {
                 SessionInitializeTransaction ();
 
-                session.Save (comunidadNH);
+                session.Save (favoritosNH);
                 SessionCommit ();
         }
 
@@ -133,7 +131,7 @@ public int New_ (ComunidadEN comunidad)
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
 
@@ -142,16 +140,16 @@ public int New_ (ComunidadEN comunidad)
                 SessionClose ();
         }
 
-        return comunidadNH.Id;
+        return favoritosNH.Id;
 }
 
-public void Modify (ComunidadEN comunidad)
+public void Modify (FavoritosEN favoritos)
 {
         try
         {
                 SessionInitializeTransaction ();
-                ComunidadNH comunidadNH = (ComunidadNH)session.Load (typeof(ComunidadNH), comunidad.Id);
-                session.Update (comunidadNH);
+                FavoritosNH favoritosNH = (FavoritosNH)session.Load (typeof(FavoritosNH), favoritos.Id);
+                session.Update (favoritosNH);
                 SessionCommit ();
         }
 
@@ -159,7 +157,7 @@ public void Modify (ComunidadEN comunidad)
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
 
@@ -174,8 +172,8 @@ public void Destroy (int id
         try
         {
                 SessionInitializeTransaction ();
-                ComunidadNH comunidadNH = (ComunidadNH)session.Load (typeof(ComunidadNH), id);
-                session.Delete (comunidadNH);
+                FavoritosNH favoritosNH = (FavoritosNH)session.Load (typeof(FavoritosNH), id);
+                session.Delete (favoritosNH);
                 SessionCommit ();
         }
 
@@ -183,7 +181,7 @@ public void Destroy (int id
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
 
@@ -194,16 +192,16 @@ public void Destroy (int id
 }
 
 //Sin e: GiveId
-//Con e: ComunidadEN
-public ComunidadEN GiveId (int id
+//Con e: FavoritosEN
+public FavoritosEN GiveId (int id
                            )
 {
-        ComunidadEN comunidadEN = null;
+        FavoritosEN favoritosEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                comunidadEN = (ComunidadEN)session.Get (typeof(ComunidadNH), id);
+                favoritosEN = (FavoritosEN)session.Get (typeof(FavoritosNH), id);
                 SessionCommit ();
         }
 
@@ -216,20 +214,20 @@ public ComunidadEN GiveId (int id
                 SessionClose ();
         }
 
-        return comunidadEN;
+        return favoritosEN;
 }
 
-public System.Collections.Generic.IList<ComunidadEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<FavoritosEN> GiveAll (int first, int size)
 {
-        System.Collections.Generic.IList<ComunidadEN> result = null;
+        System.Collections.Generic.IList<FavoritosEN> result = null;
         try
         {
                 SessionInitializeTransaction ();
                 if (size > 0)
-                        result = session.CreateCriteria (typeof(ComunidadNH)).
-                                 SetFirstResult (first).SetMaxResults (size).List<ComunidadEN>();
+                        result = session.CreateCriteria (typeof(FavoritosNH)).
+                                 SetFirstResult (first).SetMaxResults (size).List<FavoritosEN>();
                 else
-                        result = session.CreateCriteria (typeof(ComunidadNH)).List<ComunidadEN>();
+                        result = session.CreateCriteria (typeof(FavoritosNH)).List<FavoritosEN>();
                 SessionCommit ();
         }
 
@@ -237,7 +235,7 @@ public System.Collections.Generic.IList<ComunidadEN> GiveAll (int first, int siz
                 SessionRollBack ();
                 if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
                         throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in FavoritosRepository.", ex);
         }
 
 

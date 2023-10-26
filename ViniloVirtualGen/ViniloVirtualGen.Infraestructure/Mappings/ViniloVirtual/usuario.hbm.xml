@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ViniloVirtualGen.Infraestructure"
+		                   namespace="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual">
+		    
+		    
+			
+				<class name="UsuarioNH" table="Usuario"> 
+				  	
+						<id name="Id" column="idUsuario" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+					<property name="Imagen" type="string"> 
+						<column name="imagen"  not-null="true"/>
+					</property>
+					<property name="Attribute" type="string"> 
+						<column name="attribute"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Comunidad" table="[comunidad_usuario]" inverse="true" >
+							<key>
+								
+									<column name="FK_idUsuario_idUsuario"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComunidadNH">
+									<column name="FK_idComunidad_idComunidad"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="Comentario" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioNHReadAllHQL">from UsuarioNH</query>
+		</hibernate-mapping>
+	

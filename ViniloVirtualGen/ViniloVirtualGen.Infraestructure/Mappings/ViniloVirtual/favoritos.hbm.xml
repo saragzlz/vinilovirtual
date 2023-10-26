@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ViniloVirtualGen.Infraestructure"
+		                   namespace="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual">
+		    
+		    
+			
+				<class name="FavoritosNH" table="Favoritos"> 
+				  	
+						<id name="Id" column="idFavoritos" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+			
+			
+					
+		
+		 </class>	
+		  
+		  <query name="FavoritosNHReadAllHQL">from FavoritosNH</query>
+		</hibernate-mapping>
+	

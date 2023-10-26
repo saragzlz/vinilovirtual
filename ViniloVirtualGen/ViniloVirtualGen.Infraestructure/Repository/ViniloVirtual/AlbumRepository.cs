@@ -109,6 +109,7 @@ public void ModifyDefault (AlbumEN album)
                 albumNH.Imagen = album.Imagen;
 
 
+
                 session.Update (albumNH);
                 SessionCommit ();
         }

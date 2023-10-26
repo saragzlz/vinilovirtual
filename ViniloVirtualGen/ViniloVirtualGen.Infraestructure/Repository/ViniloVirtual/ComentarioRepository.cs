@@ -100,6 +100,8 @@ public void ModifyDefault (ComentarioEN comentario)
                 comentarioNH.Texto = comentario.Texto;
 
 
+
+
                 session.Update (comentarioNH);
                 SessionCommit ();
         }
@@ -132,6 +134,22 @@ public int New_ (ComentarioEN comentario)
                         .Usuario = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN), comentario.Usuario.Id);
 
                         comentarioNH.Usuario.Comentario
+                        .Add (comentarioNH);
+                }
+                if (comentario.Album != null) {
+                        // Argumento OID y no colección.
+                        comentarioNH
+                        .Album = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN), comentario.Album.Id);
+
+                        comentarioNH.Album.Comentario
+                        .Add (comentarioNH);
+                }
+                if (comentario.Comunidad != null) {
+                        // Argumento OID y no colección.
+                        comentarioNH
+                        .Comunidad = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN), comentario.Comunidad.Id);
+
+                        comentarioNH.Comunidad.Comentario
                         .Add (comentarioNH);
                 }
 

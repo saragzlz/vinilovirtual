@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ViniloVirtualGen.Infraestructure"
+		                   namespace="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual">
+		    
+		    
+			
+				<class name="ComentarioNH" table="Comentario"> 
+				  	
+						<id name="Id" column="idComentario" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Texto" type="string"> 
+						<column name="texto"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH" >	
+								<column name="FK_idUsuario_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Album" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.AlbumNH" >	
+								<column name="FK_idAlbum_idAlbum"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Comunidad" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComunidadNH" >	
+								<column name="FK_idComunidad_idComunidad"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ComentarioNHReadAllHQL">from ComentarioNH</query>
+		</hibernate-mapping>
+	
