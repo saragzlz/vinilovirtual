@@ -98,6 +98,16 @@ public void ModifyDefault (ComunidadEN comunidad)
                 ComunidadNH comunidadNH = (ComunidadNH)session.Load (typeof(ComunidadNH), comunidad.Id);
 
 
+                comunidadNH.Nombre = comunidad.Nombre;
+
+
+                comunidadNH.Imagen = comunidad.Imagen;
+
+
+                comunidadNH.NumMiembros = comunidad.NumMiembros;
+
+
+
                 session.Update (comunidadNH);
                 SessionCommit ();
         }
@@ -151,6 +161,15 @@ public void Modify (ComunidadEN comunidad)
         {
                 SessionInitializeTransaction ();
                 ComunidadNH comunidadNH = (ComunidadNH)session.Load (typeof(ComunidadNH), comunidad.Id);
+
+                comunidadNH.Nombre = comunidad.Nombre;
+
+
+                comunidadNH.Imagen = comunidad.Imagen;
+
+
+                comunidadNH.NumMiembros = comunidad.NumMiembros;
+
                 session.Update (comunidadNH);
                 SessionCommit ();
         }

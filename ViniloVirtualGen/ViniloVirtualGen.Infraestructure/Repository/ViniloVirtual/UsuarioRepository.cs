@@ -100,6 +100,9 @@ public void ModifyDefault (UsuarioEN usuario)
                 usuarioNH.Nombre = usuario.Nombre;
 
 
+                usuarioNH.Apillidos = usuario.Apillidos;
+
+
                 usuarioNH.Pass = usuario.Pass;
 
 
@@ -107,6 +110,15 @@ public void ModifyDefault (UsuarioEN usuario)
 
 
                 usuarioNH.Attribute = usuario.Attribute;
+
+
+
+
+                usuarioNH.FechaNac = usuario.FechaNac;
+
+
+                usuarioNH.Genero = usuario.Genero;
+
 
 
 
@@ -167,6 +179,9 @@ public void Modify (UsuarioEN usuario)
                 usuarioNH.Nombre = usuario.Nombre;
 
 
+                usuarioNH.Apillidos = usuario.Apillidos;
+
+
                 usuarioNH.Pass = usuario.Pass;
 
 
@@ -174,6 +189,12 @@ public void Modify (UsuarioEN usuario)
 
 
                 usuarioNH.Attribute = usuario.Attribute;
+
+
+                usuarioNH.FechaNac = usuario.FechaNac;
+
+
+                usuarioNH.Genero = usuario.Genero;
 
                 session.Update (usuarioNH);
                 SessionCommit ();

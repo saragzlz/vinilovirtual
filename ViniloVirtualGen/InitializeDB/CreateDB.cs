@@ -26,7 +26,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local); database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -94,8 +94,12 @@ public static void InitializeData ()
                 ComunidadCEN comunidadcen = new ComunidadCEN (comunidadrepository);
                 ComentarioRepository comentariorepository = new ComentarioRepository ();
                 ComentarioCEN comentariocen = new ComentarioCEN (comentariorepository);
-                FavoritosRepository favoritosrepository = new FavoritosRepository ();
-                FavoritosCEN favoritoscen = new FavoritosCEN (favoritosrepository);
+                FavoritoAlbumRepository favoritoalbumrepository = new FavoritoAlbumRepository ();
+                FavoritoAlbumCEN favoritoalbumcen = new FavoritoAlbumCEN (favoritoalbumrepository);
+                FavoritoArtistaRepository favoritoartistarepository = new FavoritoArtistaRepository ();
+                FavoritoArtistaCEN favoritoartistacen = new FavoritoArtistaCEN (favoritoartistarepository);
+                FavoritoComunidadRepository favoritocomunidadrepository = new FavoritoComunidadRepository ();
+                FavoritoComunidadCEN favoritocomunidadcen = new FavoritoComunidadCEN (favoritocomunidadrepository);
 
 
 

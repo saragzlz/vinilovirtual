@@ -110,6 +110,7 @@ public void ModifyDefault (AlbumEN album)
 
 
 
+
                 session.Update (albumNH);
                 SessionCommit ();
         }

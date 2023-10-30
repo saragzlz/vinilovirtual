@@ -30,26 +30,35 @@ public IComunidadRepository get_IComunidadRepository ()
         return this._IComunidadRepository;
 }
 
-public int New_ ()
+public int New_ (string p_nombre, string p_imagen, int p_numMiembros)
 {
         ComunidadEN comunidadEN = null;
         int oid;
 
         //Initialized ComunidadEN
         comunidadEN = new ComunidadEN ();
+        comunidadEN.Nombre = p_nombre;
+
+        comunidadEN.Imagen = p_imagen;
+
+        comunidadEN.NumMiembros = p_numMiembros;
+
 
 
         oid = _IComunidadRepository.New_ (comunidadEN);
         return oid;
 }
 
-public void Modify (int p_Comunidad_OID)
+public void Modify (int p_Comunidad_OID, string p_nombre, string p_imagen, int p_numMiembros)
 {
         ComunidadEN comunidadEN = null;
 
         //Initialized ComunidadEN
         comunidadEN = new ComunidadEN ();
         comunidadEN.Id = p_Comunidad_OID;
+        comunidadEN.Nombre = p_nombre;
+        comunidadEN.Imagen = p_imagen;
+        comunidadEN.NumMiembros = p_numMiembros;
         //Call to ComunidadRepository
 
         _IComunidadRepository.Modify (comunidadEN);

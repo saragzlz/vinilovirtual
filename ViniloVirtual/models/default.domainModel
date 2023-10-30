@@ -271,7 +271,6 @@
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_tpErYHPrEe60zawTpJFFsw" name="usuario_favoritoArtista" alias="usuario_favoritoArtista" rolOrigin="_tpErYXPrEe60zawTpJFFsw" rolTarget="_tpErYnPrEe60zawTpJFFsw" classTarget="_xkQq0HN4Ee6uMt-deiWvsQ" classOrigin="_Fq-3IHPqEe60zawTpJFFsw" rolOriginName="usuario" rolTargetName="favoritoArtista" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_8eGl8HPrEe60zawTpJFFsw" name="artista_favoritoArtista" alias="artista_favoritoArtista" rolOrigin="_8eGl8XPrEe60zawTpJFFsw" rolTarget="_8eGl8nPrEe60zawTpJFFsw" classTarget="_5aGwQHN5Ee6uMt-deiWvsQ" classOrigin="_Fq-3IHPqEe60zawTpJFFsw" rolOriginName="artista" rolTargetName="favoritoArtista" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_Fr4kIHPsEe60zawTpJFFsw" name="comunidad_comentario" alias="comunidad_comentario" rolOrigin="_Fr4kIXPsEe60zawTpJFFsw" rolTarget="_Fr4kInPsEe60zawTpJFFsw" classTarget="_Trs0wHN6Ee6uMt-deiWvsQ" classOrigin="_a292sHN8Ee6uMt-deiWvsQ" rolOriginName="comunidad" rolTargetName="comentario" rolOriginMultiplicity="1..1" rolTargetMultiplicity="0..*"/>
-    <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_Kiqs4HPsEe60zawTpJFFsw" name="Venta" alias="Venta"/>
     <elements xmi:type="es.ua.dlsi.ooh:Enumeration" xmi:id="_M3sDgHPsEe60zawTpJFFsw" name="estadoVenta"/>
   </es.ua.dlsi.ooh:ConceptualModel>
   <notation:Diagram xmi:id="_ayuMsXN4Ee6uMt-deiWvsQ" type="ConceptualView" element="_ayuMsHN4Ee6uMt-deiWvsQ" name="default.domainModel" measurementUnit="Pixel">
@@ -665,21 +664,6 @@
       <styles xmi:type="notation:FillStyle" xmi:id="_TB1HBHPrEe60zawTpJFFsw" fillColor="12516090"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TB1HBXPrEe60zawTpJFFsw" x="432" y="-174"/>
     </children>
-    <children xmi:type="notation:Node" xmi:id="_Kiz20HPsEe60zawTpJFFsw" type="2003" element="_Kiqs4HPsEe60zawTpJFFsw">
-      <children xmi:type="notation:DecorationNode" xmi:id="_Kiz21XPsEe60zawTpJFFsw" type="5005"/>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_Kiz21nPsEe60zawTpJFFsw" type="7003">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_Kiz213PsEe60zawTpJFFsw"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_Kiz22HPsEe60zawTpJFFsw"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_Kiz22XPsEe60zawTpJFFsw" type="7004">
-        <styles xmi:type="notation:SortingStyle" xmi:id="_Kiz22nPsEe60zawTpJFFsw"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_Kiz223PsEe60zawTpJFFsw"/>
-      </children>
-      <styles xmi:type="notation:DescriptionStyle" xmi:id="_Kiz20XPsEe60zawTpJFFsw"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_Kiz20nPsEe60zawTpJFFsw" fontName="Segoe UI"/>
-      <styles xmi:type="notation:FillStyle" xmi:id="_Kiz203PsEe60zawTpJFFsw" fillColor="12516090"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Kiz21HPsEe60zawTpJFFsw" x="-36" y="-138" width="97" height="97"/>
-    </children>
     <children xmi:type="notation:Node" xmi:id="_M3sDgXPsEe60zawTpJFFsw" type="2005" element="_M3sDgHPsEe60zawTpJFFsw">
       <children xmi:type="notation:DecorationNode" xmi:id="_M3sDhnPsEe60zawTpJFFsw" type="5009"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_M3sDh3PsEe60zawTpJFFsw" type="7005">
@@ -771,8 +755,9 @@
       </children>
       <styles xmi:type="notation:RoutingStyle" xmi:id="_SNC_p3PhEe60zawTpJFFsw"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_SNC_qHPhEe60zawTpJFFsw" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SNC_qXPhEe60zawTpJFFsw" points="[8, 0, -326, -55]$[247, 12, -87, -43]$[247, 12, -87, -43]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SNC_qXPhEe60zawTpJFFsw" points="[8, 0, -336, -37]$[247, 26, -97, -11]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SNC_snPhEe60zawTpJFFsw" id="(0.9542857142857143,0.4476744186046512)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CZBHIHcLEe6aBsChjQLKbw" id="(0.02577319587628866,0.31746031746031744)"/>
     </edges>
     <edges xmi:type="notation:Edge" xmi:id="_Omy7qXPqEe60zawTpJFFsw" type="4004" element="_Omy7kHPqEe60zawTpJFFsw" source="_m7EhwXN8Ee6uMt-deiWvsQ" target="_up1EkHN5Ee6uMt-deiWvsQ">
       <children xmi:type="notation:DecorationNode" xmi:id="_Omy7rXPqEe60zawTpJFFsw" type="6005">

@@ -47,6 +47,18 @@
 							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
 					    </bag>
 					
+			
+		  			
+						<bag name="Favoritos" >
+							<key>
+							
+								
+								<column name="FK_idAlbum_idAlbum"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoAlbumNH"/>
+					    </bag>
+					
+					
 					
 					
 					

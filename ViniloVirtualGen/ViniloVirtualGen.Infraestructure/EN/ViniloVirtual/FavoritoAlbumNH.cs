@@ -3,12 +3,12 @@ using System;
 using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 namespace ViniloVirtualGen.Infraestructure.EN.ViniloVirtual
 {
-public partial class FavoritosNH : FavoritosEN {
-public FavoritosNH ()
+public partial class FavoritoAlbumNH : FavoritoAlbumEN {
+public FavoritoAlbumNH ()
 {
 }
 
-public FavoritosNH (FavoritosEN dto) : base (dto)
+public FavoritoAlbumNH (FavoritoAlbumEN dto) : base (dto)
 {
 }
 }

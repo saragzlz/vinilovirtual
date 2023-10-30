@@ -30,7 +30,7 @@ public IAdminRepository get_IAdminRepository ()
         return this._IAdminRepository;
 }
 
-public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attribute)
+public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         AdminEN adminEN = null;
         int oid;
@@ -39,11 +39,17 @@ public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attri
         adminEN = new AdminEN ();
         adminEN.Nombre = p_nombre;
 
+        adminEN.Apillidos = p_apillidos;
+
         adminEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
 
         adminEN.Imagen = p_imagen;
 
         adminEN.Attribute = p_attribute;
+
+        adminEN.FechaNac = p_fechaNac;
+
+        adminEN.Genero = p_genero;
 
 
 
@@ -51,7 +57,7 @@ public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attri
         return oid;
 }
 
-public void Modify (int p_Admin_OID, string p_nombre, String p_pass, string p_imagen, string p_attribute)
+public void Modify (int p_Admin_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         AdminEN adminEN = null;
 
@@ -59,9 +65,12 @@ public void Modify (int p_Admin_OID, string p_nombre, String p_pass, string p_im
         adminEN = new AdminEN ();
         adminEN.Id = p_Admin_OID;
         adminEN.Nombre = p_nombre;
+        adminEN.Apillidos = p_apillidos;
         adminEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
         adminEN.Imagen = p_imagen;
         adminEN.Attribute = p_attribute;
+        adminEN.FechaNac = p_fechaNac;
+        adminEN.Genero = p_genero;
         //Call to AdminRepository
 
         _IAdminRepository.Modify (adminEN);

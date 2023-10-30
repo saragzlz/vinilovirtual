@@ -14,25 +14,27 @@ public AdminEN() : base ()
 
 
 public AdminEN(int id,
-               string nombre, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario
+               string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista
                )
 {
-        this.init (Id, nombre, pass, imagen, attribute, comunidad, comentario);
+        this.init (Id, nombre, apillidos, pass, imagen, attribute, comunidad, comentario, fechaNac, genero, favoritoAlbum, favoritoComunidad, favoritoArtista);
 }
 
 
 public AdminEN(AdminEN admin)
 {
-        this.init (admin.Id, admin.Nombre, admin.Pass, admin.Imagen, admin.Attribute, admin.Comunidad, admin.Comentario);
+        this.init (admin.Id, admin.Nombre, admin.Apillidos, admin.Pass, admin.Imagen, admin.Attribute, admin.Comunidad, admin.Comentario, admin.FechaNac, admin.Genero, admin.FavoritoAlbum, admin.FavoritoComunidad, admin.FavoritoArtista);
 }
 
 private void init (int id
-                   , string nombre, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario)
+                   , string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista)
 {
         this.Id = id;
 
 
         this.Nombre = nombre;
+
+        this.Apillidos = apillidos;
 
         this.Pass = pass;
 
@@ -43,6 +45,16 @@ private void init (int id
         this.Comunidad = comunidad;
 
         this.Comentario = comentario;
+
+        this.FechaNac = fechaNac;
+
+        this.Genero = genero;
+
+        this.FavoritoAlbum = favoritoAlbum;
+
+        this.FavoritoComunidad = favoritoComunidad;
+
+        this.FavoritoArtista = favoritoArtista;
 }
 
 public override bool Equals (object obj)

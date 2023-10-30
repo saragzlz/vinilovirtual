@@ -73,12 +73,30 @@ public override IComentarioRepository ComentarioRepository {
         }
 }
 
-public override IFavoritosRepository FavoritosRepository {
+public override IFavoritoAlbumRepository FavoritoAlbumRepository {
         get
         {
-                this.favoritosrepository = new FavoritosRepository ();
-                this.favoritosrepository.setSessionCP (session);
-                return this.favoritosrepository;
+                this.favoritoalbumrepository = new FavoritoAlbumRepository ();
+                this.favoritoalbumrepository.setSessionCP (session);
+                return this.favoritoalbumrepository;
+        }
+}
+
+public override IFavoritoArtistaRepository FavoritoArtistaRepository {
+        get
+        {
+                this.favoritoartistarepository = new FavoritoArtistaRepository ();
+                this.favoritoartistarepository.setSessionCP (session);
+                return this.favoritoartistarepository;
+        }
+}
+
+public override IFavoritoComunidadRepository FavoritoComunidadRepository {
+        get
+        {
+                this.favoritocomunidadrepository = new FavoritoComunidadRepository ();
+                this.favoritocomunidadrepository.setSessionCP (session);
+                return this.favoritocomunidadrepository;
         }
 }
 }

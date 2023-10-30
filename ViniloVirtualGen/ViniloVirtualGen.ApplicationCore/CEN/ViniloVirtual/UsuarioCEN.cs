@@ -31,7 +31,7 @@ public IUsuarioRepository get_IUsuarioRepository ()
         return this._IUsuarioRepository;
 }
 
-public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attribute)
+public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         UsuarioEN usuarioEN = null;
         int oid;
@@ -40,11 +40,17 @@ public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attri
         usuarioEN = new UsuarioEN ();
         usuarioEN.Nombre = p_nombre;
 
+        usuarioEN.Apillidos = p_apillidos;
+
         usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
 
         usuarioEN.Imagen = p_imagen;
 
         usuarioEN.Attribute = p_attribute;
+
+        usuarioEN.FechaNac = p_fechaNac;
+
+        usuarioEN.Genero = p_genero;
 
 
 
@@ -52,7 +58,7 @@ public int New_ (string p_nombre, String p_pass, string p_imagen, string p_attri
         return oid;
 }
 
-public void Modify (int p_Usuario_OID, string p_nombre, String p_pass, string p_imagen, string p_attribute)
+public void Modify (int p_Usuario_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         UsuarioEN usuarioEN = null;
 
@@ -60,9 +66,12 @@ public void Modify (int p_Usuario_OID, string p_nombre, String p_pass, string p_
         usuarioEN = new UsuarioEN ();
         usuarioEN.Id = p_Usuario_OID;
         usuarioEN.Nombre = p_nombre;
+        usuarioEN.Apillidos = p_apillidos;
         usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
         usuarioEN.Imagen = p_imagen;
         usuarioEN.Attribute = p_attribute;
+        usuarioEN.FechaNac = p_fechaNac;
+        usuarioEN.Genero = p_genero;
         //Call to UsuarioRepository
 
         _IUsuarioRepository.Modify (usuarioEN);

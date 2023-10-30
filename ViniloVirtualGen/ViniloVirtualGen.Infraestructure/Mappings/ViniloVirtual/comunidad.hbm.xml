@@ -12,6 +12,15 @@
 						</id>
 			
 					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Imagen" type="string"> 
+						<column name="imagen"  not-null="true"/>
+					</property>
+					<property name="NumMiembros" type="integer"> 
+						<column name="numMiembros"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -26,6 +35,20 @@
       						</many-to-many>
     					</bag>
 			
+			
+			
+			
+		  			
+						<bag name="FavoritoComunidad" >
+							<key>
+							
+								
+								<column name="FK_idComunidad_idComunidad"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoComunidadNH"/>
+					    </bag>
+					
+			
 		  			
 						<bag name="Comentario" >
 							<key>
@@ -35,6 +58,10 @@
 					      	</key>
 							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
 					    </bag>
+					
+					
+					
+					
 					
 					
 					

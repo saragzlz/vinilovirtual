@@ -11,9 +11,9 @@ using ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual;
 
 namespace ViniloVirtualGen.ApplicationCore.CP.ViniloVirtual
 {
-public partial class FavoritosCP : GenericBasicCP
+public partial class FavoritoArtistaCP : GenericBasicCP
 {
-public FavoritosCP(GenericSessionCP currentSession)
+public FavoritoArtistaCP(GenericSessionCP currentSession)
         : base (currentSession)
 {
 }

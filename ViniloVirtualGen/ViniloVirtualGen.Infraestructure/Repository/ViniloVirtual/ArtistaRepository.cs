@@ -106,6 +106,7 @@ public void ModifyDefault (ArtistaEN artista)
                 artistaNH.Imagen = artista.Imagen;
 
 
+
                 session.Update (artistaNH);
                 SessionCommit ();
         }

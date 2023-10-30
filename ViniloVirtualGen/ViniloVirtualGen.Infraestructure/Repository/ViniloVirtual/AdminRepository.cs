@@ -153,6 +153,9 @@ public void Modify (AdminEN admin)
                 adminNH.Nombre = admin.Nombre;
 
 
+                adminNH.Apillidos = admin.Apillidos;
+
+
                 adminNH.Pass = admin.Pass;
 
 
@@ -160,6 +163,12 @@ public void Modify (AdminEN admin)
 
 
                 adminNH.Attribute = admin.Attribute;
+
+
+                adminNH.FechaNac = admin.FechaNac;
+
+
+                adminNH.Genero = admin.Genero;
 
                 session.Update (adminNH);
                 SessionCommit ();

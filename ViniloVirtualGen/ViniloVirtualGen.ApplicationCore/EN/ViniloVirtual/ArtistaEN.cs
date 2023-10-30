@@ -40,6 +40,13 @@ private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vin
 
 
 
+/**
+ *	Atributo favoritoArtista
+ */
+private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista;
+
+
+
 
 
 
@@ -73,29 +80,36 @@ public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore
 
 
 
+public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> FavoritoArtista {
+        get { return favoritoArtista; } set { favoritoArtista = value;  }
+}
+
+
+
 
 
 public ArtistaEN()
 {
         album = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN>();
+        favoritoArtista = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN>();
 }
 
 
 
-public ArtistaEN(int id, string nombre, string descripcion, string imagen, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album
+public ArtistaEN(int id, string nombre, string descripcion, string imagen, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista
                  )
 {
-        this.init (Id, nombre, descripcion, imagen, album);
+        this.init (Id, nombre, descripcion, imagen, album, favoritoArtista);
 }
 
 
 public ArtistaEN(ArtistaEN artista)
 {
-        this.init (artista.Id, artista.Nombre, artista.Descripcion, artista.Imagen, artista.Album);
+        this.init (artista.Id, artista.Nombre, artista.Descripcion, artista.Imagen, artista.Album, artista.FavoritoArtista);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, string imagen, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album)
+                   , string nombre, string descripcion, string imagen, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista)
 {
         this.Id = id;
 
@@ -107,6 +121,8 @@ private void init (int id
         this.Imagen = imagen;
 
         this.Album = album;
+
+        this.FavoritoArtista = favoritoArtista;
 }
 
 public override bool Equals (object obj)

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ViniloVirtualGen.Infraestructure"
+		                   namespace="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual">
+		    
+		    
+			
+				<class name="FavoritoArtistaNH" table="FavoritoArtista"> 
+				  	
+						<id name="Id" column="idFavoritoArtista" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH" >	
+								<column name="FK_idUsuario_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Artista" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ArtistaNH" >	
+								<column name="FK_idArtista_idArtista"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="FavoritoArtistaNHReadAllHQL">from FavoritoArtistaNH</query>
+		</hibernate-mapping>
+	

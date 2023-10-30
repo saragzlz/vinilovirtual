@@ -15,6 +15,9 @@
 					<property name="Nombre" type="string"> 
 						<column name="nombre"  not-null="true"/>
 					</property>
+					<property name="Apillidos" type="string"> 
+						<column name="apillidos"  not-null="true"/>
+					</property>
 					<property name="Pass" type="string"> 
 						<column name="pass"  not-null="true"/>
 					</property>
@@ -24,6 +27,13 @@
 					<property name="Attribute" type="string"> 
 						<column name="attribute"  not-null="true"/>
 					</property>
+					<property name="FechaNac" type="string"> 
+						<column name="fechaNac"  not-null="true"/>
+					</property>
+					<property name="Genero" type="string"> 
+						<column name="genero"  not-null="true"/>
+					</property>
+			
 			
 			
 			
@@ -51,6 +61,47 @@
 					      	</key>
 							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
 					    </bag>
+					
+			
+			
+			
+		  			
+						<bag name="FavoritoAlbum" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoAlbumNH"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="FavoritoComunidad" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoComunidadNH"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="FavoritoArtista" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoArtistaNH"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
 					
 					
 					
