@@ -39,7 +39,7 @@ public void setSessionCP (GenericSessionCP session)
 }
 
 
-public UsuarioEN ReadOIDDefault (int id
+public UsuarioEN ReadOIDDefault (string email
                                  )
 {
         UsuarioEN usuarioEN = null;
@@ -47,7 +47,7 @@ public UsuarioEN ReadOIDDefault (int id
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioNH), id);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioNH), email);
                 SessionCommit ();
         }
 
@@ -95,29 +95,26 @@ public void ModifyDefault (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), usuario.Id);
+                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), usuario.Email);
 
                 usuarioNH.Nombre = usuario.Nombre;
 
 
-                usuarioNH.Apillidos = usuario.Apillidos;
-
-
                 usuarioNH.Pass = usuario.Pass;
-
-
-                usuarioNH.Imagen = usuario.Imagen;
-
-
-                usuarioNH.Attribute = usuario.Attribute;
-
-
 
 
                 usuarioNH.FechaNac = usuario.FechaNac;
 
 
                 usuarioNH.Genero = usuario.Genero;
+
+
+                usuarioNH.Estado = usuario.Estado;
+
+
+                usuarioNH.Imagen = usuario.Imagen;
+
+
 
 
 
@@ -141,7 +138,7 @@ public void ModifyDefault (UsuarioEN usuario)
 }
 
 
-public int New_ (UsuarioEN usuario)
+public string New_ (UsuarioEN usuario)
 {
         UsuarioNH usuarioNH = new UsuarioNH (usuario);
 
@@ -166,7 +163,7 @@ public int New_ (UsuarioEN usuario)
                 SessionClose ();
         }
 
-        return usuarioNH.Id;
+        return usuarioNH.Email;
 }
 
 public void Modify (UsuarioEN usuario)
@@ -174,27 +171,24 @@ public void Modify (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), usuario.Id);
+                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), usuario.Email);
 
                 usuarioNH.Nombre = usuario.Nombre;
 
 
-                usuarioNH.Apillidos = usuario.Apillidos;
-
-
                 usuarioNH.Pass = usuario.Pass;
-
-
-                usuarioNH.Imagen = usuario.Imagen;
-
-
-                usuarioNH.Attribute = usuario.Attribute;
 
 
                 usuarioNH.FechaNac = usuario.FechaNac;
 
 
                 usuarioNH.Genero = usuario.Genero;
+
+
+                usuarioNH.Estado = usuario.Estado;
+
+
+                usuarioNH.Imagen = usuario.Imagen;
 
                 session.Update (usuarioNH);
                 SessionCommit ();
@@ -213,13 +207,13 @@ public void Modify (UsuarioEN usuario)
                 SessionClose ();
         }
 }
-public void Destroy (int id
+public void Destroy (string email
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), id);
+                UsuarioNH usuarioNH = (UsuarioNH)session.Load (typeof(UsuarioNH), email);
                 session.Delete (usuarioNH);
                 SessionCommit ();
         }
@@ -238,17 +232,17 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GiveId
+//Sin e: GetID
 //Con e: UsuarioEN
-public UsuarioEN GiveId (int id
-                         )
+public UsuarioEN GetID (string email
+                        )
 {
         UsuarioEN usuarioEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioNH), id);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioNH), email);
                 SessionCommit ();
         }
 
@@ -264,7 +258,7 @@ public UsuarioEN GiveId (int id
         return usuarioEN;
 }
 
-public System.Collections.Generic.IList<UsuarioEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size)
 {
         System.Collections.Generic.IList<UsuarioEN> result = null;
         try

@@ -27,10 +27,15 @@ void Destroy (int id
               );
 
 
-ArtistaEN GiveId (int id
-                  );
+ArtistaEN GetID (int id
+                 );
 
 
-System.Collections.Generic.IList<ArtistaEN> GiveAll (int first, int size);
+System.Collections.Generic.IList<ArtistaEN> GetAll (int first, int size);
+
+
+void AnyadirFavorito (int p_Artista_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
+
+void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
 }
 }

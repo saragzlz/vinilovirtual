@@ -70,21 +70,33 @@ public void Destroy (int id
         _IComunidadRepository.Destroy (id);
 }
 
-public ComunidadEN GiveId (int id
-                           )
+public ComunidadEN GetID (int id
+                          )
 {
         ComunidadEN comunidadEN = null;
 
-        comunidadEN = _IComunidadRepository.GiveId (id);
+        comunidadEN = _IComunidadRepository.GetID (id);
         return comunidadEN;
 }
 
-public System.Collections.Generic.IList<ComunidadEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ComunidadEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ComunidadEN> list = null;
 
-        list = _IComunidadRepository.GiveAll (first, size);
+        list = _IComunidadRepository.GetAll (first, size);
         return list;
+}
+public void SeguirComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<string> p_usuario_OIDs)
+{
+        //Call to ComunidadRepository
+
+        _IComunidadRepository.SeguirComunidad (p_Comunidad_OID, p_usuario_OIDs);
+}
+public void AbandonarComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<string> p_usuario_OIDs)
+{
+        //Call to ComunidadRepository
+
+        _IComunidadRepository.AbandonarComunidad (p_Comunidad_OID, p_usuario_OIDs);
 }
 }
 }

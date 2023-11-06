@@ -20,12 +20,6 @@
 			
 			
 		  			
-						<many-to-one name="Usuario" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH" >	
-								<column name="FK_idUsuario_idUsuario"/> 
-						</many-to-one>
-											 					
-			
-		  			
 						<many-to-one name="Album" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.AlbumNH" >	
 								<column name="FK_idAlbum_idAlbum"/> 
 						</many-to-one>
@@ -34,6 +28,12 @@
 		  			
 						<many-to-one name="Comunidad" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComunidadNH" >	
 								<column name="FK_idComunidad_idComunidad"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Usuario" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH" >	
+								<column name="FK_email_idUsuario"/> 
 						</many-to-one>
 											 					
 					

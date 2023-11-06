@@ -31,26 +31,26 @@ public IUsuarioRepository get_IUsuarioRepository ()
         return this._IUsuarioRepository;
 }
 
-public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
 {
         UsuarioEN usuarioEN = null;
-        int oid;
+        string oid;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
         usuarioEN.Nombre = p_nombre;
 
-        usuarioEN.Apillidos = p_apillidos;
-
         usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
 
-        usuarioEN.Imagen = p_imagen;
-
-        usuarioEN.Attribute = p_attribute;
+        usuarioEN.Email = p_email;
 
         usuarioEN.FechaNac = p_fechaNac;
 
         usuarioEN.Genero = p_genero;
+
+        usuarioEN.Estado = p_estado;
+
+        usuarioEN.Imagen = p_imagen;
 
 
 
@@ -58,54 +58,53 @@ public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_im
         return oid;
 }
 
-public void Modify (int p_Usuario_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public void Modify (string p_Usuario_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
 {
         UsuarioEN usuarioEN = null;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
-        usuarioEN.Id = p_Usuario_OID;
+        usuarioEN.Email = p_Usuario_OID;
         usuarioEN.Nombre = p_nombre;
-        usuarioEN.Apillidos = p_apillidos;
         usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
-        usuarioEN.Imagen = p_imagen;
-        usuarioEN.Attribute = p_attribute;
         usuarioEN.FechaNac = p_fechaNac;
         usuarioEN.Genero = p_genero;
+        usuarioEN.Estado = p_estado;
+        usuarioEN.Imagen = p_imagen;
         //Call to UsuarioRepository
 
         _IUsuarioRepository.Modify (usuarioEN);
 }
 
-public void Destroy (int id
+public void Destroy (string email
                      )
 {
-        _IUsuarioRepository.Destroy (id);
+        _IUsuarioRepository.Destroy (email);
 }
 
-public UsuarioEN GiveId (int id
-                         )
+public UsuarioEN GetID (string email
+                        )
 {
         UsuarioEN usuarioEN = null;
 
-        usuarioEN = _IUsuarioRepository.GiveId (id);
+        usuarioEN = _IUsuarioRepository.GetID (email);
         return usuarioEN;
 }
 
-public System.Collections.Generic.IList<UsuarioEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size)
 {
         System.Collections.Generic.IList<UsuarioEN> list = null;
 
-        list = _IUsuarioRepository.GiveAll (first, size);
+        list = _IUsuarioRepository.ReadAll (first, size);
         return list;
 }
-public string Login (int p_Usuario_OID, string p_pass)
+public string Login (string p_Usuario_OID, string p_pass)
 {
         string result = null;
         UsuarioEN en = _IUsuarioRepository.ReadOIDDefault (p_Usuario_OID);
 
         if (en != null && en.Pass.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = this.GetToken (en.Id);
+                result = this.GetToken (en.Email);
 
         return result;
 }
@@ -113,26 +112,26 @@ public string Login (int p_Usuario_OID, string p_pass)
 
 
 
-private string Encode ()
+private string Encode (string email)
 {
         var payload = new Dictionary<string, object>(){
-                {}
+                { "email", email }
         };
         string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
 
         return token;
 }
 
-public string GetToken (int id)
+public string GetToken (string email)
 {
-        UsuarioEN en = _IUsuarioRepository.ReadOIDDefault (id);
-        string token = Encode ();
+        UsuarioEN en = _IUsuarioRepository.ReadOIDDefault (email);
+        string token = Encode (en.Email);
 
         return token;
 }
-public int CheckToken (string token)
+public string CheckToken (string token)
 {
-        int result = -1;
+        string result = null;
 
         try
         {
@@ -140,11 +139,11 @@ public int CheckToken (string token)
 
 
 
-                int id = (int)ObtenerID (decodedToken);
+                string id = (string)ObtenerEMAIL (decodedToken);
 
                 UsuarioEN en = _IUsuarioRepository.ReadOIDDefault (id);
 
-                if (en != null && ((long)en.Id).Equals (ObtenerID (decodedToken))
+                if (en != null && ((string)en.Email).Equals (ObtenerEMAIL (decodedToken))
                     ) {
                         result = id;
                 }
@@ -155,6 +154,21 @@ public int CheckToken (string token)
         }
 
         return result;
+}
+
+
+public string ObtenerEMAIL (string decodedToken)
+{
+        try
+        {
+                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
+                string email = (string)results ["email"];
+                return email;
+        }
+        catch
+        {
+                throw new Exception ("El token enviado no es correcto");
+        }
 }
 }
 }

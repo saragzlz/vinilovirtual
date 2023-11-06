@@ -30,26 +30,26 @@ public IAdminRepository get_IAdminRepository ()
         return this._IAdminRepository;
 }
 
-public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
 {
         AdminEN adminEN = null;
-        int oid;
+        string oid;
 
         //Initialized AdminEN
         adminEN = new AdminEN ();
         adminEN.Nombre = p_nombre;
 
-        adminEN.Apillidos = p_apillidos;
-
         adminEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
 
-        adminEN.Imagen = p_imagen;
-
-        adminEN.Attribute = p_attribute;
+        adminEN.Email = p_email;
 
         adminEN.FechaNac = p_fechaNac;
 
         adminEN.Genero = p_genero;
+
+        adminEN.Estado = p_estado;
+
+        adminEN.Imagen = p_imagen;
 
 
 
@@ -57,29 +57,28 @@ public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_im
         return oid;
 }
 
-public void Modify (int p_Admin_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public void Modify (string p_Admin_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
 {
         AdminEN adminEN = null;
 
         //Initialized AdminEN
         adminEN = new AdminEN ();
-        adminEN.Id = p_Admin_OID;
+        adminEN.Email = p_Admin_OID;
         adminEN.Nombre = p_nombre;
-        adminEN.Apillidos = p_apillidos;
         adminEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
-        adminEN.Imagen = p_imagen;
-        adminEN.Attribute = p_attribute;
         adminEN.FechaNac = p_fechaNac;
         adminEN.Genero = p_genero;
+        adminEN.Estado = p_estado;
+        adminEN.Imagen = p_imagen;
         //Call to AdminRepository
 
         _IAdminRepository.Modify (adminEN);
 }
 
-public void Destroy (int id
+public void Destroy (string email
                      )
 {
-        _IAdminRepository.Destroy (id);
+        _IAdminRepository.Destroy (email);
 }
 }
 }

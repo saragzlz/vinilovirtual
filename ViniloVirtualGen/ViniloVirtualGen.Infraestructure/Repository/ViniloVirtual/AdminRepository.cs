@@ -39,7 +39,7 @@ public void setSessionCP (GenericSessionCP session)
 }
 
 
-public AdminEN ReadOIDDefault (int id
+public AdminEN ReadOIDDefault (string email
                                )
 {
         AdminEN adminEN = null;
@@ -47,7 +47,7 @@ public AdminEN ReadOIDDefault (int id
         try
         {
                 SessionInitializeTransaction ();
-                adminEN = (AdminEN)session.Get (typeof(AdminNH), id);
+                adminEN = (AdminEN)session.Get (typeof(AdminNH), email);
                 SessionCommit ();
         }
 
@@ -95,7 +95,7 @@ public void ModifyDefault (AdminEN admin)
         try
         {
                 SessionInitializeTransaction ();
-                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), admin.Id);
+                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), admin.Email);
                 session.Update (adminNH);
                 SessionCommit ();
         }
@@ -115,7 +115,7 @@ public void ModifyDefault (AdminEN admin)
 }
 
 
-public int New_ (AdminEN admin)
+public string New_ (AdminEN admin)
 {
         AdminNH adminNH = new AdminNH (admin);
 
@@ -140,7 +140,7 @@ public int New_ (AdminEN admin)
                 SessionClose ();
         }
 
-        return adminNH.Id;
+        return adminNH.Email;
 }
 
 public void Modify (AdminEN admin)
@@ -148,27 +148,24 @@ public void Modify (AdminEN admin)
         try
         {
                 SessionInitializeTransaction ();
-                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), admin.Id);
+                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), admin.Email);
 
                 adminNH.Nombre = admin.Nombre;
 
 
-                adminNH.Apillidos = admin.Apillidos;
-
-
                 adminNH.Pass = admin.Pass;
-
-
-                adminNH.Imagen = admin.Imagen;
-
-
-                adminNH.Attribute = admin.Attribute;
 
 
                 adminNH.FechaNac = admin.FechaNac;
 
 
                 adminNH.Genero = admin.Genero;
+
+
+                adminNH.Estado = admin.Estado;
+
+
+                adminNH.Imagen = admin.Imagen;
 
                 session.Update (adminNH);
                 SessionCommit ();
@@ -187,13 +184,13 @@ public void Modify (AdminEN admin)
                 SessionClose ();
         }
 }
-public void Destroy (int id
+public void Destroy (string email
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), id);
+                AdminNH adminNH = (AdminNH)session.Load (typeof(AdminNH), email);
                 session.Delete (adminNH);
                 SessionCommit ();
         }

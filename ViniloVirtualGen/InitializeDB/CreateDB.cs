@@ -82,8 +82,6 @@ public static void InitializeData ()
         try
         {
                 // Initialising  CENs
-                UsuarioRepository usuariorepository = new UsuarioRepository ();
-                UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
                 AdminRepository adminrepository = new AdminRepository ();
                 AdminCEN admincen = new AdminCEN (adminrepository);
                 AlbumRepository albumrepository = new AlbumRepository ();
@@ -94,12 +92,12 @@ public static void InitializeData ()
                 ComunidadCEN comunidadcen = new ComunidadCEN (comunidadrepository);
                 ComentarioRepository comentariorepository = new ComentarioRepository ();
                 ComentarioCEN comentariocen = new ComentarioCEN (comentariorepository);
-                FavoritoAlbumRepository favoritoalbumrepository = new FavoritoAlbumRepository ();
-                FavoritoAlbumCEN favoritoalbumcen = new FavoritoAlbumCEN (favoritoalbumrepository);
-                FavoritoArtistaRepository favoritoartistarepository = new FavoritoArtistaRepository ();
-                FavoritoArtistaCEN favoritoartistacen = new FavoritoArtistaCEN (favoritoartistarepository);
-                FavoritoComunidadRepository favoritocomunidadrepository = new FavoritoComunidadRepository ();
-                FavoritoComunidadCEN favoritocomunidadcen = new FavoritoComunidadCEN (favoritocomunidadrepository);
+                PedidoRepository pedidorepository = new PedidoRepository ();
+                PedidoCEN pedidocen = new PedidoCEN (pedidorepository);
+                LineaPedidoRepository lineapedidorepository = new LineaPedidoRepository ();
+                LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
+                UsuarioRepository usuariorepository = new UsuarioRepository ();
+                UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
 
 
 

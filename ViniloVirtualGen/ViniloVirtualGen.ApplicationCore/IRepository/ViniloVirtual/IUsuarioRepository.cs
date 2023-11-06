@@ -9,7 +9,7 @@ public partial interface IUsuarioRepository
 {
 void setSessionCP (GenericSessionCP session);
 
-UsuarioEN ReadOIDDefault (int id
+UsuarioEN ReadOIDDefault (string email
                           );
 
 void ModifyDefault (UsuarioEN usuario);
@@ -18,19 +18,19 @@ System.Collections.Generic.IList<UsuarioEN> ReadAllDefault (int first, int size)
 
 
 
-int New_ (UsuarioEN usuario);
+string New_ (UsuarioEN usuario);
 
 void Modify (UsuarioEN usuario);
 
 
-void Destroy (int id
+void Destroy (string email
               );
 
 
-UsuarioEN GiveId (int id
-                  );
+UsuarioEN GetID (string email
+                 );
 
 
-System.Collections.Generic.IList<UsuarioEN> GiveAll (int first, int size);
+System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size);
 }
 }

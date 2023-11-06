@@ -128,14 +128,6 @@ public int New_ (ComentarioEN comentario)
         try
         {
                 SessionInitializeTransaction ();
-                if (comentario.Usuario != null) {
-                        // Argumento OID y no colección.
-                        comentarioNH
-                        .Usuario = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN), comentario.Usuario.Id);
-
-                        comentarioNH.Usuario.Comentario
-                        .Add (comentarioNH);
-                }
                 if (comentario.Album != null) {
                         // Argumento OID y no colección.
                         comentarioNH
@@ -150,6 +142,14 @@ public int New_ (ComentarioEN comentario)
                         .Comunidad = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN), comentario.Comunidad.Id);
 
                         comentarioNH.Comunidad.Comentario
+                        .Add (comentarioNH);
+                }
+                if (comentario.Usuario != null) {
+                        // Argumento OID y no colección.
+                        comentarioNH
+                        .Usuario = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN), comentario.Usuario.Email);
+
+                        comentarioNH.Usuario.Comentario
                         .Add (comentarioNH);
                 }
 
@@ -224,10 +224,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GiveId
+//Sin e: GetID
 //Con e: ComentarioEN
-public ComentarioEN GiveId (int id
-                            )
+public ComentarioEN GetID (int id
+                           )
 {
         ComentarioEN comentarioEN = null;
 
@@ -250,7 +250,7 @@ public ComentarioEN GiveId (int id
         return comentarioEN;
 }
 
-public System.Collections.Generic.IList<ComentarioEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ComentarioEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ComentarioEN> result = null;
         try

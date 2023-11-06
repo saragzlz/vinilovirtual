@@ -27,10 +27,20 @@ void Destroy (int id
               );
 
 
-AlbumEN GiveId (int id
-                );
+AlbumEN GetID (int id
+               );
 
 
-System.Collections.Generic.IList<AlbumEN> GiveAll (int first, int size);
+System.Collections.Generic.IList<AlbumEN> GetAll (int first, int size);
+
+
+
+void AnyadirAlbum (int p_Album_OID, int p_artista_OID);
+
+void EliminarAlbum (int p_Album_OID, int p_artista_OID);
+
+void AnyadirFavorito (int p_Album_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
+
+void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
 }
 }

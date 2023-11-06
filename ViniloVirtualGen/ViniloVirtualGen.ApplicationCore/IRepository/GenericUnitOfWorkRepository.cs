@@ -7,20 +7,16 @@ namespace ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual
 {
 public abstract class GenericUnitOfWorkRepository
 {
-protected IUsuarioRepository usuariorepository;
 protected IAdminRepository adminrepository;
 protected IAlbumRepository albumrepository;
 protected IArtistaRepository artistarepository;
 protected IComunidadRepository comunidadrepository;
 protected IComentarioRepository comentariorepository;
-protected IFavoritoAlbumRepository favoritoalbumrepository;
-protected IFavoritoArtistaRepository favoritoartistarepository;
-protected IFavoritoComunidadRepository favoritocomunidadrepository;
+protected IPedidoRepository pedidorepository;
+protected ILineaPedidoRepository lineapedidorepository;
+protected IUsuarioRepository usuariorepository;
 
 
-public abstract IUsuarioRepository UsuarioRepository {
-        get;
-}
 public abstract IAdminRepository AdminRepository {
         get;
 }
@@ -36,13 +32,13 @@ public abstract IComunidadRepository ComunidadRepository {
 public abstract IComentarioRepository ComentarioRepository {
         get;
 }
-public abstract IFavoritoAlbumRepository FavoritoAlbumRepository {
+public abstract IPedidoRepository PedidoRepository {
         get;
 }
-public abstract IFavoritoArtistaRepository FavoritoArtistaRepository {
+public abstract ILineaPedidoRepository LineaPedidoRepository {
         get;
 }
-public abstract IFavoritoComunidadRepository FavoritoComunidadRepository {
+public abstract IUsuarioRepository UsuarioRepository {
         get;
 }
 }

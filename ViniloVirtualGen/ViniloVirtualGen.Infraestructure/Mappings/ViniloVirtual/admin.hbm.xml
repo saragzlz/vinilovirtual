@@ -9,7 +9,7 @@
 <joined-subclass name="AdminNH" extends="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH" table="Admin"> 
 	<key>
     	
-				<column name="idUsuario"/>
+				<column name="email"/>
 		
     	
    	</key>

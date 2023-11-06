@@ -1,0 +1,12 @@
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net5.0\ViniloVirtualGen.ApplicationCore.deps.json
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net5.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net5.0\ref\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net5.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ref\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net5.0\ViniloVirtualGen.ApplicationCore.pdb

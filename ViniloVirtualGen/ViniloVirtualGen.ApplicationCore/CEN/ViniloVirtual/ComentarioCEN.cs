@@ -30,7 +30,7 @@ public IComentarioRepository get_IComentarioRepository ()
         return this._IComentarioRepository;
 }
 
-public int New_ (string p_texto, int p_usuario, int p_album, int p_comunidad)
+public int New_ (string p_texto, int p_album, int p_comunidad, string p_usuario)
 {
         ComentarioEN comentarioEN = null;
         int oid;
@@ -38,14 +38,6 @@ public int New_ (string p_texto, int p_usuario, int p_album, int p_comunidad)
         //Initialized ComentarioEN
         comentarioEN = new ComentarioEN ();
         comentarioEN.Texto = p_texto;
-
-
-        if (p_usuario != -1) {
-                // El argumento p_usuario -> Property usuario es oid = false
-                // Lista de oids id
-                comentarioEN.Usuario = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
-                comentarioEN.Usuario.Id = p_usuario;
-        }
 
 
         if (p_album != -1) {
@@ -61,6 +53,14 @@ public int New_ (string p_texto, int p_usuario, int p_album, int p_comunidad)
                 // Lista de oids id
                 comentarioEN.Comunidad = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN ();
                 comentarioEN.Comunidad.Id = p_comunidad;
+        }
+
+
+        if (p_usuario != null) {
+                // El argumento p_usuario -> Property usuario es oid = false
+                // Lista de oids id
+                comentarioEN.Usuario = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
+                comentarioEN.Usuario.Email = p_usuario;
         }
 
 
@@ -88,20 +88,20 @@ public void Destroy (int id
         _IComentarioRepository.Destroy (id);
 }
 
-public ComentarioEN GiveId (int id
-                            )
+public ComentarioEN GetID (int id
+                           )
 {
         ComentarioEN comentarioEN = null;
 
-        comentarioEN = _IComentarioRepository.GiveId (id);
+        comentarioEN = _IComentarioRepository.GetID (id);
         return comentarioEN;
 }
 
-public System.Collections.Generic.IList<ComentarioEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ComentarioEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ComentarioEN> list = null;
 
-        list = _IComentarioRepository.GiveAll (first, size);
+        list = _IComentarioRepository.GetAll (first, size);
         return list;
 }
 }

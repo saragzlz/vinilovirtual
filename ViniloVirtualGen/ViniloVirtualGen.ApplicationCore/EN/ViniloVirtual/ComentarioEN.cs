@@ -20,13 +20,6 @@ private string texto;
 
 
 /**
- *	Atributo usuario
- */
-private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario;
-
-
-
-/**
  *	Atributo album
  */
 private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album;
@@ -37,6 +30,13 @@ private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album;
  *	Atributo comunidad
  */
 private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidad;
+
+
+
+/**
+ *	Atributo usuario
+ */
+private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario;
 
 
 
@@ -55,12 +55,6 @@ public virtual string Texto {
 
 
 
-public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN Usuario {
-        get { return usuario; } set { usuario = value;  }
-}
-
-
-
 public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN Album {
         get { return album; } set { album = value;  }
 }
@@ -73,6 +67,12 @@ public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN Com
 
 
 
+public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN Usuario {
+        get { return usuario; } set { usuario = value;  }
+}
+
+
+
 
 
 public ComentarioEN()
@@ -81,31 +81,31 @@ public ComentarioEN()
 
 
 
-public ComentarioEN(int id, string texto, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidad
+public ComentarioEN(int id, string texto, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidad, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario
                     )
 {
-        this.init (Id, texto, usuario, album, comunidad);
+        this.init (Id, texto, album, comunidad, usuario);
 }
 
 
 public ComentarioEN(ComentarioEN comentario)
 {
-        this.init (comentario.Id, comentario.Texto, comentario.Usuario, comentario.Album, comentario.Comunidad);
+        this.init (comentario.Id, comentario.Texto, comentario.Album, comentario.Comunidad, comentario.Usuario);
 }
 
 private void init (int id
-                   , string texto, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidad)
+                   , string texto, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidad, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuario)
 {
         this.Id = id;
 
 
         this.Texto = texto;
 
-        this.Usuario = usuario;
-
         this.Album = album;
 
         this.Comunidad = comunidad;
+
+        this.Usuario = usuario;
 }
 
 public override bool Equals (object obj)

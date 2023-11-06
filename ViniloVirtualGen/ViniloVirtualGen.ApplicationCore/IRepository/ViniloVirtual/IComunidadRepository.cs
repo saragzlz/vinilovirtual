@@ -27,10 +27,15 @@ void Destroy (int id
               );
 
 
-ComunidadEN GiveId (int id
-                    );
+ComunidadEN GetID (int id
+                   );
 
 
-System.Collections.Generic.IList<ComunidadEN> GiveAll (int first, int size);
+System.Collections.Generic.IList<ComunidadEN> GetAll (int first, int size);
+
+
+void SeguirComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
+
+void AbandonarComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
 }
 }

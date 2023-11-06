@@ -22,7 +22,7 @@ private static ISessionFactory SessionFactory
                 if (_sessionFactory == null) {
                         var configuration = new Configuration ();
                         configuration.Configure ();
-                        configuration.AddAssembly (typeof(UsuarioNH).Assembly);
+                        configuration.AddAssembly (typeof(AdminNH).Assembly);
                         _sessionFactory = configuration.BuildSessionFactory ();
                 }
 

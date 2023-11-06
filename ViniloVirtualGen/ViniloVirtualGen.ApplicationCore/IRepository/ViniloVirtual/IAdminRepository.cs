@@ -9,7 +9,7 @@ public partial interface IAdminRepository
 {
 void setSessionCP (GenericSessionCP session);
 
-AdminEN ReadOIDDefault (int id
+AdminEN ReadOIDDefault (string email
                         );
 
 void ModifyDefault (AdminEN admin);
@@ -18,12 +18,12 @@ System.Collections.Generic.IList<AdminEN> ReadAllDefault (int first, int size);
 
 
 
-int New_ (AdminEN admin);
+string New_ (AdminEN admin);
 
 void Modify (AdminEN admin);
 
 
-void Destroy (int id
+void Destroy (string email
               );
 }
 }
