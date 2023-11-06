@@ -30,7 +30,7 @@ public ILineaPedidoRepository get_ILineaPedidoRepository ()
         return this._ILineaPedidoRepository;
 }
 
-public int New_ (double p_precio, int p_pedido)
+public int New_ (double p_precio, int p_pedido, int p_album)
 {
         LineaPedidoEN lineaPedidoEN = null;
         int oid;
@@ -45,6 +45,14 @@ public int New_ (double p_precio, int p_pedido)
                 // Lista de oids id
                 lineaPedidoEN.Pedido = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN ();
                 lineaPedidoEN.Pedido.Id = p_pedido;
+        }
+
+
+        if (p_album != -1) {
+                // El argumento p_album -> Property album es oid = false
+                // Lista de oids id
+                lineaPedidoEN.Album = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN ();
+                lineaPedidoEN.Album.Id = p_album;
         }
 
 

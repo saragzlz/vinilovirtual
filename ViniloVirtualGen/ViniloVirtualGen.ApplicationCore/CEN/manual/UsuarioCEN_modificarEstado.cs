@@ -15,13 +15,11 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
 {
 public partial class UsuarioCEN
 {
-public void ModificarEstado (int p_oid)
+public void ModificarEstado (string p_email, int p_estado)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_modificarEstado) ENABLED START*/
 
-        // Write here your custom code...
 
-        throw new NotImplementedException ("Method ModificarEstado() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

@@ -135,6 +135,14 @@ public int New_ (LineaPedidoEN lineaPedido)
                         lineaPedidoNH.Pedido.LineaPedido
                         .Add (lineaPedidoNH);
                 }
+                if (lineaPedido.Album != null) {
+                        // Argumento OID y no colección.
+                        lineaPedidoNH
+                        .Album = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN), lineaPedido.Album.Id);
+
+                        lineaPedidoNH.Album.LineaPedido
+                        .Add (lineaPedidoNH);
+                }
 
                 session.Save (lineaPedidoNH);
                 SessionCommit ();

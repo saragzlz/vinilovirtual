@@ -146,14 +146,6 @@ public int New_ (AlbumEN album)
                         albumNH.Artista.Album
                         .Add (albumNH);
                 }
-                if (album.LineaPedido != null) {
-                        // Argumento OID y no colección.
-                        albumNH
-                        .LineaPedido = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN), album.LineaPedido.Id);
-
-                        albumNH.LineaPedido.Album
-                        .Add (albumNH);
-                }
 
                 session.Save (albumNH);
                 SessionCommit ();

@@ -30,7 +30,7 @@ public IAlbumRepository get_IAlbumRepository ()
         return this._IAlbumRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista, int p_lineaPedido)
+public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista)
 {
         AlbumEN albumEN = null;
         int oid;
@@ -51,14 +51,6 @@ public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.Applica
                 // Lista de oids id
                 albumEN.Artista = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN ();
                 albumEN.Artista.Id = p_artista;
-        }
-
-
-        if (p_lineaPedido != -1) {
-                // El argumento p_lineaPedido -> Property lineaPedido es oid = false
-                // Lista de oids id
-                albumEN.LineaPedido = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN ();
-                albumEN.LineaPedido.Id = p_lineaPedido;
         }
 
 

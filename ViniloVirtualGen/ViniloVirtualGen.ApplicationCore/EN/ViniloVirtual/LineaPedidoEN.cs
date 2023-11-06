@@ -29,7 +29,7 @@ private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN pedido;
 /**
  *	Atributo album
  */
-private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album;
+private ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album;
 
 
 
@@ -54,7 +54,7 @@ public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN Pedido
 
 
 
-public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> Album {
+public virtual ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN Album {
         get { return album; } set { album = value;  }
 }
 
@@ -64,12 +64,11 @@ public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore
 
 public LineaPedidoEN()
 {
-        album = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN>();
 }
 
 
 
-public LineaPedidoEN(int id, double precio, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album
+public LineaPedidoEN(int id, double precio, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN pedido, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album
                      )
 {
         this.init (Id, precio, pedido, album);
@@ -82,7 +81,7 @@ public LineaPedidoEN(LineaPedidoEN lineaPedido)
 }
 
 private void init (int id
-                   , double precio, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> album)
+                   , double precio, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN pedido, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN album)
 {
         this.Id = id;
 
