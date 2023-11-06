@@ -14,20 +14,20 @@ public AdminEN() : base ()
 
 
 public AdminEN(int id,
-               string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> albumes_favoritos, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> artistas_favoritos
+               string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista
                )
 {
-        this.init (Id, nombre, apillidos, pass, imagen, attribute, comunidad, comentario, fechaNac, genero, pedido, albumes_favoritos, artistas_favoritos);
+        this.init (Id, nombre, apillidos, pass, imagen, attribute, comunidad, comentario, fechaNac, genero, favoritoAlbum, favoritoComunidad, favoritoArtista);
 }
 
 
 public AdminEN(AdminEN admin)
 {
-        this.init (admin.Id, admin.Nombre, admin.Apillidos, admin.Pass, admin.Imagen, admin.Attribute, admin.Comunidad, admin.Comentario, admin.FechaNac, admin.Genero, admin.Pedido, admin.Albumes_favoritos, admin.Artistas_favoritos);
+        this.init (admin.Id, admin.Nombre, admin.Apillidos, admin.Pass, admin.Imagen, admin.Attribute, admin.Comunidad, admin.Comentario, admin.FechaNac, admin.Genero, admin.FavoritoAlbum, admin.FavoritoComunidad, admin.FavoritoArtista);
 }
 
 private void init (int id
-                   , string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> albumes_favoritos, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> artistas_favoritos)
+                   , string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista)
 {
         this.Id = id;
 
@@ -50,11 +50,11 @@ private void init (int id
 
         this.Genero = genero;
 
-        this.Pedido = pedido;
+        this.FavoritoAlbum = favoritoAlbum;
 
-        this.Albumes_favoritos = albumes_favoritos;
+        this.FavoritoComunidad = favoritoComunidad;
 
-        this.Artistas_favoritos = artistas_favoritos;
+        this.FavoritoArtista = favoritoArtista;
 }
 
 public override bool Equals (object obj)

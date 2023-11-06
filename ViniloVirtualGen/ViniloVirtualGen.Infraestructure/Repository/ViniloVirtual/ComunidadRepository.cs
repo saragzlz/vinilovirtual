@@ -107,6 +107,7 @@ public void ModifyDefault (ComunidadEN comunidad)
                 comunidadNH.NumMiembros = comunidad.NumMiembros;
 
 
+
                 session.Update (comunidadNH);
                 SessionCommit ();
         }
@@ -211,10 +212,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GetID
+//Sin e: GiveId
 //Con e: ComunidadEN
-public ComunidadEN GetID (int id
-                          )
+public ComunidadEN GiveId (int id
+                           )
 {
         ComunidadEN comunidadEN = null;
 
@@ -237,7 +238,7 @@ public ComunidadEN GetID (int id
         return comunidadEN;
 }
 
-public System.Collections.Generic.IList<ComunidadEN> GetAll (int first, int size)
+public System.Collections.Generic.IList<ComunidadEN> GiveAll (int first, int size)
 {
         System.Collections.Generic.IList<ComunidadEN> result = null;
         try
@@ -265,84 +266,6 @@ public System.Collections.Generic.IList<ComunidadEN> GetAll (int first, int size
         }
 
         return result;
-}
-
-public void SeguirComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
-{
-        ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidadEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                comunidadEN = (ComunidadEN)session.Load (typeof(ComunidadNH), p_Comunidad_OID);
-                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
-                if (comunidadEN.Usuario == null) {
-                        comunidadEN.Usuario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN>();
-                }
-
-                foreach (int item in p_usuario_OIDs) {
-                        usuarioENAux = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
-                        usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
-                        usuarioENAux.Comunidad.Add (comunidadEN);
-
-                        comunidadEN.Usuario.Add (usuarioENAux);
-                }
-
-
-                session.Update (comunidadEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
-                        throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
-public void AbandonarComunidad (int p_Comunidad_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN comunidadEN = null;
-                comunidadEN = (ComunidadEN)session.Load (typeof(ComunidadNH), p_Comunidad_OID);
-
-                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
-                if (comunidadEN.Usuario != null) {
-                        foreach (int item in p_usuario_OIDs) {
-                                usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
-                                if (comunidadEN.Usuario.Contains (usuarioENAux) == true) {
-                                        comunidadEN.Usuario.Remove (usuarioENAux);
-                                        usuarioENAux.Comunidad.Remove (comunidadEN);
-                                }
-                                else
-                                        throw new ModelException ("The identifier " + item + " in p_usuario_OIDs you are trying to unrelationer, doesn't exist in ComunidadEN");
-                        }
-                }
-
-                session.Update (comunidadEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
-                        throw;
-                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComunidadRepository.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
 }
 }
 }

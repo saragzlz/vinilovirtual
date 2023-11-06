@@ -71,28 +71,28 @@ private string fechaNac;
 /**
  *	Atributo genero
  */
-private ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum genero;
+private string genero;
 
 
 
 /**
- *	Atributo pedido
+ *	Atributo favoritoAlbum
  */
-private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> pedido;
+private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum;
 
 
 
 /**
- *	Atributo albumes_favoritos
+ *	Atributo favoritoComunidad
  */
-private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> albumes_favoritos;
+private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad;
 
 
 
 /**
- *	Atributo artistas_favoritos
+ *	Atributo favoritoArtista
  */
-private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> artistas_favoritos;
+private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista;
 
 
 
@@ -153,26 +153,26 @@ public virtual string FechaNac {
 
 
 
-public virtual ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum Genero {
+public virtual string Genero {
         get { return genero; } set { genero = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> Pedido {
-        get { return pedido; } set { pedido = value;  }
+public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> FavoritoAlbum {
+        get { return favoritoAlbum; } set { favoritoAlbum = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> Albumes_favoritos {
-        get { return albumes_favoritos; } set { albumes_favoritos = value;  }
+public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> FavoritoComunidad {
+        get { return favoritoComunidad; } set { favoritoComunidad = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> Artistas_favoritos {
-        get { return artistas_favoritos; } set { artistas_favoritos = value;  }
+public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> FavoritoArtista {
+        get { return favoritoArtista; } set { favoritoArtista = value;  }
 }
 
 
@@ -183,27 +183,27 @@ public UsuarioEN()
 {
         comunidad = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN>();
         comentario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN>();
-        pedido = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN>();
-        albumes_favoritos = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN>();
-        artistas_favoritos = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN>();
+        favoritoAlbum = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN>();
+        favoritoComunidad = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN>();
+        favoritoArtista = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN>();
 }
 
 
 
-public UsuarioEN(int id, string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> albumes_favoritos, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> artistas_favoritos
+public UsuarioEN(int id, string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista
                  )
 {
-        this.init (Id, nombre, apillidos, pass, imagen, attribute, comunidad, comentario, fechaNac, genero, pedido, albumes_favoritos, artistas_favoritos);
+        this.init (Id, nombre, apillidos, pass, imagen, attribute, comunidad, comentario, fechaNac, genero, favoritoAlbum, favoritoComunidad, favoritoArtista);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (usuario.Id, usuario.Nombre, usuario.Apillidos, usuario.Pass, usuario.Imagen, usuario.Attribute, usuario.Comunidad, usuario.Comentario, usuario.FechaNac, usuario.Genero, usuario.Pedido, usuario.Albumes_favoritos, usuario.Artistas_favoritos);
+        this.init (usuario.Id, usuario.Nombre, usuario.Apillidos, usuario.Pass, usuario.Imagen, usuario.Attribute, usuario.Comunidad, usuario.Comentario, usuario.FechaNac, usuario.Genero, usuario.FavoritoAlbum, usuario.FavoritoComunidad, usuario.FavoritoArtista);
 }
 
 private void init (int id
-                   , string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> pedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> albumes_favoritos, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> artistas_favoritos)
+                   , string nombre, string apillidos, String pass, string imagen, string attribute, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComunidadEN> comunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario, string fechaNac, string genero, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoAlbumEN> favoritoAlbum, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoArtistaEN> favoritoArtista)
 {
         this.Id = id;
 
@@ -226,11 +226,11 @@ private void init (int id
 
         this.Genero = genero;
 
-        this.Pedido = pedido;
+        this.FavoritoAlbum = favoritoAlbum;
 
-        this.Albumes_favoritos = albumes_favoritos;
+        this.FavoritoComunidad = favoritoComunidad;
 
-        this.Artistas_favoritos = artistas_favoritos;
+        this.FavoritoArtista = favoritoArtista;
 }
 
 public override bool Equals (object obj)

@@ -49,21 +49,14 @@
 					
 			
 		  			
-						<many-to-one name="LineaPedido" class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.LineaPedidoNH" >	
-								<column name="FK_attribute_idLineaPedido"/> 
-						</many-to-one>
-											 					
-			
-		  			
-						<bag name="Usuario" table="[album_usuario]"  >
+						<bag name="Favoritos" >
 							<key>
+							
 								
-									<column name="FK_idAlbum_idAlbum"/> 
-							</key>
-      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH">
-									<column name="FK_idUsuario_idUsuario"/> 
-      						</many-to-many>
-    					</bag>
+								<column name="FK_idAlbum_idAlbum"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoAlbumNH"/>
+					    </bag>
 					
 					
 					

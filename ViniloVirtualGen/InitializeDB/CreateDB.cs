@@ -94,10 +94,12 @@ public static void InitializeData ()
                 ComunidadCEN comunidadcen = new ComunidadCEN (comunidadrepository);
                 ComentarioRepository comentariorepository = new ComentarioRepository ();
                 ComentarioCEN comentariocen = new ComentarioCEN (comentariorepository);
-                PedidoRepository pedidorepository = new PedidoRepository ();
-                PedidoCEN pedidocen = new PedidoCEN (pedidorepository);
-                LineaPedidoRepository lineapedidorepository = new LineaPedidoRepository ();
-                LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
+                FavoritoAlbumRepository favoritoalbumrepository = new FavoritoAlbumRepository ();
+                FavoritoAlbumCEN favoritoalbumcen = new FavoritoAlbumCEN (favoritoalbumrepository);
+                FavoritoArtistaRepository favoritoartistarepository = new FavoritoArtistaRepository ();
+                FavoritoArtistaCEN favoritoartistacen = new FavoritoArtistaCEN (favoritoartistarepository);
+                FavoritoComunidadRepository favoritocomunidadrepository = new FavoritoComunidadRepository ();
+                FavoritoComunidadCEN favoritocomunidadcen = new FavoritoComunidadCEN (favoritocomunidadrepository);
 
 
 

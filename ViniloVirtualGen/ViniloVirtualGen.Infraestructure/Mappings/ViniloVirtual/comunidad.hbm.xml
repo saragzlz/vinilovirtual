@@ -39,6 +39,17 @@
 			
 			
 		  			
+						<bag name="FavoritoComunidad" >
+							<key>
+							
+								
+								<column name="FK_idComunidad_idComunidad"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoComunidadNH"/>
+					    </bag>
+					
+			
+		  			
 						<bag name="Comentario" >
 							<key>
 							
@@ -47,6 +58,7 @@
 					      	</key>
 							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
 					    </bag>
+					
 					
 					
 					

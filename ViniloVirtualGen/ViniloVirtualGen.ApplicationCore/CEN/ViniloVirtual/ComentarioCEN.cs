@@ -88,20 +88,20 @@ public void Destroy (int id
         _IComentarioRepository.Destroy (id);
 }
 
-public ComentarioEN GetID (int id
-                           )
+public ComentarioEN GiveId (int id
+                            )
 {
         ComentarioEN comentarioEN = null;
 
-        comentarioEN = _IComentarioRepository.GetID (id);
+        comentarioEN = _IComentarioRepository.GiveId (id);
         return comentarioEN;
 }
 
-public System.Collections.Generic.IList<ComentarioEN> GetAll (int first, int size)
+public System.Collections.Generic.IList<ComentarioEN> GiveAll (int first, int size)
 {
         System.Collections.Generic.IList<ComentarioEN> list = null;
 
-        list = _IComentarioRepository.GetAll (first, size);
+        list = _IComentarioRepository.GiveAll (first, size);
         return list;
 }
 }

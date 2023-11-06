@@ -31,7 +31,7 @@ public IUsuarioRepository get_IUsuarioRepository ()
         return this._IUsuarioRepository;
 }
 
-public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero)
+public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         UsuarioEN usuarioEN = null;
         int oid;
@@ -58,7 +58,7 @@ public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_im
         return oid;
 }
 
-public void Modify (int p_Usuario_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero)
+public void Modify (int p_Usuario_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
 {
         UsuarioEN usuarioEN = null;
 
@@ -83,20 +83,20 @@ public void Destroy (int id
         _IUsuarioRepository.Destroy (id);
 }
 
-public UsuarioEN GetID (int id
-                        )
+public UsuarioEN GiveId (int id
+                         )
 {
         UsuarioEN usuarioEN = null;
 
-        usuarioEN = _IUsuarioRepository.GetID (id);
+        usuarioEN = _IUsuarioRepository.GiveId (id);
         return usuarioEN;
 }
 
-public System.Collections.Generic.IList<UsuarioEN> GetAll (int first, int size)
+public System.Collections.Generic.IList<UsuarioEN> GiveAll (int first, int size)
 {
         System.Collections.Generic.IList<UsuarioEN> list = null;
 
-        list = _IUsuarioRepository.GetAll (first, size);
+        list = _IUsuarioRepository.GiveAll (first, size);
         return list;
 }
 public string Login (int p_Usuario_OID, string p_pass)

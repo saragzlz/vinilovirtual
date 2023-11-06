@@ -27,10 +27,10 @@ void Destroy (int id
               );
 
 
-ComentarioEN GetID (int id
-                    );
+ComentarioEN GiveId (int id
+                     );
 
 
-System.Collections.Generic.IList<ComentarioEN> GetAll (int first, int size);
+System.Collections.Generic.IList<ComentarioEN> GiveAll (int first, int size);
 }
 }
