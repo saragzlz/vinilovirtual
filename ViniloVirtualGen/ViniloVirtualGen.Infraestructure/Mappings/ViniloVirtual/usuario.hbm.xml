@@ -30,7 +30,7 @@
 					<property name="FechaNac" type="string"> 
 						<column name="fechaNac"  not-null="true"/>
 					</property>
-					<property name="Genero" type="string"> 
+					<property name="Genero" > 
 						<column name="genero"  not-null="true"/>
 					</property>
 			
@@ -66,37 +66,37 @@
 			
 			
 		  			
-						<bag name="FavoritoAlbum" >
+						<bag name="Pedido" >
 							<key>
 							
 								
 								<column name="FK_idUsuario_idUsuario"/>
 					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoAlbumNH"/>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.PedidoNH"/>
 					    </bag>
 					
 			
 		  			
-						<bag name="FavoritoComunidad" >
+						<bag name="Albumes_favoritos" table="[album_usuario]" inverse="true" >
 							<key>
-							
 								
-								<column name="FK_idUsuario_idUsuario"/>
-					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoComunidadNH"/>
-					    </bag>
-					
+									<column name="FK_idUsuario_idUsuario"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.AlbumNH">
+									<column name="FK_idAlbum_idAlbum"/> 
+      						</many-to-many>
+    					</bag>
 			
 		  			
-						<bag name="FavoritoArtista" >
+						<bag name="Artistas_favoritos" table="[usuario_artista]"  >
 							<key>
-							
 								
-								<column name="FK_idUsuario_idUsuario"/>
-					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoArtistaNH"/>
-					    </bag>
-					
+									<column name="FK_idUsuario_idUsuario"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ArtistaNH">
+									<column name="FK_idArtista_idArtista"/> 
+      						</many-to-many>
+    					</bag>
 					
 					
 					

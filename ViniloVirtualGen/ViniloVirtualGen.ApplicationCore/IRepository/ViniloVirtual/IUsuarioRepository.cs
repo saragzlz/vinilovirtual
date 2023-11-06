@@ -27,10 +27,10 @@ void Destroy (int id
               );
 
 
-UsuarioEN GiveId (int id
-                  );
+UsuarioEN GetID (int id
+                 );
 
 
-System.Collections.Generic.IList<UsuarioEN> GiveAll (int first, int size);
+System.Collections.Generic.IList<UsuarioEN> GetAll (int first, int size);
 }
 }

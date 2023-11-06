@@ -211,10 +211,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GiveId
+//Sin e: GetID
 //Con e: ArtistaEN
-public ArtistaEN GiveId (int id
-                         )
+public ArtistaEN GetID (int id
+                        )
 {
         ArtistaEN artistaEN = null;
 
@@ -237,7 +237,7 @@ public ArtistaEN GiveId (int id
         return artistaEN;
 }
 
-public System.Collections.Generic.IList<ArtistaEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ArtistaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ArtistaEN> result = null;
         try
@@ -265,6 +265,84 @@ public System.Collections.Generic.IList<ArtistaEN> GiveAll (int first, int size)
         }
 
         return result;
+}
+
+public void AnyadirFavorito (int p_Artista_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artistaEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                artistaEN = (ArtistaEN)session.Load (typeof(ArtistaNH), p_Artista_OID);
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
+                if (artistaEN.Usuario == null) {
+                        artistaEN.Usuario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN>();
+                }
+
+                foreach (int item in p_usuario_OIDs) {
+                        usuarioENAux = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
+                        usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
+                        usuarioENAux.Artistas_favoritos.Add (artistaEN);
+
+                        artistaEN.Usuario.Add (usuarioENAux);
+                }
+
+
+                session.Update (artistaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ArtistaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artistaEN = null;
+                artistaEN = (ArtistaEN)session.Load (typeof(ArtistaNH), p_Artista_OID);
+
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
+                if (artistaEN.Usuario != null) {
+                        foreach (int item in p_usuario_OIDs) {
+                                usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
+                                if (artistaEN.Usuario.Contains (usuarioENAux) == true) {
+                                        artistaEN.Usuario.Remove (usuarioENAux);
+                                        usuarioENAux.Artistas_favoritos.Remove (artistaEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_usuario_OIDs you are trying to unrelationer, doesn't exist in ArtistaEN");
+                        }
+                }
+
+                session.Update (artistaEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ArtistaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
 }
 }
 }

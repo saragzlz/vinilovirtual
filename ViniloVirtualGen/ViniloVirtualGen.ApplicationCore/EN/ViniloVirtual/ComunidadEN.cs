@@ -41,13 +41,6 @@ private int numMiembros;
 
 
 /**
- *	Atributo favoritoComunidad
- */
-private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad;
-
-
-
-/**
  *	Atributo comentario
  */
 private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario;
@@ -87,12 +80,6 @@ public virtual int NumMiembros {
 
 
 
-public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> FavoritoComunidad {
-        get { return favoritoComunidad; } set { favoritoComunidad = value;  }
-}
-
-
-
 public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> Comentario {
         get { return comentario; } set { comentario = value;  }
 }
@@ -104,26 +91,25 @@ public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore
 public ComunidadEN()
 {
         usuario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN>();
-        favoritoComunidad = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN>();
         comentario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN>();
 }
 
 
 
-public ComunidadEN(int id, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, string nombre, string imagen, int numMiembros, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario
+public ComunidadEN(int id, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, string nombre, string imagen, int numMiembros, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario
                    )
 {
-        this.init (Id, usuario, nombre, imagen, numMiembros, favoritoComunidad, comentario);
+        this.init (Id, usuario, nombre, imagen, numMiembros, comentario);
 }
 
 
 public ComunidadEN(ComunidadEN comunidad)
 {
-        this.init (comunidad.Id, comunidad.Usuario, comunidad.Nombre, comunidad.Imagen, comunidad.NumMiembros, comunidad.FavoritoComunidad, comunidad.Comentario);
+        this.init (comunidad.Id, comunidad.Usuario, comunidad.Nombre, comunidad.Imagen, comunidad.NumMiembros, comunidad.Comentario);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, string nombre, string imagen, int numMiembros, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.FavoritoComunidadEN> favoritoComunidad, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario)
+                   , System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, string nombre, string imagen, int numMiembros, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioEN> comentario)
 {
         this.Id = id;
 
@@ -135,8 +121,6 @@ private void init (int id
         this.Imagen = imagen;
 
         this.NumMiembros = numMiembros;
-
-        this.FavoritoComunidad = favoritoComunidad;
 
         this.Comentario = comentario;
 }

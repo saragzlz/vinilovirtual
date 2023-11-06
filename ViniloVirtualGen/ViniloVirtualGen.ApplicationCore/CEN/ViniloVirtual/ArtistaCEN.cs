@@ -70,21 +70,33 @@ public void Destroy (int id
         _IArtistaRepository.Destroy (id);
 }
 
-public ArtistaEN GiveId (int id
-                         )
+public ArtistaEN GetID (int id
+                        )
 {
         ArtistaEN artistaEN = null;
 
-        artistaEN = _IArtistaRepository.GiveId (id);
+        artistaEN = _IArtistaRepository.GetID (id);
         return artistaEN;
 }
 
-public System.Collections.Generic.IList<ArtistaEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ArtistaEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ArtistaEN> list = null;
 
-        list = _IArtistaRepository.GiveAll (first, size);
+        list = _IArtistaRepository.GetAll (first, size);
         return list;
+}
+public void AnyadirFavorito (int p_Artista_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        //Call to ArtistaRepository
+
+        _IArtistaRepository.AnyadirFavorito (p_Artista_OID, p_usuario_OIDs);
+}
+public void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        //Call to ArtistaRepository
+
+        _IArtistaRepository.EliminarFavorito (p_Artista_OID, p_usuario_OIDs);
 }
 }
 }

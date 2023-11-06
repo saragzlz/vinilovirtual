@@ -224,10 +224,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GiveId
+//Sin e: GetID
 //Con e: ComentarioEN
-public ComentarioEN GiveId (int id
-                            )
+public ComentarioEN GetID (int id
+                           )
 {
         ComentarioEN comentarioEN = null;
 
@@ -250,7 +250,7 @@ public ComentarioEN GiveId (int id
         return comentarioEN;
 }
 
-public System.Collections.Generic.IList<ComentarioEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<ComentarioEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<ComentarioEN> result = null;
         try

@@ -30,7 +30,7 @@ public IAdminRepository get_IAdminRepository ()
         return this._IAdminRepository;
 }
 
-public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero)
 {
         AdminEN adminEN = null;
         int oid;
@@ -57,7 +57,7 @@ public int New_ (string p_nombre, string p_apillidos, String p_pass, string p_im
         return oid;
 }
 
-public void Modify (int p_Admin_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, string p_genero)
+public void Modify (int p_Admin_OID, string p_nombre, string p_apillidos, String p_pass, string p_imagen, string p_attribute, string p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero)
 {
         AdminEN adminEN = null;
 

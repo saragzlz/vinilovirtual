@@ -30,7 +30,7 @@ public IAlbumRepository get_IAlbumRepository ()
         return this._IAlbumRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista)
+public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista, int p_lineaPedido)
 {
         AlbumEN albumEN = null;
         int oid;
@@ -51,6 +51,14 @@ public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.Applica
                 // Lista de oids id
                 albumEN.Artista = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN ();
                 albumEN.Artista.Id = p_artista;
+        }
+
+
+        if (p_lineaPedido != -1) {
+                // El argumento p_lineaPedido -> Property lineaPedido es oid = false
+                // Lista de oids id
+                albumEN.LineaPedido = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN ();
+                albumEN.LineaPedido.Id = p_lineaPedido;
         }
 
 
@@ -81,21 +89,45 @@ public void Destroy (int id
         _IAlbumRepository.Destroy (id);
 }
 
-public AlbumEN GiveId (int id
-                       )
+public AlbumEN GetID (int id
+                      )
 {
         AlbumEN albumEN = null;
 
-        albumEN = _IAlbumRepository.GiveId (id);
+        albumEN = _IAlbumRepository.GetID (id);
         return albumEN;
 }
 
-public System.Collections.Generic.IList<AlbumEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<AlbumEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<AlbumEN> list = null;
 
-        list = _IAlbumRepository.GiveAll (first, size);
+        list = _IAlbumRepository.GetAll (first, size);
         return list;
+}
+public void AnyadirFavorito (int p_Album_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        //Call to AlbumRepository
+
+        _IAlbumRepository.AnyadirFavorito (p_Album_OID, p_usuario_OIDs);
+}
+public void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        //Call to AlbumRepository
+
+        _IAlbumRepository.EliminarFavorito (p_Album_OID, p_usuario_OIDs);
+}
+public void AnyadirAlbum (int p_Album_OID, int p_artista_OID)
+{
+        //Call to AlbumRepository
+
+        _IAlbumRepository.AnyadirAlbum (p_Album_OID, p_artista_OID);
+}
+public void EliminarAlbum (int p_Album_OID, int p_artista_OID)
+{
+        //Call to AlbumRepository
+
+        _IAlbumRepository.EliminarAlbum (p_Album_OID, p_artista_OID);
 }
 }
 }

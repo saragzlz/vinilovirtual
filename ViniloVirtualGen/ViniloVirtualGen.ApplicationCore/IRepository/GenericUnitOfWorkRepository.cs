@@ -13,9 +13,8 @@ protected IAlbumRepository albumrepository;
 protected IArtistaRepository artistarepository;
 protected IComunidadRepository comunidadrepository;
 protected IComentarioRepository comentariorepository;
-protected IFavoritoAlbumRepository favoritoalbumrepository;
-protected IFavoritoArtistaRepository favoritoartistarepository;
-protected IFavoritoComunidadRepository favoritocomunidadrepository;
+protected IPedidoRepository pedidorepository;
+protected ILineaPedidoRepository lineapedidorepository;
 
 
 public abstract IUsuarioRepository UsuarioRepository {
@@ -36,13 +35,10 @@ public abstract IComunidadRepository ComunidadRepository {
 public abstract IComentarioRepository ComentarioRepository {
         get;
 }
-public abstract IFavoritoAlbumRepository FavoritoAlbumRepository {
+public abstract IPedidoRepository PedidoRepository {
         get;
 }
-public abstract IFavoritoArtistaRepository FavoritoArtistaRepository {
-        get;
-}
-public abstract IFavoritoComunidadRepository FavoritoComunidadRepository {
+public abstract ILineaPedidoRepository LineaPedidoRepository {
         get;
 }
 }

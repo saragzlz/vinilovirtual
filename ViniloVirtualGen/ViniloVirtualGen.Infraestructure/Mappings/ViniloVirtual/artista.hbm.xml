@@ -39,15 +39,15 @@
 					
 			
 		  			
-						<bag name="FavoritoArtista" >
+						<bag name="Usuario" table="[usuario_artista]" inverse="true" >
 							<key>
-							
 								
-								<column name="FK_idArtista_idArtista"/>
-					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.FavoritoArtistaNH"/>
-					    </bag>
-					
+									<column name="FK_idArtista_idArtista"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH">
+									<column name="FK_idUsuario_idUsuario"/> 
+      						</many-to-many>
+    					</bag>
 					
 					
 					

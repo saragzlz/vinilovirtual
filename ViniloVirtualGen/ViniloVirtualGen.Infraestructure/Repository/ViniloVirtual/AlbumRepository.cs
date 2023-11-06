@@ -111,6 +111,7 @@ public void ModifyDefault (AlbumEN album)
 
 
 
+
                 session.Update (albumNH);
                 SessionCommit ();
         }
@@ -143,6 +144,14 @@ public int New_ (AlbumEN album)
                         .Artista = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN), album.Artista.Id);
 
                         albumNH.Artista.Album
+                        .Add (albumNH);
+                }
+                if (album.LineaPedido != null) {
+                        // Argumento OID y no colección.
+                        albumNH
+                        .LineaPedido = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN)session.Load (typeof(ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN), album.LineaPedido.Id);
+
+                        albumNH.LineaPedido.Album
                         .Add (albumNH);
                 }
 
@@ -226,10 +235,10 @@ public void Destroy (int id
         }
 }
 
-//Sin e: GiveId
+//Sin e: GetID
 //Con e: AlbumEN
-public AlbumEN GiveId (int id
-                       )
+public AlbumEN GetID (int id
+                      )
 {
         AlbumEN albumEN = null;
 
@@ -252,7 +261,7 @@ public AlbumEN GiveId (int id
         return albumEN;
 }
 
-public System.Collections.Generic.IList<AlbumEN> GiveAll (int first, int size)
+public System.Collections.Generic.IList<AlbumEN> GetAll (int first, int size)
 {
         System.Collections.Generic.IList<AlbumEN> result = null;
         try
@@ -280,6 +289,147 @@ public System.Collections.Generic.IList<AlbumEN> GiveAll (int first, int size)
         }
 
         return result;
+}
+
+public void AnyadirFavorito (int p_Album_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN albumEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                albumEN = (AlbumEN)session.Load (typeof(AlbumNH), p_Album_OID);
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
+                if (albumEN.Usuario == null) {
+                        albumEN.Usuario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN>();
+                }
+
+                foreach (int item in p_usuario_OIDs) {
+                        usuarioENAux = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
+                        usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
+                        usuarioENAux.Albumes_favoritos.Add (albumEN);
+
+                        albumEN.Usuario.Add (usuarioENAux);
+                }
+
+
+                session.Update (albumEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<int> p_usuario_OIDs)
+{
+        ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN albumEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                albumEN = (AlbumEN)session.Load (typeof(AlbumNH), p_Album_OID);
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN usuarioENAux = null;
+                if (albumEN.Usuario == null) {
+                        albumEN.Usuario = new System.Collections.Generic.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN>();
+                }
+
+                foreach (int item in p_usuario_OIDs) {
+                        usuarioENAux = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN ();
+                        usuarioENAux = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH), item);
+                        usuarioENAux.Albumes_favoritos.Add (albumEN);
+
+                        albumEN.Usuario.Add (usuarioENAux);
+                }
+
+
+                session.Update (albumEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void AnyadirAlbum (int p_Album_OID, int p_artista_OID)
+{
+        ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN albumEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                albumEN = (AlbumEN)session.Load (typeof(AlbumNH), p_Album_OID);
+                albumEN.Artista = (ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN)session.Load (typeof(ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ArtistaNH), p_artista_OID);
+
+                albumEN.Artista.Album.Add (albumEN);
+
+
+
+                session.Update (albumEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void EliminarAlbum (int p_Album_OID, int p_artista_OID)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN albumEN = null;
+                albumEN = (AlbumEN)session.Load (typeof(AlbumNH), p_Album_OID);
+
+                if (albumEN.Artista.Id == p_artista_OID) {
+                        albumEN.Artista = null;
+                }
+                else
+                        throw new ModelException ("The identifier " + p_artista_OID + " in p_artista_OID you are trying to unrelationer, doesn't exist in AlbumEN");
+
+                session.Update (albumEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
 }
 }
 }

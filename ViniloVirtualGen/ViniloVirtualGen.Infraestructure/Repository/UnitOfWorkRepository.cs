@@ -73,30 +73,21 @@ public override IComentarioRepository ComentarioRepository {
         }
 }
 
-public override IFavoritoAlbumRepository FavoritoAlbumRepository {
+public override IPedidoRepository PedidoRepository {
         get
         {
-                this.favoritoalbumrepository = new FavoritoAlbumRepository ();
-                this.favoritoalbumrepository.setSessionCP (session);
-                return this.favoritoalbumrepository;
+                this.pedidorepository = new PedidoRepository ();
+                this.pedidorepository.setSessionCP (session);
+                return this.pedidorepository;
         }
 }
 
-public override IFavoritoArtistaRepository FavoritoArtistaRepository {
+public override ILineaPedidoRepository LineaPedidoRepository {
         get
         {
-                this.favoritoartistarepository = new FavoritoArtistaRepository ();
-                this.favoritoartistarepository.setSessionCP (session);
-                return this.favoritoartistarepository;
-        }
-}
-
-public override IFavoritoComunidadRepository FavoritoComunidadRepository {
-        get
-        {
-                this.favoritocomunidadrepository = new FavoritoComunidadRepository ();
-                this.favoritocomunidadrepository.setSessionCP (session);
-                return this.favoritocomunidadrepository;
+                this.lineapedidorepository = new LineaPedidoRepository ();
+                this.lineapedidorepository.setSessionCP (session);
+                return this.lineapedidorepository;
         }
 }
 }

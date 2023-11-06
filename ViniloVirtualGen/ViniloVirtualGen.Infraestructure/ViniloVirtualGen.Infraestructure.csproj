@@ -10,9 +10,8 @@
 	<EmbeddedResource Include="Mappings\ViniloVirtual\artista.hbm.xml" />
 	<EmbeddedResource Include="Mappings\ViniloVirtual\comunidad.hbm.xml" />
 	<EmbeddedResource Include="Mappings\ViniloVirtual\comentario.hbm.xml" />
-	<EmbeddedResource Include="Mappings\ViniloVirtual\favoritoalbum.hbm.xml" />
-	<EmbeddedResource Include="Mappings\ViniloVirtual\favoritoartista.hbm.xml" />
-	<EmbeddedResource Include="Mappings\ViniloVirtual\favoritocomunidad.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ViniloVirtual\pedido.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ViniloVirtual\lineapedido.hbm.xml" />
 	
 	
 
