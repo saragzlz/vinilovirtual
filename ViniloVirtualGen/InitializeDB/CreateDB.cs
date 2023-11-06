@@ -123,13 +123,25 @@ public static void InitializeData ()
                 "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros",
                 "artista1.jpg"
                 );
+                int artista2 = artistacen.New_("Gorillaz", 
+                " banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
+                "artista2.jpg"
+                );
                 Console.WriteLine("Artista "+artista1+" creado correctamente");
+                Console.WriteLine("Artista "+artista2+" creado correctamente");
                 
 
                 //Creacion de artistas
                 int album1 = albumcen.New_("Invitation to Her's", "Segundo album de la banda Her's",
                  ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1);
+                int album2 = albumcen.New_("Plastic Beach", "Tercer album de la banda Gorillaz",
+                 ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2);
                 Console.WriteLine("Album "+album1+" creado correctamente");
+                Console.WriteLine("Album "+album2+" creado correctamente");
+
+                //Probar Customs
+
+                usuariocen.ModificarEstado("alvaro@gmail.com", 2);
 
 
                 /*PROTECTED REGION END*/
