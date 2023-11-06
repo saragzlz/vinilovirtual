@@ -19,9 +19,13 @@ public void ModificarNombre (string p_email, string p_nuevoNombre)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_modificarNombre) ENABLED START*/
 
-        // Write here your custom code...
+        //Nos guardamos la info del usuario que nos pasan por paramentro en la variable "en"
+        UsuarioEN en = _IUsuarioRepository.GetID (p_email);
 
-        throw new NotImplementedException ("Method ModificarNombre() not yet implemented.");
+        en.Nombre = p_nuevoNombre;
+
+        //Actualizada la informacion de "en" con el nuevo nombre, modificamos el usuario de forma final
+        _IUsuarioRepository.ModifyDefault (en);
 
         /*PROTECTED REGION END*/
 }

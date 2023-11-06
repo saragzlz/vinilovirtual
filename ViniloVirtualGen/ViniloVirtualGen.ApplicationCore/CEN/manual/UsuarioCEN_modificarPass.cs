@@ -19,9 +19,19 @@ public void ModificarPass (string p_email, String p_nuevaPass)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_modificarPass) ENABLED START*/
 
-        // Write here your custom code...
+        //Nos guardamos la info del usuario que nos pasan por paramentro en la variable "en"
+        UsuarioEN en = _IUsuarioRepository.GetID (p_email);
 
-        throw new NotImplementedException ("Method ModificarPass() not yet implemented.");
+        Console.WriteLine (en.Pass);
+
+        en.Pass = p_nuevaPass;
+
+        Console.WriteLine (en.Pass);
+
+        //Actualizada la informacion de "en" con el nuevo nombre, modificamos el usuario de forma final
+        _IUsuarioRepository.ModifyDefault (en);
+
+        
 
         /*PROTECTED REGION END*/
 }
