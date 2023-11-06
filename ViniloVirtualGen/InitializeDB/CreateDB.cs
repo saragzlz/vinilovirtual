@@ -104,44 +104,44 @@ public static void InitializeData ()
                 /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
 
                 //Creacion de usuarios
-                string usuario1 = usuariocen.New_("Alvaro", "1212", "alvaro@gmail.com",new DateTime(2000, 10, 23),
-                 ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                  ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil.jpg");
-                string usuario2 = usuariocen.New_("Sara", "1313", "sara@gmail.com",new DateTime(1998, 01, 01),
-                 ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
-                  ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg");
-                Console.WriteLine("Usuario "+usuario1+" creado correctamente");
-                Console.WriteLine("Usuario "+usuario2+" creado correctamente");
+                string usuario1 = usuariocen.New_ ("Alvaro", "1212", "alvaro@gmail.com", new DateTime (2000, 10, 23),
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil.jpg");
+                string usuario2 = usuariocen.New_ ("Sara", "1313", "sara@gmail.com", new DateTime (1998, 01, 01),
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg");
+                Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
+                Console.WriteLine ("Usuario " + usuario2 + " creado correctamente");
 
-                if (usuariocen.Login("alvaro@gmail.com", "1212") != null)
-                {
-                        Console.WriteLine("Usuario loggeado");
+                if (usuariocen.Login ("alvaro@gmail.com", "1212") != null) {
+                        Console.WriteLine ("Usuario loggeado");
                 }
 
                 //Creacion de artistas
-                int artista1 = artistacen.New_("Her's", 
-                "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros",
-                "artista1.jpg"
-                );
-                int artista2 = artistacen.New_("Gorillaz", 
-                " banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
-                "artista2.jpg"
-                );
-                Console.WriteLine("Artista "+artista1+" creado correctamente");
-                Console.WriteLine("Artista "+artista2+" creado correctamente");
-                
+                int artista1 = artistacen.New_ ("Her's",
+                        "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros",
+                        "artista1.jpg"
+                        );
+                int artista2 = artistacen.New_ ("Gorillaz",
+                        " banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
+                        "artista2.jpg"
+                        );
+                Console.WriteLine ("Artista " + artista1 + " creado correctamente");
+                Console.WriteLine ("Artista " + artista2 + " creado correctamente");
+
 
                 //Creacion de artistas
-                int album1 = albumcen.New_("Invitation to Her's", "Segundo album de la banda Her's",
-                 ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1);
-                int album2 = albumcen.New_("Plastic Beach", "Tercer album de la banda Gorillaz",
-                 ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2);
-                Console.WriteLine("Album "+album1+" creado correctamente");
-                Console.WriteLine("Album "+album2+" creado correctamente");
+                int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1);
+                int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2);
+                Console.WriteLine ("Album " + album1 + " creado correctamente");
+                Console.WriteLine ("Album " + album2 + " creado correctamente");
 
                 //Probar Customs
 
-                usuariocen.ModificarEstado("alvaro@gmail.com", 2);
+                //Modificamos el estado a "2", equivalente a "baneado temporal"
+                usuariocen.ModificarEstado ("alvaro@gmail.com", 2);
 
 
                 /*PROTECTED REGION END*/
