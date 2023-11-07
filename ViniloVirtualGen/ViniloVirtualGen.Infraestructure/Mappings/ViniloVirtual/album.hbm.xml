@@ -41,17 +41,6 @@
 											 					
 			
 		  			
-						<bag name="Comentario" >
-							<key>
-							
-								
-								<column name="FK_idAlbum_idAlbum"/>
-					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
-					    </bag>
-					
-			
-		  			
 						<bag name="LineaPedido" >
 							<key>
 							
@@ -73,6 +62,17 @@
       						</many-to-many>
     					</bag>
 			
+			
+		  			
+						<bag name="ComentarioAlb" >
+							<key>
+							
+								
+								<column name="FK_idAlbum_idAlbum"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioAlbNH"/>
+					    </bag>
+					
 					
 					
 					

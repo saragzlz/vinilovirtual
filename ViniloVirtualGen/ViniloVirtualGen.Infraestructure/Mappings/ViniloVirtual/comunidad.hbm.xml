@@ -28,17 +28,6 @@
 			
 			
 		  			
-						<bag name="Comentario" >
-							<key>
-							
-								
-								<column name="FK_idComunidad_idComunidad"/>
-					      	</key>
-							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioNH"/>
-					    </bag>
-					
-			
-		  			
 						<bag name="Usuario" table="[comunidad_usuario]"  >
 							<key>
 								
@@ -48,6 +37,17 @@
 									<column name="FK_email_idUsuario"/> 
       						</many-to-many>
     					</bag>
+			
+		  			
+						<bag name="ComentarioCom" >
+							<key>
+							
+								
+								<column name="FK_idComunidad_idComunidad"/>
+					      	</key>
+							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioComNH"/>
+					    </bag>
+					
 					
 					
 					

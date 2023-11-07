@@ -3,12 +3,12 @@ using System;
 using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 namespace ViniloVirtualGen.Infraestructure.EN.ViniloVirtual
 {
-public partial class ComentarioNH : ComentarioEN {
-public ComentarioNH ()
+public partial class ComentarioAlbNH : ComentarioAlbEN {
+public ComentarioAlbNH ()
 {
 }
 
-public ComentarioNH (ComentarioEN dto) : base (dto)
+public ComentarioAlbNH (ComentarioAlbEN dto) : base (dto)
 {
 }
 }

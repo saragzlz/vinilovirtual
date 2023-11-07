@@ -112,8 +112,8 @@ public void ModifyDefault (AlbumEN album)
 
 
 
-
                 albumNH.Precio = album.Precio;
+
 
                 session.Update (albumNH);
                 SessionCommit ();

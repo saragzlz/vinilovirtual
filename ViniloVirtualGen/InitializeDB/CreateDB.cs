@@ -90,14 +90,16 @@ public static void InitializeData ()
                 ArtistaCEN artistacen = new ArtistaCEN (artistarepository);
                 ComunidadRepository comunidadrepository = new ComunidadRepository ();
                 ComunidadCEN comunidadcen = new ComunidadCEN (comunidadrepository);
-                ComentarioRepository comentariorepository = new ComentarioRepository ();
-                ComentarioCEN comentariocen = new ComentarioCEN (comentariorepository);
                 PedidoRepository pedidorepository = new PedidoRepository ();
                 PedidoCEN pedidocen = new PedidoCEN (pedidorepository);
                 LineaPedidoRepository lineapedidorepository = new LineaPedidoRepository ();
                 LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
                 UsuarioRepository usuariorepository = new UsuarioRepository ();
                 UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
+                ComentarioAlbRepository comentarioalbrepository = new ComentarioAlbRepository ();
+                ComentarioAlbCEN comentarioalbcen = new ComentarioAlbCEN (comentarioalbrepository);
+                ComentarioComRepository comentariocomrepository = new ComentarioComRepository ();
+                ComentarioComCEN comentariocomcen = new ComentarioComCEN (comentariocomrepository);
 
 
 
@@ -130,7 +132,7 @@ public static void InitializeData ()
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1,
                         6.00);
-                
+
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2,
                         7.99);
@@ -140,6 +142,35 @@ public static void InitializeData ()
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
                 Console.WriteLine ("Album " + album3 + " creado correctamente");
+
+                //Creacion de comunidades
+                int comunidad1 = comunidadcen.New_("Locos por el Jazz", "comunidad1.jpg", 15);
+                int comunidad2 = comunidadcen.New_("Rock and Stone", "comunidad2.jpg", 47);
+                int comunidad3 = comunidadcen.New_("Beats", "comunidad3.jpg", 73);
+
+
+                //Creacion de Comentarios de Albumes
+                int comentarioAlb1 = comentarioalbcen.New_(usuario1, album1,
+                "Mi cancion favorita es de este album. Nunca me canso de escucharlo",
+                new DateTime (2023, 11, 07));
+                int comentarioAlb2 = comentarioalbcen.New_(usuario1, album3,
+                "El mejor album de debut que se haya hecho",
+                new DateTime (2023, 11, 07));
+                int comentarioAlb3 = comentarioalbcen.New_(usuario2, album2,
+                "Esta bien, pero podria se mejor",
+                new DateTime (2023, 10, 07));
+
+                //Creacion de comentarios de comunidades
+                int comentarioCom1 = comentariocomcen.New_(usuario1, comunidad1,
+                "Ojalá el jazz renaciese",
+                new DateTime (2023, 11, 07));
+                int comentarioCom2 = comentariocomcen.New_(usuario1, comunidad2,
+                "Como me gusta el Rock",
+                new DateTime (2023, 11, 07));
+                int comentarioCom3 = comentariocomcen.New_(usuario2, comunidad3,
+                "Me encanta el rap, me activa para pasar el dia",
+                new DateTime (2023, 11, 07));
+                 
 
 
                 //Probar CUSTOMS

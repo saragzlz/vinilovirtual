@@ -55,15 +55,6 @@ public override IComunidadRepository ComunidadRepository {
         }
 }
 
-public override IComentarioRepository ComentarioRepository {
-        get
-        {
-                this.comentariorepository = new ComentarioRepository ();
-                this.comentariorepository.setSessionCP (session);
-                return this.comentariorepository;
-        }
-}
-
 public override IPedidoRepository PedidoRepository {
         get
         {
@@ -88,6 +79,24 @@ public override IUsuarioRepository UsuarioRepository {
                 this.usuariorepository = new UsuarioRepository ();
                 this.usuariorepository.setSessionCP (session);
                 return this.usuariorepository;
+        }
+}
+
+public override IComentarioAlbRepository ComentarioAlbRepository {
+        get
+        {
+                this.comentarioalbrepository = new ComentarioAlbRepository ();
+                this.comentarioalbrepository.setSessionCP (session);
+                return this.comentarioalbrepository;
+        }
+}
+
+public override IComentarioComRepository ComentarioComRepository {
+        get
+        {
+                this.comentariocomrepository = new ComentarioComRepository ();
+                this.comentariocomrepository.setSessionCP (session);
+                return this.comentariocomrepository;
         }
 }
 }

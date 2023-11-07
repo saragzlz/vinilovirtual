@@ -11,10 +11,11 @@ protected IAdminRepository adminrepository;
 protected IAlbumRepository albumrepository;
 protected IArtistaRepository artistarepository;
 protected IComunidadRepository comunidadrepository;
-protected IComentarioRepository comentariorepository;
 protected IPedidoRepository pedidorepository;
 protected ILineaPedidoRepository lineapedidorepository;
 protected IUsuarioRepository usuariorepository;
+protected IComentarioAlbRepository comentarioalbrepository;
+protected IComentarioComRepository comentariocomrepository;
 
 
 public abstract IAdminRepository AdminRepository {
@@ -29,9 +30,6 @@ public abstract IArtistaRepository ArtistaRepository {
 public abstract IComunidadRepository ComunidadRepository {
         get;
 }
-public abstract IComentarioRepository ComentarioRepository {
-        get;
-}
 public abstract IPedidoRepository PedidoRepository {
         get;
 }
@@ -39,6 +37,12 @@ public abstract ILineaPedidoRepository LineaPedidoRepository {
         get;
 }
 public abstract IUsuarioRepository UsuarioRepository {
+        get;
+}
+public abstract IComentarioAlbRepository ComentarioAlbRepository {
+        get;
+}
+public abstract IComentarioComRepository ComentarioComRepository {
         get;
 }
 }
