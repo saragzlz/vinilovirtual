@@ -106,5 +106,6 @@
 		 </class>	
 		  
 		  <query name="UsuarioNHReadAllHQL">from UsuarioNH</query>
+		  <query name="UsuarioNHgetUsuariosEstadoHQL"><![CDATA[Select usu FROM UsuarioNH as usu where usu.Estado = :p_estado]]></query>
 		</hibernate-mapping>
 	

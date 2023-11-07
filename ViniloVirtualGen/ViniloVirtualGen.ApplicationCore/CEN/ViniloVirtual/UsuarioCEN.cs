@@ -109,6 +109,10 @@ public string Login (string p_Usuario_OID, string p_pass)
         return result;
 }
 
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> GetUsuariosEstado (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum ? p_estado)
+{
+        return _IUsuarioRepository.GetUsuariosEstado (p_estado);
+}
 
 
 

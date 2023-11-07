@@ -19,9 +19,13 @@ public void ModificarPrecio (int p_id, double p_nuevoPrecio)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Album_modificarPrecio) ENABLED START*/
 
-        // Write here your custom code...
+        //Nos guardamos la info del album que nos pasan por paramentro en la variable "en"
+        AlbumEN en = _IAlbumRepository.GetID (p_id);
 
-        throw new NotImplementedException ("Method ModificarPrecio() not yet implemented.");
+        en.Precio = p_nuevoPrecio;
+
+        //Actualizada la informacion de "en" con el nuevo precio, modificamos el album de forma final
+        _IAlbumRepository.ModifyDefault (en);
 
         /*PROTECTED REGION END*/
 }
