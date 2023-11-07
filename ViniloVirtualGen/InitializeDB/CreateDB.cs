@@ -179,6 +179,7 @@ public static void InitializeData ()
                 usuariocen.GetUsuariosEstado(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal);
 
                 Console.WriteLine ("Consulta de los usuarios con determinado estado ");
+                
 
                 foreach (UsuarioEN usuario in listaUsuariosEstado) { // recorrer la lista
                         Console.WriteLine ("El usuario: " + usuario.Email+" . De nombre: "+usuario.Nombre);
