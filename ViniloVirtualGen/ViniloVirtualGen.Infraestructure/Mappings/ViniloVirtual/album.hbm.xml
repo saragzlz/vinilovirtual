@@ -24,6 +24,9 @@
 					<property name="Imagen" type="string"> 
 						<column name="imagen"  not-null="true"/>
 					</property>
+					<property name="Precio" type="double"> 
+						<column name="precio"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -69,6 +72,8 @@
 									<column name="FK_email_idUsuario"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					

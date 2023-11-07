@@ -113,7 +113,7 @@ public static void InitializeData ()
                 Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
                 Console.WriteLine ("Usuario " + usuario2 + " creado correctamente");
 
-                
+
 
                 //Creacion de artistas
                 int artista1 = artistacen.New_ ("Her's",
@@ -130,9 +130,11 @@ public static void InitializeData ()
 
                 //Creacion de artistas
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1);
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1,
+                        21.42);
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2);
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2,
+                        7.99);
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
 
@@ -143,13 +145,13 @@ public static void InitializeData ()
 
                 //Modificamos el nombre del usuario
                 usuariocen.ModificarNombre ("alvaro@gmail.com", "Alvaro");
-                
+
                 /* Esto no funciona, el metodo no cambia correctamente la contraseña. Seguramente por temas de encriptado.
-                //Modificamos la password e iniciamos sesion
-                usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
-                if (usuariocen.Login ("alvaro@gmail.com", "1212") != null) {
-                        Console.WriteLine ("Usuario loggeado");
-                }*/
+                 * //Modificamos la password e iniciamos sesion
+                 * usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
+                 * if (usuariocen.Login ("alvaro@gmail.com", "1212") != null) {
+                 *      Console.WriteLine ("Usuario loggeado");
+                 * }*/
 
 
                 /*PROTECTED REGION END*/

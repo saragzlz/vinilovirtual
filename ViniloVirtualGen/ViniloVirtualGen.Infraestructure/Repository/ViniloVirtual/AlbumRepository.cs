@@ -112,6 +112,9 @@ public void ModifyDefault (AlbumEN album)
 
 
 
+
+                albumNH.Precio = album.Precio;
+
                 session.Update (albumNH);
                 SessionCommit ();
         }
@@ -184,6 +187,9 @@ public void Modify (AlbumEN album)
 
 
                 albumNH.Imagen = album.Imagen;
+
+
+                albumNH.Precio = album.Precio;
 
                 session.Update (albumNH);
                 SessionCommit ();
