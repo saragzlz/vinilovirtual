@@ -332,6 +332,9 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_PqUwwH2QEe6dLKiSox5saQ" name="p_email"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_PspsAH2QEe6dLKiSox5saQ" name="p_nuevaImagen"/>
       </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_B5AEAH2SEe6CasgPYN_wRA" name="getUsuariosEstado" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_mHpTQHycEe6vqYLfZdGDMg" filter="Select usu FROM UsuarioNH as usu where usu.Estado = :p_estado" automaticSynchronize="false">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_NMQg8H2SEe6CasgPYN_wRA" name="p_estado" type="Enum" typeEnum="_uuURoHPqEe60zawTpJFFsw"/>
+      </operations>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_qtAU0HycEe6vqYLfZdGDMg" alias="nombre" name="nombre"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_sKFW0HycEe6vqYLfZdGDMg" alias="pass" name="pass" type="Password"/>
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_wEVl4HycEe6vqYLfZdGDMg" alias="email" name="email" isOID="true" unique="true" isToken="true"/>
@@ -1151,6 +1154,13 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_N2ie8n2QEe6dLKiSox5saQ" fontName="Segoe UI"/>
           <styles xmi:type="notation:FillStyle" xmi:id="_N2ie832QEe6dLKiSox5saQ"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_N2ie9H2QEe6dLKiSox5saQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_B5wR8H2SEe6CasgPYN_wRA" type="3004" element="_B5AEAH2SEe6CasgPYN_wRA">
+          <children xmi:type="notation:DecorationNode" xmi:id="_B5w5AH2SEe6CasgPYN_wRA" type="5004"/>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_B5wR8X2SEe6CasgPYN_wRA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_B5wR8n2SEe6CasgPYN_wRA" fontName="Segoe UI"/>
+          <styles xmi:type="notation:FillStyle" xmi:id="_B5wR832SEe6CasgPYN_wRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_B5wR9H2SEe6CasgPYN_wRA"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_mHrIcXycEe6vqYLfZdGDMg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_mHrIcnycEe6vqYLfZdGDMg"/>

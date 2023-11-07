@@ -1,0 +1,18 @@
+Dudas metodo modificar password, porque lleva encriptación
+
+
+READ FILTER A HACER:
+	Mostrar todos los comentarios del album
+	Mostrar todos los comentarios de una comunidad
+
+	Mostrar todos los albumes de un Artista
+
+	Mostrar todos los albumes favoritos de un usuario
+	Mostrar todos los artista favoritos de un usuario
+
+	Mostrar todos los pedidos de un usuario
+	
+	Mostrar usuarios con x estado
+
+	Mostrar los comentarios de x usuario
+
