@@ -1,0 +1,16 @@
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\hibernate.cfg.xml
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\ViniloVirtualGen.Infraestructure.deps.json
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\ViniloVirtualGen.Infraestructure.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\ViniloVirtualGen.Infraestructure.pdb
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.AssemblyInfo.cs
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.csproj.CopyComplete
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\refint\ViniloVirtualGen.Infraestructure.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.pdb
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ref\ViniloVirtualGen.Infraestructure.dll

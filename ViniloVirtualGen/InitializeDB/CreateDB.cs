@@ -174,21 +174,31 @@ public static void InitializeData ()
 
                 //Probar FILTERS
 
-                //Filtro de usuarios con un estado en especifico
-                IList<UsuarioEN> listaUsuariosEstado = 
-                usuariocen.GetUsuariosEstado(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal);
+                // FILTRO PARA COMPROBAR LOS USUARIOS CON UN ESTADO ESPECIFICO
+                IList<UsuarioEN> listaUsuariosEstado =
+                        usuariocen.GetUsuariosEstado (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal);
 
                 Console.WriteLine ("Consulta de los usuarios con determinado estado ");
-                
+
 
                 foreach (UsuarioEN usuario in listaUsuariosEstado) { // recorrer la lista
-                        Console.WriteLine ("El usuario: " + usuario.Email+" . De nombre: "+usuario.Nombre);
+                        Console.WriteLine ("El usuario: " + usuario.Email + " . De nombre: " + usuario.Nombre);
                 }
 
+                // FILTRO PARA COMPROBAR LOS ALBUMES DE UN ARTISTA ESPECIFICO
+                IList<AlbumEN> listaAlbumesArtista = albumcen.GetAlbumesArtista(32768);
 
+                Console.WriteLine("Consulta de los albumes del artista con id 32768 ");
+
+                foreach (AlbumEN album in listaAlbumesArtista)
+                { // recorrer la lista
+                    Console.WriteLine("Album " + album.Nombre);
+                }
+
+                
 
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

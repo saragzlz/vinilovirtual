@@ -124,5 +124,9 @@ public void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<
 
         _IAlbumRepository.EliminarFavorito (p_Album_OID, p_usuario_OIDs);
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesArtista (int p_id)
+{
+        return _IAlbumRepository.GetAlbumesArtista (p_id);
+}
 }
 }

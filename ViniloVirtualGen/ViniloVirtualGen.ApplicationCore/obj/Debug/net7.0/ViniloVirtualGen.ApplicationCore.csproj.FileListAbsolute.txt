@@ -1,0 +1,12 @@
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.deps.json
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\Nori\Documents\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll

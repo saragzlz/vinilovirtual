@@ -8,6 +8,6 @@
   <property name="src-gen" value="../ViniloVirtualGen"/>
   <property name="dataSourcePort" value=""/>
   <property name="projectName" value="'ViniloVirtualGen'"/>
-  <property name="netVersion" value="'net5.0'"/>
+  <property name="netVersion" value="'net7.0'"/>
   <cartridge file="workflow::nhibernate::generator.mwe" inheritAll="true"/>
 </workflow>

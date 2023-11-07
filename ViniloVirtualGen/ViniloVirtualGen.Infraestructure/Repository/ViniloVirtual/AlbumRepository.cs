@@ -428,5 +428,35 @@ public void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesArtista (int p_id)
+{
+        System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlbumNH self where select alb FROM AlbumNH as alb inner join alb.Artista as art where art.Id = :p_id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlbumNHgetAlbumesArtistaHQL");
+                query.SetParameter ("p_id", p_id);
+
+                result = query.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }
