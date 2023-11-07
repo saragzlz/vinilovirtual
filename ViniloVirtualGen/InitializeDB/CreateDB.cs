@@ -126,15 +126,20 @@ public static void InitializeData ()
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");
                 Console.WriteLine ("Artista " + artista2 + " creado correctamente");
 
-                //Creacion de artistas
+                //Creacion de albumes
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1,
                         6.00);
+                
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2,
                         7.99);
+                int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada3.jpg", artista1,
+                        41.43);
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
+                Console.WriteLine ("Album " + album3 + " creado correctamente");
 
 
                 //Probar CUSTOMS
@@ -186,19 +191,18 @@ public static void InitializeData ()
                 }
 
                 // FILTRO PARA COMPROBAR LOS ALBUMES DE UN ARTISTA ESPECIFICO
-                IList<AlbumEN> listaAlbumesArtista = albumcen.GetAlbumesArtista(32768);
+                IList<AlbumEN> listaAlbumesArtista = albumcen.GetAlbumesArtista (32768);
 
-                Console.WriteLine("Consulta de los albumes del artista con id 32768 ");
+                Console.WriteLine ("Consulta de los albumes del artista con id 32768 ");
 
-                foreach (AlbumEN album in listaAlbumesArtista)
-                { // recorrer la lista
-                    Console.WriteLine("Album " + album.Nombre);
+                foreach (AlbumEN album in listaAlbumesArtista) { // recorrer la lista
+                        Console.WriteLine ("Album " + album.Nombre);
                 }
 
-                
+
 
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
