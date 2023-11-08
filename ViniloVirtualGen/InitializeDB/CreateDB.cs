@@ -169,21 +169,57 @@ public static void InitializeData ()
                 int comentarioAlb3 = comentarioalbcen.New_ (usuario2, album2,
                         "Esta bien, pero podria se mejor",
                         new DateTime (2023, 10, 07));
+                int comentarioAlb4 = comentarioalbcen.New_ (usuario2, album1,
+                        "De los mejores albumes indie de la decada",
+                        new DateTime (2023, 11, 08));
+                int comentarioAlb5 = comentarioalbcen.New_ (usuario3, album3,
+                        "No está mal",
+                        new DateTime (2023, 11, 09));
+                int comentarioAlb6 = comentarioalbcen.New_ (usuario3, album2,
+                        "Es increible",
+                        new DateTime (2023, 10, 08));
 
                 //Creacion de comentarios de comunidades
                 int comentarioCom1 = comentariocomcen.New_ (usuario1, comunidad1,
                         "Ojalá el jazz renaciese",
                         new DateTime (2023, 11, 07));
-                int comentarioCom2 = comentariocomcen.New_ (usuario1, comunidad2,
+                int comentarioCom2 = comentariocomcen.New_ (usuario3, comunidad2,
                         "Como me gusta el Rock",
                         new DateTime (2023, 11, 07));
                 int comentarioCom3 = comentariocomcen.New_ (usuario2, comunidad3,
                         "Me encanta el rap, me activa para pasar el dia",
                         new DateTime (2023, 11, 07));
+                int comentarioCom4 = comentariocomcen.New_ (usuario2, comunidad1,
+                        "Pues a mi no me termina de gustar",
+                        new DateTime (2023, 11, 08));
+                int comentarioCom5 = comentariocomcen.New_ (usuario1, comunidad2,
+                        "Es de mis generos favoritos",
+                        new DateTime (2023, 11, 07));
+                int comentarioCom6 = comentariocomcen.New_ (usuario3, comunidad3,
+                        "Cruz cafune mi dios",
+                        new DateTime (2023, 11, 09));
 
+
+                //Cracion de pedidos
+                int pedido1 = pedidocen.New_(new DateTime (2023, 11, 09), "Calle del Oro 1", 29.41,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario1);
+                int pedido2 = pedidocen.New_(new DateTime (2023, 11, 08), "Calle del Viento 12",7.99,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario2);
+                int pedido3 = pedidocen.New_(new DateTime (2023, 11, 06), "Calle del Oro 1", 41.43,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.aceptado, usuario1);
+
+                //Creacion de lineas de pedido
+                int lineaPedido1 = lineapedidocen.New_(21.42, pedido1, album1);
+                int lineaPedido2 = lineapedidocen.New_(7.99, pedido1, album2);
+                int lineaPedido3 = lineapedidocen.New_(7.99, pedido2, album2);
+                int lineaPedido4 = lineapedidocen.New_(41.43, pedido3, album3);
 
 
                 //Probar CUSTOMS
+
                 //USUARIO
                 //Modificamos el estado a "2", equivalente a "baneado temporal"
                 usuariocen.ModificarEstado ("alvaro@gmail.com", 2);
@@ -213,7 +249,6 @@ public static void InitializeData ()
 
 
                 //ARTISTA
-
                 //Modificamos la descripcion del artista
                 artistacen.ModificarDescripcion (artista1, "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros");
 
@@ -235,6 +270,11 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
 
+
+
+
+
+
                 //Probar FILTERS
 
                 // FILTRO PARA COMPROBAR LOS USUARIOS CON UN ESTADO ESPECIFICO
@@ -249,6 +289,7 @@ public static void InitializeData ()
                 }
                 Console.WriteLine (" ");
 
+
                 // FILTRO PARA COMPROBAR LOS ALBUMES DE UN ARTISTA ESPECIFICO
                 IList<AlbumEN> listaAlbumesArtista = albumcen.GetAlbumesArtista (32768);
 
@@ -259,6 +300,7 @@ public static void InitializeData ()
                         Console.WriteLine ("Album " + album.Nombre + " con ID " + album.Id);
                 }
                 Console.WriteLine (" ");
+
 
                 // FILTROS DE COMENTARIOS -----------------------------------------------------------------------------
                 // FILTRO PARA COMPROBAR LOS COMENTARIOS DE UN ALBUM ESPECIFICO
@@ -283,6 +325,7 @@ public static void InitializeData ()
                 }
                 Console.WriteLine (" ");
 
+
                 // FILTROS DE USUARIOS -----------------------------------------------------------------------------
                 // FILTRO PARA COMPROBAR LOS PEDIDOS DE UN USUARIO EN ESPECIFICO
                 IList<PedidoEN> listaPedidosUsuario = pedidocen.GetPedidosUsu (usuario1);
@@ -294,6 +337,7 @@ public static void InitializeData ()
                         Console.WriteLine ("Pedido " + pedido.Id + " con estado " + pedido.Estado);
                 }
                 Console.WriteLine (" ");
+
 
                 // FILTROS DE FAVORITOS -----------------------------------------------------------------------------
                 // FILTRO PARA COMPROBAR LOS ALBUMES FAVORITOS DE UN USUARIO EN ESPECIFICO
