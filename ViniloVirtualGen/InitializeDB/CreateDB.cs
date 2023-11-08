@@ -213,27 +213,27 @@ public static void InitializeData ()
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.aceptado, usuario1);
 
                 //Creacion de lineas de pedido
-                LineaPedidoCP lineaPedidoCP = new LineaPedidoCP (new SessionCPNHibernate());
+                LineaPedidoCP lineaPedidoCP = new LineaPedidoCP (new SessionCPNHibernate ());
 
                 lineaPedidoCP.New_ (21.42, pedido1, album1);
                 lineaPedidoCP.New_ (7.99, pedido1, album2);
                 lineaPedidoCP.New_ (7.99, pedido2, album2);
                 lineaPedidoCP.New_ (41.43, pedido3, album3);
 
-                PedidoEN pedidoEN = pedidocen.GetID(pedido1);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
-                
-                pedidoEN = pedidocen.GetID(pedido2);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
+                PedidoEN pedidoEN = pedidocen.GetID (pedido1);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
 
-                pedidoEN = pedidocen.GetID(pedido3);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
+                pedidoEN = pedidocen.GetID (pedido2);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
+
+                pedidoEN = pedidocen.GetID (pedido3);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
 
                 //Probar CUSTOMS
 
@@ -354,6 +354,29 @@ public static void InitializeData ()
                         Console.WriteLine ("Pedido " + pedido.Id + " con estado " + pedido.Estado);
                 }
                 Console.WriteLine (" ");
+
+                // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS ALBUMES
+                IList<ComentarioAlbEN> listaCommAlbUsu = comentarioalbcen.GetCommentsAlbumsUsu (usuario3);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Consulta de los comentarios de ALBUMES del usuario: " + usuario3);
+
+                foreach (ComentarioAlbEN comentario in listaCommAlbUsu) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+                Console.WriteLine (" ");
+
+                // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS COMUNIDADES
+                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu(usuario2);
+
+                Console.WriteLine(" ");
+                Console.WriteLine("Consulta de los comentarios del COMUNIDADES del usuario: " + usuario3);
+
+                foreach (ComentarioComEN comentario in listaCommComunidadesUsu)
+                { // recorrer la lista
+                    Console.WriteLine("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+                Console.WriteLine(" ");
 
 
                 // FILTROS DE FAVORITOS -----------------------------------------------------------------------------
