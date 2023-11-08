@@ -458,5 +458,35 @@ public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vini
 
         return result;
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesFavsUsu (string p_email)
+{
+        System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlbumNH self where select alb FROM AlbumNH as alb inner join alb.Usuario as usu where usu.Email = :p_email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlbumNHgetAlbumesFavsUsuHQL");
+                query.SetParameter ("p_email", p_email);
+
+                result = query.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in AlbumRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

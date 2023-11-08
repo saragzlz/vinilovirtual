@@ -58,5 +58,6 @@
 		 </class>	
 		  
 		  <query name="ArtistaNHReadAllHQL">from ArtistaNH</query>
+		  <query name="ArtistaNHgetArtistasFavsUsuHQL"><![CDATA[select art FROM ArtistaNH as art inner join art.Usuario as usu where usu.Email = :p_email]]></query>
 		</hibernate-mapping>
 	

@@ -37,5 +37,9 @@ System.Collections.Generic.IList<ArtistaEN> GetAll (int first, int size);
 void AnyadirFavorito (int p_Artista_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
 
 void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
+
+
+
+System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> GetArtistasFavsUsu (string p_email);
 }
 }

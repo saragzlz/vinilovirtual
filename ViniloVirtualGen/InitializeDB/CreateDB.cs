@@ -261,13 +261,67 @@ public static void InitializeData ()
                 Console.WriteLine ("Consulta de los albumes del artista con id 32768 ");
 
                 foreach (AlbumEN album in listaAlbumesArtista) { // recorrer la lista
+<<<<<<< Updated upstream
                         Console.WriteLine ("Album " + album.Nombre);
                 }
 
+=======
+                        Console.WriteLine ("Album " + album.Nombre + " con ID " + album.Id);
+                }
+
+                // FILTROS DE COMENTARIOS -----------------------------------------------------------------------------
+                // FILTRO PARA COMPROBAR LOS COMENTARIOS DE UN ALBUM ESPECIFICO
+                IList<ComentarioAlbEN> listaCommentsAlbum = comentarioalbcen.GetComentariosAlbum (album2);
+
+                Console.WriteLine ("Consulta de los comentarios del album con id " + album2);
+
+                foreach (ComentarioAlbEN comentario in listaCommentsAlbum) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+
+                // FILTRO PARA COMPROBAR LOS COMENTARIOS DE UNA COMUNIDAD ESPECIFICO
+                IList<ComentarioComEN> listaCommentsComunidad = comentariocomcen.GetComentariosComunidad (comunidad3);
+
+                Console.WriteLine ("Consulta de los comentarios de la comunidad con id " + comunidad3);
+
+                foreach (ComentarioComEN comentario in listaCommentsComunidad) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+
+                // FILTROS DE USUARIOS -----------------------------------------------------------------------------
+                // FILTRO PARA COMPROBAR LOS PEDIDOS DE UN USUARIO EN ESPECIFICO
+                IList<PedidoEN> listaPedidosUsuario = pedidocen.GetPedidosUsu (usuario1);
+
+                Console.WriteLine ("Consulta de los pedidos del usuario con email: " + usuario1);
+
+                foreach (PedidoEN pedido in listaPedidosUsuario) { // recorrer la lista
+                        Console.WriteLine ("Pedido " + pedido.Id + " con estado " + pedido.Estado);
+                }
+
+                // FILTROS DE FAVORITOS -----------------------------------------------------------------------------
+                // FILTRO PARA COMPROBAR LOS ALBUMES FAVORITOS DE UN USUARIO EN ESPECIFICO
+                IList<AlbumEN> listaAlbumesFavs = albumcen.GetAlbumesFavsUsu (usuario2);
+
+                Console.WriteLine ("Consulta de los ALBUMES FAVORITOS de email: " + usuario2);
+
+                foreach (AlbumEN album in listaAlbumesFavs) { // recorrer la lista
+                        Console.WriteLine ("Album " + album.Nombre);
+                }
+
+                // FILTRO PARA COMPROBAR LOS ARTISTAS FAVORITOS DE UN USUARIO EN ESPECIFICO
+                IList<ArtistaEN> listaArtistasFavs = artistacen.GetArtistasFavsUsu(usuario1);
+
+                Console.WriteLine("Consulta de los ARTISTAS FAVORITOS de email: " + usuario1);
+
+                foreach (ArtistaEN artista in listaArtistasFavs)
+                { // recorrer la lista
+                    Console.WriteLine("Artista " + artista.Nombre);
+                }
+>>>>>>> Stashed changes
                 Console.WriteLine (" ");
 
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

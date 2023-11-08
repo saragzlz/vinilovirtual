@@ -344,5 +344,35 @@ public void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.ILis
                 SessionClose ();
         }
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> GetArtistasFavsUsu (string p_email)
+{
+        System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ArtistaNH self where select art FROM ArtistaNH as art inner join art.Usuario as usu where usu.Email = :p_email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ArtistaNHgetArtistasFavsUsuHQL");
+                query.SetParameter ("p_email", p_email);
+
+                result = query.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ArtistaRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

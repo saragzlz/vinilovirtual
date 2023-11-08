@@ -98,5 +98,9 @@ public void EliminarFavorito (int p_Artista_OID, System.Collections.Generic.ILis
 
         _IArtistaRepository.EliminarFavorito (p_Artista_OID, p_usuario_OIDs);
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN> GetArtistasFavsUsu (string p_email)
+{
+        return _IArtistaRepository.GetArtistasFavsUsu (p_email);
+}
 }
 }

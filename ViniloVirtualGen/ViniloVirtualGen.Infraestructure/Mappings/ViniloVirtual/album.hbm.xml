@@ -88,5 +88,6 @@
 		  
 		  <query name="AlbumNHReadAllHQL">from AlbumNH</query>
 		  <query name="AlbumNHgetAlbumesArtistaHQL"><![CDATA[select alb FROM AlbumNH as alb inner join alb.Artista as art where art.Id = :p_id]]></query>
+		  <query name="AlbumNHgetAlbumesFavsUsuHQL"><![CDATA[select alb FROM AlbumNH as alb inner join alb.Usuario as usu where usu.Email = :p_email]]></query>
 		</hibernate-mapping>
 	

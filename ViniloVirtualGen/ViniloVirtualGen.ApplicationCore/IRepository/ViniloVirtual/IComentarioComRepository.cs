@@ -32,5 +32,8 @@ ComentarioComEN ReadOID (int id
 
 
 System.Collections.Generic.IList<ComentarioComEN> ReadAll (int first, int size);
+
+
+System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioComEN> GetComentariosComunidad (int p_id);
 }
 }

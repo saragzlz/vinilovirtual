@@ -128,5 +128,9 @@ public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vini
 {
         return _IAlbumRepository.GetAlbumesArtista (p_id);
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesFavsUsu (string p_email)
+{
+        return _IAlbumRepository.GetAlbumesFavsUsu (p_email);
+}
 }
 }
