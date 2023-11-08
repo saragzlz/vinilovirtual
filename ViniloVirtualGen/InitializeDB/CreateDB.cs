@@ -367,16 +367,15 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS COMUNIDADES
-                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu(usuario3);
+                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu (usuario3);
 
-                Console.WriteLine(" ");
-                Console.WriteLine("Consulta de los comentarios del COMUNIDADES del usuario: " + usuario3);
+                Console.WriteLine (" ");
+                Console.WriteLine ("Consulta de los comentarios del COMUNIDADES del usuario: " + usuario3);
 
-                foreach (ComentarioComEN comentario in listaCommComunidadesUsu)
-                { // recorrer la lista
-                    Console.WriteLine("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                foreach (ComentarioComEN comentario in listaCommComunidadesUsu) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
                 }
-                Console.WriteLine(" ");
+                Console.WriteLine (" ");
 
 
                 // FILTROS DE FAVORITOS -----------------------------------------------------------------------------
@@ -403,8 +402,22 @@ public static void InitializeData ()
 
                 Console.WriteLine (" ");
 
+                // FILTRO ALBUMES DE UN GENERO
+                IList<AlbumEN> listaAlbumesDelGenero = 
+                albumcen.GetAlbumsDelGenero(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie);
+
+                Console.WriteLine(" ");
+                Console.WriteLine("Consulta de los AlBUMES que pertenecen al genero musical INDIE");
+
+                foreach (AlbumEN album in listaAlbumesDelGenero)
+                { // recorrer la lista
+                    Console.WriteLine("Album " + album.Nombre);
+                }
+
+                Console.WriteLine(" ");
+
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
