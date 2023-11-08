@@ -32,5 +32,8 @@ ComentarioAlbEN ReadID (int id
 
 
 System.Collections.Generic.IList<ComentarioAlbEN> ReadAll (int first, int size);
+
+
+System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> GetComentariosAlbum (int p_id);
 }
 }

@@ -63,5 +63,6 @@
 		 </class>	
 		  
 		  <query name="PedidoNHReadAllHQL">from PedidoNH</query>
+		  <query name="PedidoNHgetPedidosUsuHQL"><![CDATA[select ped FROM PedidoNH as ped inner join ped.Usuario as usu where usu.Email = :p_email]]></query>
 		</hibernate-mapping>
 	

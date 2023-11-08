@@ -100,5 +100,9 @@ public System.Collections.Generic.IList<PedidoEN> GetAll (int first, int size)
         list = _IPedidoRepository.GetAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> GetPedidosUsu (string p_email)
+{
+        return _IPedidoRepository.GetPedidosUsu (p_email);
+}
 }
 }

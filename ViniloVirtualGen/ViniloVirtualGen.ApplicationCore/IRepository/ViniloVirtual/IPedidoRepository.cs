@@ -32,5 +32,9 @@ PedidoEN GetID (int id
 
 
 System.Collections.Generic.IList<PedidoEN> GetAll (int first, int size);
+
+
+
+System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> GetPedidosUsu (string p_email);
 }
 }

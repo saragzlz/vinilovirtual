@@ -276,5 +276,36 @@ public System.Collections.Generic.IList<ComentarioAlbEN> ReadAll (int first, int
 
         return result;
 }
+
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> GetComentariosAlbum (int p_id)
+{
+        System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ComentarioAlbNH self where select comm FROM ComentarioAlbNH as comm inner join comm.Album as alb where alb.Id= :p_id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ComentarioAlbNHgetComentariosAlbumHQL");
+                query.SetParameter ("p_id", p_id);
+
+                result = query.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in ComentarioAlbRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

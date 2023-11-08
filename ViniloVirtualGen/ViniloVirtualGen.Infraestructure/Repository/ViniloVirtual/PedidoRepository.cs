@@ -286,5 +286,36 @@ public System.Collections.Generic.IList<PedidoEN> GetAll (int first, int size)
 
         return result;
 }
+
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> GetPedidosUsu (string p_email)
+{
+        System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PedidoNH self where select ped FROM PedidoNH as ped inner join ped.Usuario as usu where usu.Email = :p_email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PedidoNHgetPedidosUsuHQL");
+                query.SetParameter ("p_email", p_email);
+
+                result = query.List<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ViniloVirtualGen.ApplicationCore.Exceptions.ModelException)
+                        throw;
+                else throw new ViniloVirtualGen.ApplicationCore.Exceptions.DataLayerException ("Error in PedidoRepository.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

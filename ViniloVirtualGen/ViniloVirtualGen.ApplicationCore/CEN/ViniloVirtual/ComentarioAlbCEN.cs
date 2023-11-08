@@ -99,5 +99,9 @@ public System.Collections.Generic.IList<ComentarioAlbEN> ReadAll (int first, int
         list = _IComentarioAlbRepository.ReadAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> GetComentariosAlbum (int p_id)
+{
+        return _IComentarioAlbRepository.GetComentariosAlbum (p_id);
+}
 }
 }

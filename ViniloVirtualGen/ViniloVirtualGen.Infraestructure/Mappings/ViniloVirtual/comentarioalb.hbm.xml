@@ -43,5 +43,6 @@
 		 </class>	
 		  
 		  <query name="ComentarioAlbNHReadAllHQL">from ComentarioAlbNH</query>
+		  <query name="ComentarioAlbNHgetComentariosAlbumHQL"><![CDATA[select comm FROM ComentarioAlbNH as comm inner join comm.Album as alb where alb.Id= :p_id]]></query>
 		</hibernate-mapping>
 	
