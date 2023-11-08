@@ -101,6 +101,18 @@
 							<one-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.ComentarioComNH"/>
 					    </bag>
 					
+			
+		  			
+						<bag name="Album" table="[usuario_0_album]"  >
+							<key>
+								
+									<column name="FK_email_idUsuario_0"/> 
+							</key>
+      						<many-to-many class="ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.AlbumNH">
+									<column name="FK_idAlbum_idAlbum"/> 
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					

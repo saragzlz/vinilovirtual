@@ -55,13 +55,13 @@ public ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN New_ (dou
                         lineaPedidoEN.Album.Id = p_album;
                 }
 
-                PedidoEN pedidoEn = pedidoCEN.GetID(p_pedido);
-                AlbumEN albumEn = albumCEN.GetID(p_album);
+                PedidoEN pedidoEn = pedidoCEN.GetID (p_pedido);
+                AlbumEN albumEn = albumCEN.GetID (p_album);
 
                 pedidoEn.Total += lineaPedidoEN.Precio;
 
-                pedidoCEN.get_IPedidoRepository().ModifyDefault(pedidoEn);
-                
+                pedidoCEN.get_IPedidoRepository ().ModifyDefault (pedidoEn);
+
 
                 oid = lineaPedidoCEN.get_ILineaPedidoRepository ().New_ (lineaPedidoEN);
 

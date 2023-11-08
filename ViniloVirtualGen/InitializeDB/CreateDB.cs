@@ -213,27 +213,27 @@ public static void InitializeData ()
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.aceptado, usuario1);
 
                 //Creacion de lineas de pedido
-                LineaPedidoCP lineaPedidoCP = new LineaPedidoCP (new SessionCPNHibernate());
+                LineaPedidoCP lineaPedidoCP = new LineaPedidoCP (new SessionCPNHibernate ());
 
                 lineaPedidoCP.New_ (21.42, pedido1, album1);
                 lineaPedidoCP.New_ (7.99, pedido1, album2);
                 lineaPedidoCP.New_ (7.99, pedido2, album2);
                 lineaPedidoCP.New_ (41.43, pedido3, album3);
 
-                PedidoEN pedidoEN = pedidocen.GetID(pedido1);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
-                
-                pedidoEN = pedidocen.GetID(pedido2);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
+                PedidoEN pedidoEN = pedidocen.GetID (pedido1);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
 
-                pedidoEN = pedidocen.GetID(pedido3);
-                Console.WriteLine(" ");
-                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
-                Console.WriteLine(" ");
+                pedidoEN = pedidocen.GetID (pedido2);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
+
+                pedidoEN = pedidocen.GetID (pedido3);
+                Console.WriteLine (" ");
+                Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
+                Console.WriteLine (" ");
 
                 //Probar CUSTOMS
 
@@ -379,6 +379,33 @@ public static void InitializeData ()
                 }
 
                 Console.WriteLine (" ");
+
+                Console.WriteLine("----Customs Transactions----");
+
+                AdminCP adminCP = new AdminCP(new SessionCPNHibernate ());
+
+                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
+
+                adminCP.BaneoPermanente(usuarioen1.Email);
+
+                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente;
+
+                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
+
+                adminCP.BaneoTemporal(usuarioen1.Email);
+                
+                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
+
+                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
+
+
+                AlbumCP albumCP = new AlbumCP(new SessionCPNHibernate ());
+                usuarioen1.Album = new List<AlbumEN>();
+
+                albumCP.PagarAlbum(albumen1.Id, usuarioen1.Email);
+
+                Console.WriteLine(usuarioen1.Album);
+
 
                 /*PROTECTED REGION END*/
         }

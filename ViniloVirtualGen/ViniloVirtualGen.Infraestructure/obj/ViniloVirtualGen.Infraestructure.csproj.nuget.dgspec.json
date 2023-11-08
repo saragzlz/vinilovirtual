@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {}
+    "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
+    "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
         "projectName": "ViniloVirtualGen.ApplicationCore",
-        "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\Ensoni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ensoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,30 +65,32 @@
         }
       }
     },
-    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {
+    "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
         "projectName": "ViniloVirtualGen.Infraestructure",
-        "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\Ensoni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ensoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj"
+              "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\Ensoni\\Desktop\\UA\\3\\DSM\\practicas\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj"
               }
             }
           }

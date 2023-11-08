@@ -22,3 +22,15 @@ C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualG
 C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
 C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
 C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.deps.json
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
