@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {}
+    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
+    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
         "projectName": "ViniloVirtualGen.ApplicationCore",
-        "projectPath": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\Nori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nori\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,36 +59,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {
+    "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
         "projectName": "ViniloVirtualGen.Infraestructure",
-        "projectPath": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\Nori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\ViniloVirtualGen.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nori\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Nori\\Documents\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj"
+              "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\alvar\\OneDrive\\Escritorio\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj"
               }
             }
           }
@@ -134,7 +130,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
