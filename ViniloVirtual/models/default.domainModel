@@ -230,7 +230,7 @@
       <attributes xmi:type="es.ua.dlsi.ooh:Attribute" xmi:id="_aosuQnydEe6vqYLfZdGDMg" alias="idUsuario" associationTarget="_aosuQHydEe6vqYLfZdGDMg" name="usuario" type="Object"/>
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Class" xmi:id="_FpGdAHlqEe6S-o1zFLcSUA" name="LineaPedido" alias="LineaPedido" asociationTarget="_aGNTAHltEe696aB6C6Jsiw _zNti8HltEe696aB6C6Jsiw">
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_lL64oHlsEe6S-o1zFLcSUA" name="new" operationType="New" type="Object" typeObject="_FpGdAHlqEe6S-o1zFLcSUA">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_lL64oHlsEe6S-o1zFLcSUA" name="new" operationType="New" type="Object" typeObject="_FpGdAHlqEe6S-o1zFLcSUA" customizedTransaction="true">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_kyiS8HzHEe6vqYLfZdGDMg" name="p_precio" type="Double"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_kyiS8XzHEe6vqYLfZdGDMg" name="p_pedido" type="OID" typeObject="_-fnR0HlpEe6S-o1zFLcSUA"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_kyiS8nzHEe6vqYLfZdGDMg" name="p_album" type="OID" typeObject="_upyBQHN5Ee6uMt-deiWvsQ"/>

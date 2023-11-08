@@ -13,6 +13,7 @@ using ViniloVirtualGen.ApplicationCore.Exceptions;
 
 using ViniloVirtualGen.ApplicationCore.CP.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository;
+using System.Timers;
 
 /*PROTECTED REGION END*/
 namespace InitializeDB
@@ -201,22 +202,38 @@ public static void InitializeData ()
 
 
                 //Cracion de pedidos
-                int pedido1 = pedidocen.New_(new DateTime (2023, 11, 09), "Calle del Oro 1", 29.41,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario1);
-                int pedido2 = pedidocen.New_(new DateTime (2023, 11, 08), "Calle del Viento 12",7.99,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario2);
-                int pedido3 = pedidocen.New_(new DateTime (2023, 11, 06), "Calle del Oro 1", 41.43,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
-                ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.aceptado, usuario1);
+                int pedido1 = pedidocen.New_ (new DateTime (2023, 11, 09), "Calle del Oro 1", 0,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario1);
+                int pedido2 = pedidocen.New_ (new DateTime (2023, 11, 08), "Calle del Viento 12", 0,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.pendiente, usuario2);
+                int pedido3 = pedidocen.New_ (new DateTime (2023, 11, 06), "Calle del Oro 1", 0,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.MetodosPagoEnum.visa,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoPedidoEnum.aceptado, usuario1);
 
                 //Creacion de lineas de pedido
-                int lineaPedido1 = lineapedidocen.New_(21.42, pedido1, album1);
-                int lineaPedido2 = lineapedidocen.New_(7.99, pedido1, album2);
-                int lineaPedido3 = lineapedidocen.New_(7.99, pedido2, album2);
-                int lineaPedido4 = lineapedidocen.New_(41.43, pedido3, album3);
+                LineaPedidoCP lineaPedidoCP = new LineaPedidoCP (new SessionCPNHibernate());
 
+                lineaPedidoCP.New_ (21.42, pedido1, album1);
+                lineaPedidoCP.New_ (7.99, pedido1, album2);
+                lineaPedidoCP.New_ (7.99, pedido2, album2);
+                lineaPedidoCP.New_ (41.43, pedido3, album3);
+
+                PedidoEN pedidoEN = pedidocen.GetID(pedido1);
+                Console.WriteLine(" ");
+                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
+                Console.WriteLine(" ");
+                
+                pedidoEN = pedidocen.GetID(pedido2);
+                Console.WriteLine(" ");
+                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
+                Console.WriteLine(" ");
+
+                pedidoEN = pedidocen.GetID(pedido3);
+                Console.WriteLine(" ");
+                Console.WriteLine("El total del pedido "+pedidoEN.Id+" es: "+"{0:N2}",pedidoEN.Total);
+                Console.WriteLine(" ");
 
                 //Probar CUSTOMS
 
@@ -352,20 +369,19 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 // FILTRO PARA COMPROBAR LOS ARTISTAS FAVORITOS DE UN USUARIO EN ESPECIFICO
-                IList<ArtistaEN> listaArtistasFavs = artistacen.GetArtistasFavsUsu(usuario1);
+                IList<ArtistaEN> listaArtistasFavs = artistacen.GetArtistasFavsUsu (usuario1);
 
                 Console.WriteLine (" ");
-                Console.WriteLine("Consulta de los ARTISTAS FAVORITOS de email: " + usuario1);
+                Console.WriteLine ("Consulta de los ARTISTAS FAVORITOS de email: " + usuario1);
 
-                foreach (ArtistaEN artista in listaArtistasFavs)
-                { // recorrer la lista
-                    Console.WriteLine("Artista " + artista.Nombre);
+                foreach (ArtistaEN artista in listaArtistasFavs) { // recorrer la lista
+                        Console.WriteLine ("Artista " + artista.Nombre);
                 }
 
-                Console.WriteLine(" ");
-                    
+                Console.WriteLine (" ");
+
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
