@@ -416,6 +416,32 @@ public static void InitializeData ()
 
                 Console.WriteLine(" ");
 
+                Console.WriteLine("----Customs Transactions----");
+
+                AdminCP adminCP = new AdminCP(new SessionCPNHibernate ());
+
+                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
+
+                adminCP.BaneoPermanente(usuarioen1.Email);
+
+                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente;
+
+                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
+
+                adminCP.BaneoTemporal(usuarioen1.Email);
+                
+                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
+
+                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
+
+
+                AlbumCP albumCP = new AlbumCP(new SessionCPNHibernate ());
+                usuarioen1.Album = new List<AlbumEN>();
+
+                albumCP.PagarAlbum(albumen1.Id, usuarioen1.Email);
+
+                Console.WriteLine(usuarioen1.Album);
+
                 /*PROTECTED REGION END*/
             }
         catch (Exception ex)
