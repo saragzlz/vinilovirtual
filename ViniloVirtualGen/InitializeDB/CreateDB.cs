@@ -355,6 +355,28 @@ public static void InitializeData ()
                 }
                 Console.WriteLine (" ");
 
+                // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS ALBUMES
+                IList<ComentarioAlbEN> listaCommAlbUsu = comentarioalbcen.GetCommentsAlbumsUsu (usuario3);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Consulta de los comentarios de ALBUMES del usuario: " + usuario3);
+
+                foreach (ComentarioAlbEN comentario in listaCommAlbUsu) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+                Console.WriteLine (" ");
+
+                // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS COMUNIDADES
+                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu (usuario3);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Consulta de los comentarios del COMUNIDADES del usuario: " + usuario3);
+
+                foreach (ComentarioComEN comentario in listaCommComunidadesUsu) { // recorrer la lista
+                        Console.WriteLine ("Comentario: " + comentario.Id + ": " + comentario.Texto);
+                }
+                Console.WriteLine (" ");
+
 
                 // FILTROS DE FAVORITOS -----------------------------------------------------------------------------
                 // FILTRO PARA COMPROBAR LOS ALBUMES FAVORITOS DE UN USUARIO EN ESPECIFICO
@@ -380,35 +402,22 @@ public static void InitializeData ()
 
                 Console.WriteLine (" ");
 
-                Console.WriteLine("----Customs Transactions----");
+                // FILTRO ALBUMES DE UN GENERO
+                IList<AlbumEN> listaAlbumesDelGenero = 
+                albumcen.GetAlbumsDelGenero(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie);
 
-                AdminCP adminCP = new AdminCP(new SessionCPNHibernate ());
+                Console.WriteLine(" ");
+                Console.WriteLine("Consulta de los AlBUMES que pertenecen al genero musical INDIE");
 
-                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
+                foreach (AlbumEN album in listaAlbumesDelGenero)
+                { // recorrer la lista
+                    Console.WriteLine("Album " + album.Nombre);
+                }
 
-                adminCP.BaneoPermanente(usuarioen1.Email);
-
-                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente;
-
-                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
-
-                adminCP.BaneoTemporal(usuarioen1.Email);
-                
-                usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
-
-                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
-
-
-                AlbumCP albumCP = new AlbumCP(new SessionCPNHibernate ());
-                usuarioen1.Album = new List<AlbumEN>();
-
-                albumCP.PagarAlbum(albumen1.Id, usuarioen1.Email);
-
-                Console.WriteLine(usuarioen1.Album);
-
+                Console.WriteLine(" ");
 
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

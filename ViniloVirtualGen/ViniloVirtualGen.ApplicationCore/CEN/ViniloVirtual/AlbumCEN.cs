@@ -132,5 +132,9 @@ public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vini
 {
         return _IAlbumRepository.GetAlbumesFavsUsu (p_email);
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumsDelGenero (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum ? p_genero)
+{
+        return _IAlbumRepository.GetAlbumsDelGenero (p_genero);
+}
 }
 }

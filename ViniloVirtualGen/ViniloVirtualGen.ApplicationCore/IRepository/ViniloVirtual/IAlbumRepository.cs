@@ -48,5 +48,8 @@ System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtu
 
 
 System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesFavsUsu (string p_email);
+
+
+System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumsDelGenero (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum ? p_genero);
 }
 }

@@ -103,5 +103,9 @@ public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vini
 {
         return _IComentarioComRepository.GetComentariosComunidad (p_id);
 }
+public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioComEN> GetCommentsComunidadUsu (string p_email)
+{
+        return _IComentarioComRepository.GetCommentsComunidadUsu (p_email);
+}
 }
 }
