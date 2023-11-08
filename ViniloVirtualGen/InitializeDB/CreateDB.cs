@@ -367,7 +367,7 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 // FILTRO PARA COMPROBAR TODOS LOS COMENTARIOS DE UN USUARIO EN LOS COMUNIDADES
-                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu(usuario2);
+                IList<ComentarioComEN> listaCommComunidadesUsu = comentariocomcen.GetCommentsComunidadUsu(usuario3);
 
                 Console.WriteLine(" ");
                 Console.WriteLine("Consulta de los comentarios del COMUNIDADES del usuario: " + usuario3);
