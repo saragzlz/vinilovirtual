@@ -238,8 +238,6 @@ public static void InitializeData ()
                 //Probar CUSTOMS
 
                 //USUARIO
-                //Modificamos el estado a "2", equivalente a "baneado temporal"
-                usuariocen.ModificarEstado ("alvaro@gmail.com", 2);
                 //Modificamos el nombre del usuario
                 usuariocen.ModificarNombre ("alvaro@gmail.com", "Alvaro");
                 //Modificamos la imagen del usuario
@@ -248,7 +246,6 @@ public static void InitializeData ()
                 UsuarioEN usuarioen1 = usuariorepository.GetID (usuario1);
 
                 Console.WriteLine (" ");
-                Console.WriteLine ("Estado de " + usuario1 + " cambiado a: " + usuarioen1.Estado);
                 Console.WriteLine ("Nombre de " + usuario1 + " cambiado a: " + usuarioen1.Nombre);
                 Console.WriteLine ("Imagen de perfil de " + usuario1 + " cambiado a: " + usuarioen1.Imagen);
                 Console.WriteLine (" ");
@@ -416,30 +413,47 @@ public static void InitializeData ()
 
                 Console.WriteLine(" ");
 
+
+
+
+                //Probar CUSTOM TRANSSACTIONS
                 Console.WriteLine("----Customs Transactions----");
+                Console.WriteLine(" ");
 
                 AdminCP adminCP = new AdminCP(new SessionCPNHibernate ());
 
+                //Transsaction de baneo permanente
+                Console.WriteLine("Transsaction de Baneo Permanente");
                 Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
-
+                Console.WriteLine(" ");
+   
                 adminCP.BaneoPermanente(usuarioen1.Email);
-
                 usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente;
 
-                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
-
-                adminCP.BaneoTemporal(usuarioen1.Email);
+                Console.WriteLine(" ");
+                Console.WriteLine("Estado usuario actual: "+ usuarioen1.Estado);
+                Console.WriteLine(" ");
                 
+                //Transsacion de baneo temporal
+                Console.WriteLine("Transsaction de Baneo Temporal");
+                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
+                Console.WriteLine(" ");
+
+                adminCP.BaneoTemporal(usuarioen1.Email);              
                 usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
 
-                Console.WriteLine("Estado usuario: "+ usuarioen1.Estado);
+                Console.WriteLine(" ");
+                Console.WriteLine("Estado usuario actual: "+ usuarioen1.Estado);
+                Console.WriteLine(" ");
 
+                //Transsaction de pagar album
 
                 AlbumCP albumCP = new AlbumCP(new SessionCPNHibernate ());
                 usuarioen1.Album = new List<AlbumEN>();
 
                 albumCP.PagarAlbum(albumen1.Id, usuarioen1.Email);
 
+                Console.WriteLine(" ");
                 Console.WriteLine(usuarioen1.Album);
 
                 /*PROTECTED REGION END*/

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Vinilo.domainModel&apos; to &apos;models&apos;&#x0D;&#x0A;- Original project: &apos;Ejercicio3&apos;&#x0D;&#x0A;- Destination element: &apos;models&apos;&#x0D;&#x0A;- Original element: &apos;Vinilo.domainModel&apos;" description="Copy file" element1="models/Vinilo.domainModel" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1698661221222" target="/ViniloVirtual/models" units="0" version="1.0"/>
+</session>

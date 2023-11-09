@@ -1,0 +1,4 @@
+INDEX VERSION 1.127+D:\OOH4RIA\DDP2023\.metadata\.plugins\org.eclipse.jdt.core
+14526675.index
+1047794740.index
+1650688248.index
