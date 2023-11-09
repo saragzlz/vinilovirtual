@@ -31,12 +31,12 @@ public void BaneoTemporal (string p_oid)
                 CPSession.SessionInitializeTransaction ();
                 adminCEN = new  UsuarioCEN (CPSession.UnitRepo.UsuarioRepository);
 
-                UsuarioEN usuarioEN = adminCEN.GetID(p_oid);
+                UsuarioEN usuarioEN = adminCEN.GetID (p_oid);
 
                 //Baneamos al usaurio;
                 usuarioEN.Estado = Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
-     
-                adminCEN.get_IUsuarioRepository().ModifyDefault(usuarioEN);
+
+                adminCEN.get_IUsuarioRepository ().ModifyDefault (usuarioEN);
 
                 CPSession.Commit ();
         }

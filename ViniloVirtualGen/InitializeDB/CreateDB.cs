@@ -400,64 +400,61 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 // FILTRO ALBUMES DE UN GENERO
-                IList<AlbumEN> listaAlbumesDelGenero = 
-                albumcen.GetAlbumsDelGenero(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie);
+                IList<AlbumEN> listaAlbumesDelGenero =
+                        albumcen.GetAlbumsDelGenero (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie);
 
-                Console.WriteLine(" ");
-                Console.WriteLine("Consulta de los AlBUMES que pertenecen al genero musical INDIE");
+                Console.WriteLine (" ");
+                Console.WriteLine ("Consulta de los AlBUMES que pertenecen al genero musical INDIE");
 
-                foreach (AlbumEN album in listaAlbumesDelGenero)
-                { // recorrer la lista
-                    Console.WriteLine("Album " + album.Nombre);
+                foreach (AlbumEN album in listaAlbumesDelGenero) { // recorrer la lista
+                        Console.WriteLine ("Album " + album.Nombre);
                 }
 
-                Console.WriteLine(" ");
+                Console.WriteLine (" ");
 
 
 
 
                 //Probar CUSTOM TRANSSACTIONS
-                Console.WriteLine("----Customs Transactions----");
-                Console.WriteLine(" ");
+                Console.WriteLine ("----Customs Transactions----");
+                Console.WriteLine (" ");
 
-                AdminCP adminCP = new AdminCP(new SessionCPNHibernate ());
+                AdminCP adminCP = new AdminCP (new SessionCPNHibernate ());
 
                 //Transsaction de baneo permanente
-                Console.WriteLine("Transsaction de Baneo Permanente");
-                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
-                Console.WriteLine(" ");
-   
-                adminCP.BaneoPermanente(usuarioen1.Email);
+                Console.WriteLine ("Transsaction de Baneo Permanente");
+                Console.WriteLine ("Estado usuario anterior: " + usuarioen1.Estado);
+                Console.WriteLine (" ");
+
+                adminCP.BaneoPermanente (usuarioen1.Email);
                 usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente;
 
-                Console.WriteLine(" ");
-                Console.WriteLine("Estado usuario actual: "+ usuarioen1.Estado);
-                Console.WriteLine(" ");
-                
-                //Transsacion de baneo temporal
-                Console.WriteLine("Transsaction de Baneo Temporal");
-                Console.WriteLine("Estado usuario anterior: "+ usuarioen1.Estado);
-                Console.WriteLine(" ");
+                Console.WriteLine (" ");
+                Console.WriteLine ("Estado usuario actual: " + usuarioen1.Estado);
+                Console.WriteLine (" ");
 
-                adminCP.BaneoTemporal(usuarioen1.Email);              
+                //Transsacion de baneo temporal
+                Console.WriteLine ("Transsaction de Baneo Temporal");
+                Console.WriteLine ("Estado usuario anterior: " + usuarioen1.Estado);
+                Console.WriteLine (" ");
+
+                adminCP.BaneoTemporal (usuarioen1.Email);
                 usuarioen1.Estado = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal;
 
-                Console.WriteLine(" ");
-                Console.WriteLine("Estado usuario actual: "+ usuarioen1.Estado);
-                Console.WriteLine(" ");
+                Console.WriteLine (" ");
+                Console.WriteLine ("Estado usuario actual: " + usuarioen1.Estado);
+                Console.WriteLine (" ");
 
                 //Transsaction de pagar album
+                PedidoCP pedidoCP =  new PedidoCP(new SessionCPNHibernate ());
 
-                AlbumCP albumCP = new AlbumCP(new SessionCPNHibernate ());
-                usuarioen1.Album = new List<AlbumEN>();
-
-                albumCP.PagarAlbum(albumen1.Id, usuarioen1.Email);
-
-                Console.WriteLine(" ");
-                Console.WriteLine(usuarioen1.Album);
+                pedidoCP.PagarPedido(pedidoEN.Id, usuarioen1.Email);
+                
+                Console.WriteLine (" ");
+                Console.WriteLine (usuarioen1.Album);
 
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
