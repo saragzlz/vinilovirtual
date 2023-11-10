@@ -446,12 +446,12 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 //Transsaction de pagar album
-                PedidoCP pedidoCP =  new PedidoCP(new SessionCPNHibernate ());
+                PedidoCP pedidoCP = new PedidoCP (new SessionCPNHibernate ());
 
-                pedidoCP.PagarPedido(pedidoEN.Id, usuarioen1.Email);
+                pedidoCP.PagarPedido (pedidoEN.Id, usuarioen1.Email);
+                usuarioen1.Album  = new List<AlbumEN>();
                 
-                Console.WriteLine (" ");
-                Console.WriteLine (usuarioen1.Album);
+                Console.WriteLine (usuarioen1.Album.Count > 0  ? usuarioen1.Album[0].Precio : "Albumes");
 
                 /*PROTECTED REGION END*/
         }
