@@ -167,6 +167,9 @@ public void Modify (AdminEN admin)
 
                 adminNH.Imagen = admin.Imagen;
 
+
+                adminNH.Apellido = admin.Apellido;
+
                 session.Update (adminNH);
                 SessionCommit ();
         }

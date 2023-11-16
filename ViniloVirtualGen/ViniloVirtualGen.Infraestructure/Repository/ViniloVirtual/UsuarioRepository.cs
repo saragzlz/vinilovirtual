@@ -121,6 +121,9 @@ public void ModifyDefault (UsuarioEN usuario)
 
 
 
+
+                usuarioNH.Apellido = usuario.Apellido;
+
                 session.Update (usuarioNH);
                 SessionCommit ();
         }
@@ -191,6 +194,9 @@ public void Modify (UsuarioEN usuario)
 
 
                 usuarioNH.Imagen = usuario.Imagen;
+
+
+                usuarioNH.Apellido = usuario.Apellido;
 
                 session.Update (usuarioNH);
                 SessionCommit ();

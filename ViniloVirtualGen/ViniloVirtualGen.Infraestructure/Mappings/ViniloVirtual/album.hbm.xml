@@ -27,6 +27,9 @@
 					<property name="Precio" type="double"> 
 						<column name="precio"  not-null="true"/>
 					</property>
+					<property name="NumLikes" type="integer"> 
+						<column name="numLikes"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -84,6 +87,8 @@
 									<column name="FK_email_idUsuario_0"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					

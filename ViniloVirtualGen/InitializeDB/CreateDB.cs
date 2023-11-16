@@ -110,13 +110,13 @@ public static void InitializeData ()
                 //Creacion de usuarios
                 string usuario1 = usuariocen.New_ ("ablarb", "0000", "alvaro@gmail.com", new DateTime (2000, 10, 23),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "fallo");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "fallo", "Sanz");
                 string usuario2 = usuariocen.New_ ("Sara", "1313", "sara@gmail.com", new DateTime (1998, 06, 10),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg", "Ródenas");
                 string usuario3 = usuariocen.New_ ("Guillermo", "1414", "guille@gmail.com", new DateTime (2000, 06, 14),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil3.jpg");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil3.jpg", "Puerta");
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
                 Console.WriteLine ("Usuario " + usuario2 + " creado correctamente");
@@ -140,14 +140,14 @@ public static void InitializeData ()
                 //Creacion de albumes
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1,
-                        6.00);
+                        6.00, 0);
 
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2,
-                        7.99);
+                        7.99, 0);
                 int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada3.jpg", artista1,
-                        41.43);
+                        41.43, 0);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
@@ -449,9 +449,9 @@ public static void InitializeData ()
                 PedidoCP pedidoCP = new PedidoCP (new SessionCPNHibernate ());
 
                 pedidoCP.PagarPedido (pedidoEN.Id, usuarioen1.Email);
-                usuarioen1.Album  = new List<AlbumEN>();
-                
-                Console.WriteLine (usuarioen1.Album.Count > 0  ? usuarioen1.Album[0].Precio : "Albumes");
+                usuarioen1.Album = new List<AlbumEN>();
+
+                Console.WriteLine (usuarioen1.Album.Count > 0  ? usuarioen1.Album [0].Precio : "Albumes");
 
                 /*PROTECTED REGION END*/
         }

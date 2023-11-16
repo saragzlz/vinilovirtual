@@ -30,7 +30,7 @@ public IAdminRepository get_IAdminRepository ()
         return this._IAdminRepository;
 }
 
-public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
+public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido)
 {
         AdminEN adminEN = null;
         string oid;
@@ -51,13 +51,15 @@ public string New_ (string p_nombre, String p_pass, string p_email, Nullable<Dat
 
         adminEN.Imagen = p_imagen;
 
+        adminEN.Apellido = p_apellido;
+
 
 
         oid = _IAdminRepository.New_ (adminEN);
         return oid;
 }
 
-public void Modify (string p_Admin_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen)
+public void Modify (string p_Admin_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido)
 {
         AdminEN adminEN = null;
 
@@ -70,6 +72,7 @@ public void Modify (string p_Admin_OID, string p_nombre, String p_pass, Nullable
         adminEN.Genero = p_genero;
         adminEN.Estado = p_estado;
         adminEN.Imagen = p_imagen;
+        adminEN.Apellido = p_apellido;
         //Call to AdminRepository
 
         _IAdminRepository.Modify (adminEN);

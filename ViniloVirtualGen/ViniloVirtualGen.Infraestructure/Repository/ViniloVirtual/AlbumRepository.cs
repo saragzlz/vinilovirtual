@@ -116,6 +116,9 @@ public void ModifyDefault (AlbumEN album)
 
 
 
+
+                albumNH.NumLikes = album.NumLikes;
+
                 session.Update (albumNH);
                 SessionCommit ();
         }
@@ -191,6 +194,9 @@ public void Modify (AlbumEN album)
 
 
                 albumNH.Precio = album.Precio;
+
+
+                albumNH.NumLikes = album.NumLikes;
 
                 session.Update (albumNH);
                 SessionCommit ();

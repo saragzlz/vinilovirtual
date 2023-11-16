@@ -31,17 +31,17 @@ public void PagarPedido (int p_oid, string emailUsuario)
         {
                 CPSession.SessionInitializeTransaction ();
                 pedidoCEN = new  PedidoCEN (CPSession.UnitRepo.PedidoRepository);
-                usuarioCEN = new UsuarioCEN(CPSession.UnitRepo.UsuarioRepository);
-                PedidoEN pedidoEN = pedidoCEN.GetID(p_oid);
+                usuarioCEN = new UsuarioCEN (CPSession.UnitRepo.UsuarioRepository);
+                PedidoEN pedidoEN = pedidoCEN.GetID (p_oid);
 
-                UsuarioEN usuarioEN = usuarioCEN.GetID(emailUsuario);
+                UsuarioEN usuarioEN = usuarioCEN.GetID (emailUsuario);
 
-                foreach(LineaPedidoEN x in pedidoEN.LineaPedido){
-                        usuarioEN.Album.Add(x.Album);
+                foreach (LineaPedidoEN x in pedidoEN.LineaPedido) {
+                        usuarioEN.Album.Add (x.Album);
                 }
 
-  
-                usuarioCEN.get_IUsuarioRepository().ModifyDefault(usuarioEN);
+
+                usuarioCEN.get_IUsuarioRepository ().ModifyDefault (usuarioEN);
 
 
 

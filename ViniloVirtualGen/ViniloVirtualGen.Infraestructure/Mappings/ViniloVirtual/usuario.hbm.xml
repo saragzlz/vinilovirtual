@@ -27,6 +27,9 @@
 					<property name="Imagen" type="string"> 
 						<column name="imagen"  not-null="true"/>
 					</property>
+					<property name="Apellido" type="string"> 
+						<column name="apellido"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -112,6 +115,8 @@
 									<column name="FK_idAlbum_idAlbum"/> 
       						</many-to-many>
     					</bag>
+			
+					
 					
 					
 					

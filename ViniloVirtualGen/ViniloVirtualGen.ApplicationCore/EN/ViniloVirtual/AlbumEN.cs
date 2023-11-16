@@ -82,6 +82,13 @@ private System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.Vin
 
 
 
+/**
+ *	Atributo numLikes
+ */
+private int numLikes;
+
+
+
 
 
 
@@ -151,6 +158,12 @@ public virtual System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore
 
 
 
+public virtual int NumLikes {
+        get { return numLikes; } set { numLikes = value;  }
+}
+
+
+
 
 
 public AlbumEN()
@@ -163,20 +176,20 @@ public AlbumEN()
 
 
 
-public AlbumEN(int id, string nombre, string descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum genero, string imagen, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artista, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, double precio, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> comentarioAlb, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario_0
+public AlbumEN(int id, string nombre, string descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum genero, string imagen, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artista, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, double precio, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> comentarioAlb, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario_0, int numLikes
                )
 {
-        this.init (Id, nombre, descripcion, genero, imagen, artista, lineaPedido, usuario, precio, comentarioAlb, usuario_0);
+        this.init (Id, nombre, descripcion, genero, imagen, artista, lineaPedido, usuario, precio, comentarioAlb, usuario_0, numLikes);
 }
 
 
 public AlbumEN(AlbumEN album)
 {
-        this.init (album.Id, album.Nombre, album.Descripcion, album.Genero, album.Imagen, album.Artista, album.LineaPedido, album.Usuario, album.Precio, album.ComentarioAlb, album.Usuario_0);
+        this.init (album.Id, album.Nombre, album.Descripcion, album.Genero, album.Imagen, album.Artista, album.LineaPedido, album.Usuario, album.Precio, album.ComentarioAlb, album.Usuario_0, album.NumLikes);
 }
 
 private void init (int id
-                   , string nombre, string descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum genero, string imagen, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artista, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, double precio, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> comentarioAlb, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario_0)
+                   , string nombre, string descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum genero, string imagen, ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ArtistaEN artista, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario, double precio, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> comentarioAlb, System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> usuario_0, int numLikes)
 {
         this.Id = id;
 
@@ -200,6 +213,8 @@ private void init (int id
         this.ComentarioAlb = comentarioAlb;
 
         this.Usuario_0 = usuario_0;
+
+        this.NumLikes = numLikes;
 }
 
 public override bool Equals (object obj)

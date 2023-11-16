@@ -30,7 +30,7 @@ public IAlbumRepository get_IAlbumRepository ()
         return this._IAlbumRepository;
 }
 
-public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista, double p_precio)
+public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, int p_artista, double p_precio, int p_numLikes)
 {
         AlbumEN albumEN = null;
         int oid;
@@ -55,13 +55,15 @@ public int New_ (string p_nombre, string p_descripcion, ViniloVirtualGen.Applica
 
         albumEN.Precio = p_precio;
 
+        albumEN.NumLikes = p_numLikes;
+
 
 
         oid = _IAlbumRepository.New_ (albumEN);
         return oid;
 }
 
-public void Modify (int p_Album_OID, string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, double p_precio)
+public void Modify (int p_Album_OID, string p_nombre, string p_descripcion, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum p_genero, string p_imagen, double p_precio, int p_numLikes)
 {
         AlbumEN albumEN = null;
 
@@ -73,6 +75,7 @@ public void Modify (int p_Album_OID, string p_nombre, string p_descripcion, Vini
         albumEN.Genero = p_genero;
         albumEN.Imagen = p_imagen;
         albumEN.Precio = p_precio;
+        albumEN.NumLikes = p_numLikes;
         //Call to AlbumRepository
 
         _IAlbumRepository.Modify (albumEN);
