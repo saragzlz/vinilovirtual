@@ -46,3 +46,4 @@ C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\Vinilo
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\refint\ViniloVirtualGen.Infraestructure.dll
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.pdb
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ref\ViniloVirtualGen.Infraestructure.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.Infraestructure\obj\Debug\net7.0\ViniloVirtualGen.Infraestructure.sourcelink.json

@@ -34,3 +34,4 @@ C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\Vinilo
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.sourcelink.json
