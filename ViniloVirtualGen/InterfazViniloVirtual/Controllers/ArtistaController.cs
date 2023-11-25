@@ -28,7 +28,15 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ArtistaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SessionInitialize();
+            ArtistaRepository artRepo = new ArtistaRepository(session);
+            ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+
+            ArtistaEN artEN = artCEN.GetID(id);
+            ArtistaViewModel artView = new ArtistaAssembler().ConvertirENToViewModel(artEN);
+
+            SessionClose();
+            return View(artView);
         }
 
         // GET: ArtistaController/Create
@@ -59,16 +67,29 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ArtistaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SessionInitialize();
+            ArtistaRepository artRepo = new ArtistaRepository(session);
+            ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+
+            ArtistaEN artEN = artCEN.GetID(id);
+            ArtistaViewModel artView = new ArtistaAssembler().ConvertirENToViewModel(artEN);
+
+            SessionClose();
+            return View(artView);
         }
 
         // POST: ArtistaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ArtistaViewModel art)
         {
             try
             {
+
+                ArtistaRepository artRepo = new ArtistaRepository();
+                ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+                artCEN.Modify(id, art.nombre, art.descripcion, art.imagen);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,7 +101,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ArtistaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+
+            ArtistaRepository artRepo = new ArtistaRepository();
+            ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+            artCEN.Destroy(id);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: ArtistaController/Delete/5
