@@ -25,7 +25,7 @@ namespace InterfazViniloVirtual.Controllers
             return View(listUsuarios);
         }
 
-        // GET: ArtistaController/Details/5
+        // GET: UsuarioController/Details/5
         public ActionResult Details(string id)
         {
             SessionInitialize();
@@ -39,7 +39,13 @@ namespace InterfazViniloVirtual.Controllers
             return View(usuView);
         }
 
-        // POST: ArtistaController/Create
+        // GET: UsuarioController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: UsuarioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(UsuarioViewModel usuario)
@@ -80,9 +86,13 @@ namespace InterfazViniloVirtual.Controllers
         }
     
           // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            UsuarioRepository usuRepo = new UsuarioRepository();
+            UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+            usuCEN.Destroy(id);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: UsuarioController/Delete/5
