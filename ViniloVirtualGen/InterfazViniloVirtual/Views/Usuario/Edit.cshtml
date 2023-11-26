@@ -1,4 +1,7 @@
-﻿@model InterfazViniloVirtual.Models.UsuarioViewModel
+﻿@using ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual
+@model InterfazViniloVirtual.Models.UsuarioViewModel
+
+
 
 @{
     ViewData["Title"] = "Edit";
@@ -35,12 +38,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="Genero" class="control-label"></label>
-                <input asp-for="Genero" class="form-control" />
+                <br/>
+                @Html.DropDownListFor(m => m.Genero,
+                         new SelectList(Enum.GetValues(typeof(GeneroUsuarioEnum))),
+                         "Selecciona el estado")
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
                 <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>-->
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <br/>
+                @Html.DropDownListFor(m => m.Estado,
+                         new SelectList(Enum.GetValues(typeof(EstadoUsuarioEnum))),
+                         "Selecciona el estado")
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,7 +62,7 @@
                 <input asp-for="Imagen" class="form-control" />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Pass" class="control-label"></label>
                 <input asp-for="Pass" class="form-control" type="password" />
                 <span asp-validation-for="Pass" class="text-danger"></span>
@@ -65,5 +79,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
