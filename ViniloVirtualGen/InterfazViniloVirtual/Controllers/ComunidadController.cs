@@ -16,7 +16,7 @@ namespace InterfazViniloVirtual.Controllers
             ComunidadRepository comunidadRepository = new ComunidadRepository(session);
             ComunidadCEN comunidadCEN = new ComunidadCEN(comunidadRepository);
 
-            IList<ComunidadEN> listEN = ComunidadCEN.GetAll(0, -1);
+            IList<ComunidadEN> listEN = comunidadCEN.GetAll(0, -1);
 
             IEnumerable<ComunidadViewModel> listComunidad = new ComunidadAssembler().ConvertirListENToViewModel(listEN).ToList();
             SessionClose();
@@ -49,7 +49,7 @@ namespace InterfazViniloVirtual.Controllers
         {
             try
             {
-                ComunidadRepository artRepo = new ComunidadRepository();
+                ComunidadRepository comRepo = new ComunidadRepository();
                 ComunidadCEN comCEN = new ComunidadCEN(comRepo);
                 comCEN.New_(com.Nombre, com.Imagen, com.NumMiembros);
 
@@ -69,7 +69,7 @@ namespace InterfazViniloVirtual.Controllers
             ComunidadCEN comCEN = new ComunidadCEN(comRepo);
 
             ComunidadEN comEN = comCEN.GetID(id);
-            ComunidadViewModel comView = newComunidadAssembler().ConvertirENToViewModel(comEN);
+            ComunidadViewModel comView = new ComunidadAssembler().ConvertirENToViewModel(comEN);
 
             SessionClose();
             return View(comView);
@@ -85,7 +85,7 @@ namespace InterfazViniloVirtual.Controllers
 
                 ComunidadRepository comRepo = new ComunidadRepository();
                 ComunidadCEN comCEN = new ComunidadCEN(comRepo);
-                comCEN.Modify(com.Nombre, com.Imagen, com.NumMiembros);
+                comCEN.Modify(id, com.Nombre, com.Imagen, com.NumMiembros);
 
                 return RedirectToAction(nameof(Index));
             }

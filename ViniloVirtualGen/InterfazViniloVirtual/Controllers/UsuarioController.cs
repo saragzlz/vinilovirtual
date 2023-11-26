@@ -65,18 +65,30 @@ namespace InterfazViniloVirtual.Controllers
         }
 
         // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            SessionInitialize();
+            UsuarioRepository usuRepo = new UsuarioRepository(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+            UsuarioEN usuEN = usuCEN.GetID(id);
+            UsuarioViewModel usuView = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
+
+            SessionClose();
+            return View(usuView);
         }
 
         // POST: UsuarioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, UsuarioViewModel usu)
         {
             try
             {
+                UsuarioRepository usuRepo = new UsuarioRepository();
+                UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

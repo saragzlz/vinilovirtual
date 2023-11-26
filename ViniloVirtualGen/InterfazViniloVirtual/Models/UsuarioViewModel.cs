@@ -15,7 +15,7 @@ namespace InterfazViniloVirtual.Models
         public string Pass { get; set; }
 
         [Display(Prompt = "Escribe el nombre del usuario", Description = "Nombre del usuario", Name = "Nombre")]
-        [StringLength(int.MaxValue, MinimumLength = 7, ErrorMessage = "El nombre debe tener al menos 7 letras")]
+        [StringLength(int.MaxValue, MinimumLength = 3, ErrorMessage = "El nombre debe tener al menos 3 letras")]
         [Required(ErrorMessage = "Debe indicar el nombre del usuario")]
         public string Nombre { get; set; }
 
@@ -32,7 +32,7 @@ namespace InterfazViniloVirtual.Models
         public EstadoUsuarioEnum Estado { get; set; }
 
         [Display(Prompt = "Escribe el género del usuario", Description = "Género del usuario", Name = "Apellido")]
-        [StringLength(int.MaxValue, MinimumLength = 7, ErrorMessage = "El apellido debe tener al menos 7 letras")]
+        [StringLength(int.MaxValue, MinimumLength = 3, ErrorMessage = "El apellido debe tener al menos 3 letras")]
         [Required(ErrorMessage = "Debe indicar el apellido del usuario")]
         public string Apellido { get; set; }
 

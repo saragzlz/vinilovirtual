@@ -9,10 +9,10 @@ namespace InterfazViniloVirtual.Assemblers
         public ComunidadViewModel ConvertirENToViewModel (ComunidadEN en)
         {
             ComunidadViewModel com = new ComunidadViewModel();
-            com.id = en.Id;
-            com.nombre = en.Nombre;
-            com.imagen = en.Imagen;
-            com.numMiembros = en.NumMiembros
+            com.Id = en.Id;
+            com.Nombre = en.Nombre;
+            com.Imagen = en.Imagen;
+            com.NumMiembros = en.NumMiembros;
             return com;
 
         }
