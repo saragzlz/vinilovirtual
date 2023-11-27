@@ -12,7 +12,7 @@ namespace InterfazViniloVirtual.Models
                 [StringLength(maximumLength:50, ErrorMessage = "El nombre no puede tener mas de 50 caracteres")]
                 public string Nombre { get; set; }
 
-                [Display(Prompt = "Selecciona una imagen para la Comunidad", Description = "Imagen de la Comunidad", Name = "Comunidad")]
+                [Display(Prompt = "Selecciona una imagen para la Comunidad", Description = "Imagen de la Comunidad", Name = "Imagen")]
                 [DataType(DataType.ImageUrl)]
                 [Required(ErrorMessage = "Debe colocar una imagen a la comunidad")]
                 public string Imagen { get; set; }
