@@ -36,7 +36,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Create
         public ActionResult Create()
         {
-            return View();
+            AlbumViewModel albumViewModel = new AlbumViewModel();
+            ArtistaRepository artsRepos = new ArtistaRepository();
+            ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
+            albumViewModel.ArtistaENs = artsEN.GetAll(0, -1).ToList();
+            
+            return View(albumViewModel);
         }
 
         // POST: AlbumController/Create
@@ -47,16 +52,13 @@ namespace InterfazViniloVirtual.Controllers
             try
             {
                 AlbumRepository albRepo = new AlbumRepository();
+                ArtistaRepository artsRepos = new ArtistaRepository();
+
                 AlbumCEN albCEN = new AlbumCEN(albRepo);
-
-                //ArtistaRepository artRepo = new ArtistaRepository();
-
-                int idArtista = alb.Artista.Id;
-
-                Console.WriteLine("Artista> " + alb.Artista.Id);
+                ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
                 
 
-                albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, idArtista, alb.Precio, alb.Likes);
+                albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.IdArtista, alb.Precio, alb.Likes);
 
 
                 return RedirectToAction(nameof(Index));

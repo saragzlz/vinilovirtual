@@ -56,6 +56,8 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Seleccione un artista")]
         public ArtistaEN Artista { get; set; }
 
+        public int IdArtista { get; set; }
+
         // Lista de artistas disponibles
         private static readonly List<ArtistaEN> artistaENs = new List<ArtistaEN>();
         public List<ArtistaEN> ArtistaENs = artistaENs;
