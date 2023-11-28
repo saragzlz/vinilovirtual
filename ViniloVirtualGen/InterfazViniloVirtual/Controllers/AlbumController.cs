@@ -72,16 +72,27 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SessionInitialize();
+            AlbumRepository albRepo = new AlbumRepository(session);
+            AlbumCEN albCEN = new AlbumCEN(albRepo);
+
+            AlbumEN albEN = albCEN.GetID(id);
+            AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
+
+            SessionClose();
+            return View(albView);
         }
 
         // POST: AlbumController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, AlbumViewModel alb)
         {
             try
             {
+                AlbumRepository albRepo = new AlbumRepository();
+                AlbumCEN albCEN = new AlbumCEN(albRepo);
+                albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.Precio, alb.Likes);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -89,6 +100,7 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+
 
         // GET: AlbumController/Delete/5
         public ActionResult Delete(int id)

@@ -35,3 +35,15 @@ C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\Vinilo
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
 C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.sourcelink.json
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.deps.json
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
