@@ -43,9 +43,12 @@
                 <span asp-validation-for="Likes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdArtista" class="control-label"></label>
-                <input asp-for="IdArtista" class="form-control" />
-                <span asp-validation-for="IdArtista" class="text-danger"></span>
+                <label asp-for="Artista" class="control-label"></label>
+                <br />
+                @Html.DropDownListFor(m => m.IdArtista,
+                new SelectList(Model.ArtistaENs, "Id", "Nombre"),
+                "Selecciona el artista")
+                <span asp-validation-for="Artista" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

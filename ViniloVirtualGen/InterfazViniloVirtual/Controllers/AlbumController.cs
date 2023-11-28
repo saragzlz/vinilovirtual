@@ -30,7 +30,17 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SessionInitialize();
+
+            AlbumRepository albRepo = new AlbumRepository(session);
+            AlbumCEN albCEN = new AlbumCEN(albRepo);
+
+            AlbumEN albEN = albCEN.GetID(id);
+           
+            AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
+
+            SessionClose();
+            return View(albView);
         }
 
         // GET: AlbumController/Create
@@ -77,7 +87,10 @@ namespace InterfazViniloVirtual.Controllers
             AlbumCEN albCEN = new AlbumCEN(albRepo);
 
             AlbumEN albEN = albCEN.GetID(id);
-            AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
+            AlbumViewModel albView = new AlbumViewModel();
+            ArtistaRepository artsRepos = new ArtistaRepository();
+            ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
+            albView.ArtistaENs = artsEN.GetAll(0, -1).ToList();
 
             SessionClose();
             return View(albView);
@@ -91,7 +104,11 @@ namespace InterfazViniloVirtual.Controllers
             try
             {
                 AlbumRepository albRepo = new AlbumRepository();
+                ArtistaRepository artsRepos = new ArtistaRepository();
+
                 AlbumCEN albCEN = new AlbumCEN(albRepo);
+                ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
+
                 albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.Precio, alb.Likes);
                 return RedirectToAction(nameof(Index));
             }
@@ -105,7 +122,11 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            AlbumRepository albRepo = new AlbumRepository();
+            AlbumCEN albCEN = new AlbumCEN(albRepo);
+            albCEN.Destroy(id);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: AlbumController/Delete/5
