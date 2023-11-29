@@ -19,6 +19,8 @@ namespace InterfazViniloVirtual.Models
 
                 [Display(Prompt = "Número de miembros de la comunidad", Description = "Total de miembros de la Comunidad", Name = "NumMiembros")]
                 public int NumMiembros { get; set; }
+
+                public System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioComEN> ComentarioCom { get; set; }
         }
         
 }

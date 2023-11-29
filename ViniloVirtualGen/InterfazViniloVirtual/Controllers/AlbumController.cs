@@ -6,6 +6,7 @@ using ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual;
 using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 using ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
+using System.Globalization;
 
 namespace InterfazViniloVirtual.Controllers
 {
@@ -66,9 +67,10 @@ namespace InterfazViniloVirtual.Controllers
 
                 AlbumCEN albCEN = new AlbumCEN(albRepo);
                 ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
-                
+                double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
 
-                albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.IdArtista, alb.Precio, alb.Likes);
+
+                albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.IdArtista, precio, alb.Likes);
 
 
                 return RedirectToAction(nameof(Index));
@@ -109,8 +111,9 @@ namespace InterfazViniloVirtual.Controllers
 
                 AlbumCEN albCEN = new AlbumCEN(albRepo);
                 ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
+                double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
 
-                albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.Precio, alb.Likes);
+                albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, precio, alb.Likes);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -13,7 +13,7 @@ namespace InterfazViniloVirtual.Assemblers
             album.Titulo = en.Nombre;
             album.Descripcion = en.Descripcion;
             album.Portada = en.Imagen;
-            album.Precio = en.Precio;
+            album.Precio = en.Precio.ToString();
             album.Genero = en.Genero;
             album.Likes = en.NumLikes;
             album.Artista = en.Artista;

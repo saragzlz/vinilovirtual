@@ -38,10 +38,9 @@ namespace InterfazViniloVirtual.Models
         // PRECIO DEL ALBUM
         [Display(Prompt = "Introduce el precio del album", Description = "Precio del album", Name = "Precio")]
         [Required(ErrorMessage = "Debe indicar el precio del album.")]
-        [DataType(DataType.Currency, ErrorMessage = "El precio debe ser un valor numerico.")]
-        [Range(minimum:0, maximum:10000, ErrorMessage = "El precio debe ser mayor que 0 y menor que 10.000.")]
+        [RegularExpression("^[0-9]+([.])?([0-9]+)?$", ErrorMessage = "El formato de precio incorrecto")]
         
-        public double Precio { get; set; }
+        public string Precio { get; set; }
 
         // NUMERO DE LIKES
         [Display(Prompt = "Introduce un numero de likes para el album", Description = "Numero de likes del album", Name = "Likes")]
