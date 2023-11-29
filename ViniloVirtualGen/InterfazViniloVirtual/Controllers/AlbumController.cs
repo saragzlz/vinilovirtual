@@ -87,13 +87,14 @@ namespace InterfazViniloVirtual.Controllers
             AlbumCEN albCEN = new AlbumCEN(albRepo);
 
             AlbumEN albEN = albCEN.GetID(id);
-            AlbumViewModel albView = new AlbumViewModel();
+            AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
             ArtistaRepository artsRepos = new ArtistaRepository();
             ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
             albView.ArtistaENs = artsEN.GetAll(0, -1).ToList();
 
             SessionClose();
             return View(albView);
+            
         }
 
         // POST: AlbumController/Edit/5
