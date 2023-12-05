@@ -10,6 +10,31 @@ namespace InterfazViniloVirtual.Controllers
 {
     public class UsuarioController : BasicController 
     {
+
+        // GET: UsuarioController/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: UsuarioController/Login
+        [HttpPost]
+        public ActionResult Login(loginUsuarioViewModel login)
+        {
+            UsuarioRepository usuRepo = new UsuarioRepository();
+            UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+            if (usuCEN.Login(login.Email, login.Pass)==null)
+            {
+                ModelState.AddModelError("", "Tu email o tu password son incorrectos");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Album");
+            }
+            return View();
+        }
+
         // GET: UsuarioController
         public ActionResult Index()
         {

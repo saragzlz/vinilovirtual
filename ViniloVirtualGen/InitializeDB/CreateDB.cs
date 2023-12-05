@@ -242,6 +242,12 @@ public static void InitializeData ()
                 usuariocen.ModificarNombre ("alvaro@gmail.com", "Alvaro");
                 //Modificamos la imagen del usuario
                 usuariocen.ModificarImagen ("alvaro@gmail.com", "perfil1.jpg");
+                /* Esta no funciona, el metodo no cambia correctamente la contraseña. Seguramente por temas de encriptado.
+                 * //Modificamos la password e iniciamos sesion
+                 * usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
+                 * if (usuariocen.Login ("alvaro@gmail.com", "1212") != null) {
+                 *      Console.WriteLine ("Usuario loggeado");
+                 * }*/
 
                 UsuarioEN usuarioen1 = usuariorepository.GetID (usuario1);
 
@@ -269,12 +275,6 @@ public static void InitializeData ()
                 //Modificamos la imagen del artista
                 artistacen.ModificarImagen (artista1, "artista1.jpg");
 
-                /* Esta no funciona, el metodo no cambia correctamente la contraseña. Seguramente por temas de encriptado.
-                 * //Modificamos la password e iniciamos sesion
-                 * usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
-                 * if (usuariocen.Login ("alvaro@gmail.com", "1212") != null) {
-                 *      Console.WriteLine ("Usuario loggeado");
-                 * }*/
 
                 ArtistaEN artistaen1 = artistarepository.GetID (artista1);
 

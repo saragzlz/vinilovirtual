@@ -44,4 +44,32 @@ namespace InterfazViniloVirtual.Models
 
         
     }
+
+    public class loginUsuarioViewModel
+    {
+
+        [Display(Prompt = "Introduce tu email", Description = "Email del usuario", Name = "Email")]
+        [RegularExpression("[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}", ErrorMessage = "Por favor introduce un formato de email válido")]
+        [Required(ErrorMessage = "Debes introducir tu email")]
+        public string Email { get; set; }
+
+        [Display(Prompt = "Introduce tu password", Description = "Password del usuario", Name = "Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Debes introducir tu password")]       
+        public string Pass { get; set; }
+    }
+
+    public class registroUsuarioViewModel
+    {
+
+        [Display(Prompt = "Introduce tu email", Description = "Email del usuario", Name = "Email")]
+        [RegularExpression("[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}", ErrorMessage = "Por favor introduce un formato de email válido")]
+        [Required(ErrorMessage = "Debes introducir el email del usuario")]
+        public string Email { get; set; }
+
+        [Display(Prompt = "Introduce tu password", Description = "Password del usuario", Name = "Password")]
+        [DataType(DataType.Password)]
+        [RegularExpression("(?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\[\\]{}\\-_+=|:;'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}", ErrorMessage = "La contraseña debe tener una letra minúscula, una letra mayúscula, un número, un carácter especial y mínimo 8 dígitos")]
+        public string Pass { get; set; }
+    }
 }
