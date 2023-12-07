@@ -28,10 +28,16 @@ namespace InterfazViniloVirtual.Controllers
         {
             SessionInitialize();
             ComunidadRepository comRepo = new ComunidadRepository(session);
-           ComunidadCEN comCEN = new ComunidadCEN(comRepo);
+            ComunidadCEN comCEN = new ComunidadCEN(comRepo);
 
             ComunidadEN comEN = comCEN.GetID(id);
+
             ComunidadViewModel comView = new ComunidadAssembler().ConvertirENToViewModel(comEN);
+
+            IEnumerable<ComentarioComViewModel> comentView = new ComentarioComAssembler().ConvertirListENToViewModel(comEN.ComentarioCom);
+
+            ViewData["Comentarios"] = comentView;
+
 
             SessionClose();
             return View(comView);

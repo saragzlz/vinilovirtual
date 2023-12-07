@@ -30,6 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Likes)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artista)
+            </th>
             @* <th>
                 @Html.DisplayNameFor(model => model.Artista.Id)
             </th> *@
@@ -56,6 +59,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Likes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreArtista)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

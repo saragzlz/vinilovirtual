@@ -19,7 +19,9 @@ namespace InterfazViniloVirtual.Models
 
         public int ComunidadId { get; set; }
 
-        public int UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
+
+        public string NombreUsuario { get; set; }
 
     }
 }

@@ -184,7 +184,7 @@ public static void InitializeData ()
                 int comentarioCom1 = comentariocomcen.New_ (usuario1, comunidad1,
                         "Ojalá el jazz renaciese",
                         new DateTime (2023, 11, 07));
-                int comentarioCom2 = comentariocomcen.New_ (usuario3, comunidad2,
+                int comentarioCom2 = comentariocomcen.New_ ("alvaro@gmail.com", comunidad2,
                         "Como me gusta el Rock",
                         new DateTime (2023, 11, 07));
                 int comentarioCom3 = comentariocomcen.New_ (usuario2, comunidad3,

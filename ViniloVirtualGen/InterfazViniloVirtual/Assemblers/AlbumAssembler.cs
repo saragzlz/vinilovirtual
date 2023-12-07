@@ -17,6 +17,7 @@ namespace InterfazViniloVirtual.Assemblers
             album.Genero = en.Genero;
             album.Likes = en.NumLikes;
             album.Artista = en.Artista;
+            album.NombreArtista = en.Artista.Nombre;
 
             return album;
         }

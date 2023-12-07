@@ -52,13 +52,16 @@ namespace InterfazViniloVirtual.Models
         // ARTISTA -----
         // Propiedad para almacenar el artista seleccionado
         [Display(Prompt = "Seleccione un artista para el album", Description = "Artista del Album", Name = "Artista")]
-        [Required(ErrorMessage = "Seleccione un artista")]
         public ArtistaEN Artista { get; set; }
-
+        
+        [Display(Prompt = "Seleccione un artista para el album", Description = "Artista del Album", Name = "Artista")]
+        [Required(ErrorMessage = "Seleccione un artista")]
         public int IdArtista { get; set; }
 
         // Lista de artistas disponibles
         private static readonly List<ArtistaEN> artistaENs = new List<ArtistaEN>();
         public List<ArtistaEN> ArtistaENs = artistaENs;
+
+        public string NombreArtista { get; set; }
     }
 }
