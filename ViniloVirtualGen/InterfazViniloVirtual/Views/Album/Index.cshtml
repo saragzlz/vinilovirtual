@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Albumes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear Album</a>
 </p>
 <table class="table">
     <thead>
@@ -72,3 +72,32 @@
 }
     </tbody>
 </table>
+<br>
+<br>
+<br>
+<p>
+    Albumes con su artista y portada con el grid
+</p>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style=" display=" flex"; justify-content:center">
+                <table>
+                    <tr>
+                        <td style="width:100px">
+                            @Html.DisplayFor(modelItem => item.Portada)
+                        </td>
+                        <td style="width:120px">
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </td>
+                        <td style="width:100px">
+                            @Html.DisplayFor(modelItem => item.Artista.Nombre)
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        }
+    </div>
+</div>
