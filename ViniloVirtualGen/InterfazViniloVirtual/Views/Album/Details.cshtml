@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    IEnumerable<ComentarioAlbViewModel> comments = (IEnumerable<ComentarioAlbViewModel>)ViewData["Comentarios"];
 }
 
 <h1>Details</h1>
@@ -53,8 +54,39 @@
             @Html.DisplayFor(model => model.IdArtista)
         </dd>
     </dl>
+    <h4>Comentarios</h4>
+</div>
+
+<div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
+    @{
+        var ff = System.Globalization.CultureInfo.InvariantCulture;
+    }
+    @foreach (var it in comments)
+    {
+        <div class="card shadow mb-2">
+
+            <div class="card-body">
+                <h5 class="card-title">@it.NombreUsuario</h5>
+                <p class="card-text">@it.Texto</p>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm">
+                        @it.Fecha.ToString();
+                    </div>
+                    <div class="col-sm">
+                        <button class="btn btn-danger">
+                            @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    }
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
 </div>

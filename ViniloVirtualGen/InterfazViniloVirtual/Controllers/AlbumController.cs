@@ -37,8 +37,12 @@ namespace InterfazViniloVirtual.Controllers
             AlbumCEN albCEN = new AlbumCEN(albRepo);
 
             AlbumEN albEN = albCEN.GetID(id);
-           
+
             AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
+
+            IEnumerable<ComentarioAlbViewModel> comentView = new ComentarioAlbAssembler().ConvertirListENToViewModel(albEN.ComentarioAlb);
+
+            ViewData["Comentarios"] = comentView;
 
             SessionClose();
             return View(albView);

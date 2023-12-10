@@ -8,28 +8,28 @@ using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
 
 namespace InterfazViniloVirtual.Controllers
 {
-    public class ComentarioComController : BasicController
+    public class ComentarioAlbController : BasicController
     {
-        // GET: ComentarioComController/Create
+        // GET: ComentarioAlbController/Create
         public ActionResult Create(int id)
         {
-            ComentarioComViewModel com = new ComentarioComViewModel();
+            ComentarioAlbViewModel com = new ComentarioAlbViewModel();
             com.Id = id;
             return View(com);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ComentarioComViewModel com)
+        public ActionResult Create(ComentarioAlbViewModel com)
         {
             try
             {
-                ComentarioComRepository comRepo = new ComentarioComRepository();
-                ComentarioComCEN comCEN = new ComentarioComCEN(comRepo);
+                ComentarioAlbRepository comRepo = new ComentarioAlbRepository();
+                ComentarioAlbCEN comCEN = new ComentarioAlbCEN(comRepo);
                 DateTime fecha = DateTime.Now;
                 comCEN.New_("alvaro@gmail.com", com.Id, com.Texto, fecha);
 
-                return RedirectToAction("Details", "Comunidad",new {id = com.Id});
+                return RedirectToAction("Details", "Album",new {id = com.Id});
             }
             catch
             {
@@ -37,18 +37,18 @@ namespace InterfazViniloVirtual.Controllers
             }
         }
 
-         // GET: ComentarioComController/Delete/5
+         // GET: ComentarioAlbController/Delete/5
         public ActionResult Delete(int id)
         {
 
-            ComentarioComRepository comRepo = new ComentarioComRepository();
-            ComentarioComCEN comCEN = new ComentarioComCEN(comRepo);
+            ComentarioAlbRepository comRepo = new ComentarioAlbRepository();
+            ComentarioAlbCEN comCEN = new ComentarioAlbCEN(comRepo);
             comCEN.Destroy(id);
 
-            return RedirectToAction("Index", "Comunidad");
+            return RedirectToAction("Index", "Album");
         }
 
-        // POST: ComentarioComController/Delete/5
+        // POST: ComentarioAlbController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

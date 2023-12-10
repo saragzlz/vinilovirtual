@@ -4,25 +4,25 @@ using InterfazViniloVirtual.Models;
 
 namespace InterfazViniloVirtual.Assemblers
 {
-    public class ComentarioComAssembler
+    public class ComentarioAlbAssembler
     {
-        public ComentarioComViewModel ConvertirENToViewModel(ComentarioComEN comentEn)
+        public ComentarioAlbViewModel ConvertirENToViewModel(ComentarioAlbEN comentEn)
         {
-            ComentarioComViewModel comentViewModel = new ComentarioComViewModel();
+            ComentarioAlbViewModel comentViewModel = new ComentarioAlbViewModel();
             comentViewModel.Texto= comentEn.Texto;
             comentViewModel.Id = comentEn.Id;
             comentViewModel.NombreUsuario = comentEn.Usuario.Nombre;
             comentViewModel.UsuarioId = comentEn.Usuario.Email;
-            comentViewModel.ComunidadId = comentEn.Comunidad.Id;
+            comentViewModel.AlbumId = comentEn.Album.Id;
             comentViewModel.Fecha = comentEn.Fecha;
             return comentViewModel;
         }
 
-        public IList<ComentarioComViewModel> ConvertirListENToViewModel(System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioComEN> ens)
+        public IList<ComentarioAlbViewModel> ConvertirListENToViewModel(System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.ComentarioAlbEN> ens)
         {
 
-            IList<ComentarioComViewModel> comments = new List<ComentarioComViewModel>();
-            foreach (ComentarioComEN en in ens)
+            IList<ComentarioAlbViewModel> comments = new List<ComentarioAlbViewModel>();
+            foreach (ComentarioAlbEN en in ens)
             {
                 comments.Add(ConvertirENToViewModel(en));
             }
