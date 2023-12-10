@@ -2,6 +2,7 @@ using InterfazViniloVirtual.Assemblers;
 using InterfazViniloVirtual.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual;
 using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
@@ -30,6 +31,9 @@ namespace InterfazViniloVirtual.Controllers
             }
             else
             {
+                UsuarioEN usuEN = usuCEN.GetID(login.Email);
+                UsuarioViewModel usuVM = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
+                HttpContext.Session.Set<UsuarioViewModel>("usuario", usuVM);
                 return RedirectToAction("Index", "Album");
             }
             return View();

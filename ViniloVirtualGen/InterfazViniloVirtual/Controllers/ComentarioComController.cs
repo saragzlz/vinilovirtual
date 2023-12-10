@@ -27,7 +27,8 @@ namespace InterfazViniloVirtual.Controllers
                 ComentarioComRepository comRepo = new ComentarioComRepository();
                 ComentarioComCEN comCEN = new ComentarioComCEN(comRepo);
                 DateTime fecha = DateTime.Now;
-                comCEN.New_("alvaro@gmail.com", com.Id, com.Texto, fecha);
+                UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+                comCEN.New_(user.Email, com.Id, com.Texto, fecha);
 
                 return RedirectToAction("Details", "Comunidad",new {id = com.Id});
             }
