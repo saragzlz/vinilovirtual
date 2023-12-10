@@ -10,6 +10,13 @@ namespace InterfazViniloVirtual.Controllers
 {
     public class ArtistaController : BasicController
     {
+        private readonly IWebHostEnvironment _webHost;
+
+        public ArtistaController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: ArtistaController
         public ActionResult Index()
         {
@@ -48,14 +55,33 @@ namespace InterfazViniloVirtual.Controllers
         // POST: ArtistaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ArtistaViewModel art)
+        public async Task<ActionResult> Create(ArtistaViewModel art)
         {
             try
             {
                 ArtistaRepository artRepo = new ArtistaRepository();
                 ArtistaCEN artCEN = new ArtistaCEN(artRepo);
-                artCEN.New_(art.nombre, art.descripcion, art.imagen);
+            
 
+                string fileName = "", path = "";
+                if (art.Fichero != null && art.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(art.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await art.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    artCEN.New_(art.nombre, art.descripcion, fileName);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

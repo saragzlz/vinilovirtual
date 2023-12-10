@@ -23,6 +23,9 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Debe indicar la imagen del artista")]
         public string imagen { get; set; }
 
+        [Display(Prompt = "Imagen", Description = "Imagen del Artículo", Name = "Imagen")]
+        public IFormFile Fichero { get; set; }
+
 
     }
 }
