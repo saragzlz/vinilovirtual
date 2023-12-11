@@ -23,12 +23,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.descripcion)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.imagen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.imagen)
-        </dd>
+        @if (Model != null && Model.imagen != null)
+        {
+            <td class="col-sm-10">
+                <img src="@Html.DisplayFor(model => model.imagen)" height="150" width="150" />
+            </td>
+        }
     </dl>
 </div>
 <div>

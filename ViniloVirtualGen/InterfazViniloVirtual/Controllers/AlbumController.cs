@@ -12,6 +12,14 @@ namespace InterfazViniloVirtual.Controllers
 {
     public class AlbumController : BasicController
     {
+
+        private readonly IWebHostEnvironment _webHost;
+
+        public AlbumController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: AlbumController
         public ActionResult Index()
         {
@@ -62,21 +70,35 @@ namespace InterfazViniloVirtual.Controllers
         // POST: AlbumController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AlbumViewModel alb)
+        public async Task<ActionResult> Create(AlbumViewModel alb)
         {
             try
             {
                 AlbumRepository albRepo = new AlbumRepository();
-                ArtistaRepository artsRepos = new ArtistaRepository();
-
                 AlbumCEN albCEN = new AlbumCEN(albRepo);
-                ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
-                double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
 
 
-                albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, alb.IdArtista, precio, alb.Likes);
+                string fileName = "", path = "";
+                if (alb.Fichero != null && alb.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(alb.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
 
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await alb.Fichero.CopyToAsync(stream);
+                    }
 
+                    double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
+
+                    fileName = "/Images/" + fileName;
+                    albCEN.New_(alb.Titulo, alb.Descripcion, alb.Genero, fileName, alb.IdArtista, precio, alb.Likes);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

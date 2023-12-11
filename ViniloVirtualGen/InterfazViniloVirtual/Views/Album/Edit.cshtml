@@ -1,4 +1,5 @@
-﻿@model InterfazViniloVirtual.Models.AlbumViewModel
+﻿@using ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual
+@model InterfazViniloVirtual.Models.AlbumViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -18,37 +19,34 @@
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Artista" class="control-label"></label>
+                <br />
+                @Html.DropDownListFor(m => m.IdArtista,
+                         new SelectList(Model.ArtistaENs, "Id", "Nombre"),
+                         "Selecciona el artista")
+                <span asp-validation-for="Artista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Genero" class="control-label"></label>
-                <input asp-for="Genero" class="form-control" />
+                <br />
+                @Html.DropDownListFor(m => m.Genero,
+                         new SelectList(Enum.GetValues(typeof(GeneroMusicalEnum))),
+                         "Selecciona el género")
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Portada" class="control-label"></label>
-                <input asp-for="Portada" class="form-control" />
-                <span asp-validation-for="Portada" class="text-danger"></span>
+                <label asp-for="Fichero" class="control-label"></label>
+                <input asp-for="Fichero" type="file">
             </div>
             <div class="form-group">
                 <label asp-for="Precio" class="control-label"></label>
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Likes" class="control-label"></label>
-                <input asp-for="Likes" class="form-control" />
-                <span asp-validation-for="Likes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Artista" class="control-label"></label>
-                <br />
-                @Html.DropDownListFor(m => m.IdArtista,
-                new SelectList(Model.ArtistaENs, "Id", "Nombre"),
-                "Selecciona el artista")
-                <span asp-validation-for="Artista" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -30,7 +30,7 @@ namespace InterfazViniloVirtual
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".Ejemplo.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromSeconds(1000);
                 options.Cookie.IsEssential = true;
             }
             );

@@ -10,6 +10,14 @@ namespace InterfazViniloVirtual.Controllers
 {
     public class ComunidadController : BasicController
     {
+
+        private readonly IWebHostEnvironment _webHost;
+
+        public ComunidadController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         public ActionResult Index()
         {
             SessionInitialize();
@@ -43,22 +51,42 @@ namespace InterfazViniloVirtual.Controllers
             return View(comView);
         }
 
-    
+        // GET: ComunidadController/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        // POST: ComunidadController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ComunidadViewModel com)
+        public async Task<ActionResult> Create(ComunidadViewModel com)
         {
             try
             {
                 ComunidadRepository comRepo = new ComunidadRepository();
                 ComunidadCEN comCEN = new ComunidadCEN(comRepo);
-                comCEN.New_(com.Nombre, com.Imagen, com.NumMiembros);
 
+
+                string fileName = "", path = "";
+                if (com.Fichero != null && com.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(com.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await com.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    comCEN.New_(com.Nombre, fileName, 0);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

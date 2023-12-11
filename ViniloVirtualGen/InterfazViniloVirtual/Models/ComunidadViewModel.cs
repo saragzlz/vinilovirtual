@@ -17,6 +17,9 @@ namespace InterfazViniloVirtual.Models
                 [Required(ErrorMessage = "Debe colocar una imagen a la comunidad")]
                 public string Imagen { get; set; }
 
+                [Display(Prompt = "Imagen", Description = "Imagen del Artista", Name = "Imagen")]
+                public IFormFile Fichero { get; set; }
+
                 [Display(Prompt = "Número de miembros de la comunidad", Description = "Total de miembros de la Comunidad", Name = "NumMiembros")]
                 public int NumMiembros { get; set; }
 

@@ -35,6 +35,9 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Debe seleccionar una portada para el album")]
         public string Portada { get; set; }
 
+        [Display(Prompt = "Imagen", Description = "Imagen del Artículo", Name = "Imagen")]
+        public IFormFile Fichero { get; set; }
+
         // PRECIO DEL ALBUM
         [Display(Prompt = "Introduce el precio del album", Description = "Precio del album", Name = "Precio")]
         [Required(ErrorMessage = "Debe indicar el precio del album.")]

@@ -123,6 +123,11 @@ public static void InitializeData ()
                 Console.WriteLine ("Usuario " + usuario3 + " creado correctamente");
                 Console.WriteLine (" ");
 
+                //Creacion de administrador
+                string admin1 = admincen.New_("DSM", "9999", "dsm@gmail.com", new DateTime(2024, 09, 01),
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil4.jpg", "Administrador");
+
                 //Creacion de artistas
                 int artista1 = artistacen.New_ ("Her's",
                         "Her's fue una banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros",
