@@ -124,7 +124,7 @@ namespace InterfazViniloVirtual.Controllers
             return View(albView);
             
         }
-
+        /*
         // POST: AlbumController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -140,6 +140,46 @@ namespace InterfazViniloVirtual.Controllers
                 double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
 
                 albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, alb.Portada, precio, alb.Likes);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }*/
+
+        // POST: AlbumController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, AlbumViewModel alb)
+        {
+            try
+            {
+                AlbumRepository albRepo = new AlbumRepository();
+                AlbumCEN albCEN = new AlbumCEN(albRepo);
+
+
+                string fileName = "", path = "";
+                if (alb.Fichero != null && alb.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(alb.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await alb.Fichero.CopyToAsync(stream);
+                    }
+
+                    double precio = Double.Parse(alb.Precio, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-GB"));
+
+                    fileName = "/Images/" + fileName;
+                    albCEN.Modify(id, alb.Titulo, alb.Descripcion, alb.Genero, fileName, precio, alb.Likes);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -109,7 +109,7 @@ namespace InterfazViniloVirtual.Controllers
             return View(comView);
         }
 
-    
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ComunidadViewModel com)
@@ -128,8 +128,46 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+        */
 
-        
+        // POST: ComunidadController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, ComunidadViewModel com)
+        {
+            try
+            {
+                ComunidadRepository comRepo = new ComunidadRepository();
+                ComunidadCEN comCEN = new ComunidadCEN(comRepo);
+
+
+                string fileName = "", path = "";
+                if (com.Fichero != null && com.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(com.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await com.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    comCEN.Modify(id, com.Nombre, fileName, com.NumMiembros);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult Delete(int id)
         {
 

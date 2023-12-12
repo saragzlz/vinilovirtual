@@ -103,7 +103,7 @@ namespace InterfazViniloVirtual.Controllers
             SessionClose();
             return View(artView);
         }
-
+        /*
         // POST: ArtistaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -123,7 +123,45 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+        */
 
+        // POST: ArtistaController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, ArtistaViewModel art)
+        {
+            try
+            {
+                ArtistaRepository artRepo = new ArtistaRepository();
+                ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+
+
+                string fileName = "", path = "";
+                if (art.Fichero != null && art.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(art.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await art.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    artCEN.Modify(id, art.nombre, art.descripcion, fileName);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         // GET: ArtistaController/Delete/5
         public ActionResult Delete(int id)
         {
