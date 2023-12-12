@@ -110,13 +110,16 @@ public static void InitializeData ()
                 //Creacion de usuarios
                 string usuario1 = usuariocen.New_ ("ablarb", "0000", "alvaro@gmail.com", new DateTime (2000, 10, 23),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "fallo", "Sanz");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "fallo", "Sanz",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario2 = usuariocen.New_ ("Sara", "1313", "sara@gmail.com", new DateTime (1998, 06, 10),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg", "Ródenas");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg", "Ródenas",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario3 = usuariocen.New_ ("Guillermo", "1414", "guille@gmail.com", new DateTime (2000, 06, 14),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil3.jpg", "Puerta");
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil3.jpg", "Puerta",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
                 Console.WriteLine ("Usuario " + usuario2 + " creado correctamente");
@@ -124,10 +127,16 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 //Creacion de administrador
-                string admin1 = admincen.New_("DSM", "9999", "dsm@gmail.com", new DateTime(2024, 09, 01),
+                string admin1 = usuariocen.New_ ("DSM", "9999", "dsm@gmail.com", new DateTime (2024, 09, 01),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil4.jpg", "Administrador");
-
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil4.jpg", "Administrador",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador);
+                Console.WriteLine (" ");
+                Console.WriteLine ("Usuario " + admin1 + " creado correctamente");
+                UsuarioEN adminen1 = usuariorepository.GetID (admin1);
+                Console.WriteLine ("Los derechos de " + admin1 + " son: "+adminen1.Tipo);
+                
+                Console.WriteLine (" ");
                 //Creacion de artistas
                 int artista1 = artistacen.New_ ("Her's",
                         "Her's fue una banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros",

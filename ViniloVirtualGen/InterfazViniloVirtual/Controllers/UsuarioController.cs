@@ -83,7 +83,8 @@ namespace InterfazViniloVirtual.Controllers
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.New_(usuario.Nombre, usuario.Pass, usuario.Email, usuario.FechaNacimiento, usuario.Genero, usuario.Estado, usuario.Imagen, usuario.Apellido);
+                usuCEN.New_(usuario.Nombre, usuario.Pass, usuario.Email, usuario.FechaNacimiento, usuario.Genero, usuario.Estado, 
+                    usuario.Imagen, usuario.Apellido, usuario.Tipo);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -116,7 +117,7 @@ namespace InterfazViniloVirtual.Controllers
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido);
+                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo);
 
                 return RedirectToAction(nameof(Index));
             }

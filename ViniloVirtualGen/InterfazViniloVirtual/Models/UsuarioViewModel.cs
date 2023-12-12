@@ -41,8 +41,11 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Debe indicar la imagen del usuario")]
         public string Imagen { get; set; }
 
+        [Display(Prompt = "Selecciona privilegios", Description = "Tipo de usuario", Name = "Tipo")]
+        public TipoUsuarioEnum Tipo { get; set; }
 
-        
+
+
     }
 
     public class loginUsuarioViewModel

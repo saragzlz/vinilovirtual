@@ -30,6 +30,9 @@
 					<property name="Apellido" type="string"> 
 						<column name="apellido"  not-null="true"/>
 					</property>
+					<property name="Tipo" > 
+						<column name="tipo"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -116,6 +119,8 @@
       						</many-to-many>
     					</bag>
 			
+			
+					
 					
 					
 					

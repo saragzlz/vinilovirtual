@@ -31,7 +31,7 @@ public IUsuarioRepository get_IUsuarioRepository ()
         return this._IUsuarioRepository;
 }
 
-public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido)
+public string New_ (string p_nombre, String p_pass, string p_email, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum p_tipo)
 {
         UsuarioEN usuarioEN = null;
         string oid;
@@ -54,13 +54,15 @@ public string New_ (string p_nombre, String p_pass, string p_email, Nullable<Dat
 
         usuarioEN.Apellido = p_apellido;
 
+        usuarioEN.Tipo = p_tipo;
+
 
 
         oid = _IUsuarioRepository.New_ (usuarioEN);
         return oid;
 }
 
-public void Modify (string p_Usuario_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido)
+public void Modify (string p_Usuario_OID, string p_nombre, String p_pass, Nullable<DateTime> p_fechaNac, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum p_genero, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum p_estado, string p_imagen, string p_apellido, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum p_tipo)
 {
         UsuarioEN usuarioEN = null;
 
@@ -74,6 +76,7 @@ public void Modify (string p_Usuario_OID, string p_nombre, String p_pass, Nullab
         usuarioEN.Estado = p_estado;
         usuarioEN.Imagen = p_imagen;
         usuarioEN.Apellido = p_apellido;
+        usuarioEN.Tipo = p_tipo;
         //Call to UsuarioRepository
 
         _IUsuarioRepository.Modify (usuarioEN);

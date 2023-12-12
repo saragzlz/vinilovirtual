@@ -170,6 +170,9 @@ public void Modify (AdminEN admin)
 
                 adminNH.Apellido = admin.Apellido;
 
+
+                adminNH.Tipo = admin.Tipo;
+
                 session.Update (adminNH);
                 SessionCommit ();
         }

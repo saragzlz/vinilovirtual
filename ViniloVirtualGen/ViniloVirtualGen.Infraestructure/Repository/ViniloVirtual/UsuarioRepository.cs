@@ -124,6 +124,9 @@ public void ModifyDefault (UsuarioEN usuario)
 
                 usuarioNH.Apellido = usuario.Apellido;
 
+
+                usuarioNH.Tipo = usuario.Tipo;
+
                 session.Update (usuarioNH);
                 SessionCommit ();
         }
@@ -197,6 +200,9 @@ public void Modify (UsuarioEN usuario)
 
 
                 usuarioNH.Apellido = usuario.Apellido;
+
+
+                usuarioNH.Tipo = usuario.Tipo;
 
                 session.Update (usuarioNH);
                 SessionCommit ();

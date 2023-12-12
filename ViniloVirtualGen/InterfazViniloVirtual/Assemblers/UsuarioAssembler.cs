@@ -16,6 +16,7 @@ namespace InterfazViniloVirtual.Assemblers
             usuarioViewModel.Email = usuEn.Email;
             usuarioViewModel.FechaNacimiento = usuEn.FechaNac;
             usuarioViewModel.Imagen = usuEn.Imagen;
+            usuarioViewModel.Tipo = usuEn.Tipo;
 
             return usuarioViewModel;
         }

@@ -133,3 +133,4 @@ C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\Initia
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\InitializeDB\obj\Debug\net7.0\InitializeDB.pdb
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\InitializeDB\obj\Debug\net7.0\InitializeDB.genruntimeconfig.cache
 C:\Users\Ensoni\Desktop\UA\3\DSM\practicas\vinilovirtual\ViniloVirtualGen\InitializeDB\obj\Debug\net7.0\ref\InitializeDB.dll
+C:\Users\alvar\OneDrive\Escritorio\vinilovirtual\ViniloVirtualGen\InitializeDB\obj\Debug\net7.0\InitializeDB.sourcelink.json

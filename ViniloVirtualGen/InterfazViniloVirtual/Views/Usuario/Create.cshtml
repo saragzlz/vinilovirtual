@@ -15,6 +15,16 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pass" class="control-label"></label>
+                <input asp-for="Pass" class="form-control" type="password" />
+                <span asp-validation-for="Pass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
@@ -25,9 +35,12 @@
                 <span asp-validation-for="Apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Genero" class="control-label"></label>
+                <br />
+                @Html.DropDownListFor(m => m.Genero,
+                         new SelectList(Enum.GetValues(typeof(GeneroUsuarioEnum))),
+                         "Selecciona el género")
+                <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaNacimiento" class="control-label"></label>
@@ -35,32 +48,22 @@
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
-                <br/>
-                @Html.DropDownListFor(m => m.Genero,
-                         new SelectList(Enum.GetValues(typeof(GeneroUsuarioEnum))),
-                         "Selecciona el género")
-                <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <br/>
-                @Html.DropDownListFor(m => m.Estado,
-                         new SelectList(Enum.GetValues(typeof(EstadoUsuarioEnum))),
-                         "Selecciona el estado")
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Imagen" class="control-label"></label>
                 <input asp-for="Imagen" class="form-control" />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" type="password"/>
-                <span asp-validation-for="Pass" class="text-danger"></span>
-            </div>
 
+            <!--Formulario de administrador-->
+
+                <div class="form-group">
+                    <label asp-for="Tipo" class="control-label"></label>
+                    <br/>
+                    @Html.DropDownListFor(m => m.Tipo,
+                             new SelectList(Enum.GetValues(typeof(TipoUsuarioEnum))),
+                             "Selecciona tipo de usuario")
+                    <span asp-validation-for="Tipo" class="text-danger"></span>
+                </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
