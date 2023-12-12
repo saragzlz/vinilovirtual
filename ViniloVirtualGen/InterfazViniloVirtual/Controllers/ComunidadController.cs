@@ -27,6 +27,8 @@ namespace InterfazViniloVirtual.Controllers
             IList<ComunidadEN> listEN = comunidadCEN.GetAll(0, -1);
 
             IEnumerable<ComunidadViewModel> listComunidad = new ComunidadAssembler().ConvertirListENToViewModel(listEN).ToList();
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            ViewData["usuario"] = user;
             SessionClose();
 
             return View(listComunidad);
@@ -54,6 +56,11 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ComunidadController/Create
         public ActionResult Create()
         {
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if(user == null || user.Tipo == "C") 
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             return View();
         }
 
@@ -98,6 +105,11 @@ namespace InterfazViniloVirtual.Controllers
 
         public ActionResult Edit(int id)
         {
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if(user == null || user.Tipo == "C") 
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             SessionInitialize();
             ComunidadRepository comRepo = new ComunidadRepository(session);
             ComunidadCEN comCEN = new ComunidadCEN(comRepo);

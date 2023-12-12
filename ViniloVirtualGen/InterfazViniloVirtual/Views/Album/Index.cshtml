@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    UsuarioViewModel user =   (UsuarioViewModel)ViewData["usuario"];
 }
 
 <h1>Albumes</h1>
@@ -63,9 +64,14 @@
                 @Html.DisplayFor(modelItem => item.Likes)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Borrar", "Delete", new {  id=item.Id })
+               @if(user!= null && user.Tipo == "A")
+                {
+                     @Html.ActionLink("Editar", "Edit", new { id = item.Id }); <span> | </span>
+                     @Html.ActionLink("Detalles", "Details", new { id = item.Id }); <span> | </span> 
+                     @Html.ActionLink("Borrar", "Delete", new {  id=item.Id });
+                }else {
+                    @Html.ActionLink("Ver", "Details", new { id = item.Id });
+                }
             </td>
         </tr>
 }

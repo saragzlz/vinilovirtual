@@ -16,7 +16,7 @@ namespace InterfazViniloVirtual.Assemblers
             usuarioViewModel.Email = usuEn.Email;
             usuarioViewModel.FechaNacimiento = usuEn.FechaNac;
             usuarioViewModel.Imagen = usuEn.Imagen;
-            usuarioViewModel.Tipo = usuEn.Tipo;
+            usuarioViewModel.Tipo = usuEn.Tipo == ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador ? "A" : "C";
 
             return usuarioViewModel;
         }

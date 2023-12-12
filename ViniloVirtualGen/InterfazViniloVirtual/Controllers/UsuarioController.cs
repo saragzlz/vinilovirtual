@@ -9,12 +9,18 @@ using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
 
 namespace InterfazViniloVirtual.Controllers
 {
-    public class UsuarioController : BasicController 
+    public class UsuarioController : BasicController
     {
 
         // GET: UsuarioController/Login
         public ActionResult Login()
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user != null)
+            {
+                return RedirectToAction("Index", "Album");
+            }
             return View();
         }
 
@@ -25,7 +31,7 @@ namespace InterfazViniloVirtual.Controllers
             UsuarioRepository usuRepo = new UsuarioRepository();
             UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
 
-            if (usuCEN.Login(login.Email, login.Pass)==null)
+            if (usuCEN.Login(login.Email, login.Pass) == null)
             {
                 ModelState.AddModelError("", "Tu email o tu password son incorrectos");
             }
@@ -83,8 +89,8 @@ namespace InterfazViniloVirtual.Controllers
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.New_(usuario.Nombre, usuario.Pass, usuario.Email, usuario.FechaNacimiento, usuario.Genero, usuario.Estado, 
-                    usuario.Imagen, usuario.Apellido, usuario.Tipo);
+                usuCEN.New_(usuario.Nombre, usuario.Pass, usuario.Email, usuario.FechaNacimiento, usuario.Genero, usuario.Estado,
+                    usuario.Imagen, usuario.Apellido, usuario.Tipo == "A" ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -117,7 +123,7 @@ namespace InterfazViniloVirtual.Controllers
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo);
+                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A" ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -126,8 +132,8 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
-    
-          // GET: UsuarioController/Delete/5
+
+        // GET: UsuarioController/Delete/5
         public ActionResult Delete(string id)
         {
             UsuarioRepository usuRepo = new UsuarioRepository();
@@ -151,6 +157,20 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
-    } 
+        // GET: UsuarioController/Signout
+        public ActionResult Signout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
+        }
+
+        // GET: UsuarioController/Unathorize
+        public ActionResult Unathorize()
+        {
+            return View();
+        }
+
+
+    }
 
 }

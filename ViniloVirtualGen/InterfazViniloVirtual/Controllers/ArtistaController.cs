@@ -26,6 +26,9 @@ namespace InterfazViniloVirtual.Controllers
 
             IList<ArtistaEN> listEN = artistaCEN.GetAll(0, -1);
 
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            ViewData["usuario"] = user;
+
             IEnumerable<ArtistaViewModel> listArtistas = new ArtistaAssembler().ConvertirListENToViewModel(listEN).ToList();
             SessionClose();
 

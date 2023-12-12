@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    UsuarioViewModel user =   (UsuarioViewModel)ViewData["usuario"];
 }
 
 <h1>Index</h1>
@@ -46,9 +47,17 @@
         }
             
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
-                @Html.ActionLink("Borrar", "Delete", new { id=item.id })
+                @if(user!= null && user.Tipo == "A")
+                {
+                     @Html.ActionLink("Editar", "Edit", new { id = item.id }); <span> | </span>
+                     @Html.ActionLink("Detalles", "Details", new { id = item.id }); <span> | </span> 
+                     @Html.ActionLink("Borrar", "Delete", new {  id=item.id });
+                }else {
+                    @Html.ActionLink("Ver", "Details", new { id = item.id });
+                }
+               
+                
+                
             </td>
         </tr>
 }

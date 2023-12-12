@@ -13,6 +13,11 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ComentarioAlbController/Create
         public ActionResult Create(int id)
         {
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if(user == null) 
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
             ComentarioAlbViewModel com = new ComentarioAlbViewModel();
             com.Id = id;
             return View(com);
@@ -41,7 +46,11 @@ namespace InterfazViniloVirtual.Controllers
          // GET: ComentarioAlbController/Delete/5
         public ActionResult Delete(int id)
         {
-
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if(user == null || user.Tipo == "C") 
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             ComentarioAlbRepository comRepo = new ComentarioAlbRepository();
             ComentarioAlbCEN comCEN = new ComentarioAlbCEN(comRepo);
             comCEN.Destroy(id);

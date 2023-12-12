@@ -62,7 +62,7 @@ namespace InterfazViniloVirtual
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Usuario}/{action=Login}/{id?}");
+                    pattern: "{controller=Album}/{action=Index}/{id?}");
             });
         }
     }

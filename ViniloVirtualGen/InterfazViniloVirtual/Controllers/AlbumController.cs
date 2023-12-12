@@ -31,6 +31,9 @@ namespace InterfazViniloVirtual.Controllers
             IList<AlbumEN> listEN = albCEN.GetAll(0, -1);
 
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
+
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            ViewData["usuario"] = user;
             SessionClose();
 
             return View(listAlbumes);
@@ -59,6 +62,13 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Create
         public ActionResult Create()
         {
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if(user == null || user.Tipo == "C") 
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
+
             AlbumViewModel albumViewModel = new AlbumViewModel();
             ArtistaRepository artsRepos = new ArtistaRepository();
             ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
@@ -110,6 +120,11 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Edit/5
         public ActionResult Edit(int id)
         {
+            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if(user == null || user.Tipo == "C") 
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             SessionInitialize();
             AlbumRepository albRepo = new AlbumRepository(session);
             AlbumCEN albCEN = new AlbumCEN(albRepo);

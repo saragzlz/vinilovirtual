@@ -42,7 +42,7 @@ namespace InterfazViniloVirtual.Models
         public string Imagen { get; set; }
 
         [Display(Prompt = "Selecciona privilegios", Description = "Tipo de usuario", Name = "Tipo")]
-        public TipoUsuarioEnum Tipo { get; set; }
+        public string Tipo { get; set; }
 
 
 
