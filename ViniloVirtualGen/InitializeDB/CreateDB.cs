@@ -144,7 +144,7 @@ public static void InitializeData ()
                         );
                 int artista2 = artistacen.New_ ("Gorillaz",
                         "Banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
-                        "artista2.jpg"
+                        "gorillaz.jpg"
                         );
                 Console.WriteLine (" ");
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");
@@ -153,14 +153,14 @@ public static void InitializeData ()
 
                 //Creacion de albumes
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada1.jpg", artista1,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "invitationto.jpg", artista1,
                         6.00, 0);
 
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "portada2.jpg", artista2,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "plasticbeach.jpg", artista2,
                         7.99, 0);
                 int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "portada3.jpg", artista1,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "songof.jpg", artista1,
                         41.43, 0);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
@@ -169,9 +169,9 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 //Creacion de comunidades
-                int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "comunidad1.jpg", 15);
-                int comunidad2 = comunidadcen.New_ ("Rock and Stone", "comunidad2.jpg", 47);
-                int comunidad3 = comunidadcen.New_ ("Beats", "comunidad3.jpg", 73);
+                int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "jazz.jpg", 15);
+                int comunidad2 = comunidadcen.New_ ("Rock and Stone", "rock.jpg", 47);
+                int comunidad3 = comunidadcen.New_ ("Beats", "rap.jpg", 73);
 
 
                 //Creacion de Comentarios de Albumes
@@ -287,7 +287,7 @@ public static void InitializeData ()
                 artistacen.ModificarDescripcion (artista1, "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros");
 
                 //Modificamos la imagen del artista
-                artistacen.ModificarImagen (artista1, "artista1.jpg");
+                artistacen.ModificarImagen (artista1, "hers.jpg");
 
 
                 ArtistaEN artistaen1 = artistarepository.GetID (artista1);
