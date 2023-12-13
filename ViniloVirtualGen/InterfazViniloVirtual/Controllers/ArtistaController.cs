@@ -45,6 +45,17 @@ namespace InterfazViniloVirtual.Controllers
             ArtistaEN artEN = artCEN.GetID(id);
             ArtistaViewModel artView = new ArtistaAssembler().ConvertirENToViewModel(artEN);
 
+            AlbumRepository albumRepository = new AlbumRepository(session);
+            AlbumCEN albumCEN = new AlbumCEN(albumRepository);
+            List<AlbumEN> albumsEN = new List<AlbumEN>();
+
+            albumsEN.AddRange(albumCEN.GetAlbumesArtista(id));
+            // albumsEN = albumCEN.GetAlbumesArtista(id);
+
+            IEnumerable<AlbumViewModel> albumesArtista = new AlbumAssembler().ConvertirListENToViewModel(albumsEN).ToList();
+
+            ViewData["albumesArtista"] = albumesArtista;
+
             SessionClose();
             return View(artView);
         }
