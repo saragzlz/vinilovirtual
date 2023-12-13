@@ -1,0 +1,126 @@
+@model InterfazViniloVirtual.Models.UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Mi Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@using Microsoft.AspNetCore.Http
+
+@{
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
+    string nombre = "";
+    if (usuario != null)
+    {
+        nombre = usuario.Nombre;
+    }
+
+    IEnumerable<AlbumViewModel> albumesFavs = (IEnumerable<AlbumViewModel>)ViewData["albumesFavs"];
+    IEnumerable<AlbumViewModel> albumesComprados = (IEnumerable<AlbumViewModel>)ViewData["albumesComprados"];
+    IEnumerable<ArtistaViewModel> artistasFavs = (IEnumerable<ArtistaViewModel>)ViewData["artistasFavs"];
+}
+
+<h1>Mi Perfil</h1>
+
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Nombre)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Nombre)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Apellido)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Apellido)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Genero)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Genero)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FechaNacimiento)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FechaNacimiento)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Imagen)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Imagen)
+    </dd>
+    <!--Información de administrador-->
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Estado)
+    </dd>
+
+</dl>
+
+@if (usuario.Tipo == "C")
+{
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#home">Artistas Favoritos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Albumes Favoritos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#menu2">Albumes Comprados</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane container active" id="home">
+            @foreach (var item in artistasFavs)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.imagen" class="card-img-top" alt="@item.nombre">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.nombre</h5>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane container fade" id="menu1">
+            @foreach (var item in albumesFavs)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.Portada" class="card-img-top" alt="@item.Titulo">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Titulo</h5>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="tab-pane container fade" id="menu2">
+            @foreach (var item in albumesComprados)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@item.Portada" class="card-img-top" alt="@item.Titulo">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Titulo</h5>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Email }) |
+    <a asp-action="Index">Back to List</a>
+</div>

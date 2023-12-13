@@ -123,7 +123,10 @@ namespace InterfazViniloVirtual.Controllers
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A" ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
+                UsuarioEN usuBefore = usuRepo.GetID(usu.Email);
+                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A" 
+                ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar,
+                usuBefore.Artista_favoritos, usuBefore.Album, usuBefore.Album_favoritos);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -171,6 +174,36 @@ namespace InterfazViniloVirtual.Controllers
         }
 
 
+        // GET: UsuarioController/Me
+        public ActionResult Me()
+        {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            SessionInitialize();
+            UsuarioRepository usuarioRepository = new UsuarioRepository(session);
+            UsuarioCEN usuarioCEN = new UsuarioCEN(usuarioRepository);
+
+            UsuarioEN usuEN = usuarioCEN.GetID(user.Email);
+
+            IEnumerable<AlbumViewModel> albumesFavs = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album_favoritos).ToList();
+            IEnumerable<AlbumViewModel> albumesComprados = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album).ToList();
+            IEnumerable<ArtistaViewModel> artistasFavs = new ArtistaAssembler().ConvertirListENToViewModel(usuEN.Artista_favoritos).ToList();
+
+
+            ViewData["albumesFavs"] = albumesFavs;
+            ViewData["albumesComprados"] = albumesComprados;
+            ViewData["artistasFavs"] = artistasFavs;
+
+            SessionClose();
+
+
+
+            return View(user);
+        }
     }
 
 }
