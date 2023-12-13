@@ -39,7 +39,11 @@
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Album"
-                                    asp-action="Index">Albumes</a>
+                                    asp-action="Index">Explorar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Album"
+                                   asp-action="Index">Descubrir</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Artista"
@@ -47,7 +51,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Comunidad"
-                                    asp-action="Index">Comunidad</a>
+                                    asp-action="Index">Comunidades</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
@@ -55,7 +59,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuario"
-                                    asp-action="Login">Login</a>
+                                    asp-action="Login">Indentificate</a>
                             </li>
                         </ul>
                     </div>
@@ -69,7 +73,11 @@
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Album"
-                                    asp-action="Index">Albumes</a>
+                                   asp-action="Index">Explorar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Album"
+                                   asp-action="Index">Descubrir</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Artista"
@@ -77,7 +85,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Comunidad"
-                                    asp-action="Index">Comunidad</a>
+                                    asp-action="Index">Comunidades</a>
                             </li>
                             @if (usuario == null || usuario.Tipo == "A")
                             {
@@ -114,7 +122,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - InterfazViniloVirtual - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - Vinilo Virtual - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
