@@ -116,11 +116,11 @@ public static void InitializeData ()
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario2 = usuariocen.New_ ("Sara", "1313", "sara@gmail.com", new DateTime (1998, 06, 10),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil2.jpg", "Ródenas",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/images/perfil2.jpg", "Ródenas",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario3 = usuariocen.New_ ("Guillermo", "1414", "guille@gmail.com", new DateTime (2000, 06, 14),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil3.jpg", "Puerta",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/images/perfil3.jpg", "Puerta",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
@@ -131,7 +131,7 @@ public static void InitializeData ()
                 //Creacion de administrador
                 string admin1 = usuariocen.New_ ("DSM", "9999", "dsm@gmail.com", new DateTime (2024, 09, 01),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "perfil4.jpg", "Administrador",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/images/perfil4.jpg", "Administrador",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + admin1 + " creado correctamente");
@@ -146,7 +146,7 @@ public static void InitializeData ()
                         );
                 int artista2 = artistacen.New_ ("Gorillaz",
                         "Banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
-                        "gorillaz.jpg"
+                        "/images/gorillaz.jpg"
                         );
                 Console.WriteLine (" ");
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");
@@ -155,14 +155,14 @@ public static void InitializeData ()
 
                 //Creacion de albumes
                 int album1 = albumcen.New_ ("Invitation to Her's", "Segundo album de la banda Her's",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "invitationto.jpg", artista1,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "/images/invitationto.png", artista1,
                         6.00, 0);
 
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "plasticbeach.jpg", artista2,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "/images/plasticbeach.jpg", artista2,
                         7.99, 0);
                 int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "songof.jpg", artista1,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "/images/songof.jpg", artista1,
                         41.43, 0);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
@@ -171,9 +171,9 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
                 //Creacion de comunidades
-                int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "jazz.jpg", 15);
-                int comunidad2 = comunidadcen.New_ ("Rock and Stone", "rock.jpg", 47);
-                int comunidad3 = comunidadcen.New_ ("Beats", "rap.jpg", 73);
+                int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "/images/jazz.png", 15);
+                int comunidad2 = comunidadcen.New_ ("Rock and Stone", "/images/rock.png", 47);
+                int comunidad3 = comunidadcen.New_ ("Beats", "/images/rap.jpg", 73);
 
 
                 //Creacion de Comentarios de Albumes
@@ -257,7 +257,7 @@ public static void InitializeData ()
                 //Modificamos el nombre del usuario
                 usuariocen.ModificarNombre ("alvaro@gmail.com", "Alvaro");
                 //Modificamos la imagen del usuario
-                usuariocen.ModificarImagen ("alvaro@gmail.com", "perfil1.jpg");
+                usuariocen.ModificarImagen ("alvaro@gmail.com", "/images/perfil1.jpg");
                 /* Esta no funciona, el metodo no cambia correctamente la contraseña. Seguramente por temas de encriptado.
                  * //Modificamos la password e iniciamos sesion
                  * usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
@@ -289,7 +289,7 @@ public static void InitializeData ()
                 artistacen.ModificarDescripcion (artista1, "Banda británica de rock de Liverpool, Inglaterra, compuesta por Stephen Fitzpatrick en voz y guitarra y Audun Laading en bajo y coros");
 
                 //Modificamos la imagen del artista
-                artistacen.ModificarImagen (artista1, "hers.jpg");
+                artistacen.ModificarImagen (artista1, "/images/hers.jpg");
 
 
                 ArtistaEN artistaen1 = artistarepository.GetID (artista1);
