@@ -97,6 +97,8 @@ public static void InitializeData ()
                 LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
                 UsuarioRepository usuariorepository = new UsuarioRepository ();
                 UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
+                UsuarioCEN usuariocen2 = new UsuarioCEN (usuariorepository, albumrepository);
+                UsuarioCEN usuariocen3 = new UsuarioCEN (usuariorepository, artistarepository);
                 ComentarioAlbRepository comentarioalbrepository = new ComentarioAlbRepository ();
                 ComentarioAlbCEN comentarioalbcen = new ComentarioAlbCEN (comentarioalbrepository);
                 ComentarioComRepository comentariocomrepository = new ComentarioComRepository ();
@@ -134,8 +136,8 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + admin1 + " creado correctamente");
                 UsuarioEN adminen1 = usuariorepository.GetID (admin1);
-                Console.WriteLine ("Los derechos de " + admin1 + " son: "+adminen1.Tipo);
-                
+                Console.WriteLine ("Los derechos de " + admin1 + " son: " + adminen1.Tipo);
+
                 Console.WriteLine (" ");
                 //Creacion de artistas
                 int artista1 = artistacen.New_ ("Her's",
@@ -468,6 +470,14 @@ public static void InitializeData ()
                 Console.WriteLine (usuarioen1.Album.Count > 0  ? usuarioen1.Album [0].Precio : "Albumes");
 
                 /*PROTECTED REGION END*/
+
+                usuariocen2.AddAlbumBuy(album3, usuario2);
+
+                usuariocen3.AddArtistasFav(artista1, usuario2);
+
+                usuariocen3.AddAlbumFav(album3, usuario2);
+
+  
         }
         catch (Exception ex)
         {
