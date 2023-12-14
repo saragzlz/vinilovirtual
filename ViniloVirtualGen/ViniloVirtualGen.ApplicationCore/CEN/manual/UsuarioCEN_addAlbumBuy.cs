@@ -33,15 +33,11 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
                         }
                         catch (Exception ex)
                         {
-                                if (ex.Message.Contains("ViniloVirtualGen.Infraestructure.EN.ViniloVirtual.UsuarioNH.Album, no session or session was closed"))
-                                {
-                                        usu.Album = new List<AlbumEN>() { album };
-                                        _IUsuarioRepository.ModifyDefault(usu);
-                                }
-                                else
-                                {
-                                        throw ex;
-                                }
+
+                                usu.Album = new List<AlbumEN>() { album };
+                                _IUsuarioRepository.ModifyDefault(usu);
+
+
 
                         }
 

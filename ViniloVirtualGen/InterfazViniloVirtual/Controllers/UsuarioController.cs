@@ -193,6 +193,7 @@ namespace InterfazViniloVirtual.Controllers
             IEnumerable<AlbumViewModel> albumesComprados = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album).ToList();
             IEnumerable<ArtistaViewModel> artistasFavs = new ArtistaAssembler().ConvertirListENToViewModel(usuEN.Artista_favoritos).ToList();
 
+            usuarioCEN.AddAlbumFav(65537, "sara@gmail.com");
 
             ViewData["albumesFavs"] = albumesFavs;
             ViewData["albumesComprados"] = albumesComprados;

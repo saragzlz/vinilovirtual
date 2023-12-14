@@ -6,6 +6,13 @@
     IEnumerable<ComentarioComViewModel> comments = (IEnumerable<ComentarioComViewModel>)ViewData["Comentarios"];
 }
 
+@using Microsoft.AspNetCore.Http
+
+@{
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
+}
+
+
 <h1>Details</h1>
 
 <div>
@@ -52,13 +59,17 @@
                     <div class="col-sm">
                         @it.Fecha.ToString();
                     </div>
-                    <div class="col-sm">
-                        <button class="btn btn-danger">
-                            @Html.ActionLink("Borrar", "Delete", "ComentarioCom", new { id = it.Id })
-                        </button>
-                    </div>
+                    @if (usuario != null && usuario.Tipo == "A")
+                    {
+                        <div class="col-sm">
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Borrar", "Delete", "ComentarioCom", new { id = it.Id })
+                            </button>
+                        </div>
+                    }
+
                 </div>
-                
+
             </div>
         </div>
     }

@@ -3,7 +3,17 @@
 @{
     ViewData["Title"] = "Details";
     IEnumerable<ComentarioAlbViewModel> comments = (IEnumerable<ComentarioAlbViewModel>)ViewData["Comentarios"];
+
+
 }
+
+@using Microsoft.AspNetCore.Http
+
+@{
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
+
+}
+
 
 <h1>Details</h1>
 
@@ -11,10 +21,10 @@
     <h4>AlbumViewModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Titulo)
         </dd>
         <dt class="col-sm-2">
@@ -23,16 +33,16 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NombreArtista)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Genero)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Genero)
         </dd>
         @if (Model != null && Model.Portada != null)
@@ -41,19 +51,19 @@
                 <img src="@Html.DisplayFor(model => model.Portada)" height="150" width="150" />
             </td>
         }
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Precio)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Precio)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Likes)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Likes)
         </dd>
-        
+
     </dl>
     <h4>Comentarios</h4>
 </div>
@@ -75,13 +85,17 @@
                     <div class="col-sm">
                         @it.Fecha.ToString();
                     </div>
-                    <div class="col-sm">
-                        <button class="btn btn-danger">
-                            @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
-                        </button>
-                    </div>
+                    @if (usuario != null && usuario.Tipo == "A")
+                    {
+                        <div class="col-sm">
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
+                            </button>
+                        </div>
+                    }
+
                 </div>
-                
+
             </div>
         </div>
     }

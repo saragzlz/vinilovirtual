@@ -24,7 +24,7 @@ public void ModificarPass (string p_email, String p_nuevaPass)
 
         Console.WriteLine (en.Pass);
 
-        en.Pass = p_nuevaPass;
+        en.Pass = Utils.Util.GetEncondeMD5(p_nuevaPass);
 
         Console.WriteLine (en.Pass);
 
