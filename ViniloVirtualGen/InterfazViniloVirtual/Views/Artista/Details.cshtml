@@ -5,9 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     IEnumerable<AlbumViewModel> albumesArtista = (IEnumerable<AlbumViewModel>)ViewData["albumesArtista"];
+
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
 
 <h1>@Html.DisplayFor(model => model.nombre)</h1>
+
+<!--Opciones de editar y borrar el artista solo para administrador-->
+<td>
+    @if (usuario != null && usuario.Tipo == "A")
+    {
+        @Html.ActionLink("Editar Artista", "Edit", new { id = Model.id })
+        ;
+        <span> | </span>
+        @Html.ActionLink("Borrar Artista", "Delete", new { id = Model.id })
+        ;
+    }
+</td>
 
 <div>
     @if (Model != null && Model.imagen != null)
@@ -28,7 +42,7 @@
 </div>
 
 <h2>Albumes del Artista</h2>
-
+<!--Listado de los albumes del artista-->
 <div class="container-fluid">
     <div class="row">
         @foreach (var item in albumesArtista)
@@ -49,6 +63,5 @@
 </div>
 
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id}) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista de artistas</a>
 </div>

@@ -169,8 +169,12 @@ public static void InitializeData ()
                         "/Images/crusi.jpg"
                         );
                 int artista8 = artistacen.New_ ("Dua Lipa",
-                        "ua Lipa es una cantante, compositora y modelo británicoalbanesa. Después de trabajar como modelo, firmó con Warner Bros. Records en 2014 y lanzó su álbum debut homónimo en 2017",
+                        "Dua Lipa es una cantante, compositora y modelo británicoalbanesa. Después de trabajar como modelo, firmó con Warner Bros. Records en 2014 y lanzó su álbum debut homónimo en 2017",
                         "/Images/dualipa.PNG"
+                        );
+                int artista9 = artistacen.New_ ("Harry Styles",
+                        "Harry Edward Styles es un cantante, compositor y actor británico. Inició su carrera como cantante en 2010 como integrante de la boy band One Direction, con la que participó en el programa The X Factor y quedó en tercer lugar",
+                        "/Images/harry.PNG"
                         );
                 Console.WriteLine (" ");
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");
@@ -211,7 +215,10 @@ public static void InitializeData ()
                         22.54, 0);
                 int album11 = albumcen.New_ ("Future Nostalgia", "Future Nostalgia es el segundo álbum de estudio de la cantante británica-kosovar Dua Lipa.​​ Fue lanzado el 27 de marzo de 2020 por el sello discográfico Warner Records",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.pop, "/Images/futurenostalgia.jpg", artista8,
-                        13.76, 0);        
+                        13.76, 0);
+                int album12 = albumcen.New_ ("Fine Line", "Segundo album de estudio del artista britanico Harry Styles",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.pop, "/Images/fineline.jpg", artista9,
+                        15.25, 0);        
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
@@ -222,6 +229,9 @@ public static void InitializeData ()
                 int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "/Images/jazz.png", 15);
                 int comunidad2 = comunidadcen.New_ ("Rock and Stone", "/Images/rock.png", 47);
                 int comunidad3 = comunidadcen.New_ ("Beats", "/Images/rap.jpg", 73);
+                int comunidad4 = comunidadcen.New_ ("Las Mejores OST", "/Images/ost.PNG", 73);
+                int comunidad5 = comunidadcen.New_ ("Motomamis", "/Images/espanola.jpg", 73);
+                int comunidad6 = comunidadcen.New_ ("Club de Fans de Harry Styles", "/Images/pop.jpg", 73);
 
 
                 //Creacion de Comentarios de Albumes
