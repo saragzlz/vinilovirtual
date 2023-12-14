@@ -148,6 +148,30 @@ public static void InitializeData ()
                         "Banda virtual inglesa creada en 1998 por Damon Albarn y Jamie Hewlett. La banda está compuesta por cuatro miembros ficticios",
                         "/Images/gorillaz.jpg"
                         );
+                int artista3 = artistacen.New_ ("Kill Bill: The Rapper",
+                        "Tambien conocido como Bill, es un rapero Americano centrado en producir hip-hop",
+                        "/Images/killbill.PNG"
+                        );
+                int artista4 = artistacen.New_ ("Berlioz",
+                        "Banda de dos integrantes que experimenta de nuevas formas el jazz",
+                        "/Images/berlioz.jpg"
+                        );
+                int artista5 = artistacen.New_ ("Andrew Prahlow",
+                        "Compositor de bandas sonoras que saltó a la fama tras su ultimo trabajo, Outer Wilds OST",
+                        "/Images/andrew.jpg"
+                        );
+                int artista6 = artistacen.New_ ("Guitarricadelafuente",
+                        "Álvaro Lafuente Calvo, ​ conocido artísticamente como Guitarricadelafuente, es un cantautor, compositor y músico español",
+                        "/Images/guitarrica.jpg"
+                        );
+                int artista7 = artistacen.New_ ("Cruz Cafune",
+                        "Carlos Bruñas Zamorín, de nombre artístico Cruz Cafuné, es un cantante y rapero canario",
+                        "/Images/crusi.jpg"
+                        );
+                int artista8 = artistacen.New_ ("Dua Lipa",
+                        "ua Lipa es una cantante, compositora y modelo británicoalbanesa. Después de trabajar como modelo, firmó con Warner Bros. Records en 2014 y lanzó su álbum debut homónimo en 2017",
+                        "/Images/dualipa.PNG"
+                        );
                 Console.WriteLine (" ");
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");
                 Console.WriteLine ("Artista " + artista2 + " creado correctamente");
@@ -164,6 +188,30 @@ public static void InitializeData ()
                 int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "/Images/songof.jpg", artista1,
                         41.43, 0);
+                int album4 = albumcen.New_ ("Jazz is for Ordinary People", "Primer EP de Berlioz, donde exploran el genero del Jazz de forma mas profunda",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.jazz, "/Images/jazzisfor.jpg", artista4,
+                        2.99, 0);
+                int album5 = albumcen.New_ ("Demon Days", "Segundo album de la banda Gorillaz",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "/Images/demondays.jpg", artista2,
+                        4.99, 0);
+                int album6 = albumcen.New_ ("Humanz", "Quinto album de la banda Gorillaz",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "/Images/humanz.jpg", artista2,
+                        9.99, 0);
+                int album7 = albumcen.New_ ("Ramona", "Album hip-hop y rap del artista Kill-Bill: The Rapper",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rap, "/Images/ramona.jpg", artista3,
+                        7.99, 0);
+                int album8 = albumcen.New_ ("Outer Wilds Original Soundtrack", "Album con la música original del videojuego Outer Wilds",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.bandaSonora, "/Images/outerwilds.jpg", artista5,
+                        19.99, 0);
+                int album9 = albumcen.New_ ("La Cantera", "La cantera es el primer álbum de Guitarricadelafuente, cuyo lanzamiento se anuncia con un tráiler el 24 de febrero de 2022",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.espanola, "/Images/lacantera.jpg", artista6,
+                        14.99, 0); 
+                int album10 = albumcen.New_ ("Me Muevo con Dios", "Aclamado disco del famoso rapero canario Cruz Cafune",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rap, "/Images/memuevocon.jpg", artista7,
+                        22.54, 0);
+                int album11 = albumcen.New_ ("Future Nostalgia", "Future Nostalgia es el segundo álbum de estudio de la cantante británica-kosovar Dua Lipa.​​ Fue lanzado el 27 de marzo de 2020 por el sello discográfico Warner Records",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.pop, "/Images/futurenostalgia.jpg", artista8,
+                        13.76, 0);        
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
