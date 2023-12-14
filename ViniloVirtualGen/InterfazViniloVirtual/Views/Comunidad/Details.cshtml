@@ -4,69 +4,89 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     IEnumerable<ComentarioComViewModel> comments = (IEnumerable<ComentarioComViewModel>)ViewData["Comentarios"];
+
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Nombre)</h1>
+
+<!--Opciones de editar y borrar la comunidad solo para administrador-->
+<td>
+    @if (usuario != null && usuario.Tipo == "A")
+    {
+        @Html.ActionLink("Editar Comunidad", "Edit", new { id = Model.Id })
+        ;
+        <span> | </span>
+        @Html.ActionLink("Borrar Comunidad", "Delete", new { id = Model.Id })
+        ;
+    }
+</td>
 
 <div>
-    <h4>ComunidadViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NumMiembros)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NumMiembros)
-        </dd>
-        @if (Model != null && Model.Imagen != null)
-        {
-            <td class="col-sm-10">
-                <img src="@Html.DisplayFor(model => model.Imagen)" height="150" width="150" />
-
-            </td>
-
-        }
-    </dl>
-    <h4>Comentarios</h4>
+    @if (Model != null && Model.Imagen != null)
+    {
+        <td class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.Imagen)" height="350" width="350" />
+        </td>
+    }
 </div>
+
+<div>
+    <hr />
+    @if (usuario != null)
+    {
+        <td class="col-sm-10">
+            <button>Seguir</button>
+        </td>
+    }
+    <td class="col-sm-10">
+        <p>Numero de Seguidores: @Html.DisplayFor(model => model.NumMiembros)</p>
+    </td>
+</div>
+
+<!--Seccion de Comentarios de la comunidad-->
+<h3>Comentarios</h3>
 <div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
     @{
         var ff = System.Globalization.CultureInfo.InvariantCulture;
     }
+    <!--Mostrar accion de comentar si estas loggeado-->
+    @if (usuario != null)
+    {
+        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+    }
+    <!--Recorrer comentarios de la comunidad y mostrarlos-->
     @foreach (var it in comments)
     {
         <div class="card shadow mb-2">
-
             <div class="card-body">
-                <h5 class="card-title">@it.NombreUsuario</h5>
+                <a href="/Usuario/Details/@it.UsuarioId"><h5 class="card-title">@it.NombreUsuario</h5></a>
                 <p class="card-text">@it.Texto</p>
             </div>
             <div class="card-footer">
                 <div class="row">
                     <div class="col-sm">
-                        @it.Fecha.ToString();
+                        @it.Fecha.ToString().;
                     </div>
-                    <div class="col-sm">
-                        <button class="btn btn-danger">
-                            @Html.ActionLink("Borrar", "Delete", "ComentarioCom", new { id = it.Id })
-                        </button>
-                    </div>
+
+                    <!--Borrar comentario si eres administrador-->
+                    @if (usuario != null && usuario.Tipo == "A")
+                    {
+                        <div class="col-sm">
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
+                            </button>
+                        </div>
+                    }
                 </div>
-                
+
             </div>
         </div>
     }
 </div>
 
 
+<!--Volver a la lista-->
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a> |
-    @Html.ActionLink("Comentar", "Create", "ComentarioCom", new { id = Model.Id })
+    <a asp-action="Index">Volver a la lista de comunidades</a>
 </div>
