@@ -5,10 +5,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>AlbumViewModel</h4>
-<hr />
+<h1>Editar album</h1>
+<br />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
@@ -18,11 +16,13 @@
                 <input asp-for="Titulo" class="form-control" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Genero" class="control-label"></label>
                 <br />
@@ -31,22 +31,25 @@
                          "Selecciona el género")
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Fichero" class="control-label"></label>
                 <input asp-for="Fichero" type="file">
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Precio" class="control-label"></label>
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

@@ -3,60 +3,43 @@
 @{
     ViewData["Title"] = "Details";
     IEnumerable<ComentarioAlbViewModel> comments = (IEnumerable<ComentarioAlbViewModel>)ViewData["Comentarios"];
+
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Titulo)</h1>
+<h4>@Html.DisplayFor(model => model.NombreArtista)</h4>
 
 <div>
-    <h4>AlbumViewModel</h4>
+    @if (Model != null && Model.Portada != null)
+    {
+        <td class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.Portada)" height="350" width="350" />
+        </td>
+    }
+</div>
+<div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreArtista)
-        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreArtista)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genero)
-        </dd>
-        @if (Model != null && Model.Portada != null)
-        {
-            <td class="col-sm-10">
-                <img src="@Html.DisplayFor(model => model.Portada)" height="150" width="150" />
-            </td>
-        }
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Likes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Likes)
-        </dd>
-        
     </dl>
-    <h4>Comentarios</h4>
 </div>
+<div>
+    <hr />
+    @if (usuario != null)
+    {
+        <td class="col-sm-10">
+            <button>Like</button>
+        </td>
+    }
+    <td class="col-sm-10">
+            <p>Numero de Likes: @Html.DisplayFor(model => model.Likes)</p>
+    </td>
+</div>
+
+<h3>Comentarios</h3>
 
 <div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
     @{
@@ -67,27 +50,37 @@
         <div class="card shadow mb-2">
 
             <div class="card-body">
-                <h5 class="card-title">@it.NombreUsuario</h5>
+                <a href="/Usuario/Details/@it.UsuarioId"><h5 class="card-title">@it.NombreUsuario</h5></a>
                 <p class="card-text">@it.Texto</p>
             </div>
             <div class="card-footer">
                 <div class="row">
                     <div class="col-sm">
-                        @it.Fecha.ToString();
+                        @it.Fecha.ToString().;
                     </div>
-                    <div class="col-sm">
-                        <button class="btn btn-danger">
-                            @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
-                        </button>
-                    </div>
+                    @if (usuario != null && usuario.Tipo == "A")
+                    {
+                        <div class="col-sm">
+                            <button class="btn btn-danger">
+                                @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
+                            </button>
+                        </div>
+                    }
                 </div>
-                
+
             </div>
         </div>
     }
 </div>
+
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @if (usuario != null && usuario.Tipo == "A")
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    }
     <a asp-action="Index">Back to List</a>
-    @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+    @if (usuario != null)
+    {
+        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+    }
 </div>
