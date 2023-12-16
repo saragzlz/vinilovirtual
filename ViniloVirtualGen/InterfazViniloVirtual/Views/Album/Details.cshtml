@@ -10,6 +10,16 @@
 <h1>@Html.DisplayFor(model => model.Titulo)</h1>
 <h4>@Html.DisplayFor(model => model.NombreArtista)</h4>
 
+<!--Opciones de editar y borrar el artista solo para administrador-->
+<td>
+    @if (usuario != null && usuario.Tipo == "A")
+    {
+        @Html.ActionLink("Editar Album", "Edit", new { id = Model.Id });
+        <span> | </span>
+        @Html.ActionLink("Borrar Album", "Delete", new { id = Model.Id });
+    }
+</td>
+
 <div>
     @if (Model != null && Model.Portada != null)
     {
@@ -39,16 +49,21 @@
     </td>
 </div>
 
+<!--Seccion de Comentarios del Album-->
 <h3>Comentarios</h3>
-
 <div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
     @{
         var ff = System.Globalization.CultureInfo.InvariantCulture;
     }
+    <!--Mostrar accion de comentar si estas loggeado-->
+    @if (usuario != null)
+    {
+        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+    }
+    <!--Recorrer comentarios del album y mostrarlos-->
     @foreach (var it in comments)
     {
         <div class="card shadow mb-2">
-
             <div class="card-body">
                 <a href="/Usuario/Details/@it.UsuarioId"><h5 class="card-title">@it.NombreUsuario</h5></a>
                 <p class="card-text">@it.Texto</p>
@@ -58,6 +73,8 @@
                     <div class="col-sm">
                         @it.Fecha.ToString().;
                     </div>
+
+                    <!--Borrar comentario si eres administrador-->
                     @if (usuario != null && usuario.Tipo == "A")
                     {
                         <div class="col-sm">
@@ -73,14 +90,7 @@
     }
 </div>
 
+<!--Volver a la lista-->
 <div>
-    @if (usuario != null && usuario.Tipo == "A")
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-    }
-    <a asp-action="Index">Back to List</a>
-    @if (usuario != null)
-    {
-        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
-    }
+    <a asp-action="Index">Volver a la lista de albumes</a>
 </div>
