@@ -1,22 +1,64 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+}
+/* color de fondo del footer */
+.footer {
+    background-color: #171E26 !important;
+    color: #fff !important; 
+    scroll-padding-top: 30px; 
+    text-align: center; 
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.navbar {
+    background-color: #293340;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+/* Letra Blanca */
+.navbar-nav .nav-link {
+
+    color: #fff !important;
+    font-size: 16px;
+  
+}
+.navbar-nav .nav-link:hover {
+    color: #6C778C !important;
+    font-size: 16px;
+}
+
+/* Botones navbar*/
+    .navbar-nav .nav-link.btn {
+        background-color: #fff;
+        color: #293340 !important;
+       
+    }
+        .navbar-nav .nav-link.btn:hover {
+            background-color: #293340;
+            color: #fff !important;
+        }
+
+
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
