@@ -19,13 +19,17 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/InterfazViniloVirtual.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/c978cb0a63.js" crossorigin="anonymous"></script>
+  
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Album" asp-action="Index">Vinilo Virtual</a>
+                <a style="color:#fff" class="navbar-brand" asp-area="" asp-controller="Album" asp-action="Index">Vinilo Virtual</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,36 +39,45 @@
                 <!--Usuario Normal-->
                 @if (usuario == null)
                 {
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-center">
+                        <ul class="navbar-nav mx-auto">
+                            <!-- La clase mx-auto centra la lista horizontalmente -->
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Album"
-                                    asp-action="Index">Explorar</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="Index">
+                                    <i class="fas fa-search"></i> Explorar
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Album"
-                                   asp-action="Index">Descubrir</a>
+                                   asp-action="Index">
+                                    <i class="fa-solid fa-meteor"></i> Descubrir
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Artista"
-                                    asp-action="Index">Artistas</a>
+                                    asp-action="Index">
+                                    <i class="fa-solid fa-compact-disc"></i> Artistas
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Comunidad"
-                                    asp-action="Index">Comunidades</a>
+                                    asp-action="Index">
+                                    <i class="fa-regular fa-comments"></i> Comunidades
+                                </a>
                             </li>
                             <!--
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Privacy</a>
                             </li>-->
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario"
-                                   asp-action="Register">Registrate</a>
+                            <!-- Identifícate -->
+                            <li style="margin-left:60px" class="nav-item">
+                                <a class="nav-link btn rounded-pill" asp-area="" asp-controller="Usuario" asp-action="Login">Identifícate</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario"
-                                    asp-action="Login">Indentificate</a>
+
+                            <!-- Regístrate con un margen derecho de 2 unidades -->
+                            <li style="margin-left:10px" class="nav-item ml-auto">
+                                <a class="nav-link btn rounded-pill" asp-area="" asp-controller="Usuario" asp-action="Register">Regístrate</a>
                             </li>
                         </ul>
                     </div>
@@ -72,7 +85,7 @@
                 <!--Cambiar a comprobar tipo de usuario cuando esté listo-->
                 <!--Admin-->
 
-                @if (usuario != null)
+                 @if (usuario != null)
                 {
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
@@ -124,7 +137,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer style="background-color:#17IE26" class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - Vinilo Virtual - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

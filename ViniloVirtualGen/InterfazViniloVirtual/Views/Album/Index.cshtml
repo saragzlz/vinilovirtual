@@ -2,30 +2,28 @@
 
 @{
     ViewData["Title"] = "Index";
-    UsuarioViewModel user =   (UsuarioViewModel)ViewData["usuario"];
+    UsuarioViewModel user = (UsuarioViewModel)ViewData["usuario"];
 }
 
+
 <p>
-    <a asp-action="Create">Crear nuevo album</a>
+    <a asp-action="Create" class="custom-button">Crear nuevo álbum</a>
 </p>
-<br />
+
 <div class="container-fluid">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card" style="display=" flex"; justify-content:center width: 18rem;">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
                 @if (item != null && item.Portada != null)
                 {
                     <a href="/Album/Details/@item.Id">
-                        <img src="@item.Portada" class="card-img-top" alt="@item.Portada">
+                        <img src="@item.Portada" class="album-image" alt="@item.Portada">
                     </a>
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Titulo</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>@item.NombreArtista</p>
-                        <p>@item.Precio</p>
-                    </div>
+                    <div class="album-title">@item.Titulo</div>
+                    <div class="album-artist">@item.NombreArtista</div>
+                    <div class="album-price">@item.Precio</div>
+                    
                 }
             </div>
         }
