@@ -62,3 +62,99 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+
+    /* Estilos de texto */
+    h1 {
+        font-family: 'Monserrat', sans-serif;
+        font-weight: bold;
+        font-size: 32pt;
+    }
+
+    h2 {
+        font-family: 'Monserrat', sans-serif;
+        font-weight: 600; /* Semibold */
+        font-size: 20pt;
+    }
+
+    p {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300; /* Light */
+        font-size: 14pt;
+    }
+
+    /* Estilos de navegación */
+    nav {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        font-size: 16pt;
+    }
+
+    /* Estilos de botones */
+    .btn {
+        font-family: 'Monserrat', sans-serif;
+        font-weight: bold;
+        font-size: 14pt;
+    }
+
+
+    /* Estilos de las celdas de álbumes */
+    .album-cell {
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .album-cell:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .album-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .album-title {
+        font-size: 18pt;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .album-artist {
+        font-size: 14pt;
+        margin-top: 5px;
+    }
+
+    .album-price {
+        font-size: 18px; /* Ajusta el tamaño de fuente según tus preferencias */
+        font-weight: bold;
+        color: #333; /* Cambiado a un tono más oscuro para mejorar la legibilidad */
+        margin-top: 10px;
+        font-family: 'Arial', sans-serif; /* Cambiado a la fuente Arial */
+        
+    }
+    .album-price:after {
+        content: " \20AC"; /* Código Unicode para el símbolo de euro precedido de un espacio */
+    }
+
+    /* Estilos del botón */
+    .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 2px solid #ccc; /* Color del borde */
+        border-radius: 20px; /* Bordes redondos */
+        text-decoration: none; /* Elimina la subrayado del enlace */
+        color: #ffffff !important; /* Color del texto */
+        background-color: #293340 !important; /* Color de fondo gris claro */
+        transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    }
+
+    /* Efecto de sombra al pasar el ratón */
+    .custom-button:hover {
+        background-color: #ffffff !important; /* Cambia el color de fondo al pasar el ratón */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
+        color: #000000 !important;
+    }

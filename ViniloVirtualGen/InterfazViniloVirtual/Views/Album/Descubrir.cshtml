@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<InterfazViniloVirtual.Models.AlbumViewModel>
 
+
+
 @{
     ViewData["Title"] = "Index";
     UsuarioViewModel user =   (UsuarioViewModel)ViewData["usuario"];
@@ -8,7 +10,7 @@
 <h1>Explorar</h1>
 
 <p>
-    <a asp-action="Create">Crear nuevo album</a>
+    <a class="nav-link btn rounded-pill" asp-action="Create">Crear nuevo album</a>
 </p>
 <table class="table">
     <thead>

@@ -47,3 +47,15 @@ C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloV
 C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
 C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
 C:\Users\adria\OneDrive\Documentos\GitHub\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.deps.json
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\bin\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.AssemblyInfo.cs
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\refint\ViniloVirtualGen.ApplicationCore.dll
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ViniloVirtualGen.ApplicationCore.pdb
+C:\Users\SAMUE\OneDrive\Escritorio\dsm\vinilovirtual\ViniloVirtualGen\ViniloVirtualGen.ApplicationCore\obj\Debug\net7.0\ref\ViniloVirtualGen.ApplicationCore.dll
