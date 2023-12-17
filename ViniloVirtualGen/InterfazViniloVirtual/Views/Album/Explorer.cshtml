@@ -1,0 +1,82 @@
+﻿@model InterfazViniloVirtual.Models.FiltroViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    UsuarioViewModel user = (UsuarioViewModel)ViewData["usuario"];
+
+    IEnumerable<AlbumViewModel> listAlbumes = (IEnumerable<AlbumViewModel>)ViewData["albumes"];
+
+    FiltroViewModel filtroViewModel = new FiltroViewModel();
+}
+
+@if (user != null && user.Tipo == "A")
+{
+    <p>
+        <a asp-action="Create" class="custom-button">Crear nuevo álbum</a>
+    </p>
+}
+
+
+
+<form asp-action="Explorer" class="form-inline my-2 my-lg-0">
+
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-5">
+            <input asp-for="TextoBuscar" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" />
+            <span asp-validation-for="TextoBuscar" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-auto">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+
+
+    </div>
+
+</form>
+
+
+<div>
+    @{
+        string[] generos =
+        Enum.GetNames(typeof(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum));
+        int contador = 0;
+    }
+
+    @foreach (int values in
+    Enum.GetValues(typeof(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum)))
+    {
+        <button type="button" class="btn btn-dark">
+            @Html.ActionLink(@generos[contador], "Explorer", "Album", new { genero = values })
+        </button>
+        contador++;
+    }
+
+
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in listAlbumes)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                @if (item != null && item.Portada != null)
+                {
+                    <a href="/Album/Details/@item.Id">
+                        <img src="@item.Portada" class="album-image" alt="@item.Portada">
+                    </a>
+                    <div class="album-title">@item.Titulo</div>
+                    <div class="album-artist">@item.NombreArtista</div>
+                    <div class="album-price">@item.Precio</div>
+
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

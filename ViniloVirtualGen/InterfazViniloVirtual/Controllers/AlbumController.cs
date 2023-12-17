@@ -7,6 +7,7 @@ using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 using ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
 using System.Globalization;
+using ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual;
 
 namespace InterfazViniloVirtual.Controllers
 {
@@ -32,7 +33,7 @@ namespace InterfazViniloVirtual.Controllers
 
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
 
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
             ViewData["usuario"] = user;
             SessionClose();
 
@@ -62,18 +63,18 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Create
         public ActionResult Create()
         {
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
 
-            if(user == null || user.Tipo == "C") 
+            if (user == null || user.Tipo == "C")
             {
                 return RedirectToAction("Unathorize", "Usuario");
             }
 
             AlbumViewModel albumViewModel = new AlbumViewModel();
             ArtistaRepository artsRepos = new ArtistaRepository();
-            ArtistaCEN artsEN = new ArtistaCEN(artsRepos); 
+            ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
             albumViewModel.ArtistaENs = artsEN.GetAll(0, -1).ToList();
-            
+
             return View(albumViewModel);
         }
 
@@ -120,8 +121,8 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Edit/5
         public ActionResult Edit(int id)
         {
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
-            if(user == null || user.Tipo == "C") 
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null || user.Tipo == "C")
             {
                 return RedirectToAction("Unathorize", "Usuario");
             }
@@ -137,7 +138,7 @@ namespace InterfazViniloVirtual.Controllers
 
             SessionClose();
             return View(albView);
-            
+
         }
         /*
         // POST: AlbumController/Edit/5
@@ -228,5 +229,69 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+
+        // GET: AlbumController
+        public ActionResult Explorer(int genero)
+        {
+            SessionInitialize();
+
+            AlbumRepository albRepository = new AlbumRepository(session);
+            AlbumCEN albCEN = new AlbumCEN(albRepository);
+
+            IList<AlbumEN> listEN = null;
+            if (genero != 0)
+            {
+                var generos = Enum.GetValues(typeof(GeneroMusicalEnum));
+                genero--;
+                GeneroMusicalEnum generoFilter = (GeneroMusicalEnum)generos.GetValue(genero);
+                listEN = albCEN.GetAlbumsDelGenero(generoFilter);
+
+            }
+            else
+            {
+                listEN = albCEN.GetAll(0, -1);
+            }
+
+
+            IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            ViewData["usuario"] = user;
+
+            ViewData["albumes"] = listAlbumes;
+            SessionClose();
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Explorer(FiltroViewModel alb)
+        {
+            try
+            {
+                SessionInitialize();
+
+                AlbumRepository albRepository = new AlbumRepository(session);
+                AlbumCEN albCEN = new AlbumCEN(albRepository);
+
+                IList<AlbumEN> listEN = albCEN.GetAll(0, -1);
+
+                listEN = listEN.Where(x => x.Artista.Nombre.ToLower().Contains(alb.TextoBuscar.ToLower()) || x.Nombre.ToLower().Contains(alb.TextoBuscar.ToLower())).ToList();
+
+                IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
+
+                SessionClose();
+                ViewData["albumes"] = listAlbumes;
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+
     }
 }

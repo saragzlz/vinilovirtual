@@ -25,8 +25,16 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
 
                                 album = _IAlbumRepository.GetID(p_oid);
 
+                                if (usu.Album_favoritos != null)
+                                {
+                                        usu.Album_favoritos.Add(album);
+                                }
+                                else
+                                {
+                                        usu.Album_favoritos = new List<AlbumEN>() { album };
+                                }
 
-                                usu.Album_favoritos.Add(album);
+
 
 
                                 _IUsuarioRepository.ModifyDefault(usu);

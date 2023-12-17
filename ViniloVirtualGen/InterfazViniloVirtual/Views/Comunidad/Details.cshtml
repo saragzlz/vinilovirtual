@@ -53,7 +53,7 @@
     <!--Mostrar accion de comentar si estas loggeado-->
     @if (usuario != null)
     {
-        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+        @Html.ActionLink("Comentar", "Create", "Comunidad", new { id = Model.Id })
     }
     <!--Recorrer comentarios de la comunidad y mostrarlos-->
     @foreach (var it in comments)
