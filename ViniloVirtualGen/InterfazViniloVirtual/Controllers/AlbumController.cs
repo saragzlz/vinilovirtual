@@ -208,6 +208,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: AlbumController/Delete/5
         public ActionResult Delete(int id)
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             AlbumRepository albRepo = new AlbumRepository();
             AlbumCEN albCEN = new AlbumCEN(albRepo);
             albCEN.Destroy(id);

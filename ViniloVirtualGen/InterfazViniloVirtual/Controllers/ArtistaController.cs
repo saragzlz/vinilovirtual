@@ -26,7 +26,7 @@ namespace InterfazViniloVirtual.Controllers
 
             IList<ArtistaEN> listEN = artistaCEN.GetAll(0, -1);
 
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
             ViewData["usuario"] = user;
 
             IEnumerable<ArtistaViewModel> listArtistas = new ArtistaAssembler().ConvertirListENToViewModel(listEN).ToList();
@@ -63,6 +63,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ArtistaController/Create
         public ActionResult Create()
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             return View();
         }
 
@@ -75,7 +81,7 @@ namespace InterfazViniloVirtual.Controllers
             {
                 ArtistaRepository artRepo = new ArtistaRepository();
                 ArtistaCEN artCEN = new ArtistaCEN(artRepo);
-            
+
 
                 string fileName = "", path = "";
                 if (art.Fichero != null && art.Fichero.Length > 0)
@@ -108,6 +114,13 @@ namespace InterfazViniloVirtual.Controllers
         public ActionResult Edit(int id)
         {
             SessionInitialize();
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             ArtistaRepository artRepo = new ArtistaRepository(session);
             ArtistaCEN artCEN = new ArtistaCEN(artRepo);
 
@@ -179,7 +192,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ArtistaController/Delete/5
         public ActionResult Delete(int id)
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
 
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             ArtistaRepository artRepo = new ArtistaRepository();
             ArtistaCEN artCEN = new ArtistaCEN(artRepo);
             artCEN.Destroy(id);

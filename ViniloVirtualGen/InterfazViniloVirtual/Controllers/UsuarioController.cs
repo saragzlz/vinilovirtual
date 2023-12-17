@@ -64,6 +64,14 @@ namespace InterfazViniloVirtual.Controllers
         public ActionResult Details(string id)
         {
             SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
+
             UsuarioRepository usuarioRepository = new UsuarioRepository(session);
             UsuarioCEN usuarioCEN = new UsuarioCEN(usuarioRepository);
 
@@ -124,7 +132,7 @@ namespace InterfazViniloVirtual.Controllers
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
                 UsuarioEN usuBefore = usuRepo.GetID(usu.Email);
-                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A" 
+                usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A"
                 ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar,
                 usuBefore.Artista_favoritos, usuBefore.Album, usuBefore.Album_favoritos);
 

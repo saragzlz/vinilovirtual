@@ -21,13 +21,18 @@ namespace InterfazViniloVirtual.Controllers
         public ActionResult Index()
         {
             SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
             ComunidadRepository comunidadRepository = new ComunidadRepository(session);
             ComunidadCEN comunidadCEN = new ComunidadCEN(comunidadRepository);
 
             IList<ComunidadEN> listEN = comunidadCEN.GetAll(0, -1);
 
             IEnumerable<ComunidadViewModel> listComunidad = new ComunidadAssembler().ConvertirListENToViewModel(listEN).ToList();
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
             ViewData["usuario"] = user;
             SessionClose();
 
@@ -37,6 +42,11 @@ namespace InterfazViniloVirtual.Controllers
         public ActionResult Details(int id)
         {
             SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
             ComunidadRepository comRepo = new ComunidadRepository(session);
             ComunidadCEN comCEN = new ComunidadCEN(comRepo);
 
@@ -56,8 +66,8 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ComunidadController/Create
         public ActionResult Create()
         {
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
-            if(user == null || user.Tipo == "C") 
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null || user.Tipo == "C")
             {
                 return RedirectToAction("Unathorize", "Usuario");
             }
@@ -105,8 +115,8 @@ namespace InterfazViniloVirtual.Controllers
 
         public ActionResult Edit(int id)
         {
-            UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
-            if(user == null || user.Tipo == "C") 
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null || user.Tipo == "C")
             {
                 return RedirectToAction("Unathorize", "Usuario");
             }
@@ -182,6 +192,11 @@ namespace InterfazViniloVirtual.Controllers
 
         public ActionResult Delete(int id)
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
 
             ComunidadRepository comRepo = new ComunidadRepository();
             ComunidadCEN comCEN = new ComunidadCEN(comRepo);
@@ -202,6 +217,34 @@ namespace InterfazViniloVirtual.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult SeguirComunidad(int id)
+        {
+            SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
+            ComunidadRepository comunidadRepository = new ComunidadRepository(session);
+            ComunidadCEN comunidadCEN = new ComunidadCEN(comunidadRepository);
+
+            if (user.Estado == ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal)
+            {
+
+            }
+
+            
+
+            IList<ComunidadEN> listEN = comunidadCEN.GetAll(0, -1);
+
+            IEnumerable<ComunidadViewModel> listComunidad = new ComunidadAssembler().ConvertirListENToViewModel(listEN).ToList();
+            ViewData["usuario"] = user;
+            SessionClose();
+
+            return View(listComunidad);
         }
     }
 }
