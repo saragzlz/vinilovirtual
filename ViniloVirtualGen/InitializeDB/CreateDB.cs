@@ -97,8 +97,6 @@ public static void InitializeData ()
                 LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
                 UsuarioRepository usuariorepository = new UsuarioRepository ();
                 UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
-                UsuarioCEN usuariocen2 = new UsuarioCEN (usuariorepository, albumrepository);
-                UsuarioCEN usuariocen3 = new UsuarioCEN (usuariorepository, artistarepository);
                 ComentarioAlbRepository comentarioalbrepository = new ComentarioAlbRepository ();
                 ComentarioAlbCEN comentarioalbcen = new ComentarioAlbCEN (comentarioalbrepository);
                 ComentarioComRepository comentariocomrepository = new ComentarioComRepository ();
@@ -529,12 +527,9 @@ public static void InitializeData ()
 
                 /*PROTECTED REGION END*/
 
-                usuariocen2.AddAlbumBuy(album3, usuario2);
-
-                usuariocen3.AddArtistasFav(artista1, usuario2);
-
-                usuariocen3.AddAlbumFav(album3, usuario2);
-
+                UsuarioCP cP = new UsuarioCP(new SessionCPNHibernate ());
+                cP.AddAlbumBuy(album10, usuario2);
+                cP.AddAlbumBuy(album2, usuario2);
   
         }
         catch (Exception ex)

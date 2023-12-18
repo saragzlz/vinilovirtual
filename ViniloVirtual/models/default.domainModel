@@ -350,15 +350,15 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Xu688IRtEe6WIpEWm3U8ng" name="p_email"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Y2DkIIRtEe6WIpEWm3U8ng" name="p_nuevoApellido"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_3jDfMJmxEe6asrAzw7LnAQ" name="addArtistasFav" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_3jDfMJmxEe6asrAzw7LnAQ" name="addArtistasFav" operationType="CustomTransaction" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_3jI-wJmxEe6asrAzw7LnAQ" name="p_oid" type="OID" typeObject="_5aGwQHN5Ee6uMt-deiWvsQ"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Cd9REJmzEe6asrAzw7LnAQ" name="user" type="OID" typeObject="_mHpTQHycEe6vqYLfZdGDMg"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_JWtHAJmyEe6asrAzw7LnAQ" name="addAlbumFav" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_JWtHAJmyEe6asrAzw7LnAQ" name="addAlbumFav" operationType="CustomTransaction" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_JWtuEJmyEe6asrAzw7LnAQ" name="p_oid" type="OID" typeObject="_upyBQHN5Ee6uMt-deiWvsQ"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_F68VUJmzEe6asrAzw7LnAQ" name="user" type="OID" typeObject="_mHpTQHycEe6vqYLfZdGDMg"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_NfDccJmyEe6asrAzw7LnAQ" name="addAlbumBuy" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_NfDccJmyEe6asrAzw7LnAQ" name="addAlbumBuy" operationType="CustomTransaction" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_NfDccZmyEe6asrAzw7LnAQ" name="p_oid" type="OID" typeObject="_upyBQHN5Ee6uMt-deiWvsQ"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_H4g1QJmzEe6asrAzw7LnAQ" name="user" type="OID" typeObject="_mHpTQHycEe6vqYLfZdGDMg"/>
       </operations>

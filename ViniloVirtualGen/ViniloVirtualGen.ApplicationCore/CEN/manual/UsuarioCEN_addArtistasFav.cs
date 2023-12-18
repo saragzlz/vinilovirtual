@@ -23,8 +23,6 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
                         {
                                 usu = _IUsuarioRepository.GetID(user);
 
-                                artista = _ArtistaRepository.GetID(p_oid);
-
 
                                 usu.Artista_favoritos.Add(artista);
 

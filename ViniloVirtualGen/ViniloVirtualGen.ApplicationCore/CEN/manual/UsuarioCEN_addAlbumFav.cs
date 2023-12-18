@@ -23,7 +23,6 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
                         {
                                 usu = _IUsuarioRepository.GetID(user);
 
-                                album = _IAlbumRepository.GetID(p_oid);
 
                                 if (usu.Album_favoritos != null)
                                 {

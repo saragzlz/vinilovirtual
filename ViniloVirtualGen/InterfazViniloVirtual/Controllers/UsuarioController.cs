@@ -133,8 +133,7 @@ namespace InterfazViniloVirtual.Controllers
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
                 UsuarioEN usuBefore = usuRepo.GetID(usu.Email);
                 usuCEN.Modify(id, usu.Nombre, usu.Pass, usu.FechaNacimiento, usu.Genero, usu.Estado, usu.Imagen, usu.Apellido, usu.Tipo == "A"
-                ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar,
-                usuBefore.Artista_favoritos, usuBefore.Album, usuBefore.Album_favoritos);
+                ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
 
                 return RedirectToAction(nameof(Index));
             }

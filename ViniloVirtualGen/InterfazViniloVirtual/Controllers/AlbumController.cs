@@ -297,7 +297,38 @@ namespace InterfazViniloVirtual.Controllers
             }
         }
 
+        public ActionResult VerCarrito(int genero)
+        {
+            SessionInitialize();
 
+            AlbumRepository albRepository = new AlbumRepository(session);
+            AlbumCEN albCEN = new AlbumCEN(albRepository);
+
+            IList<AlbumEN> listEN = null;
+            if (genero != 0)
+            {
+                var generos = Enum.GetValues(typeof(GeneroMusicalEnum));
+                genero--;
+                GeneroMusicalEnum generoFilter = (GeneroMusicalEnum)generos.GetValue(genero);
+                listEN = albCEN.GetAlbumsDelGenero(generoFilter);
+
+            }
+            else
+            {
+                listEN = albCEN.GetAll(0, -1);
+            }
+
+
+            IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            ViewData["usuario"] = user;
+
+            ViewData["albumes"] = listAlbumes;
+            SessionClose();
+
+            return View();
+        }
 
     }
 }
