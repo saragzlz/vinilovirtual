@@ -115,11 +115,7 @@ public void ModifyDefault (UsuarioEN usuario)
                 usuarioNH.Imagen = usuario.Imagen;
 
 
-                usuarioNH.Album = usuario.Album;
 
-                usuarioNH.Album_favoritos = usuario.Album_favoritos;
-
-                usuarioNH.Artista_favoritos = usuario.Artista_favoritos;
 
 
 

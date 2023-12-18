@@ -97,8 +97,6 @@ public static void InitializeData ()
                 LineaPedidoCEN lineapedidocen = new LineaPedidoCEN (lineapedidorepository);
                 UsuarioRepository usuariorepository = new UsuarioRepository ();
                 UsuarioCEN usuariocen = new UsuarioCEN (usuariorepository);
-                UsuarioCEN usuariocen2 = new UsuarioCEN (usuariorepository, albumrepository);
-                UsuarioCEN usuariocen3 = new UsuarioCEN (usuariorepository, artistarepository);
                 ComentarioAlbRepository comentarioalbrepository = new ComentarioAlbRepository ();
                 ComentarioAlbCEN comentarioalbcen = new ComentarioAlbCEN (comentarioalbrepository);
                 ComentarioComRepository comentariocomrepository = new ComentarioComRepository ();
@@ -209,7 +207,7 @@ public static void InitializeData ()
                         19.99, 0);
                 int album9 = albumcen.New_ ("La Cantera", "La cantera es el primer álbum de Guitarricadelafuente, cuyo lanzamiento se anuncia con un tráiler el 24 de febrero de 2022",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.espanola, "/Images/lacantera.jpg", artista6,
-                        14.99, 0); 
+                        14.99, 0);
                 int album10 = albumcen.New_ ("Me Muevo con Dios", "Aclamado disco del famoso rapero canario Cruz Cafune",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rap, "/Images/memuevocon.jpg", artista7,
                         22.54, 0);
@@ -218,7 +216,7 @@ public static void InitializeData ()
                         13.76, 0);
                 int album12 = albumcen.New_ ("Fine Line", "Segundo album de estudio del artista britanico Harry Styles",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.pop, "/Images/fineline.jpg", artista9,
-                        15.25, 0);        
+                        15.25, 0);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Album " + album1 + " creado correctamente");
                 Console.WriteLine ("Album " + album2 + " creado correctamente");
@@ -229,9 +227,9 @@ public static void InitializeData ()
                 int comunidad1 = comunidadcen.New_ ("Locos por el Jazz", "/Images/jazz.png", 15);
                 int comunidad2 = comunidadcen.New_ ("Rock and Stone", "/Images/rock.png", 47);
                 int comunidad3 = comunidadcen.New_ ("Beats", "/Images/rap.jpg", 73);
-                int comunidad4 = comunidadcen.New_ ("Las Mejores OST", "/Images/ost.PNG", 73);
-                int comunidad5 = comunidadcen.New_ ("Motomamis", "/Images/espanola.jpg", 73);
-                int comunidad6 = comunidadcen.New_ ("Club de Fans de Harry Styles", "/Images/pop.jpg", 73);
+                int comunidad4 = comunidadcen.New_ ("Las Mejores OST", "/Images/ost.PNG", 65);
+                int comunidad5 = comunidadcen.New_ ("Motomamis", "/Images/espanola.jpg", 33);
+                int comunidad6 = comunidadcen.New_ ("Club de Fans de Harry Styles", "/Images/pop.jpg", 137);
 
 
                 //Creacion de Comentarios de Albumes
@@ -309,6 +307,11 @@ public static void InitializeData ()
                 Console.WriteLine ("El total del pedido " + pedidoEN.Id + " es: " + "{0:N2}", pedidoEN.Total);
                 Console.WriteLine (" ");
 
+
+
+
+
+
                 //Probar CUSTOMS
 
                 //USUARIO
@@ -341,6 +344,21 @@ public static void InitializeData ()
                 Console.WriteLine ("Precio del album " + album1 + " cambiado a: " + albumen1.Precio);
                 Console.WriteLine (" ");
 
+                //Modificamos el numero de likes para cuando se de al boton de "like"
+                albumcen.IncrementoLikes(album1);
+                albumen1 = albumrepository.GetID (album1);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Numero de likes del album " + albumen1.Nombre + " aumentado en 1. Likes: " + albumen1.NumLikes);
+                Console.WriteLine (" ");
+                
+                albumcen.DecrementoLikes(album1);
+                albumen1 = albumrepository.GetID (album1);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Numero de likes del album " + albumen1.Nombre + " decrementado en 1. Likes: " + albumen1.NumLikes);
+                Console.WriteLine (" ");
+                
 
                 //ARTISTA
                 //Modificamos la descripcion del artista
@@ -358,7 +376,21 @@ public static void InitializeData ()
                 Console.WriteLine (" ");
 
 
+                //Comunidad
+                //Modificamos el numero de seguidores para cuando se de al boton de "seguir"
+                comunidadcen.IncrementoSeguidores(comunidad1);
+                ComunidadEN comunidaden1 = comunidadrepository.GetID (comunidad1);
 
+                Console.WriteLine (" ");
+                Console.WriteLine ("Numero de seguidores de la comunidad " + comunidaden1.Nombre + " aumentado en 1. Miembros: " + comunidaden1.NumMiembros);
+                Console.WriteLine (" ");
+                
+                comunidadcen.DecrementoSeguidores(comunidad1);
+                comunidaden1 = comunidadrepository.GetID (comunidad1);
+
+                Console.WriteLine (" ");
+                Console.WriteLine ("Numero de seguidores de la comunidad " + comunidaden1.Nombre + " decrementado en 1. Miembros: " + comunidaden1.NumMiembros);
+                Console.WriteLine (" ");
 
 
 
@@ -528,14 +560,6 @@ public static void InitializeData ()
                 Console.WriteLine (usuarioen1.Album.Count > 0  ? usuarioen1.Album [0].Precio : "Albumes");
 
                 /*PROTECTED REGION END*/
-
-                usuariocen2.AddAlbumBuy(album3, usuario2);
-
-                usuariocen3.AddArtistasFav(artista1, usuario2);
-
-                usuariocen3.AddAlbumFav(album3, usuario2);
-
-  
         }
         catch (Exception ex)
         {

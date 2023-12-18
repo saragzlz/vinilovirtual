@@ -13,41 +13,17 @@ using ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual;
 
 namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
 {
-        public partial class UsuarioCEN
-        {
-                public void AddAlbumFav(int p_oid, string user)
-                {
-                        UsuarioEN usu = new UsuarioEN();
-                        AlbumEN album = new AlbumEN();
-                        try
-                        {
-                                usu = _IUsuarioRepository.GetID(user);
+public partial class UsuarioCEN
+{
+public void AddAlbumFav (int p_oid, string user)
+{
+        /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_addAlbumFav) ENABLED START*/
 
-                                album = _IAlbumRepository.GetID(p_oid);
+        // Write here your custom code...
 
-                                if (usu.Album_favoritos != null)
-                                {
-                                        usu.Album_favoritos.Add(album);
-                                }
-                                else
-                                {
-                                        usu.Album_favoritos = new List<AlbumEN>() { album };
-                                }
+        throw new NotImplementedException ("Method AddAlbumFav() not yet implemented.");
 
-
-
-
-                                _IUsuarioRepository.ModifyDefault(usu);
-                        }
-                        catch (Exception ex)
-                        {
-
-                                usu.Album_favoritos = new List<AlbumEN>() { album };
-                                _IUsuarioRepository.ModifyDefault(usu);
-
-
-
-                        }
-                }
-        }
+        /*PROTECTED REGION END*/
+}
+}
 }

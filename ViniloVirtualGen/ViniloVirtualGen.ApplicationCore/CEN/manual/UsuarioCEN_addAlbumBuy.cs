@@ -13,35 +13,17 @@ using ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual;
 
 namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
 {
-        public partial class UsuarioCEN
-        {
-                public void AddAlbumBuy(int p_oid, string user)
-                {
-                        UsuarioEN usu = new UsuarioEN();
-                        AlbumEN album = new AlbumEN();
-                        try
-                        {
-                                usu = _IUsuarioRepository.GetID(user);
+public partial class UsuarioCEN
+{
+public void AddAlbumBuy (int p_oid, string user)
+{
+        /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_addAlbumBuy) ENABLED START*/
 
-                                album = _IAlbumRepository.GetID(p_oid);
+        // Write here your custom code...
 
+        throw new NotImplementedException ("Method AddAlbumBuy() not yet implemented.");
 
-                                usu.Album.Add(album);
-
-
-                                _IUsuarioRepository.ModifyDefault(usu);
-                        }
-                        catch (Exception ex)
-                        {
-
-                                usu.Album = new List<AlbumEN>() { album };
-                                _IUsuarioRepository.ModifyDefault(usu);
-
-
-
-                        }
-
-
-                }
-        }
+        /*PROTECTED REGION END*/
+}
+}
 }
