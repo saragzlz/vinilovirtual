@@ -2,15 +2,17 @@
 @model InterfazViniloVirtual.Models.UsuarioViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Crear nuevo usuario</h1>
+<h1>Bienvenido a Vinilo Virtual</h1>
+
+<h4>Por favor, registrese:</h4>
 <br />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <form asp-action="Register" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -57,23 +59,10 @@
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
-                <br/>
-                @Html.DropDownListFor(m => m.Tipo,
-                            new SelectList(Enum.GetValues(typeof(TipoUsuarioEnum))),
-                            "Selecciona tipo de usuario")
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Enviar" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-<br />
-<div>
-    <a asp-action="Index">Volver a la lista de usuarios</a>
 </div>
 
 @section Scripts {
