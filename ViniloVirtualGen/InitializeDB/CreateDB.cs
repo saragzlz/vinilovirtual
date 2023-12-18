@@ -174,7 +174,7 @@ public static void InitializeData ()
                         );
                 int artista9 = artistacen.New_ ("Harry Styles",
                         "Harry Edward Styles es un cantante, compositor y actor británico. Inició su carrera como cantante en 2010 como integrante de la boy band One Direction, con la que participó en el programa The X Factor y quedó en tercer lugar",
-                        "/Images/harry.PNG"
+                        "/Images/harry.jpg"
                         );
                 Console.WriteLine (" ");
                 Console.WriteLine ("Artista " + artista1 + " creado correctamente");

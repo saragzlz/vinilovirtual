@@ -6,60 +6,27 @@
     UsuarioViewModel user =   (UsuarioViewModel)ViewData["usuario"];
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Crear nuevo artista</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.imagen)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imagen)
-            </td>
-        @if (item != null && item.imagen != null)
-        {
-            <td class="col-sm-10">
-                <img src="@Html.DisplayFor(modelItem => item.imagen)" height="150" width="150" />
-            </td>
-
-        }
-            
-            <td>
-                @if(user!= null && user.Tipo == "A")
-                {
-                     @Html.ActionLink("Editar", "Edit", new { id = item.id }); <span> | </span>
-                     @Html.ActionLink("Detalles", "Details", new { id = item.id }); <span> | </span> 
-                     @Html.ActionLink("Borrar", "Delete", new {  id=item.id });
-                }else {
-                    @Html.ActionLink("Ver", "Details", new { id = item.id });
-                }
-               
-                
-                
-            </td>
-        </tr>
+@if (user != null && user.Tipo == "A")
+{
+    <p>
+        <a asp-action="Create" class="custom-button">Crear nuevo artista</a>
+    </p>
 }
-    </tbody>
-</table>
+
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                @if (item != null && item.imagen != null)
+                {
+                    <a href="/Album/Details/@item.id">
+                        <img src="@item.imagen" class="album-image" alt="@item.imagen">
+                    </a>
+                    <div class="album-title">@item.nombre</div>
+                }
+            </div>
+        }
+    </div>
+</div>
