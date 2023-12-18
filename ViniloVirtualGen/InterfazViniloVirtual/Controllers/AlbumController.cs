@@ -47,10 +47,31 @@ namespace InterfazViniloVirtual.Controllers
 
             AlbumRepository albRepo = new AlbumRepository(session);
             AlbumCEN albCEN = new AlbumCEN(albRepo);
+            UsuarioRepository usuarioRepository = new UsuarioRepository(session);
+            UsuarioCEN usuarioCEN = new UsuarioCEN(usuarioRepository);
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+
 
             AlbumEN albEN = albCEN.GetID(id);
 
             AlbumViewModel albView = new AlbumAssembler().ConvertirENToViewModel(albEN);
+
+
+            if (user != null)
+            {
+                UsuarioEN usu = usuarioCEN.GetID(user.Email);
+
+                foreach (AlbumEN x in usu.Album_favoritos)
+                {
+                    if (x.Id == albView.Id)
+                    {
+                        albView.IsFav = true;
+                        break;
+                    }
+                }
+            }
 
             IEnumerable<ComentarioAlbViewModel> comentView = new ComentarioAlbAssembler().ConvertirListENToViewModel(albEN.ComentarioAlb);
 
@@ -58,6 +79,44 @@ namespace InterfazViniloVirtual.Controllers
 
             SessionClose();
             return View(albView);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(AlbumViewModel alb)
+        {
+            try
+            {
+                AlbumRepository albRepo = new AlbumRepository();
+                AlbumCEN albCEN = new AlbumCEN(albRepo);
+                UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+                foreach (int x in user.album_favoritos)
+                {
+                    if (x == alb.Id)
+                    {
+                        alb.IsFav = true;
+                        break;
+                    }
+                }
+
+                if (!alb.IsFav)
+                {
+                    albCEN.AnyadirFavorito(alb.Id, new List<string>() { user.Email });
+
+                }
+                else
+                {
+                    albCEN.EliminarFavorito(alb.Id, new List<string>() { user.Email });
+                }
+
+                return RedirectToAction("Details", "Album", new {id = alb.Id});
+
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: AlbumController/Create

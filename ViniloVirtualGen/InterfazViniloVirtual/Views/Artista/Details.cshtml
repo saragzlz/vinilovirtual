@@ -38,6 +38,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.descripcion)
         </dd>
+        @if (usuario != null && usuario.Tipo == "C")
+        {
+            <dd class="col-sm-10">
+
+                @if (Model.IsFav)
+                {
+                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </form>
+                }
+
+
+            </dd>
+        }
     </dl>
 </div>
 

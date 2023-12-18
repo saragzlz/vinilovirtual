@@ -50,6 +50,10 @@ namespace InterfazViniloVirtual.Models
 
         public string Baneado { get; set; }
 
+        public System.Collections.Generic.IList<int> album_favoritos { get; set; }
+
+        public System.Collections.Generic.IList<int> artistas_favoritos { get; set; }
+
 
     }
 

@@ -36,7 +36,8 @@ namespace InterfazViniloVirtual.Controllers
         [HttpPost]
         public ActionResult Login(loginUsuarioViewModel login)
         {
-            UsuarioRepository usuRepo = new UsuarioRepository();
+            SessionInitialize();
+            UsuarioRepository usuRepo = new UsuarioRepository(session);
             UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
 
             if (usuCEN.Login(login.Email, login.Pass) == null)
@@ -48,8 +49,10 @@ namespace InterfazViniloVirtual.Controllers
                 UsuarioEN usuEN = usuCEN.GetID(login.Email);
                 UsuarioViewModel usuVM = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
                 HttpContext.Session.Set<UsuarioViewModel>("usuario", usuVM);
+                SessionClose();
                 return RedirectToAction("Explorer", "Album");
             }
+            SessionClose();
             return View();
         }
 
@@ -281,8 +284,6 @@ namespace InterfazViniloVirtual.Controllers
             IEnumerable<AlbumViewModel> albumesFavs = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album_favoritos).ToList();
             IEnumerable<AlbumViewModel> albumesComprados = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album).ToList();
             IEnumerable<ArtistaViewModel> artistasFavs = new ArtistaAssembler().ConvertirListENToViewModel(usuEN.Artista_favoritos).ToList();
-
-            usuarioCEN.AddAlbumFav(65537, "sara@gmail.com");
 
             ViewData["albumesFavs"] = albumesFavs;
             ViewData["albumesComprados"] = albumesComprados;

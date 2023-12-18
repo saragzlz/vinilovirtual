@@ -17,11 +17,22 @@ namespace InterfazViniloVirtual.Assemblers
             usuarioViewModel.FechaNacimiento = usuEn.FechaNac;
             usuarioViewModel.Imagen = usuEn.Imagen;
             usuarioViewModel.Tipo = usuEn.Tipo == ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador ? "A" : "C";
+            usuarioViewModel.album_favoritos = new List<int>();
+            usuarioViewModel.artistas_favoritos = new List<int>();
 
+            foreach (AlbumEN x in usuEn.Album_favoritos)
+            {
+                usuarioViewModel.album_favoritos.Add(x.Id);
+            }
+
+            foreach (ArtistaEN x in usuEn.Artista_favoritos)
+            {
+                usuarioViewModel.artistas_favoritos.Add(x.Id);
+            }
             return usuarioViewModel;
         }
 
-        public IList<UsuarioViewModel> ConvertirListENToViewModel (IList<UsuarioEN> ens)
+        public IList<UsuarioViewModel> ConvertirListENToViewModel(IList<UsuarioEN> ens)
         {
 
             IList<UsuarioViewModel> users = new List<UsuarioViewModel>();
@@ -31,7 +42,7 @@ namespace InterfazViniloVirtual.Assemblers
             }
 
             return users;
-            
+
         }
     }
 }

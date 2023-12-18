@@ -26,6 +26,8 @@ namespace InterfazViniloVirtual.Models
         [Display(Prompt = "Imagen", Description = "Imagen del Artículo", Name = "Imagen")]
         public IFormFile Fichero { get; set; }
 
+        public bool IsFav { get; set; }
+
 
     }
 }

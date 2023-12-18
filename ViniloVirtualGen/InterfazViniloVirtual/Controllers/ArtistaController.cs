@@ -41,6 +41,9 @@ namespace InterfazViniloVirtual.Controllers
             SessionInitialize();
             ArtistaRepository artRepo = new ArtistaRepository(session);
             ArtistaCEN artCEN = new ArtistaCEN(artRepo);
+            UsuarioRepository usuarioRepository = new UsuarioRepository(session);
+            UsuarioCEN usuarioCEN = new UsuarioCEN(usuarioRepository);
+
 
             ArtistaEN artEN = artCEN.GetID(id);
             ArtistaViewModel artView = new ArtistaAssembler().ConvertirENToViewModel(artEN);
@@ -50,6 +53,23 @@ namespace InterfazViniloVirtual.Controllers
             List<AlbumEN> albumsEN = new List<AlbumEN>();
 
             albumsEN.AddRange(albumCEN.GetAlbumesArtista(id));
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+
+            if (user != null)
+            {
+                UsuarioEN usu = usuarioCEN.GetID(user.Email);
+
+                foreach (ArtistaEN x in usu.Artista_favoritos)
+                {
+                    if (x.Id == artView.id)
+                    {
+                        artView.IsFav = true;
+                        break;
+                    }
+                }
+            }
             // albumsEN = albumCEN.GetAlbumesArtista(id);
 
             IEnumerable<AlbumViewModel> albumesArtista = new AlbumAssembler().ConvertirListENToViewModel(albumsEN).ToList();
@@ -59,6 +79,45 @@ namespace InterfazViniloVirtual.Controllers
             SessionClose();
             return View(artView);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(ArtistaViewModel art)
+        {
+            try
+            {
+                ArtistaRepository artistaRepository = new ArtistaRepository();
+                ArtistaCEN artCEN = new ArtistaCEN(artistaRepository);
+                UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+                foreach (int x in user.artistas_favoritos)
+                {
+                    if (x == art.id)
+                    {
+                        art.IsFav = true;
+                        break;
+                    }
+                }
+
+                if (!art.IsFav)
+                {
+                    artCEN.AnyadirFavorito(art.id, new List<string>() { user.Email });
+
+                }
+                else
+                {
+                    artCEN.EliminarFavorito(art.id, new List<string>() { user.Email });
+                }
+
+                return RedirectToAction("Details", "Artista", new { id = art.id });
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         // GET: ArtistaController/Create
         public ActionResult Create()
