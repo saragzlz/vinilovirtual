@@ -3,6 +3,7 @@ using InterfazViniloVirtual.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Globalization;
 using ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual;
 using ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
@@ -12,6 +13,13 @@ namespace InterfazViniloVirtual.Controllers
     public class UsuarioController : BasicController
     {
 
+        private readonly IWebHostEnvironment _webHost;
+
+        public UsuarioController(IWebHostEnvironment webHost)
+        {
+            _webHost = webHost;
+        }
+
         // GET: UsuarioController/Login
         public ActionResult Login()
         {
@@ -19,7 +27,7 @@ namespace InterfazViniloVirtual.Controllers
 
             if (user != null)
             {
-                return RedirectToAction("Index", "Album");
+                return RedirectToAction("Explorer", "Album");
             }
             return View();
         }
@@ -40,7 +48,7 @@ namespace InterfazViniloVirtual.Controllers
                 UsuarioEN usuEN = usuCEN.GetID(login.Email);
                 UsuarioViewModel usuVM = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
                 HttpContext.Session.Set<UsuarioViewModel>("usuario", usuVM);
-                return RedirectToAction("Index", "Album");
+                return RedirectToAction("Explorer", "Album");
             }
             return View();
         }
@@ -82,24 +90,98 @@ namespace InterfazViniloVirtual.Controllers
             return View(usuView);
         }
 
+        // GET: UsuarioController/Register
+        public ActionResult Register()
+        {
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user != null)
+            {
+                return RedirectToAction("Explorer", "Album");
+            }
+
+            return View();
+        }
+
+        // POST: UusarioController/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(registroUsuarioViewModel usu)
+        {
+            try
+            {
+                UsuarioRepository usuRepo = new UsuarioRepository();
+                UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+
+                string fileName = "", path = "";
+                if (usu.Fichero != null && usu.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(usu.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await usu.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    usuCEN.New_(usu.Nombre, usu.Pass, usu.Email, usu.FechaNacimiento, usu.Genero, 
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal,
+                    fileName, usu.Apellido, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
+                }
+                return RedirectToAction("Explorer", "Album");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: UsuarioController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UsuarioController/Create
+
+        // POST: UusarioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UsuarioViewModel usuario)
+        public async Task<ActionResult> Create(UsuarioViewModel usu)
         {
             try
             {
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
-                usuCEN.New_(usuario.Nombre, usuario.Pass, usuario.Email, usuario.FechaNacimiento, usuario.Genero, usuario.Estado,
-                    usuario.Imagen, usuario.Apellido, usuario.Tipo == "A" ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
 
+
+                string fileName = "", path = "";
+                if (usu.Fichero != null && usu.Fichero.Length > 0)
+                {
+                    fileName = Path.GetFileName(usu.Fichero.FileName).Trim();
+                    string directory = _webHost.WebRootPath + "/Images";
+                    path = Path.Combine(directory, fileName);
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await usu.Fichero.CopyToAsync(stream);
+                    }
+
+                    fileName = "/Images/" + fileName;
+                    usuCEN.New_(usu.Nombre, usu.Pass, usu.Email, usu.FechaNacimiento, usu.Genero, usu.Estado,
+                    usu.Imagen, usu.Apellido, usu.Tipo == "A" ? ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador : ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
