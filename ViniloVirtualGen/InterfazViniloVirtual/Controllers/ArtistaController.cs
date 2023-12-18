@@ -102,11 +102,15 @@ namespace InterfazViniloVirtual.Controllers
                 if (!art.IsFav)
                 {
                     artCEN.AnyadirFavorito(art.id, new List<string>() { user.Email });
+                    user.artistas_favoritos.Add(art.id);
+                    HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
 
                 }
                 else
                 {
                     artCEN.EliminarFavorito(art.id, new List<string>() { user.Email });
+                    user.artistas_favoritos.Remove(art.id);
+                    HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
                 }
 
                 return RedirectToAction("Details", "Artista", new { id = art.id });

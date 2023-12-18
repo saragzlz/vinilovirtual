@@ -103,14 +103,18 @@ namespace InterfazViniloVirtual.Controllers
                 if (!alb.IsFav)
                 {
                     albCEN.AnyadirFavorito(alb.Id, new List<string>() { user.Email });
+                    user.album_favoritos.Add(alb.Id);
+                    HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
 
                 }
                 else
                 {
                     albCEN.EliminarFavorito(alb.Id, new List<string>() { user.Email });
+                    user.album_favoritos.Remove(alb.Id);
+                    HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
                 }
 
-                return RedirectToAction("Details", "Album", new {id = alb.Id});
+                return RedirectToAction("Details", "Album", new { id = alb.Id });
 
             }
             catch
