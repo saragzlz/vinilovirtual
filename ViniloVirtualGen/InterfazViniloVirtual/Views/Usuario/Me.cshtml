@@ -92,10 +92,11 @@
                 @foreach (var item in artistasFavs)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card shadow mt-5">
-                        <img src="@item.imagen" class="card-img-top" alt="@item.nombre">
+                        <a href="/Album/Details/@item.id">
+                            <img src="@item.imagen" class="card-img-top" alt="@item.imagen">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">@item.nombre</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 }
@@ -107,10 +108,12 @@
                 @foreach (var item in albumesFavs)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card shadow mt-5">
-                        <img src="@item.Portada" class="card-img-top" alt="@item.Titulo">
+                        <a href="/Album/Details/@item.Id">
+                            <img src="@item.Portada" class="card-img-top" alt="@item.Portada">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">@item.Titulo</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
                         </div>
                     </div>
                 }
@@ -122,10 +125,12 @@
                 @foreach (var item in albumesComprados)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 card shadow mt-5">
-                        <img src="@item.Portada" class="card-img-top" alt="@item.Titulo">
+                        <a href="/Album/Details/@item.Id">
+                            <img src="@item.Portada" class="card-img-top" alt="@item.Portada">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title">@item.Titulo</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
                         </div>
                     </div>
                 }
