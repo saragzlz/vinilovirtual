@@ -105,6 +105,7 @@ namespace InterfazViniloVirtual.Controllers
                 if (!alb.IsFav)
                 {
                     albCEN.AnyadirFavorito(alb.Id, new List<string>() { user.Email });
+                    albCEN.IncrementoLikes(alb.Id);
                     user.album_favoritos.Add(alb.Id);
                     HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
 
@@ -112,6 +113,7 @@ namespace InterfazViniloVirtual.Controllers
                 else
                 {
                     albCEN.EliminarFavorito(alb.Id, new List<string>() { user.Email });
+                    albCEN.DecrementoLikes(alb.Id);
                     user.album_favoritos.Remove(alb.Id);
                     HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
                 }
