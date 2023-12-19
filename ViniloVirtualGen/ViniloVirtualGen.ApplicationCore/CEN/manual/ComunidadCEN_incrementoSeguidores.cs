@@ -19,11 +19,11 @@ public void IncrementoSeguidores (int p_oid)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Comunidad_incrementoSeguidores) ENABLED START*/
 
-        ComunidadEN en = _IComunidadRepository.GetID(p_oid);
-        
+        ComunidadEN en = _IComunidadRepository.GetID (p_oid);
+
         en.NumMiembros++;
 
-        _IComunidadRepository.ModifyDefault(en);
+        _IComunidadRepository.ModifyDefault (en);
 
         /*PROTECTED REGION END*/
 }

@@ -8,6 +8,8 @@ using ViniloVirtualGen.ApplicationCore.IRepository.ViniloVirtual;
 using ViniloVirtualGen.Infraestructure.Repository.ViniloVirtual;
 using System.Globalization;
 using ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual;
+using ViniloVirtualGen.ApplicationCore.CP.ViniloVirtual;
+using ViniloVirtualGen.Infraestructure.CP;
 
 namespace InterfazViniloVirtual.Controllers
 {
@@ -393,5 +395,62 @@ namespace InterfazViniloVirtual.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCarrito(AlbumViewModel alb)
+        {
+            try
+            {
+                AlbumRepository albRepo = new AlbumRepository();
+                AlbumCEN albCEN = new AlbumCEN(albRepo);
+                LineaPedidoRepository lineaPedidoRepository = new LineaPedidoRepository();
+                LineaPedidoCEN lineaPedidoCEN = new LineaPedidoCEN(lineaPedidoRepository);
+                PedidoRepository pedidoRepository = new PedidoRepository();
+                PedidoCEN pedidoCEN = new PedidoCEN(pedidoRepository);
+
+                AlbumEN albumEN = albCEN.GetID(alb.Id);
+
+                UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+                PedidoViewModel pedidoSave = HttpContext.Session.Get<PedidoViewModel>("pedido");
+
+                PedidoCP pedidoCP = new PedidoCP(new SessionCPNHibernate());
+
+                PedidoEN pedidoEN = null;
+
+                if (pedidoSave != null)
+                {
+                    pedidoEN = pedidoCEN.GetID(pedidoSave.Id);
+
+
+                }
+                else
+                {
+                    int pedido = pedidoCEN.New_(DateTime.Now, "", albumEN.Precio, MetodosPagoEnum.visa, EstadoPedidoEnum.pendiente, user.Email);
+
+                    pedidoEN = pedidoCEN.GetID(pedido);
+
+                }
+
+
+                List<int> pedidos = pedidoCP.AddLineaPedido(pedidoEN.Id, albumEN.Id);
+
+                
+
+                PedidoViewModel pedidoViewModel = new PedidoAssembler().ConvertirENToViewModel(pedidoEN);
+                pedidoViewModel.LineasPedido = pedidos;
+
+                HttpContext.Session.Set<PedidoViewModel>("pedido", pedidoViewModel);
+
+
+
+                return RedirectToAction("Details", "Album", new { id = alb.Id });
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

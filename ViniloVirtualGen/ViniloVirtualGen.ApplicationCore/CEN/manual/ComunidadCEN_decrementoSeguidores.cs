@@ -19,8 +19,8 @@ public void DecrementoSeguidores (int p_oid)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Comunidad_decrementoSeguidores) ENABLED START*/
 
-        ComunidadEN en = _IComunidadRepository.GetID(p_oid);
-        
+        ComunidadEN en = _IComunidadRepository.GetID (p_oid);
+
         en.NumMiembros--;
 
         _IComunidadRepository.ModifyDefault (en);

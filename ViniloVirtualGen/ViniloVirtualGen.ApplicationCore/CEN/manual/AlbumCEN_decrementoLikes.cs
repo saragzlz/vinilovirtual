@@ -19,8 +19,8 @@ public void DecrementoLikes (int p_oid)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Album_decrementoLikes) ENABLED START*/
 
-        AlbumEN en = _IAlbumRepository.GetID(p_oid);
-        
+        AlbumEN en = _IAlbumRepository.GetID (p_oid);
+
         en.NumLikes--;
 
         _IAlbumRepository.ModifyDefault (en);

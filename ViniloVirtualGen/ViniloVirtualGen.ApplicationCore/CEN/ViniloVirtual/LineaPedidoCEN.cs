@@ -30,6 +30,37 @@ public ILineaPedidoRepository get_ILineaPedidoRepository ()
         return this._ILineaPedidoRepository;
 }
 
+public int New_ (double p_precio, int p_pedido, int p_album)
+{
+        LineaPedidoEN lineaPedidoEN = null;
+        int oid;
+
+        //Initialized LineaPedidoEN
+        lineaPedidoEN = new LineaPedidoEN ();
+        lineaPedidoEN.Precio = p_precio;
+
+
+        if (p_pedido != -1) {
+                // El argumento p_pedido -> Property pedido es oid = false
+                // Lista de oids id
+                lineaPedidoEN.Pedido = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.PedidoEN ();
+                lineaPedidoEN.Pedido.Id = p_pedido;
+        }
+
+
+        if (p_album != -1) {
+                // El argumento p_album -> Property album es oid = false
+                // Lista de oids id
+                lineaPedidoEN.Album = new ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN ();
+                lineaPedidoEN.Album.Id = p_album;
+        }
+
+
+
+        oid = _ILineaPedidoRepository.New_ (lineaPedidoEN);
+        return oid;
+}
+
 public void Modify (int p_LineaPedido_OID, double p_precio)
 {
         LineaPedidoEN lineaPedidoEN = null;

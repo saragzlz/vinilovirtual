@@ -57,6 +57,12 @@
                         </button>
                     </form>
                 }
+                    <form asp-action="AddCarrito" class="form-inline my-2 my-lg-0">
+                        <input asp-for="Id" class="form-control" style="display: none;" value="@Model.Id"/>
+                        <button type="submit" class="btn btn-warning">
+                            Añadir al carrito <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </form>
 
 
             </dd>
@@ -66,12 +72,6 @@
 </div>
 <div>
     <hr />
-    @if (usuario != null)
-    {
-        <td class="col-sm-10">
-            <button>Like</button>
-        </td>
-    }
     <td class="col-sm-10">
         <p>Numero de Likes: @Html.DisplayFor(model => model.Likes)</p>
     </td>

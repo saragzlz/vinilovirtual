@@ -135,7 +135,7 @@ namespace InterfazViniloVirtual.Controllers
                     }
 
                     fileName = "/Images/" + fileName;
-                    usuCEN.New_(usu.Nombre, usu.Pass, usu.Email, usu.FechaNacimiento, usu.Genero, 
+                    usuCEN.New_(usu.Nombre, usu.Pass, usu.Email, usu.FechaNacimiento, usu.Genero,
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal,
                     fileName, usu.Apellido, ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 }
@@ -197,6 +197,12 @@ namespace InterfazViniloVirtual.Controllers
         public ActionResult Edit(string id)
         {
             SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             UsuarioRepository usuRepo = new UsuarioRepository(session);
             UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
 
@@ -214,6 +220,7 @@ namespace InterfazViniloVirtual.Controllers
         {
             try
             {
+
                 UsuarioRepository usuRepo = new UsuarioRepository();
                 UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
                 UsuarioEN usuBefore = usuRepo.GetID(usu.Email);
@@ -231,6 +238,12 @@ namespace InterfazViniloVirtual.Controllers
         // GET: UsuarioController/Delete/5
         public ActionResult Delete(string id)
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
             UsuarioRepository usuRepo = new UsuarioRepository();
             UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
             usuCEN.Destroy(id);

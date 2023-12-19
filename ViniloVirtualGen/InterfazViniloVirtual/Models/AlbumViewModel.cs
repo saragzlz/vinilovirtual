@@ -8,7 +8,7 @@ namespace InterfazViniloVirtual.Models
     public class AlbumViewModel
     {
         // ID
-        [ScaffoldColumn(false)]
+
         public int Id { get; set; }
 
         // TITULO DEL ALBUM
