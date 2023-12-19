@@ -85,6 +85,24 @@ nav {
 }
 
 /* Estilos de botones */
+
+
+.form-group input {
+    background-color: #f2f2f2; /* Gris claro para el fondo de los inputs */
+    color: #333; /* Color de texto para los inputs */
+    border: 1px solid #ccc; /* Borde gris para los inputs */
+}
+
+.btn-primary {
+    background-color: #293340 !important; /* Azul distinto para el botón */
+    border-color: #007BFF; /* Color de borde para el botón */
+    color: white !important; /* Color de texto para el botón */
+}
+    .btn-primary:hover {
+        background-color: #ffffff !important; /* Cambia el color de fondo al pasar el ratón */
+        border-color: #293340 ;
+        color: #000000 !important;
+    }
 .btn {
   font-family: "Monserrat", sans-serif;
   font-weight: bold;
