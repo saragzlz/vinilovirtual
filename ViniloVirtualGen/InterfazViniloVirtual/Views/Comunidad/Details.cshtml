@@ -8,8 +8,6 @@
     UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
 
-<h1>@Html.DisplayFor(model => model.Nombre)</h1>
-
 <!--Opciones de editar y borrar la comunidad solo para administrador-->
 <td>
     @if (usuario != null && usuario.Tipo == "A")
@@ -22,70 +20,97 @@
     }
 </td>
 
-<div>
-    @if (Model != null && Model.Imagen != null)
-    {
-        <td class="col-sm-10">
-            <img src="@Html.DisplayFor(model => model.Imagen)" height="350" width="350" />
-        </td>
-    }
+<h1>@Html.DisplayFor(model => model.Nombre)</h1>
+<br />
+
+<div class="row">
+    <!--Parte de la izquierda-->
+    <div class="col">
+        @if (Model != null && Model.Imagen != null)
+        {
+            <td class="col-sm-10">
+                <img src="@Html.DisplayFor(model => model.Imagen)" class="album-image" height="500" width="500" />
+            </td>
+        }
+    </div>
+
+    <!--Parte de la derecha-->
+    <div class="col">
+        <div class="row">
+
+            <!--Boton de seguir comuniad (desactivado de momento)
+            <div class="col">
+                ""if (usuario != null && usuario.Tipo == "C")
+                {
+                    <dd class="col-sm-10">
+                        if (Model.IsFav)
+                        {
+                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </form>
+                        }
+                    </dd>
+                }
+            </div>-->
+        </div>
+
+        <br />
+
+        @{
+            var ff = System.Globalization.CultureInfo.InvariantCulture;
+        }
+        <!--Mostrar accion de comentar si estas loggeado-->
+        @if (usuario != null)
+        {
+            @Html.ActionLink("Comentar", "Create", "ComentarioCom", new { id = Model.Id })
+        }
+        <!--Recorrer comentarios del album y mostrarlos-->
+        @foreach (var it in comments)
+        {
+            <div class="card shadow mb-2">
+                <div class="card-body">
+                    <a href="/Usuario/Details/@it.UsuarioId">
+                        <h5 class="card-title">@it.NombreUsuario</h5>
+                    </a>
+                    <p class="card-text">@it.Texto</p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm">
+                            @it.Fecha.ToString().;
+                        </div>
+
+                        <!--Borrar comentario si eres administrador-->
+                        @if (usuario != null && usuario.Tipo == "A")
+                        {
+                            <div class="col-sm">
+                                <button class="btn btn-danger">
+                                    @Html.ActionLink("Borrar", "Delete", "ComentarioCom", new { id = it.Id })
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 <div>
     <hr />
-    @if (usuario != null)
-    {
-        <td class="col-sm-10">
-            <button>Seguir</button>
-        </td>
-    }
-    <td class="col-sm-10">
-        <p>Numero de Seguidores: @Html.DisplayFor(model => model.NumMiembros)</p>
-    </td>
+    <dl class="row">
+    </dl>
 </div>
-
-<!--Seccion de Comentarios de la comunidad-->
-<h3>Comentarios</h3>
-<div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
-    @{
-        var ff = System.Globalization.CultureInfo.InvariantCulture;
-    }
-    <!--Mostrar accion de comentar si estas loggeado-->
-    @if (usuario != null)
-    {
-        @Html.ActionLink("Comentar", "Create", "Comunidad", new { id = Model.Id })
-    }
-    <!--Recorrer comentarios de la comunidad y mostrarlos-->
-    @foreach (var it in comments)
-    {
-        <div class="card shadow mb-2">
-            <div class="card-body">
-                <a href="/Usuario/Details/@it.UsuarioId"><h5 class="card-title">@it.NombreUsuario</h5></a>
-                <p class="card-text">@it.Texto</p>
-            </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-sm">
-                        @it.Fecha.ToString().;
-                    </div>
-
-                    <!--Borrar comentario si eres administrador-->
-                    @if (usuario != null && usuario.Tipo == "A")
-                    {
-                        <div class="col-sm">
-                            <button class="btn btn-danger">
-                                @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
-                            </button>
-                        </div>
-                    }
-                </div>
-
-            </div>
-        </div>
-    }
-</div>
-
-
 <!--Volver a la lista-->
 <div>
     <a asp-action="Index">Volver a la lista de comunidades</a>
