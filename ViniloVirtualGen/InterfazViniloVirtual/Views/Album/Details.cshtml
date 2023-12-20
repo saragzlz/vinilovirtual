@@ -34,8 +34,20 @@
     <!--Parte de la derecha-->
     <div class="col">
         <div class="row">
-            <div class="">
+            <div class="album-title">
                 @Html.DisplayFor(model => model.Descripcion)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="album-artist">
+                Genero: @Html.DisplayFor(model => model.Genero)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="album-price">
+                @Html.DisplayFor(model => model.Precio)
             </div>
         </div>
         <div class="row">
