@@ -175,6 +175,10 @@ namespace InterfazViniloVirtual.Controllers
 
                 }
 
+                carrito.LineasPedido = new List<int>();
+
+                HttpContext.Session.Set<PedidoViewModel>("pedido", carrito);
+
                 return RedirectToAction("Me", "Usuario");
             }
             catch
