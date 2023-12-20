@@ -21,6 +21,11 @@ html {
   font-weight: 700; /* Bold */
 }
 
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
+
+
 /* Letra Blanca */
 .navbar-nav .nav-link {
   color: #fff !important;
@@ -190,6 +195,27 @@ nav {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
   color: #000000 !important;
 }
+
+/* Estilos del botón custom-button2 */
+.custom-button2 {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #ffffff; /* Nuevo color del borde */
+  border-radius: 20px; /* Bordes redondos */
+  text-decoration: none; /* Elimina la subrayado del enlace */
+  color: #293340 !important; /* Nuevo color del texto */
+  background-color: #ffffff !important; /* Nuevo color de fondo blanco */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Efecto de sombra al pasar el ratón */
+.custom-button2:hover {
+  background-color: #293340 !important; /* Cambia el color de fondo al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
+  color: #ffffff !important; /* Nuevo color del texto al pasar el ratón */
+}
+
+
 @media (min-width: 576px) {
   .card-columns {
     column-count: 2;
