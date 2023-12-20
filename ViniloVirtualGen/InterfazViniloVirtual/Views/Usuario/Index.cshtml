@@ -8,66 +8,25 @@
 <h1>Listado de usuarios de Vinilo Virtual</h1>
 
 <p>
-    <a asp-action="Create">Crear nuevo usuario</a>
+    <a asp-action="Create" class="custom-button">Crear nuevo usuario</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Email }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Email }) |
-                @Html.ActionLink("Borrar", "Delete", new { id = item.Email })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                @if (item != null && item.Imagen != null)
+                {
+                    <a href="/Usuario/Details/@item.Email">
+                        <img src="@item.Imagen" class="album-image" alt="@item.Imagen">
+                    </a>
+                    <div class="album-title text-center">@item.Email</div>
+                    <div class="album-artist text-center">@item.Nombre @item.Apellido</div>
+                    <div class="album-artist text-center">Privilegio: @item.Tipo</div>
+                    <div class="album-artist text-center">Estado: @item.Estado</div>
+                }
+            </div>
+        }
+    </div>
+</div>
