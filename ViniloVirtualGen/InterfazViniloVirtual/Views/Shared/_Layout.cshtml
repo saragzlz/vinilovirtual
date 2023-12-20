@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="opciones">
                 @if (usuario == null)
                 {
-                    <ul class="navbar-nav mr-auto" style="padding: 10px;">
+                    <ul class="navbar-nav navbar-opc" style="padding: 10px;">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="Explorer">
                                 <i class="fas fa-search"></i> Explorar
@@ -56,7 +56,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav mr">
+                    <ul class="navbar-nav">
                     <!-- Regístrate con un margen derecho de 2 unidades -->
                         <li class="nav-item">
                             <a class="btn btn2-navbar text-white" asp-area="" asp-controller="Usuario"
