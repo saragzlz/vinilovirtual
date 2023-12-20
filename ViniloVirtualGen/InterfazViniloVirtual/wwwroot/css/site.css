@@ -24,11 +24,11 @@ html {
 /* Letra Blanca */
 .navbar-nav .nav-link {
   color: #fff !important;
-  font-size: 16px;
+  font-size: 20px;
 }
 .navbar-nav .nav-link:hover {
   color: #6c778c !important;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 /* Botones navbar*/
@@ -103,10 +103,31 @@ nav {
         border-color: #293340 ;
         color: #000000 !important;
     }
+    
 .btn {
   font-family: "Monserrat", sans-serif;
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 18pt;
+}
+
+.btn1-navbar {
+  background-color: white !important;
+  border: 2px solid white !important;
+  border-radius: 40px !important;
+  color: #293340 !important;
+  padding-right: 2rem;
+  padding-left: 2rem;;
+  margin-right: 10px; /* Márgen derecho */
+}
+
+.btn2-navbar {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  border-radius: 40px !important;
+  color: white !important;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: 10px; /* Márgen derecho */
 }
 
 
