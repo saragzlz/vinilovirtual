@@ -13,11 +13,8 @@
 <td>
     @if (usuario != null && usuario.Tipo == "A")
     {
-        @Html.ActionLink("Editar Artista", "Edit", new { id = Model.id })
-        ;
-        <span> | </span>
-        @Html.ActionLink("Borrar Artista", "Delete", new { id = Model.id })
-        ;
+        <a href="/Artista/Edit/@Model.id" class="custom-button">Editar Artista</a>
+        <a href="/Artista/Delete/@Model.id" class="custom-button">Borrar Artista</a>
     }
 </td>
 

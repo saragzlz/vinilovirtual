@@ -12,11 +12,8 @@
 <td>
     @if (usuario != null && usuario.Tipo == "A")
     {
-        @Html.ActionLink("Editar Comunidad", "Edit", new { id = Model.Id })
-        ;
-        <span> | </span>
-        @Html.ActionLink("Borrar Comunidad", "Delete", new { id = Model.Id })
-        ;
+        <a href="/Comunidad/Edit/@Model.Id" class="custom-button">Editar Comunidad</a>
+        <a href="/Comunidad/Delete/@Model.Id" class="custom-button">Borrar Comunidad</a>
     }
 </td>
 
