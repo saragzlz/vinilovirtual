@@ -16,7 +16,8 @@
         <a href="/Comunidad/Delete/@Model.Id" class="custom-button">Borrar Comunidad</a>
     }
 </td>
-
+<br />
+<br />
 <h1>@Html.DisplayFor(model => model.Nombre)</h1>
 <br />
 
@@ -69,7 +70,9 @@
         <!--Mostrar accion de comentar si estas loggeado-->
         @if (usuario != null)
         {
-            @Html.ActionLink("Comentar", "Create", "ComentarioCom", new { id = Model.Id })
+            <a href="/ComentarioCom/Create/@Model.Id" class="custom-button2">Comentar</a>
+            <br />
+            <br />
         }
         <!--Recorrer comentarios del album y mostrarlos-->
         @foreach (var it in comments)
@@ -84,16 +87,14 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-sm">
-                            @it.Fecha.ToString().;
+                            @it.Fecha.ToString();
                         </div>
 
                         <!--Borrar comentario si eres administrador-->
                         @if (usuario != null && usuario.Tipo == "A")
                         {
                             <div class="col-sm">
-                                <button class="btn btn-danger">
-                                    @Html.ActionLink("Borrar", "Delete", "ComentarioCom", new { id = it.Id })
-                                </button>
+                                <a href="/ComentarioCom/Delete/@it.Id" class="btn btn-danger">Borrar</a>
                             </div>
                         }
                     </div>

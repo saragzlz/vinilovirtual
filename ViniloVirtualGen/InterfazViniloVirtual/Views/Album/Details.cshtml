@@ -14,24 +14,12 @@
         <a href="/Album/Delete/@Model.Id" class="custom-button">Borrar Album</a>
     }
 </td>
-
-<h1>@Html.DisplayFor(model => model.Titulo)</h1>
-<h4>@Html.DisplayFor(model => model.NombreArtista)</h4>
 <br />
-
-<!--Parte superior del album-->
-<div class="row justify-content-md-center">
-    <div class="col col-lg-2">
-        <p>Likes: @Html.DisplayFor(model => model.Likes)</p>
-    </div>
-    <div class="col col-lg-2">
-    </div>
-    <div class="col col-lg-2">
-    </div>
-    <div class="col col-lg-2">
-    </div>
-</div>
-
+<br />
+<h1>@Html.DisplayFor(model => model.Titulo)</h1>
+<h3>@Html.DisplayFor(model => model.NombreArtista) </h3>
+<h5>Likes: @Html.DisplayFor(model => model.Likes)</h5>
+<br />
 <div class="row">
     <!--Parte de la izquierda-->
     <div class="col">
@@ -95,14 +83,17 @@
         <!--Mostrar accion de comentar si estas loggeado-->
         @if (usuario != null)
         {
-            @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+            <a href="/ComentarioAlb/Create/@Model.Id" class="custom-button2">Comentar</a>
+            <br />
+            <br />
         }
+        
         <!--Recorrer comentarios del album y mostrarlos-->
         @foreach (var it in comments)
         {
             <div class="card shadow mb-2">
                 <div class="card-body">
-                    <a href="/Usuario/Details/@it.UsuarioId">
+                    <a href="/Usuario/Details/@it.UsuarioId" >
                         <h5 class="card-title">@it.NombreUsuario</h5>
                     </a>
                     <p class="card-text">@it.Texto</p>
@@ -110,16 +101,14 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-sm">
-                            @it.Fecha.ToString().;
+                            @it.Fecha.ToString();
                         </div>
 
                         <!--Borrar comentario si eres administrador-->
                         @if (usuario != null && usuario.Tipo == "A")
                         {
                             <div class="col-sm">
-                                <button class="btn btn-danger">
-                                    @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
-                                </button>
+                                <a href="/ComentarioAlb/Delete/@it.Id" class="btn btn-danger">Borrar</a>
                             </div>
                         }
                     </div>
