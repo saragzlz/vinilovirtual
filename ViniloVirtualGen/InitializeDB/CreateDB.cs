@@ -185,7 +185,7 @@ public static void InitializeData ()
                         6.00, 0);
 
                 int album2 = albumcen.New_ ("Plastic Beach", "Tercer album de la banda Gorillaz",
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "/Images/plasticbeach.jpg", artista2,
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.rock, "/Images/plasticbeach2.jpg", artista2,
                         7.99, 0);
                 int album3 = albumcen.New_ ("Song of Her's", "Primer album de la banda Her's",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum.indie, "/Images/songof.jpg", artista1,

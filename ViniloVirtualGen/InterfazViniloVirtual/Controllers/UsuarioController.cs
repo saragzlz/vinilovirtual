@@ -501,6 +501,116 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+
+        public ActionResult CambiarEstado(string id)
+        {
+            SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
+            UsuarioRepository usuRepo = new UsuarioRepository(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+            UsuarioEN usuEN = usuCEN.GetID(id);
+            UsuarioViewModel usuView = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
+
+            SessionClose();
+            return View(usuView);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CambiarEstado(string id, UsuarioViewModel usu)
+        {
+            try
+            {
+
+                UsuarioRepository usuRepo = new UsuarioRepository();
+                UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+                int estado = 0;
+
+                switch (usu.Estado)
+                {
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal:
+                        estado = 1;
+                        break;
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal:
+                        estado = 2;
+                        break;
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente:
+                        estado = 3;
+                        break;
+                }
+
+                usuCEN.ModificarEstado(id, estado);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult CambiarTipo(string id)
+        {
+            SessionInitialize();
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Unathorize", "Usuario");
+            }
+            UsuarioRepository usuRepo = new UsuarioRepository(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+            UsuarioEN usuEN = usuCEN.GetID(id);
+            UsuarioViewModel usuView = new UsuarioAssembler().ConvertirENToViewModel(usuEN);
+
+            SessionClose();
+            return View(usuView);
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CambiarTipo(string id, UsuarioViewModel usu)
+        {
+            try
+            {
+
+                UsuarioRepository usuRepo = new UsuarioRepository();
+                UsuarioCEN usuCEN = new UsuarioCEN(usuRepo);
+
+                int tipo = 0;
+
+                switch (usu.TipoEnum)
+                {
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar:
+                        tipo = 1;
+                        break;
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador:
+                        tipo = 2;
+                        break;
+                }
+
+                usuCEN.ModificarTipo(id, tipo);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 
 }

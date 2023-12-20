@@ -54,6 +54,7 @@ namespace InterfazViniloVirtual.Models
         [Display(Prompt = "Selecciona privilegios", Description = "Tipo de usuario", Name = "Tipo")]
         public string Tipo { get; set; }
 
+        public TipoUsuarioEnum TipoEnum { get; set; }
 
         public string Baneado { get; set; }
 
