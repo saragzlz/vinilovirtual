@@ -16,7 +16,7 @@
     <h2>Articulos en la cesta</h2>
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-8">
             <ul class="list-group">
 
                 @foreach (var item in albumes)
@@ -25,7 +25,7 @@
                         <div class="row" style="width: 100%">
                             <div class="col">
                                 <a href="/Album/Details/@item.Id">
-                                    @item.Titulo
+                                    <i class="fa-solid fa-music"></i>  @item.Titulo
                                 </a>
                             </div>
                             <div class="col text-center">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="col text-center">
                                 <a href="/Pedido/EliminarAlbum/@item.Id">
-                                    <span class="badge badge-dark" style="color: red;">X</span>
+                                    <i class="fa-regular fa-trash-can"></i>
                                 </a>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
 
         </div>
 
-        <div class="col">
+        <div class="col-md-4 mt-4 mt-md-0">
             <form asp-action="Pagar" class="credit-card-div">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -58,105 +58,51 @@
                         @error
                     </div>
                 }
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
-                            <label>Método de pago</label>
-                            <div class="col">
-                                @if (Model.SeleccionMetodo && Model.MetodoPago == "V")
-                                {
-                                    string metodo = "V";
-                                    <div class="border border-success">
-                                        <img src="/Images/visa.png" class="img-rounded" width="60px" />
-                                        @Html.ActionLink("Visa",
-                                                 "MetodoPago", new { metodo = metodo });
-
-
+                            <label for="MetodoPago">
+                                Método de pago
+                                <div class="col mb-2">
+                                    <div class="form-group d-flex align-items-center mt-2">
+                                        <i class="fab fa-cc-visa fa-2x mr-5" style="margin-right: 10px;"></i>
+                                        <i class="fab fa-cc-paypal fa-2x" style="margin-right: 10px;"></i>
+                                        <i class="fab fa-cc-mastercard fa-2x"></i>
                                     </div>
-                                }
-                                else
-                                {
-                                    string metodo = "V";
-                                    <img src="/Images/visa.png" class="img-rounded" width="60px" />
-                                    @Html.ActionLink("Visa",
-                                             "MetodoPago", new { metodo = metodo })
-                                    ;
-                                }
+                                </div>
+                            </label>
 
-
-                            </div>
                             <div class="col">
-                                @if (Model.SeleccionMetodo && Model.MetodoPago == "M")
-                                {
-                                    string metodo = "M";
-                                    <div class="border border-success">
-
-                                        <img src="/Images/mastercard.png" class="img-rounded" width="60px" />
-                                        @Html.ActionLink("Master-Card",
-                                                 "MetodoPago", new { metodo = metodo })
-                                        ;
-
-                                    </div>
-                                }
-                                else
-                                {
-                                    string metodo = "M";
-
-                                    <img src="/Images/mastercard.png" class="img-rounded" width="60px" />
-
-
-                                    @Html.ActionLink("Master-Card",
-                                             "MetodoPago", new { metodo = metodo })
-                                    ;
-                                }
-
-
-                            </div>
-                            <div class="col">
-                                @if (Model.SeleccionMetodo && Model.MetodoPago == "P")
-                                {
-                                    string metodo = "P";
-                                    <div class="border border-success">
-
-                                        <img src="/Images/paypal.png" class="img-rounded" width="60px" height="90px" />
-                                        @Html.ActionLink("Pay-Pal",
-                                                 "MetodoPago", new { metodo = metodo })
-                                        ;
-                                    </div>
-                                }
-                                else
-                                {
-                                    string metodo = "P";
-
-                                    <img src="/Images/paypal.png" class="img-rounded" width="60px" height="90px" />
-                                    @Html.ActionLink("Pay-Pal",
-                                             "MetodoPago", new { metodo = metodo })
-                                    ;
-                                }
-
-
+                                <div class="form-group">
+                                    <select asp-for="MetodoPago" class="custom-select custom-select-lg rounded-pill mb-3 mt-4" id="MetodoPago">
+                                        <option value="V" selected="@(Model.SeleccionMetodo && Model.MetodoPago == "V")">Visa</option>
+                                        <option value="M" selected="@(Model.SeleccionMetodo && Model.MetodoPago == "M")">Master-Card</option>
+                                        <option value="P" selected="@(Model.SeleccionMetodo && Model.MetodoPago == "P")"> Pay-Pal</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Numero de tarjeta" required />
+                                <input type="text" class="form-control rounded-pill" placeholder="Numero de tarjeta" required />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-3">
                                 <span class="help-block text-muted small-font"> Expiry Month</span>
-                                <input asp-for="MesExpiracionTarjeta" class="form-control" placeholder="MM"
-                                    maxlength="2" minlength="2" required />
+                                <input asp-for="MesExpiracionTarjeta" class="form-control rounded-pill" placeholder="MM"
+                                       maxlength="2" minlength="2" required />
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-3">
                                 <span class="help-block text-muted small-font"> Expiry Year</span>
-                                <input asp-for="AnyoExpiracionTarjeta" class="form-control" placeholder="YY"
-                                    maxlength="2" minlength="2" required />
+                                <input asp-for="AnyoExpiracionTarjeta" class="form-control rounded-pill" placeholder="YY"
+                                       maxlength="2" minlength="2" required />
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-3">
                                 <span class="help-block text-muted small-font"> CCV</span>
-                                <input asp-for="CCCVTarjeta" class="form-control" placeholder="CCV" maxlength="3"
-                                    minlength="3" required />
+                                <input asp-for="CCCVTarjeta" class="form-control rounded-pill" placeholder="CCV" maxlength="3"
+                                       minlength="3" required />
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-3">
                                 <img src="/Images/credit-card.png" class="img-rounded" height="80px" />
@@ -164,7 +110,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 pad-adjust">
-                                <input type="text" class="form-control" placeholder="Nombre del Propietario" required />
+                                <input type="text" class="form-control rounded-pill" placeholder="Nombre del Propietario " required />
                             </div>
                         </div>
                         <hr />
@@ -192,12 +138,16 @@
                         <div class="row ">
                             <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                                 <div>
-                                    <a href="/Album/Explorer"><button type="button"
-                                            class="btn btn-danger">Cancelar</button></a>
+                                    <a href="/Album/Explorer">
+                                        <button type="button"
+                                                class="custom-button rounded-pill">
+                                            Cancelar
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                <input type="submit" class="btn btn-warning btn-block" value="Pagar" />
+                                <input type="submit" class="custom-button rounded-pill" value="Pagar" />
                             </div>
                         </div>
 

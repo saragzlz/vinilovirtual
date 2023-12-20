@@ -6,65 +6,78 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Bienvenido a Vinilo Virtual</h1>
+<h1 class="text-center">Bienvenido a Vinilo Virtual</h1>
 
-<h4>Por favor, registrese:</h4>
+<h4 class="text-center">Por favor, introduce tus datos:</h4>
 <br />
-<div class="row">
+<div class="row d-flex justify-content-center align-items-center">
     <div class="col-md-4">
         <form asp-action="Register" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group rounded-pill">
+            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control rounded-pill" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group rounded-pill">
+            <div class="form-group ">
                 <label asp-for="Pass" class="control-label"></label>
-                <input asp-for="Pass" class="form-control" type="password" />
+                <input asp-for="Pass" class="form-control rounded-pill" type="password" />
                 <span asp-validation-for="Pass" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group rounded-pill">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control rounded-pill" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control rounded-pill" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <br />
-            <div class="form-group rounded-pill">
-                <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
+
             <br />
             <div class="form-group rounded-pill">
                 <label asp-for="Genero" class="control-label"></label>
-                <br />
-                @Html.DropDownListFor(m => m.Genero,
-                         new SelectList(Enum.GetValues(typeof(GeneroUsuarioEnum))),
-                         "Selecciona el género")
+                <div class="input-group">
+                    @Html.DropDownListFor(
+                    m => m.Genero,
+                    new SelectList(Enum.GetValues(typeof(GeneroUsuarioEnum))),
+                    "Selecciona el género",
+                    new { @class = "custom-select rounded-pill" }
+                    )
+                </div>
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
+
             <br />
             <div class="form-group">
                 <label asp-for="FechaNacimiento" class="control-label"></label>
-                <input asp-for="FechaNacimiento" class="form-control" />
+                <input asp-for="FechaNacimiento" class="form-control rounded-pill" />
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="Fichero" class="control-label"></label>
-                <input asp-for="Fichero" type="file">
+                <input asp-for="Fichero" type="file" class="form-control rounded-pill">
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Enviar" class="btn btn-primary" />
+                <input type="submit" value="Registrame" class="btn btn-primary rounded-pill" />
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
