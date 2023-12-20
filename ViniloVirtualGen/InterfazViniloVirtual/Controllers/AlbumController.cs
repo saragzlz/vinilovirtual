@@ -283,6 +283,7 @@ namespace InterfazViniloVirtual.Controllers
             }
             AlbumRepository albRepo = new AlbumRepository();
             AlbumCEN albCEN = new AlbumCEN(albRepo);
+            albCEN.EliminarListaAlbumesCompra(id);
             albCEN.Destroy(id);
 
             return RedirectToAction(nameof(Index));

@@ -166,7 +166,6 @@ public string CheckToken (string token)
         return result;
 }
 
-
 public string ObtenerEMAIL (string decodedToken)
 {
         try

@@ -38,10 +38,6 @@ System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size);
 
 
 
-
-
-
-
 System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.UsuarioEN> GetUsuariosEstado (ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum ? p_estado);
 }
 }

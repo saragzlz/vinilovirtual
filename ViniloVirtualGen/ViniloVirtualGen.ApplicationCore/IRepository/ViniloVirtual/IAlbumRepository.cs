@@ -44,6 +44,11 @@ void AnyadirFavorito (int p_Album_OID, System.Collections.Generic.IList<string> 
 void EliminarFavorito (int p_Album_OID, System.Collections.Generic.IList<string> p_usuario_OIDs);
 
 
+void AnyadirCompra (int p_Album_OID, string p_usuario_OID);
+
+void EliminarListaAlbumesCompra(int p_Album_OID);
+
+
 System.Collections.Generic.IList<ViniloVirtualGen.ApplicationCore.EN.ViniloVirtual.AlbumEN> GetAlbumesArtista (int p_id);
 
 

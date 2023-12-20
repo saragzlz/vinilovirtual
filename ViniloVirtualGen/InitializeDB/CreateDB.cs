@@ -528,14 +528,14 @@ public static void InitializeData ()
                 /*PROTECTED REGION END*/
 
                 UsuarioCP cP = new UsuarioCP(new SessionCPNHibernate ());
-                cP.AddAlbumBuy(album10, usuario2);
+                /*cP.AddAlbumBuy(album10, usuario2);
                 cP.AddAlbumBuy(album2, usuario2);
 
                 albumcen.AnyadirFavorito(album8, new List<string>(){usuario2});
                 albumcen.AnyadirFavorito(album7, new List<string>(){usuario2});
 
                 artistacen.AnyadirFavorito(artista4, new List<string>(){usuario2});
-                artistacen.AnyadirFavorito(artista3, new List<string>(){usuario2});
+                artistacen.AnyadirFavorito(artista3, new List<string>(){usuario2});*/
   
         }
         catch (Exception ex)
