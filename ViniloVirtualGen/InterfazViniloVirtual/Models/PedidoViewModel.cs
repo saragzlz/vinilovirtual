@@ -26,5 +26,15 @@ namespace InterfazViniloVirtual.Models
 
         public string IdUsuario { get; set; }
 
+        public string NumeroTarjeta { get; set; }
+
+        public string MesExpiracionTarjeta { get; set; }
+
+        public string AnyoExpiracionTarjeta { get; set; }
+
+        public string CCCVTarjeta { get; set; }
+
+        public bool SeleccionMetodo { get; set; }
+
     }
 }

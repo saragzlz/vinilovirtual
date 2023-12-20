@@ -118,5 +118,69 @@ namespace InterfazViniloVirtual.Controllers
             return RedirectToAction(nameof(VerCarrito));
 
         }
+
+        public ActionResult MetodoPago(string metodo)
+        {
+            SessionInitialize();
+
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
+            PedidoViewModel carrito = HttpContext.Session.Get<PedidoViewModel>("pedido");
+
+            carrito.MetodoPago = metodo;
+
+            carrito.SeleccionMetodo = true;
+            HttpContext.Session.Set<PedidoViewModel>("pedido", carrito);
+
+            return RedirectToAction(nameof(VerCarrito));
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Pagar(PedidoViewModel com)
+        {
+            try
+            {
+                UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Usuario");
+                }
+
+                PedidoViewModel carrito = HttpContext.Session.Get<PedidoViewModel>("pedido");
+
+                if (!carrito.SeleccionMetodo)
+                {
+                    HttpContext.Session.Set<string>("error", "Debes seleccionar un método de pago");
+                    return RedirectToAction(nameof(VerCarrito));
+                }
+                HttpContext.Session.Set<string>("error", "");
+                UsuarioCP cP = new UsuarioCP(new SessionCPNHibernate());
+
+                LineaPedidoRepository lineaPedidoRepository = new LineaPedidoRepository();
+                LineaPedidoCEN lineaPedidoCEN = new LineaPedidoCEN(lineaPedidoRepository);
+
+
+
+                foreach (int x in carrito.LineasPedido)
+                {
+                    LineaPedidoEN pedidoEn = lineaPedidoCEN.GetID(x);
+                    cP.AddAlbumBuy(pedidoEn.Album.Id, user.Email);
+
+                }
+
+                return RedirectToAction("Me", "Usuario");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

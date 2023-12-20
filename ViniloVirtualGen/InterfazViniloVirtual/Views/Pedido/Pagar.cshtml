@@ -1,0 +1,60 @@
+﻿@model InterfazViniloVirtual.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    UsuarioViewModel user = (UsuarioViewModel)ViewData["usuario"];
+
+    IList<AlbumViewModel> albumes = (IList<AlbumViewModel>)ViewData["albumes"];
+}
+
+
+
+
+<div class="container-fluid">
+    <h2>Articulos en la cesta</h2>
+
+    <div class="row">
+        <ul class="list-group">
+
+            @foreach (var item in albumes)
+            {
+                <li class="list-group-item d-flex align-items-center">
+                    <div class="row" style="width: 100%">
+                        <div class="col">
+                            <a href="/Album/Details/@item.Id">
+                                @item.Titulo
+                            </a>
+                        </div>
+                        <div class="col text-center">
+                            <span>@item.Precio €</span>
+                        </div>
+                        <div class="col text-center">
+                            <a href="/Pedido/EliminarAlbum/@item.Id">
+                                <span class="badge badge-dark" style="color: red;">X</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                </li>
+
+            }
+
+        </ul>
+
+        <h2>Total a Pagar: </h2><span>@Model.Total</span>
+
+
+
+    </div>
+
+    <div>
+        <a href="/Pedido/Pagar">
+            <button type="button" class="btn btn-danger">
+                Pagar
+            </button>
+        </a>
+    </div>
+</div>

@@ -1,9 +1,10 @@
 ﻿@model InterfazViniloVirtual.Models.PedidoViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ver Carrito";
     Layout = "~/Views/Shared/_Layout.cshtml";
     UsuarioViewModel user = (UsuarioViewModel)ViewData["usuario"];
+    string error = Context.Session.Get<string>("error");
 
     IList<AlbumViewModel> albumes = (IList<AlbumViewModel>)ViewData["albumes"];
 }
@@ -15,46 +16,205 @@
     <h2>Articulos en la cesta</h2>
 
     <div class="row">
-        <ul class="list-group">
+        <div class="col-8">
+            <ul class="list-group">
 
-            @foreach (var item in albumes)
-            {
-                <li class="list-group-item d-flex align-items-center">
-                    <div class="row" style="width: 100%">
-                        <div class="col">
-                            <a href="/Album/Details/@item.Id">
-                                @item.Titulo
-                            </a>
+                @foreach (var item in albumes)
+                {
+                    <li class="list-group-item d-flex align-items-center">
+                        <div class="row" style="width: 100%">
+                            <div class="col">
+                                <a href="/Album/Details/@item.Id">
+                                    @item.Titulo
+                                </a>
+                            </div>
+                            <div class="col text-center">
+                                <span>@item.Precio €</span>
+                            </div>
+                            <div class="col text-center">
+                                <a href="/Pedido/EliminarAlbum/@item.Id">
+                                    <span class="badge badge-dark" style="color: red;">X</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="col text-center">
-                            <span>@item.Precio €</span>
-                        </div>
-                        <div class="col text-center">
-                            <a href="/Pedido/EliminarAlbum/@item.Id">
-                                <span class="badge badge-dark" style="color: red;">X</span>
-                            </a>
-                        </div>
+
+
+
+                    </li>
+
+                }
+
+            </ul>
+
+        </div>
+
+        <div class="col">
+            <form asp-action="Pagar" class="credit-card-div">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @if (error != null && error.Length > 0)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @error
                     </div>
+                }
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <label>Método de pago</label>
+                            <div class="col">
+                                @if (Model.SeleccionMetodo && Model.MetodoPago == "V")
+                                {
+                                    string metodo = "V";
+                                    <div class="border border-success">
+                                        <img src="/Images/visa.png" class="img-rounded" width="60px" />
+                                        @Html.ActionLink("Visa",
+                                                 "MetodoPago", new { metodo = metodo });
+
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    string metodo = "V";
+                                    <img src="/Images/visa.png" class="img-rounded" width="60px" />
+                                    @Html.ActionLink("Visa",
+                                             "MetodoPago", new { metodo = metodo })
+                                    ;
+                                }
+
+
+                            </div>
+                            <div class="col">
+                                @if (Model.SeleccionMetodo && Model.MetodoPago == "M")
+                                {
+                                    string metodo = "M";
+                                    <div class="border border-success">
+
+                                        <img src="/Images/mastercard.png" class="img-rounded" width="60px" />
+                                        @Html.ActionLink("Master-Card",
+                                                 "MetodoPago", new { metodo = metodo })
+                                        ;
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    string metodo = "M";
+
+                                    <img src="/Images/mastercard.png" class="img-rounded" width="60px" />
+
+
+                                    @Html.ActionLink("Master-Card",
+                                             "MetodoPago", new { metodo = metodo })
+                                    ;
+                                }
+
+
+                            </div>
+                            <div class="col">
+                                @if (Model.SeleccionMetodo && Model.MetodoPago == "P")
+                                {
+                                    string metodo = "P";
+                                    <div class="border border-success">
+
+                                        <img src="/Images/paypal.png" class="img-rounded" width="60px" height="90px" />
+                                        @Html.ActionLink("Pay-Pal",
+                                                 "MetodoPago", new { metodo = metodo })
+                                        ;
+                                    </div>
+                                }
+                                else
+                                {
+                                    string metodo = "P";
+
+                                    <img src="/Images/paypal.png" class="img-rounded" width="60px" height="90px" />
+                                    @Html.ActionLink("Pay-Pal",
+                                             "MetodoPago", new { metodo = metodo })
+                                    ;
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="Numero de tarjeta" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <span class="help-block text-muted small-font"> Expiry Month</span>
+                                <input asp-for="MesExpiracionTarjeta" class="form-control" placeholder="MM"
+                                    maxlength="2" minlength="2" required />
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <span class="help-block text-muted small-font"> Expiry Year</span>
+                                <input asp-for="AnyoExpiracionTarjeta" class="form-control" placeholder="YY"
+                                    maxlength="2" minlength="2" required />
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <span class="help-block text-muted small-font"> CCV</span>
+                                <input asp-for="CCCVTarjeta" class="form-control" placeholder="CCV" maxlength="3"
+                                    minlength="3" required />
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <img src="/Images/credit-card.png" class="img-rounded" height="80px" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pad-adjust">
+                                <input type="text" class="form-control" placeholder="Nombre del Propietario" required />
+                            </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col align-self-start">
+                                <b style="font-size: 15px;">Subtotal</b>
+                            </div>
+                            <div class="col align-self-end">
+                                <span>@Model.Total €</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col align-self-start">
+                                <b style="font-size: 15px;">Total (impuestos incluidos) </b>
+                            </div>
+                            <div class="col align-self-end">
+                                @{
+                                    double totalIva = Math.Round(Model.Total * 0.21 + Model.Total, 2);
+                                }
+                                <span>@totalIva</span>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                <div>
+                                    <a href="/Album/Explorer"><button type="button"
+                                            class="btn btn-danger">Cancelar</button></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                                <input type="submit" class="btn btn-warning btn-block" value="Pagar" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
 
 
 
-                </li>
 
-            }
-
-        </ul>
-
-        <h2>Total a Pagar: </h2><span>@Model.Total</span>
-
-
-
-    </div>
-
-    <div>
-        <a href="/Pedido/Pagar">
-            <button type="button" class="btn btn-danger">
-                Pagar
-            </button>
-        </a>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
