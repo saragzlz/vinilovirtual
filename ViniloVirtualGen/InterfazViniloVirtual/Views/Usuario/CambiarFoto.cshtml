@@ -8,24 +8,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Cambiar Foto de Perfil</h1>
+<h1 class="text-center">Cambiar Foto de Perfil</h1>
 
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="CambiarFoto" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Fichero" class="control-label"></label>
-                <input asp-for="Fichero" type="file" id="imagen">
+            <div class="form-group rounded-pill">
+                <label asp-for="Fichero" class="control-label rounded-pill"></label>
+                <input asp-for="Fichero" type="file" class="form-control rounded-pill mb-2" id="imagen">
             </div>
             <img src="@Model.Imagen" alt="@Model.Nombre" id="imgPreview" class="img-thumbnail">
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-
-            <div>
-                <a asp-action="Me"><button type="button" class="btn btn-danger">Cancelar</button></a>
+            <div class="form-group mt-2">
+                <a asp-action="Me"><button type="button" class="btn btn-secondary rounded-pill">Cancelar</button></a>
+                <input type="submit" value="Save" class="btn btn-primary rounded-pill" />
+              
             </div>
         </form>
     </div>

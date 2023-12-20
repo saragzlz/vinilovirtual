@@ -13,6 +13,33 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ComentarioComController/Create
         public ActionResult Create(int id)
         {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
+            ComunidadRepository comunidadRepository = new ComunidadRepository();
+            ComunidadCEN comunidadCEN = new ComunidadCEN(comunidadRepository);
+
+            ComunidadEN comunidadEN = comunidadCEN.GetID(id);
+
+            bool suscrito = false;
+            foreach (UsuarioEN item in comunidadEN.Usuario)
+            {
+                if (item.Email == user.Email)
+                {
+                    suscrito = true;
+                    break;
+                }
+            }
+
+            int idCopy = id;
+            if (!suscrito)
+            {
+                return RedirectToAction("Details", "Comunidad", new { id = idCopy });
+            }
+
             ComentarioComViewModel com = new ComentarioComViewModel();
             com.Id = id;
             return View(com);
@@ -27,10 +54,10 @@ namespace InterfazViniloVirtual.Controllers
                 ComentarioComRepository comRepo = new ComentarioComRepository();
                 ComentarioComCEN comCEN = new ComentarioComCEN(comRepo);
                 DateTime fecha = DateTime.Now;
-                UsuarioViewModel user =  HttpContext.Session.Get<UsuarioViewModel>("usuario");
+                UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
                 comCEN.New_(user.Email, com.Id, com.Texto, fecha);
 
-                return RedirectToAction("Details", "Comunidad",new {id = com.Id});
+                return RedirectToAction("Details", "Comunidad", new { id = com.Id });
             }
             catch
             {
@@ -38,7 +65,7 @@ namespace InterfazViniloVirtual.Controllers
             }
         }
 
-         // GET: ComentarioComController/Delete/5
+        // GET: ComentarioComController/Delete/5
         public ActionResult Delete(int id)
         {
 
@@ -63,6 +90,6 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
-        
+
     }
 }

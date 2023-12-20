@@ -4,6 +4,7 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     IEnumerable<ComentarioComViewModel> comments = (IEnumerable<ComentarioComViewModel>)ViewData["Comentarios"];
+    bool suscrito = (bool)ViewData["suscrito"];
 
     UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
@@ -70,7 +71,37 @@
         <!--Mostrar accion de comentar si estas loggeado-->
         @if (usuario != null)
         {
-            <a href="/ComentarioCom/Create/@Model.Id" class="custom-button2">Comentar</a>
+            @if (usuario.Baneado == "N" && suscrito)
+            {
+                <a href="/ComentarioCom/Create/@Model.Id" class="custom-button2">Comentar</a>
+                <a href="/Comunidad/DarBaja/@Model.Id" class="custom-button2">Darse de Baja</a>
+            }
+            else if (usuario.Baneado == "N" && !suscrito)
+            {
+                <a href="/Comunidad/Suscribirse/@Model.Id" class="custom-button2">Suscribirse</a>
+            }
+            else if (suscrito && usuario.Baneado != "N")
+            {
+                @if (usuario.Baneado == "P")
+                {
+                    <div class="alert alert-danger" role="alert">
+                        No puede unirse a ninguna comunidad ni comentar en ella, debido a que se encuentra permanente baneado
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        No puede unirse a ninguna comunidad ni comentar en ella, debido a que se encuentra temporalmente baneado
+                    </div>
+                }
+
+                <button class="custom-button2" disabled>
+                    Comentar
+                </button>
+            }
+
+
+
             <br />
             <br />
         }

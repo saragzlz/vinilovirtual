@@ -56,8 +56,19 @@ namespace InterfazViniloVirtual.Controllers
 
             IEnumerable<ComentarioComViewModel> comentView = new ComentarioComAssembler().ConvertirListENToViewModel(comEN.ComentarioCom);
 
-            ViewData["Comentarios"] = comentView;
+            bool suscrito = false;
 
+            foreach (UsuarioEN x in comEN.Usuario)
+            {
+                if (x.Email == user.Email)
+                {
+                    suscrito = true;
+                    break;
+                }
+            }
+
+            ViewData["Comentarios"] = comentView;
+            ViewData["suscrito"] = suscrito;
 
             SessionClose();
             return View(comView);
@@ -129,6 +140,40 @@ namespace InterfazViniloVirtual.Controllers
 
             SessionClose();
             return View(comView);
+        }
+
+        public ActionResult Suscribirse(int id)
+        {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+
+            ComunidadRepository comRepo = new ComunidadRepository();
+            ComunidadCEN comCEN = new ComunidadCEN(comRepo);
+
+            comCEN.SeguirComunidad(id, new List<string>() { user.Email });
+
+            comCEN.IncrementoSeguidores(id);
+
+            int copyId = id;
+
+            return RedirectToAction("Details", "Comunidad", new { id = copyId });
+        }
+
+        public ActionResult DarBaja(int id)
+        {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+
+            ComunidadRepository comRepo = new ComunidadRepository();
+            ComunidadCEN comCEN = new ComunidadCEN(comRepo);
+
+            comCEN.AbandonarComunidad(id, new List<string>() { user.Email });
+
+            comCEN.DecrementoSeguidores(id);
+
+            int copyId = id;
+
+            return RedirectToAction("Details", "Comunidad", new { id = copyId });
         }
 
         /*
@@ -236,7 +281,7 @@ namespace InterfazViniloVirtual.Controllers
 
             }
 
-            
+
 
             IList<ComunidadEN> listEN = comunidadCEN.GetAll(0, -1);
 
