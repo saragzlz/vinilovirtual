@@ -216,3 +216,15 @@ dl.row dd {
 .credit-card-div img { padding-top:30px; }
 .credit-card-div .small-font { font-size:9px; }
 .credit-card-div .pad-adjust { padding-top:10px; }
+
+@media (min-width: 576px) {
+  .mr {
+    margin: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .mr{
+    margin-left: 379px;
+  }
+}
