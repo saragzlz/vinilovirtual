@@ -114,11 +114,11 @@ public static void InitializeData ()
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario2 = usuariocen.New_ ("Sara", "1313", "sara@gmail.com", new DateTime (1998, 06, 10),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/perfil2.jpg", "Ródenas",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/sara.PNG", "Ródenas",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 string usuario3 = usuariocen.New_ ("Guillermo", "1414", "guille@gmail.com", new DateTime (2000, 06, 14),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/perfil3.jpg", "Puerta",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/guille.PNG", "Puerta",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.estandar);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + usuario1 + " creado correctamente");
@@ -129,7 +129,7 @@ public static void InitializeData ()
                 //Creacion de administrador
                 string admin1 = usuariocen.New_ ("DSM", "9999", "dsm@gmail.com", new DateTime (2024, 09, 01),
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB,
-                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/perfil4.jpg", "Administrador",
+                        ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.normal, "/Images/dsm.jpg", "Administrador",
                         ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.TipoUsuarioEnum.administrador);
                 Console.WriteLine (" ");
                 Console.WriteLine ("Usuario " + admin1 + " creado correctamente");
@@ -313,7 +313,7 @@ public static void InitializeData ()
                 //Modificamos el nombre del usuario
                 usuariocen.ModificarNombre ("alvaro@gmail.com", "Alvaro");
                 //Modificamos la imagen del usuario
-                usuariocen.ModificarImagen ("alvaro@gmail.com", "/Images/perfil1.jpg");
+                usuariocen.ModificarImagen ("alvaro@gmail.com", "/Images/alvaro.jpg");
                 /* Esta no funciona, el metodo no cambia correctamente la contraseña. Seguramente por temas de encriptado.
                  * //Modificamos la password e iniciamos sesion
                  * usuariocen.ModificarPass ("alvaro@gmail.com", "1212");
