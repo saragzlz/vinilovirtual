@@ -25,15 +25,18 @@ html {
   flex-grow: 0 !important;
 }
 
+.navbar-brand {
+  margin-left: 5rem !important;
+}
 
 /* Letra Blanca */
 .navbar-nav .nav-link {
   color: #fff !important;
-  font-size: 20px;
+  font-size: 16px;
 }
 .navbar-nav .nav-link:hover {
   color: #6c778c !important;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 /* Botones navbar*/
@@ -112,7 +115,6 @@ nav {
 .btn {
   font-family: "Monserrat", sans-serif;
   font-weight: bold;
-  font-size: 18pt;
 }
 
 .btn1-navbar {
@@ -182,7 +184,7 @@ nav {
   display: inline-block;
   padding: 10px 20px;
   border: 2px solid #ccc; /* Color del borde */
-  border-radius: 20px; /* Bordes redondos */
+  border-radius: 40px; /* Bordes redondos */
   text-decoration: none; /* Elimina la subrayado del enlace */
   color: #ffffff !important; /* Color del texto */
   background-color: #293340 !important; /* Color de fondo gris claro */
@@ -201,7 +203,7 @@ nav {
   display: inline-block;
   padding: 10px 20px;
   border: 2px solid #ffffff; /* Nuevo color del borde */
-  border-radius: 20px; /* Bordes redondos */
+  border-radius: 40px; /* Bordes redondos */
   text-decoration: none; /* Elimina la subrayado del enlace */
   color: #293340 !important; /* Nuevo color del texto */
   background-color: #ffffff !important; /* Nuevo color de fondo blanco */
