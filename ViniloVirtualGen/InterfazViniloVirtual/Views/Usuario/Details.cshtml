@@ -5,58 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+@{
+    UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
+    string nombre = usuario?.Nombre ?? "";
 
-<div>
-    <h4>UsuarioViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Genero)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaNacimiento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-        <!--Información de administrador-->
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Estado)
+    IEnumerable<AlbumViewModel> albumesFavs = (IEnumerable<AlbumViewModel>)ViewData["albumesFavs"];
+    IEnumerable<AlbumViewModel> albumesComprados = (IEnumerable<AlbumViewModel>)ViewData["albumesComprados"];
+    IEnumerable<ArtistaViewModel> artistasFavs = (IEnumerable<ArtistaViewModel>)ViewData["artistasFavs"];
+}
+
+<h1>Perfil de usuario</h1>
+@if (usuario != null && usuario.Tipo == "A")
+{
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Editar Perfil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="@Url.Action("EditarPerfil", "Usuario")">Cambiar Estado</a></li>
+            <li><a class="dropdown-item" href="@Url.Action("CambiarPass", "Usuario")">Cambiar Privilegios</a></li>
+        </ul>
+    </div>
+}
+<br />
+<div class="row mt-3">
+    <div class="col-md-6">
+        @if (Model != null && Model.Imagen != null)
+        {
+            <td class="col-sm-10">
+                <img src="@Html.DisplayFor(model => model.Imagen)" class="rounded-circle" height="350" width="350" />
+            </td>
+        }
+    </div>
+
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nombre)
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Estado)
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Nombre)
             </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Tipo)
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Apellido)
             </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Tipo)
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Apellido)
             </dd>
-    </dl>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Genero)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Genero)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.FechaNacimiento)
+            </dd>
+        </dl>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Email}) |
-    <a asp-action="Index">Back to List</a>
-</div>
+<br />
+<br />
