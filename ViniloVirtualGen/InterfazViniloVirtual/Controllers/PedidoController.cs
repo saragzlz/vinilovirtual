@@ -66,6 +66,23 @@ namespace InterfazViniloVirtual.Controllers
 
         }
 
+        public ActionResult Create()
+        {
+            UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
+
+            if (user == null || user.Tipo == "C")
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
+            AlbumViewModel albumViewModel = new AlbumViewModel();
+            ArtistaRepository artsRepos = new ArtistaRepository();
+            ArtistaCEN artsEN = new ArtistaCEN(artsRepos);
+            albumViewModel.ArtistaENs = artsEN.GetAll(0, -1).ToList();
+
+            return View(albumViewModel);
+        }
+
         public ActionResult EliminarAlbum(int id)
         {
             SessionInitialize();

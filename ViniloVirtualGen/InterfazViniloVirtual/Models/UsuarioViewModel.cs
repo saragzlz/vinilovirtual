@@ -10,9 +10,16 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Debe indicar el email del usuario")]
         public string Email { get; set; }
 
-        [ScaffoldColumn(false)]
         [RegularExpression("(?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\[\\]{}\\-_+=|:;'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}", ErrorMessage = "La contraseña debe tener una letra minúscula, una letra mayúscula, un número, un carácter especial y mínimo 8 dígitos")]
         public string Pass { get; set; }
+
+        public string PassAntigua { get; set; }
+
+        [RegularExpression("(?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\[\\]{}\\-_+=|:;'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}", ErrorMessage = "La contraseña debe tener una letra minúscula, una letra mayúscula, un número, un carácter especial y mínimo 8 dígitos")]
+        public string PassNew { get; set; }
+
+        [RegularExpression("(?=(.*[0-9]))(?=.*[\\!@#$%^&*()\\[\\]{}\\-_+=|:;'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}", ErrorMessage = "La contraseña debe tener una letra minúscula, una letra mayúscula, un número, un carácter especial y mínimo 8 dígitos")]
+        public string PassCheck { get; set; }
 
         [Display(Prompt = "Escribe el nombre del usuario", Description = "Nombre del usuario", Name = "Nombre")]
         [StringLength(int.MaxValue, MinimumLength = 3, ErrorMessage = "El nombre debe tener al menos 3 letras")]
@@ -41,7 +48,7 @@ namespace InterfazViniloVirtual.Models
         [Required(ErrorMessage = "Debe indicar la imagen del usuario")]
         public string Imagen { get; set; }
 
-        [Display(Prompt = "Imagen", Description = "Imagen del Artículo", Name = "Imagen")]
+        [Display(Prompt = "Imagen", Description = "Imagen del Usuario", Name = "Imagen")]
         public IFormFile Fichero { get; set; }
 
         [Display(Prompt = "Selecciona privilegios", Description = "Tipo de usuario", Name = "Tipo")]

@@ -20,6 +20,18 @@ namespace InterfazViniloVirtual.Assemblers
             usuarioViewModel.album_favoritos = new List<int>();
             usuarioViewModel.artistas_favoritos = new List<int>();
 
+            switch (usuEn.Estado)
+            {
+                case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoPermanente:
+                    usuarioViewModel.Baneado = "P";
+                    break;
+                case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.EstadoUsuarioEnum.baneadoTemporal:
+                    usuarioViewModel.Baneado = "T";
+                    break;
+                default:
+                    usuarioViewModel.Baneado = "N";
+                    break;
+            }
             foreach (AlbumEN x in usuEn.Album_favoritos)
             {
                 usuarioViewModel.album_favoritos.Add(x.Id);

@@ -10,7 +10,7 @@
 @{
     UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
     string nombre = usuario?.Nombre ?? "";
-    
+
     IEnumerable<AlbumViewModel> albumesFavs = (IEnumerable<AlbumViewModel>)ViewData["albumesFavs"];
     IEnumerable<AlbumViewModel> albumesComprados = (IEnumerable<AlbumViewModel>)ViewData["albumesComprados"];
     IEnumerable<ArtistaViewModel> artistasFavs = (IEnumerable<ArtistaViewModel>)ViewData["artistasFavs"];
@@ -18,9 +18,17 @@
 
 <h1>Mi Perfil</h1>
 
-<div class="col-sm">
-    <a href="@Url.Action("Edit", "Usuario", new { id = usuario.Email })" class="btn btn-primary">Editar Perfil</a>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Editar Perfil
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="@Url.Action("EditarPerfil", "Usuario")">Cambiar Datos Personales</a></li>
+    <li><a class="dropdown-item" href="@Url.Action("CambiarPass", "Usuario")">Cambiar Contraseña</a></li>
+    <li><a class="dropdown-item" href="@Url.Action("CambiarFoto", "Usuario")">Cambiar Foto de Perfil</a></li>
+  </ul>
 </div>
+
 
 <div class="row mt-3">
     <div class="col-md-6">

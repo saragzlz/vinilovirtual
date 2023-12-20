@@ -6,10 +6,13 @@
     UsuarioViewModel user = (UsuarioViewModel)ViewData["usuario"];
 }
 
+@if (user.Tipo == "A")
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear nueva comunidad</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Crear nueva comunidad</a>
-</p>
 <div class="container-fluid">
     <div class="row">
         @foreach (var item in Model)
@@ -30,4 +33,3 @@
         }
     </div>
 </div>
-
