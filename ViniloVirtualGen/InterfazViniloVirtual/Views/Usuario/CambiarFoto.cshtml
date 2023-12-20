@@ -13,15 +13,17 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CambiarFoto">
+        <form asp-action="CambiarFoto" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Fichero" class="control-label"></label>
-                <input asp-for="Fichero" type="file">
+                <input asp-for="Fichero" type="file" id="imagen">
             </div>
+            <img src="@Model.Imagen" alt="@Model.Nombre" id="imgPreview" class="img-thumbnail">
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+
             <div>
                 <a asp-action="Me"><button type="button" class="btn btn-danger">Cancelar</button></a>
             </div>
@@ -29,6 +31,23 @@
     </div>
 </div>
 
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", e => {
+    let imgPreview = document.getElementById('imgPreview');
+    let imagenFichero = document.getElementById('imagen');
+
+    imagenFichero.addEventListener('change', event => {
+        let file = (event.target).files[0];
+        let reader = new FileReader();
+        if (file) reader.readAsDataURL(file);
+
+        reader.addEventListener('load', e => {
+            imgPreview.src = reader.result.toString();
+        })
+    });
+
+});
+</script>
 
 @section Scripts {
     @{

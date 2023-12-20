@@ -15,14 +15,14 @@ namespace ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual
 {
 public partial class UsuarioCEN
 {
-public void ModificarEmail (string p_email, string p_nuevoEmail)
+public void ModificarEmail (string emailAnterior, string emailNuevo)
 {
         /*PROTECTED REGION ID(ViniloVirtualGen.ApplicationCore.CEN.ViniloVirtual_Usuario_modificarNombre) ENABLED START*/
 
         //Nos guardamos la info del usuario que nos pasan por paramentro en la variable "en"
-        UsuarioEN en = _IUsuarioRepository.GetID (p_email);
+        UsuarioEN en = _IUsuarioRepository.GetID (emailAnterior);
 
-        en.Email = p_nuevoEmail;
+        en.Email = emailNuevo;
 
         //Actualizada la informacion de "en" con el nuevo nombre, modificamos el usuario de forma final
         _IUsuarioRepository.ModifyDefault (en);
