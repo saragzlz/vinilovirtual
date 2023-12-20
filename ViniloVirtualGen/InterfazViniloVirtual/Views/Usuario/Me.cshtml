@@ -34,7 +34,7 @@
         @if (Model != null && Model.Imagen != null)
         {
             <td class="col-sm-10">
-                <img src="@Html.DisplayFor(model => model.Imagen)" height="350" width="350" />
+                <img src="@Html.DisplayFor(model => model.Imagen)" class="rounded-circle" height="350" width="350" />
             </td>
         }
     </div>
@@ -91,15 +91,14 @@
             <div class="row">
                 @foreach (var item in artistasFavs)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                        @if (item != null && item.imagen != null)
+                        {
                             <a href="/Artista/Details/@item.id">
-                                <img src="@item.imagen" class="card-img-top" alt="@item.imagen">
+                                <img src="@item.imagen" class="album-image" alt="@item.imagen">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">@item.nombre</h5>
-                            </div>
-                        </div>
+                            <div class="album-title">@item.nombre</div>
+                        }
                     </div>
                 }
             </div>
@@ -109,15 +108,16 @@
             <div class="row">
                 @foreach (var item in albumesFavs)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                        @if (item != null && item.Portada != null)
+                        {
                             <a href="/Album/Details/@item.Id">
-                                <img src="@item.Portada" class="card-img-top" alt="@item.Portada">
+                                <img src="@item.Portada" class="album-image" alt="@item.Portada">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Titulo</h5>
-                            </div>
-                        </div>
+                            <div class="album-title">@item.Titulo</div>
+                            <div class="album-artist">@item.NombreArtista</div>
+                            <div class="album-price">@item.Precio</div>
+                        }
                     </div>
                 }
             </div>
@@ -127,15 +127,16 @@
             <div class="row">
                 @foreach (var item in albumesComprados)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                        @if (item != null && item.Portada != null)
+                        {
                             <a href="/Album/Details/@item.Id">
-                                <img src="@item.Portada" class="card-img-top" alt="@item.Portada">
+                                <img src="@item.Portada" class="album-image" alt="@item.Portada">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">@item.Titulo</h5>
-                            </div>
-                        </div>
+                            <div class="album-title">@item.Titulo</div>
+                            <div class="album-artist">@item.NombreArtista</div>
+                            <div class="album-price">@item.Precio</div>
+                        }
                     </div>
                 }
             </div>

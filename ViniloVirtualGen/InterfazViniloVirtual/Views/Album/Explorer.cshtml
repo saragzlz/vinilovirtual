@@ -17,22 +17,16 @@
 }
 
 
-
 <form asp-action="Explorer" class="form-inline my-2 my-lg-0">
-
     <div class="row justify-content-md-center">
         <div class="col col-lg-5">
             <input asp-for="TextoBuscar" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" />
             <span asp-validation-for="TextoBuscar" class="text-danger"></span>
         </div>
-
         <div class="col-md-auto">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </div>
-
-
     </div>
-
 </form>
 
 <style type="text/css">
@@ -43,7 +37,8 @@
         color: white;
     }
 </style>
-<div>
+<br />
+<div class="text-center">
     @{
         string[] generos =
         Enum.GetNames(typeof(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum));
@@ -62,8 +57,8 @@
 
 </div>
 
-
-
+<br />
+<br />
 <div class="container-fluid">
     <div class="row">
         @foreach (var item in listAlbumes)
