@@ -48,9 +48,11 @@
     @foreach (int values in
     Enum.GetValues(typeof(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum)))
     {
-        <button type="button" class="custom-button btn btn-dark">
-            @Html.ActionLink(@generos[contador], "Explorer", "Album", new { genero = values })
-        </button>
+        <a href="/Album/Explorer/?genero=@values">
+            <button type="button" class="custom-button btn btn-dark">
+                @generos[contador]
+            </button>
+        </a>
         contador++;
     }
 
