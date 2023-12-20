@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ViniloVirtualGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5680e66184ea84326d3b127b24649c299460c025")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4303ca558e2412e8bb5838164faae84db51c966")]
 [assembly: System.Reflection.AssemblyProductAttribute("ViniloVirtualGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ViniloVirtualGen.Infraestructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

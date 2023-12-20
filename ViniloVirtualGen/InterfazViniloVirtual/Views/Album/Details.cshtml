@@ -6,11 +6,6 @@
 
     UsuarioViewModel usuario = Context.Session.Get<UsuarioViewModel>("usuario");
 }
-
-
-<h1>@Html.DisplayFor(model => model.Titulo)</h1>
-<h4>@Html.DisplayFor(model => model.NombreArtista)</h4>
-
 <!--Opciones de editar y borrar el artista solo para administrador-->
 <td>
     @if (usuario != null && usuario.Tipo == "A")
@@ -23,101 +18,126 @@
     }
 </td>
 
-<div>
+<h1>@Html.DisplayFor(model => model.Titulo)</h1>
+<h4>@Html.DisplayFor(model => model.NombreArtista)</h4>
+<br />
+
+<!--Parte superior del album-->
+<div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+        <p>Likes: @Html.DisplayFor(model => model.Likes)</p>
+    </div>
+    <div class="col col-lg-2">
+    </div>
+    <div class="col col-lg-2">
+    </div>
+    <div class="col col-lg-2">
+    </div>
+</div>
+
+<div class="row">
+    <!--Parte de la izquierda-->
+    <div class="col">
     @if (Model != null && Model.Portada != null)
     {
         <td class="col-sm-10">
-            <img src="@Html.DisplayFor(model => model.Portada)" height="350" width="350" />
+            <img src="@Html.DisplayFor(model => model.Portada)" height="500" width="500" />
         </td>
     }
-</div>
-<div>
-    <hr />
-    <dl class="row">
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        @if (usuario != null && usuario.Tipo == "C")
-        {
-            <dd class="col-sm-10">
+    </div>
 
-                @if (Model.IsFav)
+    <!--Parte de la derecha-->
+    <div class="col">
+        <div class="row">
+            <div class="">
+                @Html.DisplayFor(model => model.Descripcion)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @if (usuario != null && usuario.Tipo == "C")
                 {
-                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
-                        <button type="submit" class="btn btn-secondary">
-                            <i class="fa-solid fa-heart"></i>
-                        </button>
-                    </form>
+                    <dd class="col-sm-10">
+                        @if (Model.IsFav)
+                        {
+                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </form>
+                        }
+                    </dd>
                 }
-                else
+            </div>
+            <div class="col">
+                @if (usuario != null && usuario.Tipo == "C")
                 {
-                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
-                        <button type="submit" class="btn btn-secondary">
-                            <i class="fa-regular fa-heart"></i>
-                        </button>
-                    </form>
-                }
                     <form asp-action="AddCarrito" class="form-inline my-2 my-lg-0">
-                        <input asp-for="Id" class="form-control" style="display: none;" value="@Model.Id"/>
+                        <input asp-for="Id" class="form-control" style="display: none;" value="@Model.Id" />
                         <button type="submit" class="btn btn-warning">
                             Añadir al carrito <i class="fa-solid fa-cart-shopping"></i>
                         </button>
                     </form>
-
-
-            </dd>
-        }
-
-    </dl>
-</div>
-<div>
-    <hr />
-    <td class="col-sm-10">
-        <p>Numero de Likes: @Html.DisplayFor(model => model.Likes)</p>
-    </td>
-</div>
-
-<!--Seccion de Comentarios del Album-->
-<h3>Comentarios</h3>
-<div class="card-columns mt-4 mb-4 overflow-auto" style="column-count: 1; width: 60%;">
-    @{
-        var ff = System.Globalization.CultureInfo.InvariantCulture;
-    }
-    <!--Mostrar accion de comentar si estas loggeado-->
-    @if (usuario != null)
-    {
-        @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
-    }
-    <!--Recorrer comentarios del album y mostrarlos-->
-    @foreach (var it in comments)
-    {
-        <div class="card shadow mb-2">
-            <div class="card-body">
-                <a href="/Usuario/Details/@it.UsuarioId">
-                    <h5 class="card-title">@it.NombreUsuario</h5>
-                </a>
-                <p class="card-text">@it.Texto</p>
-            </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-sm">
-                        @it.Fecha.ToString().;
-                    </div>
-
-                    <!--Borrar comentario si eres administrador-->
-                    @if (usuario != null && usuario.Tipo == "A")
-                    {
-                        <div class="col-sm">
-                            <button class="btn btn-danger">
-                                @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
-                            </button>
-                        </div>
-                    }
-                </div>
-
+                }
             </div>
         </div>
-    }
+
+        <br />
+
+        @{
+            var ff = System.Globalization.CultureInfo.InvariantCulture;
+        }
+        <!--Mostrar accion de comentar si estas loggeado-->
+        @if (usuario != null)
+        {
+            @Html.ActionLink("Comentar", "Create", "ComentarioAlb", new { id = Model.Id })
+        }
+        <!--Recorrer comentarios del album y mostrarlos-->
+        @foreach (var it in comments)
+        {
+            <div class="card shadow mb-2">
+                <div class="card-body">
+                    <a href="/Usuario/Details/@it.UsuarioId">
+                        <h5 class="card-title">@it.NombreUsuario</h5>
+                    </a>
+                    <p class="card-text">@it.Texto</p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm">
+                            @it.Fecha.ToString().;
+                        </div>
+
+                        <!--Borrar comentario si eres administrador-->
+                        @if (usuario != null && usuario.Tipo == "A")
+                        {
+                            <div class="col-sm">
+                                <button class="btn btn-danger">
+                                    @Html.ActionLink("Borrar", "Delete", "ComentarioAlb", new { id = it.Id })
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+
+        
+    </dl>
 </div>
 
 <!--Volver a la lista-->
