@@ -347,14 +347,35 @@ namespace InterfazViniloVirtual.Controllers
 
                 UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
 
+                int genero = 0;
+
+                switch (usu.Genero)
+                {
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino:
+                        genero = 1;
+                        user.Genero = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.masculino;
+                        break;
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino:
+                        genero = 2;
+                        user.Genero = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.femenino;
+                        break;
+                    case ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB:
+                        genero = 3;
+                        user.Genero = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.nB;
+                        break;
+                    default:
+                        genero = 4;
+                        user.Genero = ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroUsuarioEnum.otro;
+                        break;
+                }
+
 
                 usuCEN.ModificarApellido(user.Email, usu.Apellido);
                 usuCEN.ModificarNombre(user.Email, usu.Nombre);
-                usuCEN.ModificarEmail(user.Email, usu.Email);
+                usuCEN.ModificarGenero(user.Email, genero);
 
                 user.Nombre = usu.Nombre;
                 user.Apellido = usu.Apellido;
-                user.Email = usu.Email;
 
                 HttpContext.Session.Set<UsuarioViewModel>("usuario", user);
                 return RedirectToAction(nameof(Me));
