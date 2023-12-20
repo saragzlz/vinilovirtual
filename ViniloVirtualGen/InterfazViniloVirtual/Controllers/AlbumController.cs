@@ -33,6 +33,8 @@ namespace InterfazViniloVirtual.Controllers
 
             IList<AlbumEN> listEN = albCEN.GetAll(0, -1);
 
+            listEN = listEN.Where(x => x.Artista != null).ToList();
+
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
 
             UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
@@ -326,7 +328,7 @@ namespace InterfazViniloVirtual.Controllers
                 listEN = albCEN.GetAll(0, -1);
             }
 
-
+            listEN = listEN.Where(x => x.Artista != null).ToList();
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
 
             UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
@@ -350,6 +352,8 @@ namespace InterfazViniloVirtual.Controllers
                 AlbumCEN albCEN = new AlbumCEN(albRepository);
 
                 IList<AlbumEN> listEN = albCEN.GetAll(0, -1);
+
+                listEN = listEN.Where(x => x.Artista != null).ToList();
 
                 listEN = listEN.Where(x => x.Artista.Nombre.ToLower().Contains(alb.TextoBuscar.ToLower()) || x.Nombre.ToLower().Contains(alb.TextoBuscar.ToLower())).ToList();
 
@@ -385,7 +389,7 @@ namespace InterfazViniloVirtual.Controllers
             {
                 listEN = albCEN.GetAll(0, -1);
             }
-
+            listEN = listEN.Where(x => x.Artista != null).ToList();
 
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
 
@@ -438,7 +442,7 @@ namespace InterfazViniloVirtual.Controllers
 
                 List<int> pedidos = pedidoCP.AddLineaPedido(pedidoEN.Id, albumEN.Id);
 
-                
+
 
                 PedidoViewModel pedidoViewModel = new PedidoAssembler().ConvertirENToViewModel(pedidoEN);
                 pedidoViewModel.LineasPedido = pedidos;
