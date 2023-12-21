@@ -5,30 +5,30 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Crear album nuevo</h1>
+<h1 class="text-center">Crear álbum nuevo</h1>
 <br />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
+                <input asp-for="Titulo" class="form-control rounded-pill" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
-            <br/>
+            <br />
             <div class="form-group">
                 <label asp-for="Artista" class="control-label"></label>
                 <br />
                 @Html.DropDownListFor(m => m.IdArtista,
-                         new SelectList(Model.ArtistaENs, "Id", "Nombre"),
-                         "Selecciona el artista")
+                new SelectList(Model.ArtistaENs, "Id", "Nombre"),
+                "Selecciona el artista", new { @class = "form-control rounded-pill" })
                 <span asp-validation-for="Artista" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
+                <input asp-for="Descripcion" class="form-control rounded-pill" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <br />
@@ -36,33 +36,35 @@
                 <label asp-for="Genero" class="control-label"></label>
                 <br />
                 @Html.DropDownListFor(m => m.Genero,
-                         new SelectList(Enum.GetValues(typeof(GeneroMusicalEnum))),
-                         "Selecciona el género")
+                new SelectList(Enum.GetValues(typeof(GeneroMusicalEnum))),
+                "Selecciona el género", new { @class = "custom-select rounded-pill" })
                 <span asp-validation-for="Genero" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="Fichero" class="control-label"></label>
-                <input asp-for="Fichero" type="file">
+                <input asp-for="Fichero" type="file" class="form-control rounded-pill">
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="Precio" class="control-label"></label>
-                <input asp-for="Precio" class="form-control" />
+                <input asp-for="Precio" class="form-control rounded-pill" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary rounded-pill" />
             </div>
         </form>
     </div>
 </div>
 <br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary rounded-pill">Volver a la lista</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
