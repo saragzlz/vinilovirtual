@@ -13,13 +13,14 @@ namespace InterfazViniloVirtual.Controllers
         // GET: ComentarioComController/Create
         public ActionResult Create(int id)
         {
+            SessionInitialize();
             UsuarioViewModel user = HttpContext.Session.Get<UsuarioViewModel>("usuario");
             if (user == null)
             {
                 return RedirectToAction("Login", "Usuario");
             }
 
-            ComunidadRepository comunidadRepository = new ComunidadRepository();
+            ComunidadRepository comunidadRepository = new ComunidadRepository(session);
             ComunidadCEN comunidadCEN = new ComunidadCEN(comunidadRepository);
 
             ComunidadEN comunidadEN = comunidadCEN.GetID(id);
@@ -42,6 +43,7 @@ namespace InterfazViniloVirtual.Controllers
 
             ComentarioComViewModel com = new ComentarioComViewModel();
             com.Id = id;
+            SessionClose();
             return View(com);
         }
 
