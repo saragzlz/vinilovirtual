@@ -126,24 +126,24 @@
         <!--Recorrer comentarios del album y mostrarlos-->
         @foreach (var it in comments)
         {
-            <div class="card shadow mb-2">
+            <div class="card comm">
                 <div class="card-body">
-                    <a href="/Usuario/Details/@it.UsuarioId">
+                    <a href="/Usuario/Details/@it.UsuarioId" class="user-comm">
                         <h5 class="card-title">@it.NombreUsuario</h5>
                     </a>
                     <p class="card-text">@it.Texto</p>
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm-9">
                             @it.Fecha.ToString();
                         </div>
 
                         <!--Borrar comentario si eres administrador-->
                         @if (usuario != null && usuario.Tipo == "A")
                         {
-                            <div class="col-sm">
-                                <a href="/ComentarioCom/Delete/@it.Id" class="btn btn-danger">Borrar</a>
+                            <div class="col-sm-3">
+                                <a href="/ComentarioCom/Delete/@it.Id" class="custom-button">Borrar</a>
                             </div>
                         }
                     </div>
@@ -160,5 +160,5 @@
 </div>
 <!--Volver a la lista-->
 <p>
-    <a class="custom-button" asp-action="Index">Volver a la lista de comunidades</a>
+    <a class="custom-button mb-3" asp-action="Index">Volver a la lista de comunidades</a>
 </p>

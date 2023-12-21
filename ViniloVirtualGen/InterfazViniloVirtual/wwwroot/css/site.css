@@ -272,7 +272,7 @@ nav {
 .genre-btn {
   display: inline-block;
   padding: 10px 20px;
-  border: 2px solid #293340; 
+  border: 2px solid #B4B9BF; 
   border-radius: 60px; 
   text-decoration: none; 
   background-color: #ffffff !important; 
@@ -281,7 +281,7 @@ nav {
 }
 
 .genre-btn a {
-  color: #293340 !important; /* Nuevo color al pasar el ratón invertido */
+  color: #4f5967 !important; /* Nuevo color al pasar el ratón invertido */
 }
 
 /* Efecto de sombra al pasar el ratón */
@@ -309,6 +309,7 @@ nav {
   border: 2px solid #293340 !important; /* Nuevo color del borde */
   border-radius: 20px !important; /* Bordes redondos de 50px */
   color: #293340 !important; /* Color de texto #293340 */
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 

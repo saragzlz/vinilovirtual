@@ -66,22 +66,21 @@
 <br />
 <br />
 <div class="container-fluid">
-    <div class="row">
-        @foreach (var item in listAlbumes)
+    <div class="row justify-content-center">
+      @foreach (var item in listAlbumes)
+{
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 album-cell"> <!-- Ajusta las clases de las columnas -->
+        @if (item != null && item.Portada != null)
         {
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
-                @if (item != null && item.Portada != null)
-                {
-                    <a href="/Album/Details/@item.Id">
-                        <img src="@item.Portada" class="album-image" alt="@item.Portada">
-                    </a>
-                    <div class="album-title">@item.Titulo</div>
-                    <div class="album-artist">@item.NombreArtista</div>
-                    <div class="album-price">@item.Precio</div>
-
-                }
-            </div>
+            <a href="/Album/Details/@item.Id">
+                <img src="@item.Portada" class="album-image img-fluid" alt="@item.Portada"> <!-- Agregado img-fluid para que la imagen sea responsive -->
+            </a>
+            <div class="album-title small">@item.Titulo</div> <!-- Agregado 'small' para reducir el tamaño del texto -->
+            <div class="album-artist small">@item.NombreArtista</div> <!-- Agregado 'small' para reducir el tamaño del texto -->
+            <div class="album-price small">@item.Precio</div> <!-- Agregado 'small' para reducir el tamaño del texto -->
         }
+    </div>
+}
     </div>
 </div>
 

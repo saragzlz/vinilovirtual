@@ -13,24 +13,26 @@
         <a href="/Album/Edit/@Model.Id" class="custom-button">Editar Album</a>
         <a href="/Album/Delete/@Model.Id" class="custom-button">Borrar Album</a>
     }
-</td>
-<br />
-<br />
-<div class="row">
-    <!-- Parte de la izquierda: Imagen -->
-    <div class="col-md-6">
-        @if (Model != null && Model.Portada != null)
-        {
+    </td>
+    <br />
+    <br />
+    <div class="row">
+        <!-- Parte de la izquierda: Imagen -->
+    <div class="col-md-6 text-center">
+            @if (Model != null && Model.Portada != null)
+            {
             <img src="@Html.DisplayFor(model => model.Portada)" class="album-image" height="500" width="500" />
-        }
+            }
+            <div class="col text-center">
+                <!-- Utiliza la clase text-center para centrar -->
+                <h5>Likes: @Html.DisplayFor(model => model.Likes)</h5>
+            </div>
     </div>
 
     <!-- Parte de la derecha: Detalles -->
     <div class="col-md-6">
         <h1>@Html.DisplayFor(model => model.Titulo)</h1>
         <h3>@Html.DisplayFor(model => model.NombreArtista)</h3>
-        <h5>Likes: @Html.DisplayFor(model => model.Likes)</h5>
-
         <div>
             @Html.DisplayFor(model => model.Descripcion)
         </div>
@@ -54,12 +56,7 @@
                         </button>
                     </form>
                 }
-            }
-        </div>
-    </div>
-</div>
 
-            <div class="col">
                 @if (usuario != null && usuario.Tipo == "C")
                 {
                     <form asp-action="AddCarrito" class="form-inline my-2 my-lg-0">
@@ -69,22 +66,17 @@
                         </button>
                     </form>
                 }
-            </div>
+            }
         </div>
-
-        <br />
-
         @{
             var ff = System.Globalization.CultureInfo.InvariantCulture;
         }
         <!--Mostrar accion de comentar si estas loggeado-->
         @if (usuario != null)
         {
-            <a href="/ComentarioAlb/Create/@Model.Id" class="custom-button2">Comentar</a>
-            <br />
-            <br />
+            <a href="/ComentarioAlb/Create/@Model.Id" class="custom-button2 mt-3">Comentar</a>
         }
-        
+
         <!--Recorrer comentarios del album y mostrarlos-->
         @foreach (var it in comments)
         {
@@ -98,15 +90,17 @@
                 </div>
                 <div class="card-footer">
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm-9">
+                            <!-- 9/12 para la fecha -->
                             @it.Fecha.ToString();
                         </div>
 
-                        <!--Borrar comentario si eres administrador-->
+                        <!-- Borrar comentario si eres administrador -->
                         @if (usuario != null && usuario.Tipo == "A")
                         {
-                            <div class="col-sm">
-                                <a href="/ComentarioAlb/Delete/@it.Id" class="btn btn-danger">Borrar</a>
+                            <div class="col-sm-3">
+                                <!-- 3/12 para el botón -->
+                                <a href="/ComentarioAlb/Delete/@it.Id" class="custom-button">Borrar</a>
                             </div>
                         }
                     </div>
@@ -114,6 +108,11 @@
             </div>
         }
     </div>
+    </div>
+</div>
+        <br />
+
+       
 </div>
 
 <div>
