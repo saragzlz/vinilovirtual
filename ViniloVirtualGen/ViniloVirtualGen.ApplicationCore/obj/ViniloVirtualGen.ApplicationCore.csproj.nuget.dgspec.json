@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SAMUE\\OneDrive\\Escritorio\\dsm\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {}
+    "C:\\Users\\adria\\OneDrive\\Documentos\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SAMUE\\OneDrive\\Escritorio\\dsm\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
+    "C:\\Users\\adria\\OneDrive\\Documentos\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SAMUE\\OneDrive\\Escritorio\\dsm\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\adria\\OneDrive\\Documentos\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
         "projectName": "ViniloVirtualGen.ApplicationCore",
-        "projectPath": "C:\\Users\\SAMUE\\OneDrive\\Escritorio\\dsm\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\SAMUE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SAMUE\\OneDrive\\Escritorio\\dsm\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
+        "projectPath": "C:\\Users\\adria\\OneDrive\\Documentos\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\ViniloVirtualGen.ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\adria\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\adria\\OneDrive\\Documentos\\GitHub\\vinilovirtual\\ViniloVirtualGen\\ViniloVirtualGen.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SAMUE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\adria\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

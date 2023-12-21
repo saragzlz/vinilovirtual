@@ -8,10 +8,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Cambiar los privilegios del usuario</h1>
+<h1 class="text-center">Cambiar los privilegios del usuario</h1>
 
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="CambiarTipo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,14 +20,13 @@
                 <br />
                 @Html.DropDownListFor(m => m.TipoEnum,
                          new SelectList(Enum.GetValues(typeof(TipoUsuarioEnum))),
-                         "Selecciona privilegios")
+                "Selecciona privilegios",  new { @class = "custom-select rounded-pill" })
                 <span asp-validation-for="TipoEnum" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-            <div>
-                <a asp-action="Details"><button type="button" class="btn btn-danger">Cancelar</button></a>
+            <div class="form-group mt-2">
+           
+                <a asp-action="Details"><button type="button" class="btn btn-secondary rounded-pill">Cancelar</button></a>
+                <input type="submit" value="Save" class="btn btn-primary rounded-pill" />
             </div>
         </form>
     </div>
