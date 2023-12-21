@@ -38,7 +38,7 @@ namespace InterfazViniloVirtual.Controllers
 
             if (paraTi != null && paraTi == "populares")
             {
-                listEN = listEN.Where(x => x.Artista.Nombre.Length < 6).ToList();
+                listEN = listEN.Where(x => x.NumLikes > 0).ToList();
             }
             else if (paraTi != null && paraTi == "recomendados")
             {
