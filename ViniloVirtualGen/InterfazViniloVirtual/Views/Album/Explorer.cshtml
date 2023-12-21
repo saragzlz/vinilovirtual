@@ -20,13 +20,19 @@
 <form asp-action="Explorer" class="form-inline my-2 my-lg-0">
     <div class="row justify-content-md-center">
         <div class="col col-lg-5">
-            <input asp-for="TextoBuscar" class="form-control mr-sm-2" placeholder="Search" aria-label="Search" />
+            <div class="input-group search-bar custom-input">
+                <input asp-for="TextoBuscar" class="form-control border-0 custom-input" placeholder="Search" aria-label="Search" />
+                <div class="input-group-append">
+                    <button class="btn border-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
             <span asp-validation-for="TextoBuscar" class="text-danger"></span>
         </div>
-        <div class="col-md-auto">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-        </div>
     </div>
+
+
 </form>
 
 <style type="text/css">
@@ -48,11 +54,9 @@
     @foreach (int values in
     Enum.GetValues(typeof(ViniloVirtualGen.ApplicationCore.Enumerated.ViniloVirtual.GeneroMusicalEnum)))
     {
-        <a href="/Album/Explorer/?genero=@values">
-            <button type="button" class="custom-button btn btn-dark">
-                @generos[contador]
-            </button>
-        </a>
+        <button type="button" class="genre-btn btn-dark">
+            @Html.ActionLink(@generos[contador], "Explorer", "Album", new { genero = values })
+        </button>
         contador++;
     }
 

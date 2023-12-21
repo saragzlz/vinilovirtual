@@ -146,18 +146,36 @@ nav {
   margin-right: 10px; /* Márgen derecho */
 }
 
+.btn-outline-success.focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.custom-input {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.search-bar{
+  border: 2px solid #B4B9BF !important;
+  border-radius: 60px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0.5rem;
+}
+
 
 .album-cell {
     border: none; /* O puedes simplemente eliminar esta línea */
-    margin-bottom: 20px;
     padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
+    margin: 1%;
 }
-  
 
 .album-cell:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+  0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 20px !important;
+  transform: scale(1.1);
 }
 
 .album-image {
@@ -192,19 +210,28 @@ nav {
 .custom-button {
   display: inline-block;
   padding: 10px 20px;
-  border: 2px solid #ccc; /* Color del borde */
+  border: 2px solid #293340; /* Color del borde */
   border-radius: 60px; /* Bordes redondos */
   text-decoration: none; /* Elimina la subrayado del enlace */
   color: #ffffff !important; /* Color del texto */
   background-color: #293340 !important; /* Color de fondo gris claro */
   transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  margin: .1rem;
 }
 
 /* Efecto de sombra al pasar el ratón */
 .custom-button:hover {
+  padding: 10px 20px;
+  border: 2px solid #293340; /* Color del borde */
+  border-radius: 60px; /* Bordes redondos */
   background-color: #ffffff !important; /* Cambia el color de fondo al pasar el ratón */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
-  color: #000000 !important;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  color: #293340 !important; /* Nuevo color al pasar el ratón */
+  margin: .1rem;
+}
+
+.custom-button:hover a {
+  color: #293340 !important; /* Nuevo color al pasar el ratón */
 }
 
 /* Estilos del botón custom-button2 */
@@ -226,6 +253,55 @@ nav {
   color: #ffffff !important; /* Nuevo color del texto al pasar el ratón */
 }
 
+/* Estilo custom para los generos*/
+.genre-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #293340; 
+  border-radius: 60px; 
+  text-decoration: none; 
+  background-color: #ffffff !important; 
+  transition: background-color 0.3s, box-shadow 0.3s; 
+  margin: .1rem;
+}
+
+.genre-btn a {
+  color: #293340 !important; /* Nuevo color al pasar el ratón invertido */
+}
+
+/* Efecto de sombra al pasar el ratón */
+.genre-btn:hover {
+  padding: 10px 20px;
+  border: 2px solid #ffffff; /* Color del borde invertido */
+  border-radius: 80px; /* Bordes redondos */
+  background-color: #293340 !important; /* Cambia el color de fondo al pasar el ratón */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  margin: .1rem;
+}
+
+.genre-btn:hover a {
+  color: #ffffff !important; /* Nuevo color al pasar el ratón invertido */
+}
+
+
+/* Para comentarios */
+.user-comm {
+  text-decoration: none; /* Elimina la subrayado del enlace */
+  color: #293340 !important; /* Color de texto #293340 */
+}
+
+.comm {
+  border: 2px solid #293340 !important; /* Nuevo color del borde */
+  border-radius: 20px !important; /* Bordes redondos de 50px */
+  color: #293340 !important; /* Color de texto #293340 */
+  margin-bottom: 1.5rem;
+}
+
+/* Para iconos */
+.icon {
+  display: inline-block;
+  margin-right: .5rem !important; /* Ajusta el margen a la derecha según tus necesidades */
+}
 
 @media (min-width: 576px) {
   .card-columns {

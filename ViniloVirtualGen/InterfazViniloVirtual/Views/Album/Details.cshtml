@@ -16,64 +16,49 @@
 </td>
 <br />
 <br />
-<h1>@Html.DisplayFor(model => model.Titulo)</h1>
-<h3>@Html.DisplayFor(model => model.NombreArtista) </h3>
-<h5>Likes: @Html.DisplayFor(model => model.Likes)</h5>
-<br />
 <div class="row">
-    <!--Parte de la izquierda-->
-    <div class="col">
-    @if (Model != null && Model.Portada != null)
-    {
-        <td class="col-sm-10">
-                <img src="@Html.DisplayFor(model => model.Portada)" class="album-image" height="500" width="500" />
-        </td>
-    }
+    <!-- Parte de la izquierda: Imagen -->
+    <div class="col-md-6">
+        @if (Model != null && Model.Portada != null)
+        {
+            <img src="@Html.DisplayFor(model => model.Portada)" class="album-image" height="500" width="500" />
+        }
     </div>
 
-    <!--Parte de la derecha-->
-    <div class="col">
-        <div class="row">
-            <div class="album-title">
-                @Html.DisplayFor(model => model.Descripcion)
-            </div>
+    <!-- Parte de la derecha: Detalles -->
+    <div class="col-md-6">
+        <h1>@Html.DisplayFor(model => model.Titulo)</h1>
+        <h3>@Html.DisplayFor(model => model.NombreArtista)</h3>
+        <h5>Likes: @Html.DisplayFor(model => model.Likes)</h5>
+
+        <div>
+            @Html.DisplayFor(model => model.Descripcion)
         </div>
-        <br />
-        <div class="row">
-            <div class="album-artist">
-                Genero: @Html.DisplayFor(model => model.Genero)
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="album-price">
-                @Html.DisplayFor(model => model.Precio)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                @if (usuario != null && usuario.Tipo == "C")
+
+        <div>
+            @if (usuario != null && usuario.Tipo == "C")
+            {
+                @if (Model.IsFav)
                 {
-                    <dd class="col-sm-10">
-                        @if (Model.IsFav)
-                        {
-                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
-                                <button type="submit" class="btn btn-secondary">
-                                    <i class="fa-solid fa-heart"></i>
-                                </button>
-                            </form>
-                        }
-                        else
-                        {
-                            <form asp-action="Details" class="form-inline my-2 my-lg-0">
-                                <button type="submit" class="btn btn-secondary">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </form>
-                        }
-                    </dd>
+                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </form>
                 }
-            </div>
+                else
+                {
+                    <form asp-action="Details" class="form-inline my-2 my-lg-0">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</div>
+
             <div class="col">
                 @if (usuario != null && usuario.Tipo == "C")
                 {
@@ -103,9 +88,10 @@
         <!--Recorrer comentarios del album y mostrarlos-->
         @foreach (var it in comments)
         {
-            <div class="card shadow mb-2">
+            <div class="card comm">
+                <!-- sombra shadow mb-2 -->
                 <div class="card-body">
-                    <a href="/Usuario/Details/@it.UsuarioId" >
+                    <a href="/Usuario/Details/@it.UsuarioId" class="user-comm">
                         <h5 class="card-title">@it.NombreUsuario</h5>
                     </a>
                     <p class="card-text">@it.Texto</p>
