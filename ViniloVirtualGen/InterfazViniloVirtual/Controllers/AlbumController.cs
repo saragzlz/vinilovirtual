@@ -24,16 +24,26 @@ namespace InterfazViniloVirtual.Controllers
         }
 
         // GET: AlbumController
-        public ActionResult Index()
+        public ActionResult Index(string paraTi)
         {
             SessionInitialize();
 
             AlbumRepository albRepository = new AlbumRepository(session);
             AlbumCEN albCEN = new AlbumCEN(albRepository);
 
+
             IList<AlbumEN> listEN = albCEN.GetAll(0, -1);
 
             listEN = listEN.Where(x => x.Artista != null).ToList();
+
+            if (paraTi != null && paraTi == "populares")
+            {
+                listEN = listEN.Where(x => x.Artista.Nombre.Length < 6).ToList();
+            }
+            else if (paraTi != null && paraTi == "recomendados")
+            {
+                listEN = listEN.Where(x => x.Artista.Nombre.Length > 6).ToList();
+            }
 
             IEnumerable<AlbumViewModel> listAlbumes = new AlbumAssembler().ConvertirListENToViewModel(listEN).ToList();
 
@@ -459,5 +469,7 @@ namespace InterfazViniloVirtual.Controllers
                 return View();
             }
         }
+
+
     }
 }
