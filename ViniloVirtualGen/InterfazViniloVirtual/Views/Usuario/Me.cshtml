@@ -14,19 +14,21 @@
     IEnumerable<AlbumViewModel> albumesFavs = (IEnumerable<AlbumViewModel>)ViewData["albumesFavs"];
     IEnumerable<AlbumViewModel> albumesComprados = (IEnumerable<AlbumViewModel>)ViewData["albumesComprados"];
     IEnumerable<ArtistaViewModel> artistasFavs = (IEnumerable<ArtistaViewModel>)ViewData["artistasFavs"];
+    IEnumerable<ComunidadViewModel> comunidades = (IEnumerable<ComunidadViewModel>)ViewData["comunidades"];
 }
 
 <h1>Mi Perfil</h1>
 
 <div class="dropdown">
-    <button class="custom-button btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Editar Perfil
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="@Url.Action("EditarPerfil", "Usuario")">Cambiar Datos Personales</a></li>
-    <li><a class="dropdown-item" href="@Url.Action("CambiarPass", "Usuario")">Cambiar Contraseña</a></li>
-    <li><a class="dropdown-item" href="@Url.Action("CambiarFoto", "Usuario")">Cambiar Foto de Perfil</a></li>
-  </ul>
+    <button class="custom-button btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Editar Perfil
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="@Url.Action("EditarPerfil", "Usuario")">Cambiar Datos Personales</a></li>
+        <li><a class="dropdown-item" href="@Url.Action("CambiarPass", "Usuario")">Cambiar Contraseña</a></li>
+        <li><a class="dropdown-item" href="@Url.Action("CambiarFoto", "Usuario")">Cambiar Foto de Perfil</a></li>
+    </ul>
 </div>
 <br />
 <div class="row mt-3">
@@ -72,77 +74,97 @@
 <br />
 @if (usuario.Tipo == "C")
 {
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" href="#home">Artistas Favoritos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Albumes Favoritos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#menu2">Albumes Comprados</a>
-        </li>
-    </ul>
-    <br />
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div class="tab-pane container active" id="home">
-            <div class="row">
-                @foreach (var item in artistasFavs)
-                {
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
-                        @if (item != null && item.imagen != null)
-                        {
-                            <a href="/Artista/Details/@item.id">
-                                <img src="@item.imagen" class="album-image" alt="@item.imagen">
-                            </a>
-                            <div class="album-title">@item.nombre</div>
-                        }
-                    </div>
-                }
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#home">Artistas Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu1">Albumes Favoritos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu2">Albumes Comprados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#menu3">Comunidades Suscritas</a>
+            </li>
+        </ul>
+        <br />
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container active" id="home">
+                <div class="row">
+                    @foreach (var item in artistasFavs)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                            @if (item != null && item.imagen != null)
+                            {
+                                <a href="/Artista/Details/@item.id">
+                                    <img src="@item.imagen" class="album-image" alt="@item.imagen">
+                                </a>
+                                <div class="album-title">@item.nombre</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
-        </div>
 
-        <div class="tab-pane container fade" id="menu1">
-            <div class="row">
-                @foreach (var item in albumesFavs)
-                {
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
-                        @if (item != null && item.Portada != null)
-                        {
-                            <a href="/Album/Details/@item.Id">
-                                <img src="@item.Portada" class="album-image" alt="@item.Portada">
-                            </a>
-                            <div class="album-title">@item.Titulo</div>
-                            <div class="album-artist">@item.NombreArtista</div>
-                            <div class="album-price">@item.Precio</div>
-                        }
-                    </div>
-                }
+            <div class="tab-pane container fade" id="menu1">
+                <div class="row">
+                    @foreach (var item in albumesFavs)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                            @if (item != null && item.Portada != null)
+                            {
+                                <a href="/Album/Details/@item.Id">
+                                    <img src="@item.Portada" class="album-image" alt="@item.Portada">
+                                </a>
+                                <div class="album-title">@item.Titulo</div>
+                                <div class="album-artist">@item.NombreArtista</div>
+                                <div class="album-price">@item.Precio</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
-        </div>
 
-        <div class="tab-pane container fade" id="menu2">
-            <div class="row">
-                @foreach (var item in albumesComprados)
-                {
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
-                        @if (item != null && item.Portada != null)
-                        {
-                            <a href="/Album/Details/@item.Id">
-                                <img src="@item.Portada" class="album-image" alt="@item.Portada">
-                            </a>
-                            <div class="album-title">@item.Titulo</div>
-                            <div class="album-artist">@item.NombreArtista</div>
-                            <div class="album-price">@item.Precio</div>
-                        }
-                    </div>
-                }
+            <div class="tab-pane container fade" id="menu2">
+                <div class="row">
+                    @foreach (var item in albumesComprados)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                            @if (item != null && item.Portada != null)
+                            {
+                                <a href="/Album/Details/@item.Id">
+                                    <img src="@item.Portada" class="album-image" alt="@item.Portada">
+                                </a>
+                                <div class="album-title">@item.Titulo</div>
+                                <div class="album-artist">@item.NombreArtista</div>
+                                <div class="album-price">@item.Precio</div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="tab-pane container fade" id="menu3">
+                <div class="row">
+                    @foreach (var item in comunidades)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 album-cell">
+                            @if (item != null && item.Imagen != null)
+                            {
+                                <a href="/Album/Details/@item.Id">
+                                    <img src="@item.Imagen" class="album-image" alt="@item.Imagen">
+                                </a>
+                                <div class="album-title">@item.Nombre</div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
 }
 <br />
 <br />

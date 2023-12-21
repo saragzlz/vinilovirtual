@@ -303,10 +303,14 @@ namespace InterfazViniloVirtual.Controllers
             IEnumerable<AlbumViewModel> albumesFavs = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album_favoritos).ToList();
             IEnumerable<AlbumViewModel> albumesComprados = new AlbumAssembler().ConvertirListENToViewModel(usuEN.Album).ToList();
             IEnumerable<ArtistaViewModel> artistasFavs = new ArtistaAssembler().ConvertirListENToViewModel(usuEN.Artista_favoritos).ToList();
+            IEnumerable<ComunidadViewModel> comunidades = new ComunidadAssembler().ConvertirListENToViewModel(usuEN.Comunidad).ToList();
+
 
             ViewData["albumesFavs"] = albumesFavs;
             ViewData["albumesComprados"] = albumesComprados;
             ViewData["artistasFavs"] = artistasFavs;
+
+            ViewData["comunidades"] = comunidades;
 
             SessionClose();
 
