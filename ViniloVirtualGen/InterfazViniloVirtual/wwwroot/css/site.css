@@ -375,12 +375,16 @@ dl.row dd {
 
 @media (min-width: 992px) {
   .mr{
-    margin-left: 379px;
+    margin-left: 379px; 
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 578px) {
   .btn1-navbar{
+    margin-right: 0.2rem;
+    margin-top: 0.8rem;
+  }
+  .admin-profile{
     margin-right: 0.2rem;
     margin-top: 0.8rem;
   }
