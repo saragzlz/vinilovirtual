@@ -39,6 +39,21 @@ html {
     margin-right: .5rem;
 }
 
+/* Cambios para administrador */
+.admin-navbar {
+  background-color: #ff6347 !important; 
+}
+
+.admin-profile{
+  background-color: white !important;
+  border: 2px solid white !important;
+  border-radius: 60px !important;
+  color: #ff6347 !important; 
+  padding-right: 2rem;
+  padding-left: 2rem;;
+  margin-right: 5rem; /* Márgen derecho */
+}
+
 .navbar-opc {
   margin-right: 1.5rem !important;
 }
@@ -167,7 +182,7 @@ nav {
 
 .album-cell {
     border: none; /* O puedes simplemente eliminar esta línea */
-    padding: 15px;
+    padding: 1rem;
     margin: 1%;
 }
 
@@ -360,5 +375,12 @@ dl.row dd {
 @media (min-width: 992px) {
   .mr{
     margin-left: 379px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn1-navbar{
+    margin-right: 0.2rem;
+    margin-top: 0.8rem;
   }
 }
