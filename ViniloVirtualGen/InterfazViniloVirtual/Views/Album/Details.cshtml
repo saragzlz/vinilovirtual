@@ -36,7 +36,13 @@
         <div>
             @Html.DisplayFor(model => model.Descripcion)
         </div>
-
+        <div>
+            Genero: @Html.DisplayFor(model => model.Genero)
+        </div>
+        <div class="album-price">
+            @Html.DisplayFor(model => model.Precio)
+        </div>
+        <br />
         <div>
             @if (usuario != null && usuario.Tipo == "C")
             {
@@ -56,7 +62,7 @@
                         </button>
                     </form>
                 }
-
+                <br />
                 @if (usuario != null && usuario.Tipo == "C")
                 {
                     <form asp-action="AddCarrito" class="form-inline my-2 my-lg-0">
